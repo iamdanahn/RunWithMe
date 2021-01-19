@@ -1,3 +1,3 @@
 
 # user comes from show.json.jbuilder
-json.extract! user, :username, :id
+json.extract! user, :id, :username 

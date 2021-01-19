@@ -50,7 +50,7 @@ user5 = User.create!(
   id: 5,
   username: 'george', 
   password: 'curious',
-  email: 'geroge@george.com', 
+  email: 'george@george.com', 
   birthday: '01/01/1995',
   gender:'M'
   )
