@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  route_name: 
+  creator_id: 1
+  activity: MyString
+  location: MyString
+  distance: 1
+  start_pos_lat: 1.5
+  start_pos_lng: 1.5
+  end_pos_lat: 1.5
+  end_pos_lng: 1.5
+
+two:
+  route_name: 
+  creator_id: 1
+  activity: MyString
+  location: MyString
+  distance: 1
+  start_pos_lat: 1.5
+  start_pos_lng: 1.5
+  end_pos_lat: 1.5
+  end_pos_lng: 1.5
