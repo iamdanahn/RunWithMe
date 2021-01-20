@@ -16,7 +16,7 @@ Cheer.destroy_all
 
 user1 = User.create!(
   id: 1,
-  username: 'Eric-O', 
+  username: 'Demo', 
   password: '123456',
   email: 'fireball1@gmail.com', 
   birthday: '1990-01-13',
@@ -24,10 +24,10 @@ user1 = User.create!(
   )
 user2 = User.create!(
   id: 2,
-  username: 'FiestyFelicia',
+  username: 'FiestyCat',
   password: 'abcdef', 
   email: 'imfaster@yahoo.com', 
-  birthday: '03/29/2000',
+  birthday: '2000-03-29',
   gender:'F'
   )
 user3 = User.create!(
@@ -35,25 +35,10 @@ user3 = User.create!(
   username: 'Gary504', 
   password: 'pokemon',
   email: 'smoothsailing@gmail.com', 
-  birthday: '06/14/1986',
+  birthday: '1986-06-14',
   gender:'M'
   )
-user4 = User.create!(
-  id: 4,
-  username: 'FriesAreCurly', 
-  password: 'curlyfries',
-  email: 'friesarecurly@gmail.com', 
-  birthday: '11/29/1991',
-  gender:'M'
-  )
-user5 = User.create!(
-  id: 5,
-  username: 'george', 
-  password: 'curious',
-  email: 'george@george.com', 
-  birthday: '01/01/1995',
-  gender:'M'
-  )
+
 
 route1 = Route.create!(
   id: 1,
@@ -140,7 +125,7 @@ comments1 = Comment.create!(
   body: "Great job Eric! Keep it up!",
   commentable_id: route1.id,
   commentable_type: "Route",
-  user_id: user4.id
+  user_id: user3.id
 )
 comments2 = Comment.create!(
   id: 2,
@@ -160,7 +145,7 @@ cheers1 = Cheer.create!(
 goals1 = Goal.create!(
   id: 1,  
   title: "1st 5k",
-  user_id: user5.id,
+  user_id: user2.id,
   goal_type: "Distance",
   goal_number: 5
 )
