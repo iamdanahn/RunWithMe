@@ -98,9 +98,9 @@ class Signup extends React.Component {
               <label>
                 Day:
                 <input
-                  type="date"
-                  value={this.state.birthdate}
-                  onChange={this.update("birthdate")}
+                  type="integer"
+                  value={this.state.birth_day}
+                  onChange={this.update("birth_day")}
                 />
               </label>
             </div>
@@ -108,9 +108,9 @@ class Signup extends React.Component {
               <label>
                 Month:
                 <input
-                  type="date"
-                  value={this.state.birthdate}
-                  onChange={this.update("birthdate")}
+                  type="integer"
+                  value={this.state.birth_month}
+                  onChange={this.update("birth_month")}
                 />
               </label>
             </div>
@@ -118,9 +118,9 @@ class Signup extends React.Component {
               <label>
                 Year:
                 <input
-                  type="date"
-                  value={this.state.birthdate}
-                  onChange={this.update("birthdate")}
+                  type="integer"
+                  value={this.state.birth_year}
+                  onChange={this.update("birth_year")}
                 />
               </label>
             </div>
@@ -129,6 +129,7 @@ class Signup extends React.Component {
           <div>
             <BirthDay />
           </div>
+
 
           
 					<div className="session-form gender">

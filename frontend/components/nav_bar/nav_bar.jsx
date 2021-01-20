@@ -9,8 +9,9 @@ class NavBar extends React.Component {
     const sessionLinks = currentUser ? (
 			<div className="masthead user-pic">
 				<Link className="button button-user" to="/account/my_profile">
-					{currentUser.username}
+					Welcome {currentUser.first_name}!
 				</Link>
+        <button onClick={logout}> Logout</button>
 			</div>
 		) : (
 			<div className="masthead login-signup">
