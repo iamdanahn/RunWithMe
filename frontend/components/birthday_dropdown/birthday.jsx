@@ -1,27 +1,13 @@
 import React, { Component } from "react";
 
 class BirthDay extends Component {
-	constructor() {
-		super();
-
-		this.state = {
-      day: 1,
-      month: "Jan",
-      year: 1920
-		};
-
-  }
-  
-  update(field) {
-    return e => this.setState({ [field]: e.currentTarget.value})
-  }
 
 	render() {
-    console.log(this.state)
+
 
     return (
 			<div>
-				<select name="DOBDay" onChange={this.update("day")} defaultValue="Day">
+				<select name="DOBDay" onChange={this.props.update("bday")} defaultValue="Day">
 					<option value="day">- Day -</option>
 					<option value="1"> 1 </option>
 					<option value="2"> 2 </option>
@@ -55,7 +41,7 @@ class BirthDay extends Component {
 					<option value="30"> 30 </option>
 					<option value="31"> 31 </option>
 				</select>
-				<select name="DOBMonth" onChange={this.update("month")} defaultValue="Month">
+				<select name="DOBMonth" onChange={this.props.update("bmonth")} defaultValue="Month">
 					<option>- Month -</option>
 					<option value="January">January</option>
 					<option value="Febuary">Febuary</option>
@@ -70,7 +56,7 @@ class BirthDay extends Component {
 					<option value="November">November</option>
 					<option value="December">December</option>
 				</select>
-				<select name="DOBYear" onChange={this.update("year")} defaultValue="Year">
+				<select name="DOBYear" onChange={this.props.update("byear")} defaultValue="Year">
 					<option>- Year -</option>
 					<option value="2020">2020</option>
 					<option value="2019">2019</option>
@@ -169,3 +155,38 @@ class BirthDay extends Component {
 	}
 }
 export default BirthDay;
+
+
+// Was originally on signup component. Replaced with this componenet
+          // <div className="session-form birthdate">
+					// 	<div className="session-form bday">
+					// 		<label>
+					// 			Day:
+					// 			<input
+					// 				type="integer"
+					// 				value={this.state.birth_day}
+					// 				onChange={this.update("birth_day")}
+					// 			/>
+					// 		</label>
+					// 	</div>
+					// 	<div className="session-form bmonth">
+					// 		<label>
+					// 			Month:
+					// 			<input
+					// 				type="integer"
+					// 				value={this.state.birth_month}
+					// 				onChange={this.update("birth_month")}
+					// 			/>
+					// 		</label>
+					// 	</div>
+					// 	<div className="session-form byear">
+					// 		<label>
+					// 			Year:
+					// 			<input
+					// 				type="integer"
+					// 				value={this.state.birth_year}
+					// 				onChange={this.update("birth_year")}
+					// 			/>
+					// 		</label>
+					// 	</div>
+					// </div>;

@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Login extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			username: "",
+			email: "",
 			password: "",
 		};
 
@@ -17,28 +18,39 @@ class Login extends React.Component {
 		};
 	}
 
+	renderErrors() {
+		return (
+			<ul>
+				{this.props.errors.map((error, i) => (
+					<li key={`error-${i}`}>{error}</li>
+				))}
+			</ul>
+		);
+	}
+
 	handleSubmit(e) {
 		e.preventDefault();
-    this.props.login(this.state).then(() => this.props.history.push("/dashboard"));
-    // history#push adds new URL to end of history stack
-    // clicking back button takes us to previous URL
+		this.props
+			.login(this.state)
+			.then(() => this.props.history.push("/dashboard"));
+		// history#push adds new URL to end of history stack
+		// clicking back button takes us to previous URL
 	}
 
 	render() {
-		
+    
 		return (
-			<div className="session-form">
-				<h2>Log In!</h2>
-        <h4>
-          <Link to='/signup'> Sign Up </Link>
-        </h4>
-				<form onSubmit={this.handleSubmit}>
+			<div className="login-form-container">
+				<form onSubmit={this.handleSubmit} className="login-form-box">
+				  Please Log In or <Link to="/signup"> Sign Up </Link>
+
+          {this.renderErrors()}
 					<label>
-						Username:
+						Email:
 						<input
 							type="text"
-							value={this.state.username}
-							onChange={this.update("username")}
+							value={this.state.email}
+							onChange={this.update("email")}
 						/>
 					</label>
 
