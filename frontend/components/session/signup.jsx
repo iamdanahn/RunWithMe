@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import BirthDay from '../birthday_dropdown/birthday'
 
 class Signup extends React.Component {
@@ -9,29 +10,32 @@ class Signup extends React.Component {
 			last_name: "",
 			email: "",
       password: "",
-      birth_day: "",
-      birth_month: "",
-      birth_year: "",
+      bday: "",
+      bmonth: "",
+      byear: "",
       gender: ""
 		};
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.birthdate = this.birthdate.bind(this)
+    this.update = this.update.bind(this);
 	}
 
 
 // birthday helper methods to reformat into backend acceptable format
   birthdate() {
-    const {birth_day, birth_month, birth_year} = this.state;
-    return `${birth_year}-${birth_month}-${birth_day}`;
+    const {bday, bmonth, byear} = this.state;
+    return `${byear}-${bmonth}-${bday}`;
   }
 
 	update(field) {
+		// debugger
 		return (e) => {
-			this.setState({ [field]: e.target.value });
+			debugger
+			return( this.setState({ [field]: e.target.value }))
 		};
-	}
-
+  }
+  
 	handleSubmit(e) {
     e.preventDefault();
     const {first_name, last_name, email, password, gender} = this.state;
@@ -47,12 +51,18 @@ class Signup extends React.Component {
 	}
 
 	render() {
+    console.log(this.state);
 		
 		return (
-			<div className="session-form">
-				<h2>Sign Up!</h2>
-				<form>
-					<div className="session-form fname">
+			<div>
+				<div className="login-from-signin">
+					<Link to="/login">
+						LOG IN
+					</Link>
+				</div>
+
+				<form className="signup-form">
+					<div className="signup-form fname">
 						<label>
 							First name:
 							<input
@@ -62,7 +72,7 @@ class Signup extends React.Component {
 							/>
 						</label>
 					</div>
-					<div className="session-form lname">
+					<div className="signup-form lname">
 						<label>
 							Last name:
 							<input
@@ -72,7 +82,7 @@ class Signup extends React.Component {
 							/>
 						</label>
 					</div>
-					<div className="session-form email">
+					<div className="signup-form email">
 						<label>
 							Email:
 							<input
@@ -82,7 +92,7 @@ class Signup extends React.Component {
 							/>
 						</label>
 					</div>
-					<div className="session-form pw">
+					<div className="signup-form pw">
 						<label>
 							Password:
 							<input
@@ -93,67 +103,33 @@ class Signup extends React.Component {
 						</label>
 					</div>
 
-          <div className="session-form birthdate">       
-            <div className="session-form bday">
-              <label>
-                Day:
-                <input
-                  type="date"
-                  value={this.state.birthdate}
-                  onChange={this.update("birthdate")}
-                />
-              </label>
-            </div>
-            <div className="session-form bmonth">
-              <label>
-                Month:
-                <input
-                  type="date"
-                  value={this.state.birthdate}
-                  onChange={this.update("birthdate")}
-                />
-              </label>
-            </div>
-            <div className="session-form byear">
-              <label>
-                Year:
-                <input
-                  type="date"
-                  value={this.state.birthdate}
-                  onChange={this.update("birthdate")}
-                />
-              </label>
-            </div>
-          </div>
+					<div>
+						<BirthDay update={this.update} />
+					</div>
 
-          <div>
-            <BirthDay />
-          </div>
-
-          
-					<div className="session-form gender">
-            <div className="session-form male">
-              <label>
-                Male:
-                <input
-                  type="radio"
-                  name="gender"
-                  value={this.state.gender}
-                  onChange={this.update("gender")}
-                />
-              </label>
-            </div>
-            <div className="session-form female">
-              <label>
-                Female:
-                <input
-                  type="radio"
-                  name="gender"
-                  value={this.state.gender}
-                  onChange={this.update("gender")}
-                />
-              </label>
-            </div>
+					<div className="signup-form gender">
+						<div className="signup-form male">
+							<label>
+								Male:
+								<input
+									type="radio"
+									name="gender"
+									value="M"
+									onChange={this.update("gender")}
+								/>
+							</label>
+						</div>
+						<div className="signup-form female">
+							<label>
+								Female:
+								<input
+									type="radio"
+									name="gender"
+									value="F"
+									onChange={this.update("gender")}
+								/>
+							</label>
+						</div>
 					</div>
 
 					<button onClick={this.handleSubmit}>Sign Up!</button>

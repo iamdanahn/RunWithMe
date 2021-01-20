@@ -9,8 +9,9 @@ class NavBar extends React.Component {
     const sessionLinks = currentUser ? (
 			<div className="masthead user-pic">
 				<Link className="button button-user" to="/account/my_profile">
-					{currentUser.username}
+					Welcome {currentUser.first_name}!
 				</Link>
+        <button onClick={logout}> Logout</button>
 			</div>
 		) : (
 			<div className="masthead login-signup">
@@ -24,13 +25,12 @@ class NavBar extends React.Component {
 		);
     
 
-
     return (
       <div className="masthead">
         <div className="run-with-me-logo">
           <h3>Run with me logo here</h3>
         </div>
-        <div className="masthead links">
+        <div className="masthead a">
           <Link to=""> Workouts </Link>
           <Link to=""> Routes </Link>
           <Link to=""> Commmunity </Link>
@@ -44,10 +44,3 @@ class NavBar extends React.Component {
 }
 
 export default NavBar;
-
-  // const welcomeGreeting = () => {
-  //   <div className="header-greeting">
-  //     <h3 className="header-name">Welcome {currentUser.username}!</h3>
-  //     <button className="header-button" onClick={logout}>Log Out</button>
-  //   </div>
-  // }
