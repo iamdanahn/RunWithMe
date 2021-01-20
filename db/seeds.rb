@@ -16,15 +16,17 @@ Cheer.destroy_all
 
 user1 = User.create!(
   id: 1,
-  username: 'Demo', 
+  first_name: 'Demo', 
+  last_name: 'Demo',
   password: '123456',
-  email: 'fireball1@gmail.com', 
+  email: 'demo@demo.com', 
   birthday: '1990-01-13',
   gender: 'M'
   )
 user2 = User.create!(
   id: 2,
-  username: 'FiestyCat',
+  first_name: 'Cat',
+  last_name: 'Feline',
   password: 'abcdef', 
   email: 'imfaster@yahoo.com', 
   birthday: '2000-03-29',
@@ -32,7 +34,8 @@ user2 = User.create!(
   )
 user3 = User.create!(
   id: 3,
-  username: 'Gary504', 
+  first_name: 'Ash', 
+  last_name: 'Ketchum',
   password: 'pokemon',
   email: 'smoothsailing@gmail.com', 
   birthday: '1986-06-14',

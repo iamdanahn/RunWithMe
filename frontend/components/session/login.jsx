@@ -29,6 +29,9 @@ class Login extends React.Component {
 		return (
 			<div className="session-form">
 				<h2>Log In!</h2>
+        <h4>
+          <Link to='/signup'> Sign Up </Link>
+        </h4>
 				<form onSubmit={this.handleSubmit}>
 					<label>
 						Username:

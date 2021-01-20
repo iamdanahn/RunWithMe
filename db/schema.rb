@@ -72,7 +72,8 @@ ActiveRecord::Schema.define(version: 2021_01_17_181658) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username", null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
     t.string "password_digest", null: false
     t.string "session_token", null: false
     t.string "email", null: false
@@ -80,7 +81,8 @@ ActiveRecord::Schema.define(version: 2021_01_17_181658) do
     t.string "gender"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["username", "email", "session_token"], name: "index_users_on_username_and_email_and_session_token", unique: true
+    t.index ["email", "session_token"], name: "index_users_on_email_and_session_token", unique: true
+    t.index ["first_name", "last_name"], name: "index_users_on_first_name_and_last_name"
   end
 
   create_table "workouts", force: :cascade do |t|

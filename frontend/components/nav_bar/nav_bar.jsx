@@ -3,28 +3,25 @@ import { Link } from 'react-router-dom';
 
 class NavBar extends React.Component {
 
-  sessionLinks() {
-    <div className="masthead-login-signup">
-			<Link className="button" id="button-login" to="/login">
-				Login
-			</Link>
-			<Link className="button" id="button-signup" to="/signup">
-				Sign up
-			</Link>
-		</div>;
-  }
-
   render() {
     const { currentUser, logout } = this.props;
 
-    // const sessionLinks = currentUser ? (
-    //     <div>
-    //       <button onClick={logout}>Logout</button>
-
-    //     </div>
-    //   ) : (
-
-    //   );
+    const sessionLinks = currentUser ? (
+			<div className="masthead user-pic">
+				<Link className="button button-user" to="/account/my_profile">
+					{currentUser.username}
+				</Link>
+			</div>
+		) : (
+			<div className="masthead login-signup">
+				<div className="button button-login">
+					<Link to="/login"> Login </Link>
+				</div>
+				<div className="button button-signup">
+					<Link to="/signup"> Sign up </Link>
+				</div>
+			</div>
+		);
     
 
 
@@ -33,15 +30,14 @@ class NavBar extends React.Component {
         <div className="run-with-me-logo">
           <h3>Run with me logo here</h3>
         </div>
-        <div className="masthead-links">
-          <Link to="">Workouts</Link>
-          <Link to="">Routes</Link>
-          <Link to="">Commmunity</Link>
-          <Link to="">Go MVP</Link>
+        <div className="masthead links">
+          <Link to=""> Workouts </Link>
+          <Link to=""> Routes </Link>
+          <Link to=""> Commmunity </Link>
+          <Link to=""> Go MVP </Link>
         </div>
-        <div className="masthead-login-signup">
-          {this.sessionLinks}
-        </div>
+        {sessionLinks}
+        
       </div>
     )
   }
