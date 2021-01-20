@@ -7,15 +7,16 @@ class Signup extends React.Component {
 			username: "",
 			email: "",
       password: "",
-      
+      birthdate: "", // format? string here but changes in 
+      gender: "", // format? 
 		};
 
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	handleInput(type) {
+	update(field) {
 		return (e) => {
-			this.setState({ [type]: e.target.value });
+			this.setState({ [field]: e.target.value });
 		};
 	}
 
@@ -35,28 +36,37 @@ class Signup extends React.Component {
 					<label>
 						Username:
 						<input
-							type="text"
-							value={this.state.username}
-							onChange={this.handleInput("username")}
+							type="text" value={this.state.username} onChange={this.update("username")}
 						/>
 					</label>
 					<label>
 						Email:
-						<input
-							type="text"
-							value={this.state.email}
-							onChange={this.handleInput("email")}
+						<input type="text" value={this.state.email} onChange={this.update("email")}
 						/>
 					</label>
 					<label>
 						Password:
-						<input
-							type="password"
-							value={this.state.password}
-							onChange={this.handleInput("password")}
+						<input type="password" value={this.state.password} onChange={this.update("password")}
 						/>
-						<button onClick={this.handleSubmit}>Sign Up!</button>
 					</label>
+					<label>
+            Birthday:
+            <input type="date" value={this.state.birthdate} onChange={this.handleInput("birthdate")}
+            />
+          </label>
+					<label>
+            Male:
+            <input type="radio" name="gender" value={this.state.gender} onChange={this.handleInput("gender")}
+            />
+          </label>
+          <label>
+            Female:
+            <input type="radio" name="gender" value={this.state.gender} onChange={this.handleInput("gender")}
+            />
+          </label>
+
+          
+          <button onClick={this.handleSubmit}>Sign Up!</button>
 				</form>
 			</div>
 		);
