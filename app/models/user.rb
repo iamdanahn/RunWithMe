@@ -9,6 +9,7 @@ class User < ApplicationRecord
   # Add associations
   # Route / Friends / Comments / Cheers / Goal
 
+    has_one_attached :photo
 
   def self.find_by_credentials(email, pw)
     user = User.find_by(email: email)
