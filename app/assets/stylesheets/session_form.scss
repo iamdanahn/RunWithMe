@@ -28,6 +28,28 @@
       }
     }
 
+    .or-box {
+      display: flex;
+      align-items: center;
+
+
+      .line{
+        display: block;
+        height: 1px;
+        flex: 1;
+        border: 0;
+        border-bottom: 1px solid #C8C7CC;
+      }
+
+      .or {
+        font-size: 13px;
+        padding: 0 13px;
+        color: darkgray;
+        padding: 7px
+      }
+    }
+
+
     .other-link {
       text-align: right;
       font-weight: 500;

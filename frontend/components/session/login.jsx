@@ -58,6 +58,12 @@ class Login extends React.Component {
 						DEMO LOGIN
 					</button>
 
+					<div className="or-box">
+						<span className="or-box line"></span>
+							<span className="or-box or"> OR </span>
+						<span className="or-box line"></span>
+					</div>
+
 					<div>
 						<input
 							className="auth-form input"

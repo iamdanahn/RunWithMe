@@ -75,10 +75,16 @@ class Signup extends React.Component {
 							<span>LOG IN</span>
 						</Link>
 					</div>
-				
+
 					<button className="auth-form btn demo" onClick={this.handleDemoLogin}>
 						DEMO LOGIN
 					</button>
+
+					<div className="or-box">
+						<span className="or-box line"></span>
+						<span className="or-box or"> OR </span>
+						<span className="or-box line"></span>
+					</div>
 
 					<div>
 						<label>
