@@ -3,7 +3,7 @@ import { login, receiveSessionErrors } from '../../actions/session_actions'
 import Login from './login'
 
 const msp = (state, ownProps) => {
-  debugger
+  // debugger
   return ({
     errors: state.errors.session
   })

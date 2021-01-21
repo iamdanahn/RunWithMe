@@ -32,20 +32,27 @@ class NavBar extends React.Component {
     
 
     return (
-      <div className="masthead">
-        <div className="run-with-me-logo">
-          <h3>Run with me logo here</h3>
-        </div>
-        <div className="masthead a">
-          <div><Link to=""> Workouts </Link></div>
-          <div><Link to=""> Routes </Link></div>
-          <div><Link to=""> Commmunity </Link></div>
-          <div><Link to=""> Go MVP </Link></div>
-        </div>
-        {sessionLinks}
-        
-      </div>
-    )
+			<div className="masthead">
+				<div className="run-with-me-logo">
+					<img src={window.logoURL} alt="run-with-me-logo"/>
+				</div>
+				<div className="masthead a">
+					<div>
+						<Link to=""> Workouts </Link>
+					</div>
+					<div>
+						<Link to=""> Routes </Link>
+					</div>
+					<div>
+						<Link to=""> Commmunity </Link>
+					</div>
+					<div>
+						<Link to=""> Go MVP </Link>
+					</div>
+				</div>
+				{sessionLinks}
+			</div>
+		);
   }
 }
 
