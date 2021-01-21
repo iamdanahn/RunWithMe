@@ -10,6 +10,13 @@ class Login extends React.Component {
 		};
 
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleDemoLogin = this.handleDemoLogin.bind(this);
+	}
+
+
+	componentWillUnmount() {
+		const errors = [];
+		this.props.clearErrors(errors)
 	}
 
 	update(field) {
@@ -18,15 +25,15 @@ class Login extends React.Component {
 		};
 	}
 
-	renderErrors() {
-		return (
-			<ul>
-				{this.props.errors.map((error, i) => (
-					<li key={`error-${i}`}>{error}</li>
-				))}
-			</ul>
-		);
-	}
+	// renderErrors() {
+	// 	return (
+	// 		<ul>
+	// 			{this.props.errors.map((error, i) => (
+	// 				<li key={`error-${i}`}>{error}</li>
+	// 			))}
+	// 		</ul>
+	// 	);
+	// }
 
 	handleSubmit(e) {
 		e.preventDefault();
@@ -37,34 +44,56 @@ class Login extends React.Component {
 		// clicking back button takes us to previous URL
 	}
 
-	render() {
-    
-		return (
-			<div className="login-form-container">
-				<form onSubmit={this.handleSubmit} className="login-form-box">
-				  Please Log In or <Link to="/signup"> Sign Up </Link>
+	handleDemoLogin(e) {
+		e.preventDefault();
+		this.props
+			.loginDemo()
+			.then(() => this.props.history.push("/dashboard"))
+	}
 
-          {this.renderErrors()}
-					<label>
-						Email:
+	render() {
+		const {errors} = this.props;
+
+		return (
+			<section className="auth-form-ctr">
+
+				<form className="auth-form">
+					<div className="header">
+						<Link className="other-link" to="/signup">
+							<span>SIGN UP</span>
+						</Link>
+						<br/>
+					</div>
+					<button className="auth-form btn demo" onClick={this.handleDemoLogin}>
+						DEMO LOGIN
+					</button>
+					<div>
 						<input
-							type="text"
+							className="auth-form input"
+							type="email"
 							value={this.state.email}
 							onChange={this.update("email")}
+							placeholder="Email"
 						/>
-					</label>
+						<div className="auth-form errors">{errors.email}</div>
+					</div>
 
-					<label>
-						Password:
+					<div>
 						<input
+							className="auth-form input"
 							type="password"
 							value={this.state.password}
 							onChange={this.update("password")}
+							placeholder="Password"
 						/>
-						<button className="button">Log In!</button>
-					</label>
+						<div className="auth-form errors">{errors.password}</div>
+					</div>
+					<br />
+					<button className="auth-form btn" onClick={this.handleSubmit}>
+						LOGIN
+					</button>
 				</form>
-			</div>
+			</section>
 		);
 	}
 }

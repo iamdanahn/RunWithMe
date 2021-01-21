@@ -3,19 +3,25 @@ import { Link } from 'react-router-dom';
 
 class NavBar extends React.Component {
 
+
+
   render() {
     const { currentUser, logout } = this.props;
 
     const sessionLinks = currentUser ? (
-			<div className="masthead user-pic">
-				<Link className="button button-user" to="/account/my_profile">
-					Welcome {currentUser.first_name}!
-				</Link>
-        <button onClick={logout}> Logout</button>
-			</div>
-		) : (
+			<>
+        <div className="masthead user-pic">
+          <Link className="button button-user" to="/account/my_profile">
+            Welcome {currentUser.first_name}!
+          </Link>
+        </div>
+        <div className="masthead button-logout">
+          <Link onClick={logout} to="/login"> Logout </Link>
+        </div>
+      </>
+	 	) : (
 			<div className="masthead login-signup">
-				<div className="button button-login">
+				<div className="Link button-login">
 					<Link to="/login"> Login </Link>
 				</div>
 				<div className="button button-signup">
@@ -31,10 +37,10 @@ class NavBar extends React.Component {
           <h3>Run with me logo here</h3>
         </div>
         <div className="masthead a">
-          <Link to=""> Workouts </Link>
-          <Link to=""> Routes </Link>
-          <Link to=""> Commmunity </Link>
-          <Link to=""> Go MVP </Link>
+          <div><Link to=""> Workouts </Link></div>
+          <div><Link to=""> Routes </Link></div>
+          <div><Link to=""> Commmunity </Link></div>
+          <div><Link to=""> Go MVP </Link></div>
         </div>
         {sessionLinks}
         

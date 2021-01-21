@@ -9,130 +9,173 @@ class Signup extends React.Component {
 			first_name: "",
 			last_name: "",
 			email: "",
-      password: "",
-      bday: "",
-      bmonth: "",
-      byear: "",
-      gender: ""
+			password: "",
+			bday: "",
+			bmonth: "",
+			byear: "",
+			gender: "",
 		};
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.birthdate = this.birthdate.bind(this)
-    this.update = this.update.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.update = this.update.bind(this);
+		this.handleDemoLogin = this.handleDemoLogin.bind(this);
+		// this.renderErrors = this.renderErrors.bind(this);
+	}
+
+	componentWillUnmount() {
+		const errors = [];
+		this.props.clearErrors(errors)
 	}
 
 
-// birthday helper methods to reformat into backend acceptable format
-  birthdate() {
-    const {bday, bmonth, byear} = this.state;
-    return `${byear}-${bmonth}-${bday}`;
-  }
+
+	formattedState() {
+		const {first_name, last_name, email, password, bday, bmonth, byear, gender} = this.state;
+		return {
+			first_name,
+			last_name,
+			email,
+			password,
+			birthday: `${byear}-${bmonth}-${bday}`,
+			gender
+		};
+	}
 
 	update(field) {
 		// debugger
 		return (e) => {
-			debugger
-			return( this.setState({ [field]: e.target.value }))
+			// debugger;
+			return this.setState({ [field]: e.target.value });
 		};
-  }
-  
+	}
+
 	handleSubmit(e) {
-    e.preventDefault();
-    const {first_name, last_name, email, password, gender} = this.state;
-    const birthday = this.birthdate();
-
-    const formatted_state = {
-      first_name, last_name, email, password, gender, birthday
-    }
-
+		e.preventDefault();
 		this.props
-			.createNewUser(formatted_state)
-			.then(() => this.props.history.push("/dashboard"));
+			.createNewUser(this.formattedState())
+			.then(() => this.props.history.push("/dashboard")
+			 );
+	}
+
+	// renderErrors() {
+	// 	debugger
+	// 	return (
+	// 		<ul>
+	// 			{this.props.errors.map((error, i) => (
+	// 				<li key={`error-${i}`}>{error}</li>
+	// 			))}
+	// 		</ul>
+	// 	);
+	// }
+
+	handleDemoLogin(e) {
+		e.preventDefault();
+		this.props.loginDemo().then(() => this.props.history.push("/dashboard"));
 	}
 
 	render() {
-    console.log(this.state);
-		
-		return (
-			<div>
-				<div className="login-from-signin">
-					<Link to="/login">
-						LOG IN
-					</Link>
-				</div>
+		console.log(this.state);
+		const { errors } = this.props;
 
-				<form className="signup-form">
-					<div className="signup-form fname">
+		return (
+			<div className="auth-form-ctr">
+				<form className="auth-form">
+					<div className="header">
+						<Link className="other-link" to="/login">
+							<span>LOG IN</span>
+						</Link>
+					</div>
+				
+					<button className="auth-form btn demo" onClick={this.handleDemoLogin}>
+						DEMO LOGIN
+					</button>
+
+					<div>
 						<label>
-							First name:
 							<input
+								className="auth-form input"
 								type="text"
 								value={this.state.first_name}
 								onChange={this.update("first_name")}
+								placeholder="First name"
+								required
 							/>
 						</label>
+						<div className="auth-form errors">{errors.first_name}</div>
 					</div>
-					<div className="signup-form lname">
+					<div>
 						<label>
-							Last name:
 							<input
+								className="auth-form input"
 								type="text"
 								value={this.state.last_name}
 								onChange={this.update("last_name")}
+								placeholder="Last name"
+								required
 							/>
 						</label>
+						<div className="auth-form errors">{errors.last_name}</div>
 					</div>
-					<div className="signup-form email">
+					<div>
 						<label>
-							Email:
 							<input
-								type="text"
+								className="auth-form input"
+								type="email"
 								value={this.state.email}
 								onChange={this.update("email")}
+								placeholder="Email"
+								required
 							/>
 						</label>
+						<div className="auth-form errors">{errors.email}</div>
 					</div>
-					<div className="signup-form pw">
+					<div>
 						<label>
-							Password:
 							<input
+								className="auth-form input"
 								type="password"
 								value={this.state.password}
 								onChange={this.update("password")}
+								placeholder="Password"
+								required
+							/>
+						</label>
+						<div className="auth-form errors">{errors.password}</div>
+					</div>
+
+					<div className="auth-form bday">
+						<BirthDay update={this.update} />
+					</div>
+					<div className="auth-form errors">{errors.birthday}</div>
+
+					<div className="auth-form gender">
+						<label>
+							Male:
+							<input
+								className="auth-form gender male"
+								type="radio"
+								name="gender"
+								value="M"
+								onChange={this.update("gender")}
+							/>
+						</label>
+
+						<label>
+							Female:
+							<input
+								className="auth-form gender female"
+								type="radio"
+								name="gender"
+								value="F"
+								onChange={this.update("gender")}
 							/>
 						</label>
 					</div>
-
-					<div>
-						<BirthDay update={this.update} />
-					</div>
-
-					<div className="signup-form gender">
-						<div className="signup-form male">
-							<label>
-								Male:
-								<input
-									type="radio"
-									name="gender"
-									value="M"
-									onChange={this.update("gender")}
-								/>
-							</label>
-						</div>
-						<div className="signup-form female">
-							<label>
-								Female:
-								<input
-									type="radio"
-									name="gender"
-									value="F"
-									onChange={this.update("gender")}
-								/>
-							</label>
-						</div>
-					</div>
-
-					<button onClick={this.handleSubmit}>Sign Up!</button>
+					<div className="auth-form errors">{errors.gender}</div>
+					<br />
+					<button className="auth-form btn" onClick={this.handleSubmit}>
+						SIGN UP
+					</button>
 				</form>
 			</div>
 		);

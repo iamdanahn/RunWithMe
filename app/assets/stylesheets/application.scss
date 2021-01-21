@@ -17,3 +17,12 @@
 // CSS Reset
 @import "base/reset.scss";
 
+
+html, body, div, section {
+  padding: 0;
+  margin: 0;
+  font-family: Helvetica;
+  font-size: 14px;
+  border: 1px solid;
+}
+
