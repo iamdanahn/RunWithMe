@@ -57,16 +57,6 @@ class Signup extends React.Component {
 			 );
 	}
 
-	// renderErrors() {
-	// 	debugger
-	// 	return (
-	// 		<ul>
-	// 			{this.props.errors.map((error, i) => (
-	// 				<li key={`error-${i}`}>{error}</li>
-	// 			))}
-	// 		</ul>
-	// 	);
-	// }
 
 	handleDemoLogin(e) {
 		e.preventDefault();
@@ -74,7 +64,7 @@ class Signup extends React.Component {
 	}
 
 	render() {
-		console.log(this.state);
+		// console.log(this.state);
 		const { errors } = this.props;
 
 		return (
