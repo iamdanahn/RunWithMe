@@ -3,11 +3,16 @@ import React from 'react';
 
 class Dashboard extends React.Component{
 
+  componentDidMount() {
+    this.props.fetchRoutes()
+  }
 
   render() {
     return(
-      <div>
+      <div className="bg dashboard">
         Dashboard component
+
+        {/* <Map /> */}
       </div>
     )
   }

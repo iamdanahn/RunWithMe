@@ -11,6 +11,9 @@
     <script type="text/javascript">
       window.logoURL = "<%= image_url('FSP-logo.png') %>";
     </script>
+    <script type="text/javascript">
+      window.googleAPIKey = "<%= Rails.application.credentials.google[:api_key] %>"
+    </script>
   </head>
 
   <body>

@@ -8,34 +8,39 @@
 
 export const fetchRoutes = () => {
   return $.ajax({
-    url: `/api/routes`,
-    method: `GET`
-  })
+		url: `/api/routes`,
+		method: `GET`,
+		error: (err) => console.log(err),
+	});
 }
 
 export const fetchRoute = (routeId) => {
   return $.ajax({
-    url: `/api/routes/${routeId}`,
-    method: `GET`
-  })
+		url: `/api/routes/${routeId}`,
+		method: `GET`,
+		error: (err) => console.log(err),
+	});
 }
 export const createRoute = (route) => {
   return $.ajax({
-    url: `/api/routes`,
-    method: `POST`,
-    data: { route }
-  })
+		url: `/api/routes`,
+		method: `POST`,
+		data: { route },
+		error: (err) => console.log(err),
+	});
 }
 export const updateRoute = (route) => {
   return $.ajax({
-    url: `/api/routes/${route.id}`,
-    method: `PATCH`,
-    data: { route }
-  })
+		url: `/api/routes/${route.id}`,
+		method: `PATCH`,
+		data: { route },
+		error: (err) => console.log(err),
+	});
 }
 export const deleteRoute = (routeId) => {
   return $.ajax({
-    url: `/api/routes/${routeId}`,
-    method: `DELETE`
-  })
+		url: `/api/routes/${routeId}`,
+		method: `DELETE`,
+		error: (err) => console.log(err),
+	});
 }
