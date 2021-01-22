@@ -3,11 +3,11 @@ import ReactDOM from "react-dom";
 import configureStore from "./store/store";
 import Root from './components/root'
 
-import { login, logout, createNewUser } from './util/session_api_util'
+// import { login, logout, createNewUser } from './util/session_api_util'
 
-window.login = login
-window.logout = logout
-window.createNewUser = createNewUser
+// window.login = login
+// window.logout = logout
+// window.createNewUser = createNewUser
 
 document.addEventListener("DOMContentLoaded", () => {
 	const root = document.getElementById("root");
@@ -26,9 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
 		store = configureStore();
 	}
 	
-	// TESTING
-	window.getState = store.getState;
-	window.dispatch = store.dispatch;
-	// REMOVE AFTER TEST
+	// // TESTING
+	// window.getState = store.getState;
+	// window.dispatch = store.dispatch;
+	// // REMOVE AFTER TEST
 	ReactDOM.render(<Root store={store}/>, root);
 });

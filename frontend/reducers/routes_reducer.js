@@ -2,7 +2,7 @@ import {
   RECEIVE_ROUTES,
   RECEIVE_ROUTE,
   REMOVE_ROUTE
-} from './action/run_route_actions';
+} from '../actions/route_actions';
 import merge from 'lodash/merge'
 
 const RoutesReducer = (state = {}, action) => {

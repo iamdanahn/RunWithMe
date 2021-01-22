@@ -5,6 +5,7 @@
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
+    "@googlemaps/js-api-loader": "^1.11.1",
     "babel-loader": "^8.2.2",
     "bootstrap": "^4.6.0",
     "lodash": "^4.17.20",
