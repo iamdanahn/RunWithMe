@@ -1,18 +1,9 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class NavBar extends React.Component {
-	constructor(props) {
-		super(props);
-
-		this.handleClick = this.handleClick.bind(this);
-	}
 
 
-	handleClick(e) {
-		e.preventDefault();		
-		this.props.loggedIn ? <Redirect to="/dashboard" /> : <Redirect to="/login" />
-	}
 
   render() {
     const { currentUser, logout } = this.props;
@@ -29,7 +20,7 @@ class NavBar extends React.Component {
         </div>
       </div>
 	 	) : (
-			<div className="login-signup">
+			<div className="masthead login-signup">
 				<div className="button-login">
 					<Link to="/login"> Login </Link>
 				</div>
@@ -38,14 +29,15 @@ class NavBar extends React.Component {
 				</div>
 			</div>
 		);
-		
+    
 
     return (
 			<div className="masthead">
-				<div className="masthead logo" onClick={this.handleClick} >
-					
-						{" "} <img src={window.logoURL} alt="run-with-me-logo" /> {" "}
-					
+				<div className="masthead logo">
+					<Link to="/">
+						{" "}
+						<img src={window.logoURL} alt="run-with-me-logo" />{" "}
+					</Link>
 				</div>
 				<div className="masthead a">
 					<div>
