@@ -1,29 +1,87 @@
 .masthead {
   display: flex;
-  margin: auto;
+  // margin: auto;
   justify-content: space-between;
   font-size: 15px;
-  // padding: 20px;
+  max-width: 980px;
+  padding: 0 24px;
   background: white;
   align-items: center;
+  max-height: 64px;
 
 
   .logo {
     margin-left: 0;
   }
 
-  .a {
+  .a-box {
+    display: flex;
+    position: relative;
     background-color: white;
     padding: 10px;
-    text-decoration-line: none;
     justify-content: space-between;
+    
+    .links {
+      display: flex;
+      padding: 0 10px;
+      flex-direction: row;
+      // min-height: 64px;
+      align-items: center;
+      font-size: 12.25px;
+      
+      .link {
+        color: #6d717a;
+        text-decoration-line: none;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .link:hover{
+        color: black;
+      }
+    }
+    
   }
-  .a:hover {
-  background-color: rgb(240, 240, 240);
-  box-shadow: 1px 1px 1px darkblue;
-  }
-
+  
   .login-signup {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    margin-right: 0;
+    
+    .button-login {
+      // margin: auto;
+      margin-right: 16px;
+      padding: 6px 24px;
+      color: black;
+      text-transform: uppercase;
+      font-weight: 600;
+      background: transparent;
+      border: 0;
+
+    }
+    .button-login:hover {
+      border: 1px;
+      background: lightgray;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .button-signup {
+      padding: 6px 24px;
+      min-height: 33px;
+      border: none;
+      border-radius: 4px;
+      background: #16D374;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 700;
+      min-width: 64px;
+    }
+    .button-signup:hover {
+      cursor: pointer;
+      background: #16D370
+    }
   }
 }

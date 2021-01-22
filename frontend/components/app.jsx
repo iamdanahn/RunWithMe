@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import SignupContainer from './session/signup_container';
 import LoginContainer from './session/login_container';
@@ -10,11 +10,13 @@ import SplashPage from './splash_page'
 const App = () => {
   return (
 		<div className="main-app">
-      <Route path="/" component={NavBarContainer} />
-			<AuthRoute path="/" component={SplashPage} />
-			<AuthRoute path="/signup" component={SignupContainer} />
-			<AuthRoute path="/login" component={LoginContainer} />
-      <ProtectedRoute path="/dashboard" component={DashboardContainer} />
+				<Route path="/" component={NavBarContainer} />
+			<Switch>
+				<AuthRoute path="/signup" component={SignupContainer} />
+				<AuthRoute path="/login" component={LoginContainer} />
+				<ProtectedRoute path="/dashboard" component={DashboardContainer} />
+				<AuthRoute path="/" component={SplashPage} />
+			</Switch>
 		</div>
 	);
 }
