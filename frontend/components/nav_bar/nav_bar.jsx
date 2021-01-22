@@ -1,8 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import RouteDDContent from '../routes/route_dropdown'
 
 class NavBar extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			route: false
 
+		}
+
+		this.mouseIn = this.mouseIn.bind(this);
+		this.mouseOut = this.mouseOut.bind(this);
+	}
+
+	mouseIn(field) {
+		this.setState({ [field]: true })
+	}
+	mouseOut(field) {
+		this.setState({ [field]: false })
+	}
+
+	
   render() {
     const { currentUser, logout } = this.props;
 
@@ -45,16 +64,22 @@ class NavBar extends React.Component {
 						<img src={window.logoURL} alt="run-with-me-logo" />{" "}
 					</Link>
 				</div>
+
 				<div className="masthead a-box">
 					<div className="links">
 						<Link className="link" to="/">
 							Workouts
 						</Link>
 					</div>
-					<div className="links">
+					<div
+						className="links"
+						onMouseOver={() => this.mouseIn("route")}
+						onMouseLeave={() => this.mouseOut("route")}
+					>
 						<Link className="link" to="/">
 							Routes
 						</Link>
+						{this.state.route ? <RouteDDContent /> : null}
 					</div>
 					<div className="links">
 						<Link className="link" to="/">
