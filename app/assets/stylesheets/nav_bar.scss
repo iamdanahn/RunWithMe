@@ -35,6 +35,10 @@
   border: none;
   align-items: center;
   background: transparent;
+
+  :focus, input {
+    outline:0;
+  } 
 }
 
 .dropdown-content {
@@ -47,6 +51,9 @@
   z-index: 1;
   border-radius: 0 0 6px 6px;
 
+  :focus, input {
+    outline:0;
+  } 
 }
 
 .dropdown-content a {
@@ -57,6 +64,10 @@
   padding: 11px 16px;
   border-top: 1px solid lightgray;
   font-size: 12.25px;
+    
+  :focus, input {
+    outline:0;
+  } 
 }
 .dropdown-content:a {
   border-radius: 0 0 6px 6px;
@@ -95,7 +106,9 @@
   font-weight: 600;
   background: transparent;
   border: 0;
-
+  :focus, input {
+    outline:0;
+  }
 }
 .button-login:hover {
   border: 1px;
@@ -117,6 +130,10 @@
   text-transform: uppercase;
   font-weight: 600;
   min-width: 64px;
+  
+  :focus, input {
+    outline:0;
+  } 
 }
 .button-signup:hover {
   cursor: pointer;
