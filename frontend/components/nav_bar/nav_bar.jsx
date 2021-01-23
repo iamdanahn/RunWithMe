@@ -1,103 +1,75 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import RouteDDContent from '../routes/route_dropdown'
+import SessionLinks from './dd_session'
 
 class NavBar extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			route: false
-
-		}
-
-		this.mouseIn = this.mouseIn.bind(this);
-		this.mouseOut = this.mouseOut.bind(this);
-	}
-
-	mouseIn(field) {
-		this.setState({ [field]: true })
-	}
-	mouseOut(field) {
-		this.setState({ [field]: false })
-	}
-
 	
   render() {
     const { currentUser, logout } = this.props;
 
-    const sessionLinks = currentUser ? (
-			<div className="masthead auth">
-				<div className="user-pic">
-					<Link className="button button-user" to="/account/my_profile">
-						Welcome {currentUser.first_name}!
-					</Link>
-				</div>
-				<div className="button-logout">
-					<Link onClick={logout} to="/login">
-						{" "}
-						Logout{" "}
-					</Link>
-				</div>
-			</div>
-		) : (
-			<div className="masthead login-signup">
-				<Link to="/login">
-					<button className="button-login" onClick={this.handleLogin}>
-						Login
-					</button>
-				</Link>
-				<Link to="/signup">
-					<button className="button-signup" onClick={this.handleSignup}>
-						Sign up
-					</button>
-				</Link>
-
-			</div>
-		);
-    
 
     return (
 			<div className="masthead">
 				<div className="masthead logo">
 					<Link to="/">
-						{" "}
-						<img src={window.logoURL} alt="run-with-me-logo" />{" "}
+						<img src={window.logoURL} alt="run-with-me-logo" />
 					</Link>
 				</div>
 
 				<div className="masthead a-box">
-					<div className="links">
-						<Link className="link" to="/">
+					<div className="dropdown">
+						<button className="navbtn" to="/">
 							Workouts
-						</Link>
+						</button>
+						<div className="dropdown-content">
+							<Link to="/dashboard">Dashboard</Link>
+							<Link to="/dashboard/workouts">Stats</Link>
+							<Link to="/dashboard/goals">Goals</Link>
+						</div>
 					</div>
-					<div
-						className="links"
-						onMouseOver={() => this.mouseIn("route")}
-						onMouseLeave={() => this.mouseOut("route")}
-					>
-						<Link className="link" to="/">
+
+					<div className="dropdown">
+						<button className="navbtn" to="/">
 							Routes
-						</Link>
-						{this.state.route ? <RouteDDContent /> : null}
+						</button>
+						<div className="dropdown-content">
+							<Link to="/routes/search">Find Route</Link>
+							<Link to="/routes/create">Create Route</Link>
+							<Link to="/routes">My Routes</Link>
+						</div>
 					</div>
-					<div className="links">
-						<Link className="link" to="/">
+
+					<div className="dropdown">
+						<button className="navbtn" to="/">
 							Commmunity
-						</Link>
+						</button>
+						<div className="dropdown-content">
+							<Link to="https://github.com/friesarecurly/MapMyRun-Clone">
+								Github Repo
+							</Link>
+							<Link to="https://github.com/friesarecurly">
+								Github Profile
+								</Link>
+							<Link to="https://www.linkedin.com/in/daniel-ahn-6b34151bb/">
+								Linked In
+							</Link>
+						</div>
 					</div>
-					<div className="links">
-						<Link className="link" to="/">
+
+					<div className="dropdown">
+						<button className="navbtn" to="https://mvp.mapmyrun.com">
 							Go MVP
-						</Link>
+						</button>
 					</div>
-					<div className="links">
-						<Link className="link" to="/">
-							D Shop
-						</Link>
+
+					<div className="dropdown">
+						<button className="navbtn" to="https://www.underarmour.com/en-us">
+							UA Shop
+						</button>
 					</div>
 				</div>
-				{sessionLinks}
+				
+				<SessionLinks currentUser={currentUser} logout={logout}/>
 			</div>
 		);
   }
