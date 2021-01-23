@@ -14,9 +14,10 @@ class SessionLinks extends React.Component {
 					</button>
 				</div>
 				<div className="dropdown-content">
-					<Link to="/routes/search">Find Route</Link>
-					<Link to="/routes/create">Create Route</Link>
-					<Link to="/routes">My Routes</Link>
+					<Link to="">Profile and Settings</Link>
+					<Link to="">Connected Apps</Link>
+					<Link to="">Support</Link>
+					<Link onClick={logout} to="/login">Logout</Link>
 				</div>
 			</div>
 		) : (

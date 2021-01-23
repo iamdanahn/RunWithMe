@@ -23,15 +23,17 @@
     width: 960px;
     color: white;
     background-image: image-url('Splash1-v2.jpg');
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 
     .heading {
       display: flex;
       padding: 10px 0;
       justify-content: flex-end;
       width: inherit;
-
+      
       .text {
         font-size: 48px;
+        font-family: 'Roboto Condensed', sans-serif;
         text-transform: uppercase;
       }
     }

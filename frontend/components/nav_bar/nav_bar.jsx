@@ -47,9 +47,7 @@ class NavBar extends React.Component {
 							<Link to="https://github.com/friesarecurly/MapMyRun-Clone">
 								Github Repo
 							</Link>
-							<Link to="https://github.com/friesarecurly">
-								Github Profile
-								</Link>
+							<Link to="https://github.com/friesarecurly">Github Profile</Link>
 							<Link to="https://www.linkedin.com/in/daniel-ahn-6b34151bb/">
 								Linked In
 							</Link>
@@ -68,8 +66,12 @@ class NavBar extends React.Component {
 						</button>
 					</div>
 				</div>
-				
-				<SessionLinks currentUser={currentUser} logout={logout}/>
+				<div>
+					<Link onClick={logout} to="/login">
+						Logout
+					</Link>
+				</div>
+				<SessionLinks currentUser={currentUser} logout={logout} />
 			</div>
 		);
   }
