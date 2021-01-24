@@ -12,12 +12,12 @@ class SessionLinks extends React.Component {
 					<button className="navbtn" to="/account/my_profile">
 						Welcome {currentUser.first_name}!
 					</button>
-				</div>
-				<div className="dropdown-content">
-					<Link to="">Profile and Settings</Link>
-					<Link to="">Connected Apps</Link>
-					<Link to="">Support</Link>
-					<Link onClick={logout} to="/login">Logout</Link>
+					<div className="dropdown-content">
+						<Link to="">Profile and Settings</Link>
+						<Link to="">Connected Apps</Link>
+						<Link to="">Support</Link>
+						<Link onClick={logout} to="/">Logout</Link>
+					</div>
 				</div>
 			</div>
 		) : (

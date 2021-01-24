@@ -1,6 +1,6 @@
 .masthead {
   display: flex;
-  // margin: auto;
+  margin: auto;
   justify-content: space-between;
   font-size: 15px;
   max-width: 980px;
@@ -88,9 +88,6 @@
 }
 
 
-
-
-
 .login-signup {
   display: flex;
   align-items: center;
@@ -100,7 +97,7 @@
 .button-login {
   // margin: auto;
   margin-right: 16px;
-  padding: 6px 24px;
+  padding: 9px 24px;
   color: black;
   text-transform: uppercase;
   font-weight: 600;

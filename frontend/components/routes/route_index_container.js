@@ -4,13 +4,16 @@ import RouteIndex from './route_index';
 
 const msp = (state, ownProps) => {
   return ({
-    routes: Object.value(state.entities.routes)
+    routes: Object.values(state.entities.routes)
   })
 }
 
 const mdp = dispatch => {
   return ({
-    fetchRoutes: () => dispatch(fetchRoutes())
+    fetchRoutes: () => dispatch(fetchRoutes()),
+    createRoute: (route) => dispatch(createRoute(route)),
+    updateRoute: (route) => dispatch(updateRoute(route)),
+    deleteRoute: (routeId) => dispatch(deleteRoute(routeId))
   })
 }
 

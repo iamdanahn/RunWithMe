@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SessionLinks from './dd_session'
+import RouteLinks from './dd_route'
+import WorkoutLinks from './dd_workouts';
 
 class NavBar extends React.Component {
 	
   render() {
     const { currentUser, logout } = this.props;
-
 
     return (
 			<div className="masthead">
@@ -21,22 +22,14 @@ class NavBar extends React.Component {
 						<button className="navbtn" to="/">
 							Workouts
 						</button>
-						<div className="dropdown-content">
-							<Link to="/dashboard">Dashboard</Link>
-							<Link to="/dashboard/workouts">Stats</Link>
-							<Link to="/dashboard/goals">Goals</Link>
-						</div>
+						<WorkoutLinks currentUser={currentUser} logout={logout} />
 					</div>
 
 					<div className="dropdown">
 						<button className="navbtn" to="/">
 							Routes
 						</button>
-						<div className="dropdown-content">
-							<Link to="/routes/search">Find Route</Link>
-							<Link to="/routes/create">Create Route</Link>
-							<Link to="/routes">My Routes</Link>
-						</div>
+						<RouteLinks currentUser={currentUser} logout={logout} />
 					</div>
 
 					<div className="dropdown">
@@ -44,11 +37,16 @@ class NavBar extends React.Component {
 							Commmunity
 						</button>
 						<div className="dropdown-content">
-							<Link to="https://github.com/friesarecurly/MapMyRun-Clone">
+							<Link to="">
+								{/* https://github.com/friesarecurly/MapMyRun-Clone*/}
 								Github Repo
 							</Link>
-							<Link to="https://github.com/friesarecurly">Github Profile</Link>
-							<Link to="https://www.linkedin.com/in/daniel-ahn-6b34151bb/">
+							<Link to="">
+								{/*https://github.com/friesarecurly */}
+								Github Profile
+							</Link>
+							<Link to="">
+								{/* https://www.linkedin.com/in/daniel-ahn-6b34151bb/ */}
 								Linked In
 							</Link>
 						</div>
@@ -66,11 +64,7 @@ class NavBar extends React.Component {
 						</button>
 					</div>
 				</div>
-				<div>
-					<Link onClick={logout} to="/login">
-						Logout
-					</Link>
-				</div>
+
 				<SessionLinks currentUser={currentUser} logout={logout} />
 			</div>
 		);

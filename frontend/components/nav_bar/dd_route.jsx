@@ -1,27 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-class RouteDDContent extends React.Component {
-	constructor(props) {
-		super(props);
-
-	}
+class RouteLinks extends React.Component {
 
 	render() {
-		return (
-			<div className="dropdown">
+    const { currentUser, logout } = this.props
+
+    return currentUser ? (
+			<div className="dropdown-content">
 				<Link to="/routes/search">
-					<button className="dropdown-content">Find Route</button>
+					Find Route
 				</Link>
 				<Link to="/routes/create">
-					<button className="dropdown-content">Create Route</button>
+					Create Route
 				</Link>
 				<Link to="/routes">
-					<button className="dropdown-content">My Routes</button>
+					My Routes
 				</Link>
 			</div>
-		);
+		) : null;
 	}
 }
 
-export default RouteDDContent;
+export default RouteLinks;
+
+
+{
+	/* <div className="dropdown-content">
+	<Link to="/routes/search">Find Route</Link>
+	<Link to="/routes/create">Create Route</Link>
+	<Link to="/routes">My Routes</Link>
+</div> */
+}
