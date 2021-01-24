@@ -2,16 +2,17 @@
 export const OPEN_MODAL = "OPEN_MODAL";
 export const CLOSE_MODAL = "CLOSE_MODAL";
 
-export const openModal = () => {
+export const openModal = (modal) => {
+  debugger
   return {
     type: OPEN_MODAL,
-    state: "open"
+    modal
   }
 }
 
-const closeModal = () => {
+export const closeModal = () => {
+  debugger
   return {
-    type: CLOSE_MODAL,
-    state: null
+    type: CLOSE_MODAL
   }
 }

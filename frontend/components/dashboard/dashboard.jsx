@@ -10,7 +10,6 @@ class Dashboard extends React.Component{
   render() {
     return(
       <div className="bg dashboard">
-        Dashboard component
         <RouteIndexContainer />
         
       </div>

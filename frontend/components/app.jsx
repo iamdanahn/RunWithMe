@@ -7,11 +7,13 @@ import NavBarContainer from './nav_bar/nav_bar_container';
 import DashboardContainer from './dashboard/dashboard_container'
 import CreateRouteContainer from './routes/create_route_container'
 import SplashPage from './splash_page'
+import Modal from '../modal/modal'
 
 const App = () => {
   return (
 		<div className="main-app">
 				<Route path="/" component={NavBarContainer} />
+				{/* <Modal /> */}
 			<Switch>
 				<AuthRoute path="/signup" component={SignupContainer} />
 				<AuthRoute path="/login" component={LoginContainer} />

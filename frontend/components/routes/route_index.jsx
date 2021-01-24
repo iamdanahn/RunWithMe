@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import RouteIndexItem from './route_index_item'
+import RIIContainer from './route_index_item_container'
 
 class RouteIndex extends React.Component {
 
@@ -9,13 +9,12 @@ class RouteIndex extends React.Component {
   }
 
   render() {
-    const { deleteRoute, updateRoute } = this.props;
+    // const { deleteModal } = this.props;
     const route = this.props.routes.map( route => {
       return (
-				<RouteIndexItem 
+				<RIIContainer 
           route={route}
-          deleteRoute={deleteRoute} 
-          updateRoute={updateRoute} 
+          key={route.id}
           />
 			);
     })
@@ -25,19 +24,20 @@ class RouteIndex extends React.Component {
       <div className="my-routes">
         <div className="mr-header">
           <div>
-            <h1>My Routes</h1>
+            <h1>MY ROUTES</h1>
           </div>
-          <div>
-            <Link to="/routes">Routes</Link>
-            <Link to='/bookmarks'>Bookmarked</Link>
+          <div className="mr-header links">
+            <Link to="/routes">ROUTES</Link>
+            <Link to='/bookmarks'>BOOKMARKED</Link>
           </div>
         </div>
         <div className="mr-create">
-          <h3>My Routes</h3>
+          <h3>MY ROUTES</h3>
           <Link to="/routes/create">
-            <button className="button-create">Create a Route</button>
+            CREATE A ROUTE
           </Link>
         </div>
+        
         <div className="mr-search">
           <input 
             className="search-box"
@@ -67,8 +67,9 @@ class RouteIndex extends React.Component {
                 <th>Options</th>
               </tr>
             </thead>
-
-            {route}
+            <tbody>
+              {route}
+            </tbody>
           </table>
         </section>
       </div>

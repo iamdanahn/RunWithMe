@@ -1,14 +1,17 @@
 import { OPEN_MODAL, CLOSE_MODAL } from '../actions/modal_actions'
 
-const modalReducer = (state = null, action) => {
+const modalsReducer = (state = null, action) => {
   Object.freeze(state);
-
+  debugger
   switch (action.type) {
     case OPEN_MODAL:
-      return {[state.ui.modal]: action.state};
+      debugger
+      return action.modal;
     case CLOSE_MODAL:
-  
+      return null;
     default:
       return state;
   }
 }
+
+export default modalsReducer
