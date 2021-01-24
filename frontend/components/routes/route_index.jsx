@@ -10,6 +10,16 @@ class RouteIndex extends React.Component {
 
   render() {
     const { deleteRoute, updateRoute } = this.props;
+    const route = this.props.routes.map( route => {
+      return (
+				<RouteIndexItem 
+          route={route}
+          deleteRoute={deleteRoute} 
+          updateRoute={updateRoute} 
+          />
+			);
+    })
+
 
     return (
       <div className="my-routes">
@@ -46,7 +56,7 @@ class RouteIndex extends React.Component {
         <section className='route-index'>
           <table>
             <thead>
-              <tr>
+              <tr className="route-index-headers">
                 <th>Route</th>
                 <th>Created</th>
                 <th>Distance</th>
@@ -57,8 +67,9 @@ class RouteIndex extends React.Component {
                 <th>Options</th>
               </tr>
             </thead>
+
+            {route}
           </table>
-          {/* <RouteIndexItem deleteRoute={deleteRoute} updateRoute={updateRoute} /> */}
         </section>
       </div>
 		);

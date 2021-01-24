@@ -1,31 +1,22 @@
 import React from 'react';
-// use loader creates a Promise and callback interface
-import { Loader } from "@googlemaps/js-api-loader"
-
-
 
 class Map extends React.Component {
+  componentDidMount() {
+    const mapProps = {
+      center: new google.maps.LatLng(-34.397, 150.644),
+      zoom: 15,
+      // mapTypeId: google.maps.MapTypeId.ROADMAP,
+    };
+    this.map = new google.maps.Map(this.mapNode, mapProps)
+  }
 
 
   render() {
-
-    const loader = new Loader({
-      apiKey: "{window.googleAPIKey}", // insert hidden api version
-      version: "weekly",
-      // ...additionalOptions, // libraries that gmaps has
-    });
-    loader.load().then(() => {
-      map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: -34.397, lng: 150.644 },
-        zoom: 8,
-      });
-    });
-
-  return(
-    <>
-      {map}
-    </>
-  )
+    return(
+      <div id="map-container" ref={map => this.mapNode = map}> 
+        Map
+      </div>
+    )
 
   }
 

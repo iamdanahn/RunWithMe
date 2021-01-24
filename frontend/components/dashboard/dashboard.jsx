@@ -12,7 +12,7 @@ class Dashboard extends React.Component{
       <div className="bg dashboard">
         Dashboard component
         <RouteIndexContainer />
-        {/* <Map /> */}
+        
       </div>
     )
   }

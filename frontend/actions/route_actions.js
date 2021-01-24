@@ -28,35 +28,35 @@ const removeRoute = (routeId) => {
 export const fetchRoutes = () => {
   return dispatch => {
     return RouteAPIUtil.fetchRoutes().then(routes => {
-      return dipstach(receiveRoutes(routes))
+      return dispatch(receiveRoutes(routes))
     })
   }
 }
 export const fetchRoute = (routeId) => {
   return dispatch => {
     return RouteAPIUtil.fetchRoute(routeId).then(route => {
-      return dipstach(receiveRoute(route))
+      return dispatch(receiveRoute(route))
     })
   }
 }
 export const createRoute = (route) => {
   return dispatch => {
     return RouteAPIUtil.createRoute(route).then(route => {
-      return dipstach(receiveRoute(route))
+      return dispatch(receiveRoute(route))
     })
   }
 }
 export const updateRoute = (route) => {
   return dispatch => {
     return RouteAPIUtil.updateRoute(route).then(route => {
-      return dipstach(receiveRoute(route))
+      return dispatch(receiveRoute(route))
     })
   }
 }
 export const deleteRoute = (routeId) => {
   return dispatch => {
     return RouteAPIUtil.deleteRoute(routeId).then(route => {
-      return dipstach(removeRoute(route.id))
+      return dispatch(removeRoute(route.id))
     })
   }
 }
