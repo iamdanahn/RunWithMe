@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :bigint           not null, primary key
+#  first_name      :string           not null
+#  last_name       :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  email           :string           not null
+#  birthday        :date
+#  gender          :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
 class User < ApplicationRecord
   attr_reader :password
   
@@ -9,7 +24,12 @@ class User < ApplicationRecord
   # Add associations
   # Route / Friends / Comments / Cheers / Goal
 
-    has_one_attached :photo
+  has_many :routes,
+    primary_key: :id,
+    foreign_key: :creator_id,
+    class_name: Route
+    
+  # has_one_attached :photo
 
   def self.find_by_credentials(email, pw)
     user = User.find_by(email: email)

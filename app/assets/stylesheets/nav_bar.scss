@@ -103,9 +103,10 @@
   font-weight: 600;
   background: transparent;
   border: 0;
-  :focus, input {
+  
+  &:focus {
     outline:0;
-  }
+  } 
 }
 .button-login:hover {
   border: 1px;
@@ -128,7 +129,7 @@
   font-weight: 600;
   min-width: 64px;
   
-  :focus, input {
+  &:focus {
     outline:0;
   } 
 }
