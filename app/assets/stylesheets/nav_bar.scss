@@ -36,7 +36,7 @@
   align-items: center;
   background: transparent;
 
-  :focus, input {
+  &:focus {
     outline:0;
   } 
 }

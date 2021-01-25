@@ -24,7 +24,7 @@ class Api::RoutesController < ApplicationController
     if @route.update(route_params)
       render 'api/routes/show'
     else
-      @route.errors.full_messages
+      render json: @route.errors.full_messages, status: 422
     end
   end
 

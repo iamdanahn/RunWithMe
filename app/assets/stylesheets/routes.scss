@@ -34,7 +34,7 @@
       padding: 15px 23px;
       margin: 0 1px 0 0 ;
 
-      &:hover {
+      &:hover, &:focus {
         background: white;
         color: black;
         border-top: 3px solid #5355f5;
@@ -53,6 +53,7 @@
 
   h3 {
     font-size: 22px;
+    
   }
 
   a {

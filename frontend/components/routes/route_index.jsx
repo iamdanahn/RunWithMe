@@ -27,8 +27,8 @@ class RouteIndex extends React.Component {
 						<h1>MY ROUTES</h1>
 					</div>
 					<div className="mr-header links">
-						<Link to="/routes">ROUTES</Link>
-						<Link to="/bookmarks">BOOKMARKED</Link>
+						<Link to="">ROUTES</Link>
+						<Link to="">BOOKMARKED</Link>
 					</div>
 				</div>
 				<div className="mr-create">
@@ -52,7 +52,7 @@ class RouteIndex extends React.Component {
 					</div>
 					<div className="mrsc-right">
 						<div className="search-filter">
-							<select>
+							<select defaultValue="-date_created">
                 <option value="-date_created"> Most Recent </option>
                 <option value="date_created"> Oldest </option>
                 <option value="-distance"> Longest </option>

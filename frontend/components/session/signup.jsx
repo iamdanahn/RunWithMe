@@ -28,7 +28,6 @@ class Signup extends React.Component {
 	}
 
 
-
 	formattedState() {
 		const {first_name, last_name, email, password, bday, bmonth, byear, gender} = this.state;
 		return {
@@ -45,6 +44,7 @@ class Signup extends React.Component {
 		// debugger
 		return (e) => {
 			// debugger;
+			e.target.className = "input"
 			return this.setState({ [field]: e.target.value });
 		};
 	}
@@ -64,8 +64,8 @@ class Signup extends React.Component {
 	}
 
 	render() {
-		// console.log(this.state);
 		const { errors } = this.props;
+		
 
 		return (
 			<div className="auth-form-ctr">
@@ -87,22 +87,20 @@ class Signup extends React.Component {
 					</div>
 
 					<div>
-						<label>
-							<input
-								className="auth-form input"
-								type="text"
-								value={this.state.first_name}
-								onChange={this.update("first_name")}
-								placeholder="First name"
-								required
-							/>
-						</label>
-						<div className="auth-form errors">{errors.first_name}</div>
+						<input
+							type="text"
+							value={this.state.first_name}
+							onChange={this.update("first_name")}
+							placeholder="First name"
+							required
+							className={errors["first"] ? "input err-border" : "input"}
+						/>
+						<div className="auth-form errors">{errors.first}</div>
 					</div>
 					<div>
 						<label>
 							<input
-								className="auth-form input"
+								className={errors["last"] ? "input err-border" : "input"}
 								type="text"
 								value={this.state.last_name}
 								onChange={this.update("last_name")}
@@ -110,12 +108,12 @@ class Signup extends React.Component {
 								required
 							/>
 						</label>
-						<div className="auth-form errors">{errors.last_name}</div>
+						<div className="auth-form errors">{errors.last}</div>
 					</div>
 					<div>
 						<label>
 							<input
-								className="auth-form input"
+								className={errors["email"] ? "input err-border" : "input"}
 								type="email"
 								value={this.state.email}
 								onChange={this.update("email")}
@@ -128,7 +126,7 @@ class Signup extends React.Component {
 					<div>
 						<label>
 							<input
-								className="auth-form input"
+								className={errors["password"] ? "input err-border" : "input"}
 								type="password"
 								value={this.state.password}
 								onChange={this.update("password")}
@@ -139,16 +137,14 @@ class Signup extends React.Component {
 						<div className="auth-form errors">{errors.password}</div>
 					</div>
 
-					<div className="auth-form bday">
-						<BirthDay update={this.update} />
-					</div>
+					<BirthDay update={this.update} />
 					<div className="auth-form errors">{errors.birthday}</div>
 
-					<div className="auth-form gender">
+					<div className={errors["gender"] ? "input err-border" : "input"}>
 						<label>
 							Male:
 							<input
-								className="auth-form gender male"
+								className="gender-m"
 								type="radio"
 								name="gender"
 								value="M"
@@ -159,7 +155,7 @@ class Signup extends React.Component {
 						<label>
 							Female:
 							<input
-								className="auth-form gender female"
+								className="gender-f"
 								type="radio"
 								name="gender"
 								value="F"
@@ -169,7 +165,7 @@ class Signup extends React.Component {
 					</div>
 					<div className="auth-form errors">{errors.gender}</div>
 					<br />
-					<button className="auth-form btn" onClick={this.handleSubmit}>
+					<button className="btn" onClick={this.handleSubmit}>
 						SIGN UP
 					</button>
 				</form>

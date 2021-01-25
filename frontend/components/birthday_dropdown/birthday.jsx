@@ -6,14 +6,14 @@ class BirthDay extends Component {
 
 
     return (
-			<>
-				<div className="auth-form input day">
+			<div className="input bday">
+				<div className="day">
 					<select
 						name="DOBDay"
 						onChange={this.props.update("bday")}
 						defaultValue="Day"
 					>
-						<option value="day">- Day -</option>
+						<option value="day"> Day </option>
 						<option value="1"> 1 </option>
 						<option value="2"> 2 </option>
 						<option value="3"> 3 </option>
@@ -47,13 +47,13 @@ class BirthDay extends Component {
 						<option value="31"> 31 </option>
 					</select>
 				</div>
-				<div className="auth-form input month">
+				<div className="month">
 					<select
 						name="DOBMonth"
 						onChange={this.props.update("bmonth")}
 						defaultValue="Month"
 					>
-						<option>- Month -</option>
+						<option> Month </option>
 						<option value="January">January</option>
 						<option value="Febuary">Febuary</option>
 						<option value="March">March</option>
@@ -68,13 +68,13 @@ class BirthDay extends Component {
 						<option value="December">December</option>
 					</select>
 				</div>
-				<div className="auth-form input year">
+				<div className="year">
 					<select
 						name="DOBYear"
 						onChange={this.props.update("byear")}
 						defaultValue="Year"
 					>
-						<option>- Year -</option>
+						<option> Year </option>
 						<option value="2020">2020</option>
 						<option value="2019">2019</option>
 						<option value="2018">2018</option>
@@ -168,7 +168,7 @@ class BirthDay extends Component {
 						<option value="1930">1930</option>
 					</select>
 				</div>
-			</>
+			</div>
 		);
 	}
 }

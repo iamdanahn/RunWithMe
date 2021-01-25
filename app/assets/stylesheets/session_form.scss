@@ -70,25 +70,69 @@
       
     }
     
-    .input {
-      display: block;
-      margin: auto;
-      margin-bottom: 10px;
-      height: 44px;
-      padding: 12px 16px 12px;
+  .input{
+    display: block;
+    margin-bottom: 10px;
+    height: 44px;
+    padding: 12px 16px 12px;
+    box-sizing: border-box;
+    align-items: center;
+    width: 100%;
+    border: 1px solid #D3D6DC;
+    border-radius: 2px;
+    background: transparent;
+    font-size: 15px;
+
+    &:focus {
+      outline: 0.2;
+      border: 1px solid blue($color: #377dce);
+    } 
+  }
+  .input.err-border {
+    border: 1px solid red;
+  }
+
+  .input.bday {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    border: none;
+  
+    .day select{
       box-sizing: border-box;
-      align-items: center;
-      width: 100%;
-      border: 1px solid #D3D6DC;
-      border-radius: 2px;
+      height: 44px;
+      width: 78px;
+      padding: 12px 0px 12px 12px;
       background: transparent;
+      border: 1px solid lightgray;
+      color: dimgray;
+      font-size: 15px;
     }
 
-    .bday {
-      display: flex;
-      justify-content: space-around;
-      // align-items: center;
+    .month select{
+      box-sizing: border-box;
+      height: 44px;
+      width: 122px;
+      padding: 12px 35px 12px 12px;
+      background: transparent;
+      border: 1px solid lightgray;
+      color: dimgray;
+      font-size: 15px;
     }
+  
+    .year select{
+      box-sizing: border-box;
+      height: 44px;
+      width: 85px;
+      padding: 12px 0px 12px 12px;
+      background: transparent;
+      border: 1px solid lightgray;
+      color: dimgray;
+      font-size: 15px;
+    }
+  }
+
 
     .gender {
       display: flex;

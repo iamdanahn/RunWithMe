@@ -21,6 +21,7 @@ class Login extends React.Component {
 
 	update(field) {
 		return (e) => {
+			e.target.className = "input";
 			this.setState({ [field]: e.target.value });
 		};
 	}
@@ -44,6 +45,8 @@ class Login extends React.Component {
 
 	render() {
 		const { errors } = this.props;
+		const errPresent = errors.length > 0;
+		debugger
 
 		return (
 			<section className="auth-form-ctr">
@@ -60,13 +63,13 @@ class Login extends React.Component {
 
 					<div className="or-box">
 						<span className="or-box line"></span>
-							<span className="or-box or"> OR </span>
+						<span className="or-box or"> OR </span>
 						<span className="or-box line"></span>
 					</div>
 
 					<div>
 						<input
-							className="auth-form input"
+							className={errPresent ? "input err-border" : "input"}
 							type="email"
 							value={this.state.email}
 							onChange={this.update("email")}
@@ -76,7 +79,7 @@ class Login extends React.Component {
 
 					<div>
 						<input
-							className="auth-form input"
+							className={errPresent ? "input err-border" : "input"}
 							type="password"
 							value={this.state.password}
 							onChange={this.update("password")}

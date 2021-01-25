@@ -41,26 +41,22 @@ class NavBar extends React.Component {
 								{/* https://github.com/friesarecurly/MapMyRun-Clone*/}
 								Github Repo
 							</Link>
-							<Link to="">
-								{/*https://github.com/friesarecurly */}
-								Github Profile
-							</Link>
-							<Link to="">
-								{/* https://www.linkedin.com/in/daniel-ahn-6b34151bb/ */}
-								Linked In
-							</Link>
+
 						</div>
 					</div>
 
 					<div className="dropdown">
-						<button className="navbtn" to="https://mvp.mapmyrun.com">
-							Go MVP
+						<button className="navbtn" to="https://github.com/friesarecurly">
+							Github
 						</button>
 					</div>
 
 					<div className="dropdown">
-						<button className="navbtn" to="https://www.underarmour.com/en-us">
-							UA Shop
+						<button
+							className="navbtn"
+							to="https://www.linkedin.com/in/daniel-ahn-6b34151bb/"
+						>
+							LinkedIn
 						</button>
 					</div>
 				</div>

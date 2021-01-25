@@ -8,8 +8,8 @@ class Api::UsersController < ApplicationController
       render 'api/users/show'
     else
       render json: {
-        first_name: @user.errors.full_messages_for(:first_name),
-        last_name: @user.errors.full_messages_for(:last_name),
+        first: @user.errors.full_messages_for(:first_name),
+        last: @user.errors.full_messages_for(:last_name),
         email: @user.errors.full_messages_for(:email),
         password: @user.errors.full_messages_for(:password),
         birthday: @user.errors.full_messages_for(:birthday),
