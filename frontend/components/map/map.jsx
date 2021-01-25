@@ -3,10 +3,10 @@ import React from 'react';
 class Map extends React.Component {
   componentDidMount() {
     const mapProps = {
-      center: new google.maps.LatLng(-34.397, 150.644),
-      zoom: 15,
-      // mapTypeId: google.maps.MapTypeId.ROADMAP,
-    };
+			zoom: 13,
+			center: new google.maps.LatLng(37.7758, -122.435),
+			mapTypeId: 'roadmap'
+		};
     this.map = new google.maps.Map(this.mapNode, mapProps)
   }
 

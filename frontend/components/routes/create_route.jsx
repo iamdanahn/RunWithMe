@@ -1,21 +1,18 @@
-import React from 'react';
+import React from "react";
 
-class CreateRouteForm extends React.Component {
+import CRFContainer from './create_route_form_container'
+import Map from '../map/map';
 
+const CreateRoute = () => (
+	<section className="user-panel">
+		<div className="left-half">
+			<CRFContainer />
+			
+		</div>
+		<div className="right-half">
+			<Map />
+		</div>
+	</section>
+);
 
-  render () {
-    return (
-      <div className="create-route">
-        <div className="cr search-bar">
-          <input
-            type="text"
-            placeholder="Enter location"
-          />
-
-        </div>
-      </div>
-    )
-  }
-}
-
-export default CreateRouteForm;
+export default CreateRoute;

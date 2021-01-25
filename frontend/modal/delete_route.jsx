@@ -6,9 +6,9 @@ const DeleteRoute = ({route, deleteRoute, closeModal}) => {
   return (
     <div className="modal-delete">
       <h3>Delete Route?</h3>
-      <div>
-        <Link to={()=> deleteRoute}> OK </Link>
-        <button onClick={closeModal}> X </button>
+      <div className="modal-btns">
+        <button className="modal-btns-ok" onClick={()=> deleteRoute}> OK </button>
+        <button className="modal-btns-cancel" onClick={closeModal}> CANCEL </button>
       </div>
     </div>
   )

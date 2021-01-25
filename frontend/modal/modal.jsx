@@ -1,7 +1,7 @@
 import React from 'react'
 import { closeModal } from '../actions/modal_actions';
 import { connect }  from 'react-redux';
-import DeleteRouteContainer from '../components/routes/delete_route_container';
+import DeleteRouteContainer from './delete_route_container';
 
 
 function Modal ({modal, closeModal, deleteRoute}) {

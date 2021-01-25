@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
-
-
-import Search from "./search";
+import {createRoute } from '../../actions/route_actions'
+import Search from "./create_route";
 
 // const msp = (state, ownProps) => {
     // return ({
@@ -10,7 +9,7 @@ import Search from "./search";
 
 const mdp = (dispatch) => {
   return ({
-    
+    createRoute: (route) => dispatch(createRoute(route))
 
   })
 }

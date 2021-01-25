@@ -13,29 +13,28 @@ class RouteIndexItem extends React.Component {
     const { route, deleteRoute, openModal } = this.props;
 
     return (
-			<tr>
-				<td>
+			<tr className="route-row">
+				<td className="route-row-img">
 					<Link to="">Image of route</Link>
 				</td>
-				<td>
+				<td className="route-row-date">
 					<Link to="">
 						{new Intl.DateTimeFormat("en-US").format(route.created_at)}
 					</Link>
 				</td>
-				<td>{route.distance}</td>
-				<td>Elevation</td>
-				<td>
+				<td className="route-row-distance">{route.distance} mi</td>
+				<td className="route-row-elevation">Elevation</td>
+				<td className="route-row-title">
 					<Link to="">{route.route_title}</Link>
 				</td>
-				<td>{route.location}</td>
-				<td>Privacy</td>
-				<td>
+				<td className="route-row-location">{route.location}</td>
+				<td className="route-row-privacy">Privacy</td>
+				<td className="route-row-options">
 					<Link to={`/routes/${route.id}/edit`}>Edit</Link>
-					<button routeid={route.id} onClick={() => openModal("open")}>
+					<Link routeid={route.id} onClick={() => openModal("open")}>
 						Delete
-					</button>
+					</Link>
 					<Modal deleteRoute={(route) => deleteRoute(route.id)} />
-					
 				</td>
 			</tr>
 		);

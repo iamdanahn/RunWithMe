@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { deleteRoute } from '../../actions/route_actions'
-import { closeModal } from '../../actions/modal_actions'
+import { deleteRoute } from '../actions/route_actions'
+import { closeModal } from '../actions/modal_actions'
 import DeleteRoute from './delete_route'
 
 const msp = (state, ownProps) => {

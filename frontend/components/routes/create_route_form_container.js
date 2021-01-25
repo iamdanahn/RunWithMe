@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import CreateRoute from './create_route';
+import CreateRouteForm from './create_route_form';
 import { createRoute } from '../../actions/route_actions'
 
 // const msp = (state, ownProps) => {
@@ -14,4 +14,4 @@ const mdp = dispatch => {
   })
 }
 
-export default connect(null, mdp)(CreateRoute);
+export default connect(null, mdp)(CreateRouteForm);
