@@ -19,12 +19,14 @@ class Signup extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.update = this.update.bind(this);
 		this.handleDemoLogin = this.handleDemoLogin.bind(this);
-		// this.renderErrors = this.renderErrors.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 	}
 
 	componentWillUnmount() {
+		debugger
 		const errors = [];
 		this.props.clearErrors(errors)
+		debugger
 	}
 
 
@@ -41,12 +43,18 @@ class Signup extends React.Component {
 	}
 
 	update(field) {
-		// debugger
-		return (e) => {
-			// debugger;
+		
+		return (e) => {	
 			e.target.className = "input"
 			return this.setState({ [field]: e.target.value });
 		};
+	}
+
+	handleClick(e) {
+		debugger;
+		e.preventDefault();
+		this.props.clearErrors([])
+		this.props.history.push("/login")
 	}
 
 	handleSubmit(e) {
@@ -60,7 +68,9 @@ class Signup extends React.Component {
 
 	handleDemoLogin(e) {
 		e.preventDefault();
+		debugger
 		this.props.loginDemo().then(() => this.props.history.push("/dashboard"));
+		debugger
 	}
 
 	render() {
@@ -71,8 +81,8 @@ class Signup extends React.Component {
 			<div className="auth-form-ctr">
 				<form className="auth-form">
 					<div className="header">
-						<Link className="other-link" to="/login">
-							<span>LOG IN</span>
+						<Link className="other-link" onClick={this.handleClick}>
+							LOG IN
 						</Link>
 					</div>
 
@@ -140,28 +150,30 @@ class Signup extends React.Component {
 					<BirthDay update={this.update} />
 					<div className="auth-form errors">{errors.birthday}</div>
 
-					<div className={errors["gender"] ? "input err-border" : "input"}>
-						<label>
-							Male:
-							<input
-								className="gender-m"
-								type="radio"
-								name="gender"
-								value="M"
-								onChange={this.update("gender")}
-							/>
-						</label>
+					<div className= {errors['first'] ? "input err-border" : "input"}>
+						<div className="gender">
+							<label>
+								Male:
+								<input
+									className="gender-m"
+									type="radio"
+									name="gender"
+									value="M"
+									onChange={this.update("gender")}
+								/>
+							</label>
 
-						<label>
-							Female:
-							<input
-								className="gender-f"
-								type="radio"
-								name="gender"
-								value="F"
-								onChange={this.update("gender")}
-							/>
-						</label>
+							<label>
+								Female:
+								<input
+									className="gender-f"
+									type="radio"
+									name="gender"
+									value="F"
+									onChange={this.update("gender")}
+								/>
+							</label>	
+						</div>
 					</div>
 					<div className="auth-form errors">{errors.gender}</div>
 					<br />
