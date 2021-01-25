@@ -9,7 +9,7 @@ class RouteIndexItem extends React.Component {
   }  
 
   render(){
-    debugger
+    // debugger
     const { route, deleteRoute, openModal } = this.props;
 
     return (
