@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 
 const DeleteRoute = ({route, deleteRoute, closeModal}) => {
+  debugger
   return (
     <div className="modal-delete">
       <h3>Delete Route?</h3>
