@@ -46,7 +46,6 @@ class Login extends React.Component {
 	render() {
 		const { errors } = this.props;
 		const errPresent = errors.length > 0;
-		debugger
 
 		return (
 			<section className="auth-form-ctr">

@@ -27,8 +27,8 @@ class User < ApplicationRecord
   has_many :routes,
     primary_key: :id,
     foreign_key: :creator_id,
-    class_name: Route
-    
+    class_name: :Route
+
   # has_one_attached :photo
 
   def self.find_by_credentials(email, pw)
