@@ -16,7 +16,8 @@ class Map extends React.Component {
       miles: 0,
 		};
 
-		this.initMap = this.initMap.bind(this);
+    this.initMap = this.initMap.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 	}
 
 	componentDidMount() {
@@ -67,7 +68,7 @@ class Map extends React.Component {
 		});
 		map.addListener("click", (event) => {
       const coords = getCoordsObj(event.latLng);
-      this.handleClick(coords);
+      // this.handleClick(coords);
       console.log(coords)
 		});
   }
@@ -84,10 +85,10 @@ class Map extends React.Component {
   }
 
   handleClick(coords) {
-		this.setState((state) => {
-			return { [markers]: [...state.markers, coords] };
-		});
-		// same as this.setState({markers: [...state.markers, coords]})
+		// this.setState((state) => {
+		// 	return { [markers]: [...state.markers, coords] };
+		// });
+		return this.setState({ [markers]: [...state.markers, coords]})
 
 		// this.props.history.push({
 		// 	pathname: "/routes/create",
