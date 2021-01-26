@@ -8,7 +8,7 @@ class CreateRouteForm extends React.Component {
       search: ""
     }
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   update(field) {
@@ -18,22 +18,23 @@ class CreateRouteForm extends React.Component {
   }
 
 
-  handleSubmit(e){
-    e.preventDefault();
+  // handleSubmit(e){
+  //   e.preventDefault();
 
-  }
+  // }
 
   render () {
     return (
 			<div className="create-route">
 				<div className="cr-search-bar">
 					<input
+						id="geocoder-addr"
 						type="text"
 						placeholder="Enter location"
 						value={this.state.search}
 						onChange={this.update("search")}
 					/>
-					<button onClick={this.handleSubmit}>Search</button>
+					<button  id="geocoder-submit">Search</button>
 				</div>
 
 				<div>
