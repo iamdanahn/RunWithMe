@@ -8,6 +8,10 @@
   background: #F0F0F0;
   align-items: center;
   
+  .content1.bg {
+    background-image: image-url('Splash-dblu.png');
+
+  }
   // #wline {
   //   display: block;
   //   border-color: white;
@@ -22,7 +26,6 @@
     height: 600px;
     width: 960px;
     color: white;
-    background-image: image-url('Splash-dblu.png');
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 
     .heading {
