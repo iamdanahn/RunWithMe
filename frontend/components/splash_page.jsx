@@ -23,10 +23,10 @@ class SplashPage extends React.Component {
 						</div>
 						<div>
 							<div>
-								<button className="button-signup">Sign up</button>
+								<button className="button-signup" to="/signup">Sign up</button>
 							</div>
 							<div>
-								<button className="button-login">Login</button>
+								<button className="button-login" to="/login">Login</button>
 							</div>
 							<div>App Store logo - Google Play logo</div>
 						</div>

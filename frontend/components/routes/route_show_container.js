@@ -1,4 +1,4 @@
-import { connect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { updateRoute } from '../../actions/route_actions'
 import RouteShow from './route_show'
 

@@ -30,11 +30,11 @@ class Map extends React.Component {
       mapTypeId: "roadmap",
     };
     
+
     const map = new google.maps.Map(this.mapNode, mapProps);
     this.usersPosition(map);
     
   }
-
 
   render() {
     return(
