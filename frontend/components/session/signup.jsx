@@ -147,10 +147,10 @@ class Signup extends React.Component {
 						<div className="auth-form errors">{errors.password}</div>
 					</div>
 
-					<BirthDay update={this.update} />
+					<BirthDay update={this.update} errors={errors}/>
 					<div className="auth-form errors">{errors.birthday}</div>
 
-					<div className= {errors['first'] ? "input err-border" : "input"}>
+					<div className= {errors['gender'] ? "input err-border" : "input"}>
 						<div className="gender">
 							<label>
 								Male:

@@ -70,24 +70,25 @@ class Login extends React.Component {
 
 					<div>
 						<input
-							className={errPresent ? "input err-border" : "input"}
+							className={errPresent ? "input err-border" : "input login"}
 							type="email"
 							value={this.state.email}
 							onChange={this.update("email")}
 							placeholder="Email"
 						/>
 					</div>
-
+					<br />
 					<div>
 						<input
-							className={errPresent ? "input err-border" : "input"}
+							className={errPresent ? "input err-border" : "input login"}
 							type="password"
 							value={this.state.password}
 							onChange={this.update("password")}
 							placeholder="Password"
 						/>
+						<div></div>
 					</div>
-
+					<br />
 					<div className="auth-form errors"> {errors} </div>
 
 					<br />

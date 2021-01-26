@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class BirthDay extends Component {
 
 	render() {
-
+		const { errors } = this.props;
 
     return (
 			<div className="input bday">
@@ -12,6 +12,7 @@ class BirthDay extends Component {
 						name="DOBDay"
 						onChange={this.props.update("bday")}
 						defaultValue="Day"
+						className= {errors['birthday'] ? "err-border" : ""}
 					>
 						<option value="day"> Day </option>
 						<option value="1"> 1 </option>
@@ -52,6 +53,7 @@ class BirthDay extends Component {
 						name="DOBMonth"
 						onChange={this.props.update("bmonth")}
 						defaultValue="Month"
+						className= {errors['birthday'] ? "err-border" : ""}
 					>
 						<option> Month </option>
 						<option value="January">January</option>
@@ -73,6 +75,7 @@ class BirthDay extends Component {
 						name="DOBYear"
 						onChange={this.props.update("byear")}
 						defaultValue="Year"
+						className= {errors['birthday'] ? "err-border" : ""}
 					>
 						<option> Year </option>
 						<option value="2020">2020</option>

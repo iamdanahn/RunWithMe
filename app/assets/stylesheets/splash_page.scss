@@ -10,7 +10,7 @@
   
   .content1.bg {
     background-image: image-url('Splash-dblu.png');
-
+    padding: 20px 64px 140px;
   }
   // #wline {
   //   display: block;
@@ -31,13 +31,18 @@
     .heading {
       display: flex;
       padding: 10px 0;
-      justify-content: flex-end;
+      flex-direction: column;
       width: inherit;
+      align-items: flex-end;
       
-      .text {
+      h2 {
         font-size: 48px;
         font-family: 'Roboto Condensed', sans-serif;
         text-transform: uppercase;
+      }
+
+      h3 {
+        font-size: 48px;
       }
     }
 

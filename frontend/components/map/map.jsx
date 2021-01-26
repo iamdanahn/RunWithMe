@@ -6,18 +6,14 @@ const getCoordsObj = (latLng) => ({
 	lng: latLng.lng(),
 });
 
-const mapProps = {
-  zoom: 14,
-  center: new google.maps.LatLng(37.7758, -122.435),
-  mapTypeId: "roadmap",
-};
 
 class Map extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			miles: 0,
+      markers: [],
+      miles: 0,
 		};
 
 		this.initMap = this.initMap.bind(this);
@@ -28,8 +24,23 @@ class Map extends React.Component {
 	}
 
 	initMap() {
-		const map = new google.maps.Map(this.mapNode, mapProps);
-		this.usersPosition(map);
+    // get default position 
+    const appAcademy = new google.maps.LatLng(40.7362891, -73.9937557)
+    const mapProps = {
+      zoom: 14,
+      center: appAcademy
+    };
+    const map = new google.maps.Map(this.mapNode, mapProps);
+    
+    // enables D.Service - initiates direction request with route() method
+    // Returns DirectionsResult & DirectionsStatus code
+    const directionsService = new google.maps.DirectionsService();
+    
+    // enables D.Renderer - displays DirectionResults
+    const directionsRenderer = new google.maps.DirectionsRenderer();
+
+    this.usersPosition(map);
+    this.eventListeners(map);
 	}
 
 	// obtains user's current position if allowed
@@ -45,38 +56,43 @@ class Map extends React.Component {
 		}
 	}
 
-	addMarker(location, map) {
-		const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		let labelIndex = 0;
-
-		new google.maps.Marker({
-			position: location,
-			label: labels[labelIndex++ % labels.length],
-			map: map,
-		});
-	}
-
-	eventListeners() {
-		google.maps.event.addListener(this.map, "idle", () => {
-			const { north, south, east, west } = this.map.getBounds().toJSON();
+	eventListeners(map) {
+    map.addListener("idle", () => {
+      const { north, south, east, west } = map.getBounds().toJSON();
 			const bounds = {
-				northEast: { lat: north, lng: east },
+        northEast: { lat: north, lng: east },
 				southWest: { lat: south, lng: west },
 			};
 			// this.props.updateFilter("bounds", bounds);
 		});
-		google.maps.event.addListener(this.map, "click", (event) => {
-			const coords = getCoordsObj(event.latLng);
+		map.addListener("click", (event) => {
+      const coords = getCoordsObj(event.latLng);
       this.handleClick(coords);
       console.log(coords)
 		});
-	}
+  }
+  
+  addMarker(location, map) {
+    const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let labelIndex = 0;
+
+    new google.maps.Marker({
+      position: location,
+      label: labels[labelIndex++ % labels.length],
+      map: map,
+    });
+  }
 
   handleClick(coords) {
-		this.props.history.push({
-			pathname: "routes/create",
-			search: `lat=${coords.lat}&lng=${coords.lng}`,
+		this.setState((state) => {
+			return { [markers]: [...state.markers, coords] };
 		});
+		// same as this.setState({markers: [...state.markers, coords]})
+
+		// this.props.history.push({
+		// 	pathname: "/routes/create",
+		// 	search: `lat=${coords.lat}&lng=${coords.lng}`,
+		// });
 	}
 
 	render() {

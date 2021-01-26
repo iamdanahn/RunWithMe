@@ -72,7 +72,7 @@
     
   .input{
     display: block;
-    margin-bottom: 10px;
+    // margin-top: 10px;
     height: 44px;
     padding: 12px 16px 12px;
     box-sizing: border-box;
@@ -88,6 +88,7 @@
       border: 1px solid blue($color: #377dce);
     } 
   }
+  
   .input.err-border {
     border: 1px solid red;
   }
@@ -98,38 +99,56 @@
     justify-content: space-between;
     flex-direction: row;
     border: none;
+    margin-bottom: 0;
   
-    .day select{
-      box-sizing: border-box;
-      height: 44px;
-      width: 78px;
-      padding: 12px 0px 12px 12px;
-      background: transparent;
-      border: 1px solid lightgray;
-      color: dimgray;
-      font-size: 15px;
+    .day{ 
+      
+      select {
+        box-sizing: border-box;
+        height: 44px;
+        width: 78px;
+        padding: 12px 0px 12px 12px;
+        background: transparent;
+        color: dimgray;
+        font-size: 15px;
+        border: 1px solid lightgray;
+      }
+      .err-border {
+        border: 1px solid red;
+      }
     }
+    
 
-    .month select{
-      box-sizing: border-box;
-      height: 44px;
-      width: 122px;
-      padding: 12px 35px 12px 12px;
-      background: transparent;
-      border: 1px solid lightgray;
-      color: dimgray;
-      font-size: 15px;
+    .month {
+      select{
+        box-sizing: border-box;
+        height: 44px;
+        width: 122px;
+        padding: 12px 35px 12px 12px;
+        background: transparent;
+        border: 1px solid lightgray;
+        color: dimgray;
+        font-size: 15px;
+      }
+      .err-border {
+        border: 1px solid red;
+      }
     }
   
-    .year select{
-      box-sizing: border-box;
-      height: 44px;
-      width: 85px;
-      padding: 12px 0px 12px 12px;
-      background: transparent;
-      border: 1px solid lightgray;
-      color: dimgray;
-      font-size: 15px;
+    .year {
+      select {
+        box-sizing: border-box;
+        height: 44px;
+        width: 85px;
+        padding: 12px 0px 12px 12px;
+        background: transparent;
+        border: 1px solid lightgray;
+        color: dimgray;
+        font-size: 15px;
+      }
+      .err-border {
+        border: 1px solid red;
+      }
     }
   }
 
@@ -138,6 +157,19 @@
       display: flex;
       width: inherit;
       justify-content: space-around;
+      align-items: center;
+
+      label {
+        display: flex;
+        font-size: 15px;
+        color: dimgray;
+      }
+      input, input[type="radio" i] {
+        display: flex;
+        width: 15px;
+        height: 15px;
+        margin: 0 12px;
+      }
     }
 
     .btn {

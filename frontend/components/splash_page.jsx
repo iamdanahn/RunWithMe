@@ -12,22 +12,27 @@ class SplashPage extends React.Component {
 				<div className="content1 bg">
 					<div className="content1">
 						<div className="heading">
-							{/* <div id="wline"></div> */}
-							<h2 className="text">Own every mile</h2>
+							<h3>___</h3>
+							<h2> Own every mile </h2>
+							<h3>___</h3>
 						</div>
-						<div>
+						<div className="htext">
 							<p>
 								The best mobile run tracking experience, backed by the world's
 								largest digital health and fitness community.
 							</p>
 						</div>
-						<div>
-							<div>
-								<button className="button-signup" to="/signup">Sign up</button>
-							</div>
-							<div>
-								<button className="button-login" to="/login">Login</button>
-							</div>
+						<div className="hbuttons">
+							
+								<button className="button-signup" to="/signup">
+									Sign up
+								</button>
+							
+							
+								<button className="button-login" to="/login">
+									Login
+								</button>
+							
 							<div>App Store logo - Google Play logo</div>
 						</div>
 					</div>

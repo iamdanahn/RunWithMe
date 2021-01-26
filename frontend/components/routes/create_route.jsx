@@ -1,6 +1,8 @@
 import React from "react";
+import { Route } from 'react-router-dom'
 
 import CRFContainer from './create_route_form_container'
+import ProtectedRoute from '../../util/route_util'
 import Map from '../map/map';
 
 const CreateRoute = () => (
@@ -10,7 +12,8 @@ const CreateRoute = () => (
 			
 		</div>
 		<div className="right-half">
-			<Map />
+			<Route component={Map} />
+			{/* <ProtectedRoute component={Map} /> */}
 		</div>
 	</section>
 );
