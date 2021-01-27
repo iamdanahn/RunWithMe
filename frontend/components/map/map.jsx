@@ -61,40 +61,17 @@ class Map extends React.Component {
     // this.eventListeners(map);
     map.addListener("click", this.addPoint(map, poly))
   }
-  
-  addPoint(map, poly) {
-    return e => {
-      const marker = new google.maps.Marker({
-        position: e.latLng,
-        label: `${path.getLength()}`,
-        map: this.map
-      })
-      marker.setMap(map)
-    
-    // Polyline mapping
-    // const path = poly.getPath();
-    // path.push(e.latLng);
-    // console.log(poly.getPath());
-
-    
-    // this.setState({ [markers]: [...markers, e.latLng]})
-    // not sure why its not saving
+  // obtains user's current position if allowed
+  usersPosition(map) {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+        map.setCenter(pos);
+      });
     }
-  }
-
-
-
-	// obtains user's current position if allowed
-	usersPosition(map) {
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition((position) => {
-				const pos = {
-					lat: position.coords.latitude,
-					lng: position.coords.longitude,
-				};
-				map.setCenter(pos);
-			});
-		}
   }
 
   geocoderAddr(geocoder, map) {
@@ -108,6 +85,30 @@ class Map extends React.Component {
       }
     }
   }
+  
+  addPoint(map, poly) {
+    debugger
+    return e => {
+      const marker = new google.maps.Marker({
+        position: e.latLng,
+        // label: `${path.getLength()}`,
+        map: this.map
+      })
+      marker.setMap(map)
+    
+    // Polyline mapping
+    // const path = poly.getPath();
+    // path.push(e.latLng);
+    // console.log(poly.getPath());
+
+    
+    this.setState({ ["markers"]: [...this.state.markers, e.latLng]})
+    // not sure why its not saving
+    }
+  }
+
+
+
 
 
 	// eventListeners(map) {

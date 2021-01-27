@@ -32,8 +32,8 @@ class User < ApplicationRecord
     foreign_key: :user_id,
     class_name: :User
 
-  has_many :comments, as :commentable
-  has_many :cheers, as :cheerable
+  has_many :comments, as: :commentable
+  has_many :cheers, as: :cheerable
   has_many :goals,
     foreign_key: :user_id,
     class_name: :Goal
