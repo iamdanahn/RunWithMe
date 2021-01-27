@@ -44,7 +44,7 @@ class Login extends React.Component {
 
 
 	render() {
-		debugger
+		 // debugger
 		const {errors} = this.props;
 		const errPresent = errors.length > 0;
 

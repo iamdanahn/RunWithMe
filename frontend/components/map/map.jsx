@@ -75,7 +75,7 @@ class Map extends React.Component {
         position: e.latLng,
         map: this.map,
       });
-      // debugger
+      //  // debugger
       marker.setMap(map);
       this.setState({ ["markers"]: [...this.state.markers, e.latLng] });
     })
@@ -110,12 +110,14 @@ class Map extends React.Component {
   // 
   componentDidUpdate() {
     const { markers } = this.state;
-    let origin = markers[0];
+    const origin = markers[0];
+    // let markLength = markers.length
     let dest = markers[markers.length-1];
     let wP = markers.slice(1, markers.length - 1).map((val) => ({
 			location: val,
 			stopover: true,
-		}));
+    }));
+    
 
     if (markers.length > 2) {
       this.directionsService.route({
@@ -125,19 +127,45 @@ class Map extends React.Component {
         travelMode: google.maps.TravelMode.WALKING,
       }, (response, status) => {
         if (status === "OK") {
-          console.log(response)
+          // console.log(response)
           this.directionsRenderer.setDirections(response);
-          debugger
+          // console.log(markers)
+          //  // debugger
+          // gets details of previous marker to marker just clicked
+          // console.log(response.routes[0].legs[markers.length-2])
+          // gets distance from previous marker to marker just clicked
+          // console.log(response.routes[0].legs[markers.length-2].distance.value);
         } else {
-          console.log("Directions failed")
+          // console.log("Directions failed")
         }
       })
+    } else if ( markers.length === 2 ) {
+        this.directionsService.route(
+          {
+            origin: origin,
+            destination: dest,
+            travelMode: google.maps.TravelMode.WALKING,
+          },
+          (response, status) => {
+            if (status === "OK") {
+              this.directionsRenderer.setDirections(response);
+            } else {
+              // console.log("Directions failed");
+            }
+          },
+        );
     }
   }
+
+    // markers[0].lat()
+    // 40.739394483605125
+    // markers[0].lng()
+    // -74.0023508387882
+    
     
     // ATTEMPT TO SET MARKERS IN STATE. ERRORS SAY CANNOT FIND MARKERS
     // const oldMarkers = Object.assign({}, this.state.markers)
-    // console.log(oldMarkers)
+    // // console.log(oldMarkers)
     // return this.setState({ markers: [...oldMarkers, coords]})
     
     // ATTEMPT TO PUSH ROUTEINFO INTO URL
@@ -149,7 +177,7 @@ class Map extends React.Component {
 
 
 	render() {
-    // debugger
+    //  // debugger
 		return (
 			<div id="map-container" ref={(map) => (this.mapNode = map)}>
 				Map

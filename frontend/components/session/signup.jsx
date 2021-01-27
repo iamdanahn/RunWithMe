@@ -23,10 +23,10 @@ class Signup extends React.Component {
 	}
 
 	componentWillUnmount() {
-		debugger
+		 // debugger
 		const errors = [];
 		this.props.clearErrors(errors)
-		debugger
+		 // debugger
 	}
 
 
@@ -51,7 +51,7 @@ class Signup extends React.Component {
 	}
 
 	handleClick(e) {
-		debugger;
+		 // debugger;
 		e.preventDefault();
 		this.props.clearErrors([])
 		this.props.history.push("/login")
@@ -68,9 +68,9 @@ class Signup extends React.Component {
 
 	handleDemoLogin(e) {
 		e.preventDefault();
-		debugger
+		 // debugger
 		this.props.loginDemo().then(() => this.props.history.push("/dashboard"));
-		debugger
+		 // debugger
 	}
 
 	render() {

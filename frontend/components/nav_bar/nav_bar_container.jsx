@@ -7,7 +7,7 @@ import NavBar from './nav_bar';
 
 const msp = (state, ownProps) => {
   const { entities, session } = state;
-  // debugger
+  //  // debugger
   return {
 		currentUser: entities.users[session.id],
     loggedIn: Boolean(state.session.id),

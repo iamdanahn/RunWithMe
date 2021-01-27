@@ -12,7 +12,7 @@ function Modal ({modal, closeModal, deleteRoute}) {
   let component;
   switch (modal) {
     case 'open':
-      debugger
+       // debugger
       component = <DeleteRouteContainer deleteRoute={deleteRoute}/>;
       break;
     default:
@@ -35,7 +35,7 @@ const msp = state => {
 }
 
 const mdp = dispatch => {
-  // debugger
+  //  // debugger
   return {
     closeModal: () => dispatch(closeModal())
   }
