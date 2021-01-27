@@ -15,13 +15,13 @@ class Map extends React.Component {
 		};
 
     this.initMap = this.initMap.bind(this);
-    this.addPoint = this.addPoint.bind(this);
+    // this.addPoint = this.addPoint.bind(this);
     this.geocoderAddr = this.geocoderAddr.bind(this);
 	}
 
 	componentDidMount() {
 		this.initMap();
-	}
+  }
 
 	initMap() {
     // get default position 
@@ -58,9 +58,26 @@ class Map extends React.Component {
       this.geocodeAddr(geocoder, map);
     })
 
+    const addPoint = (e) => {
+			const marker = new google.maps.Marker({
+				position: e.latLng,
+				// label: `${path.getLength()}`,
+				map: this.map,
+			});
+			marker.setMap(map);
+      this.setState({ ["markers"]: [...this.state.markers, e.latLng] });
+    };
+    
+    debugger 
     // this.eventListeners(map);
-    map.addListener("click", this.addPoint(map, poly))
+    map.addListener("click", () =>
+    {debugger 
+      addPoint}
+    )
   }
+
+
+
   // obtains user's current position if allowed
   usersPosition(map) {
     if (navigator.geolocation) {
@@ -86,26 +103,26 @@ class Map extends React.Component {
     }
   }
   
-  addPoint(map, poly) {
-    debugger
-    return e => {
-      const marker = new google.maps.Marker({
-        position: e.latLng,
-        // label: `${path.getLength()}`,
-        map: this.map
-      })
-      marker.setMap(map)
+  // addPoint(map, poly) {
+  //   return e => {
+  //     debugger
+  //     const marker = new google.maps.Marker({
+  //       position: e.latLng,
+  //       // label: `${path.getLength()}`,
+  //       map: this.map
+  //     })
+  //     marker.setMap(map)
     
-    // Polyline mapping
-    // const path = poly.getPath();
-    // path.push(e.latLng);
-    // console.log(poly.getPath());
+  //   // Polyline mapping
+  //   // const path = poly.getPath();
+  //   // path.push(e.latLng);
+  //   // console.log(poly.getPath());
 
     
-    this.setState({ ["markers"]: [...this.state.markers, e.latLng]})
-    // not sure why its not saving
-    }
-  }
+  //   this.setState({ ["markers"]: [...this.state.markers, e.latLng]})
+  //   // not sure why its not saving
+  //   }
+  // }
 
 
 
@@ -155,6 +172,7 @@ class Map extends React.Component {
 
 
 	render() {
+    debugger
 		return (
 			<div id="map-container" ref={(map) => (this.mapNode = map)}>
 				Map
