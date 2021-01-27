@@ -136,7 +136,7 @@ class Map extends React.Component {
           // gets distance from previous marker to marker just clicked
           // console.log(response.routes[0].legs[markers.length-2].distance.value);
         } else {
-          // console.log("Directions failed")
+          console.log("Directions failed")
         }
       })
     } else if ( markers.length === 2 ) {
@@ -150,7 +150,7 @@ class Map extends React.Component {
             if (status === "OK") {
               this.directionsRenderer.setDirections(response);
             } else {
-              // console.log("Directions failed");
+              console.log("Directions failed");
             }
           },
         );
@@ -177,7 +177,6 @@ class Map extends React.Component {
 
 
 	render() {
-    //  // debugger
 		return (
 			<div id="map-container" ref={(map) => (this.mapNode = map)}>
 				Map
