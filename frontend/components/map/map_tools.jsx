@@ -12,10 +12,12 @@ class MapTools extends React.Component {
 
 
   render() {
+    const { distance, undo, clear, center, reverse, returnHome } = this.props
+
     return (
       <div className="map-toolbar-cntr">
         <div className="tb-1">
-
+          {distance}
         </div>
         <div className="tb-2">
 

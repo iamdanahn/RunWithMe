@@ -17,11 +17,14 @@ class Map extends React.Component {
     this.initMap = this.initMap.bind(this);
     // this.addPoint = this.addPoint.bind(this);
     // this.geocoderAddr = this.geocoderAddr.bind(this);
+    this.renderMarkers = this.renderMarkers.bind(this);
+
     this.undoMark = this.undoMark.bind(this)
     this.clearMarks = this.clearMarks.bind(this)
     this.centerMap = this.centerMap.bind(this)
     this.reverseMarks = this.reverseMarks.bind(this)
     this.returnHome = this.returnHome.bind(this)
+
 	}
 
 	componentDidMount() {
@@ -73,19 +76,11 @@ class Map extends React.Component {
 				position: e.latLng,
 				map: this.map,
 			});
-			//  // debugger
-			marker.setMap(this.map);
-			this.setState({ ["markers"]: [...this.state.markers, e.latLng] });
+			// marker.setMap(this.map);
+      this.setState({ ["markers"]: [...this.state.markers, e.latLng] });
+      this.renderMarkers()
 		});
 
-		// // enable polylines to be used on map
-		// const poly = new google.maps.Polyline({
-		//   strokeColor: "#add8e6",
-		//   strokeOpacity: 1.0,
-		//   strokeWeight: 3,
-		//   editable: true
-		// });
-		// poly.setMap(map);
 	}
 
   // obtains user's current position if allowed
@@ -101,25 +96,11 @@ class Map extends React.Component {
     }
   }
 
-  // obtains location via address name
-  // geocoderAddr(geocoder, map) {
-  //   const addr = document.getElementById("geocoder-addr").value;
-
-  //   geocoder.geocode({ address: address}), (results, status) => {
-  //     if (status ==="OK") {
-  //       map.setCenter(results[0].geometry.location);
-  //     } else {
-  //       alert(`Unable to obtain location due to: ${status}`)
-  //     }
-  //   }
-  // }
   
-  // Check marker's state and when lenght is > 1, send directionsService.route
-  // 
-  componentDidUpdate() {
+  renderMarkers() {
     const { markers } = this.state;
     const origin = markers[0];
-    // let markLength = markers.length
+    
     let dest = markers[markers.length-1];
     let wP = markers.slice(1, markers.length - 1).map((val) => ({
 			location: val,
@@ -135,36 +116,46 @@ class Map extends React.Component {
       }, (response, status) => {
         if (status === "OK") {
           const rtDistance = response.routes[0].legs[markers.length-2].distance.value;
-          this.addDistance(rtDistance)
-          
+          this.addDistance(rtDistance)          
           console.log(this.state.distance)
 
           this.directionsRenderer.setDirections(response);
-          // console.log(response)
-          // console.log(markers)
-          //  // debugger
-          // gets details of previous marker to marker just clicked
-          // console.log(response.routes[0].legs[markers.length-2])
-          // gets distance from previous marker to marker just clicked
-          // console.log(response.routes[0].legs[markers.length-2].distance.value);
         } else {
           console.log("Directions failed")
         }
       })
     } 
   }
-
   addDistance(routeDist) {
     const oldDistance = this.state.distance;
     const newDistance = oldDistance + routeDist;
     this.setState({distance: newDistance})
   }
 
-    // markers[0].lat()
+  // console.log(response.routes[0].legs[markers.length-2])
+  // gets details of previous marker to marker just clicked
+  // console.log(response.routes[0].legs[markers.length-2].distance.value);
+    // gets distance from previous marker to marker just clicked
+    
+  
+  // markers[0].lat()
     // 40.739394483605125
     // markers[0].lng()
     // -74.0023508387882
     
+    
+    // obtains location via address name
+    // geocoderAddr(geocoder, map) {
+    //   const addr = document.getElementById("geocoder-addr").value;
+  
+    //   geocoder.geocode({ address: address}), (results, status) => {
+    //     if (status ==="OK") {
+    //       map.setCenter(results[0].geometry.location);
+    //     } else {
+    //       alert(`Unable to obtain location due to: ${status}`)
+    //     }
+    //   }
+    // }
     
     // ATTEMPT TO PUSH ROUTEINFO INTO URL
 		// this.props.history.push({
@@ -230,7 +221,7 @@ class Map extends React.Component {
 						clear={this.clearMarks}
 						center={this.centerMap}
 						reverse={this.reverseMarks}
-						return={this.returnHome}
+						returnHome={this.returnHome}
 					/>
 				</div>
 			</div>
