@@ -34,6 +34,7 @@
       flex-direction: column;
       width: inherit;
       align-items: flex-end;
+      height: 118px;
       
       h2 {
         font-size: 48px;
@@ -43,24 +44,57 @@
 
       h3 {
         font-size: 48px;
+        margin-top: -25px;
+        padding-bottom: 25px;
+      }
+      
+    }
+    .h-text {
+      width: 300px;
+      height: 66px;
+      margin: 20px 0 0 532px;
+
+      p {
+        width: 295px;
+        height: 65px;
+        font-size: 16px;
+        text-align: end;
       }
     }
 
-    p {
-      font-size: 16px;
+  }
+
+  .h-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+
+    .button-signup {
+      display: inline-flex;
+      width: 290px;
+      height: 44px;
+      padding: 12px 15px;
+      background: #16D374;
+      text-transform: uppercase;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px
     }
 
+    .button-login {
+      box-sizing: border-box;
+      width: 96px;
+      height: 36px;
+      padding: 6px 0px;
+      border: 2px solid white;
+      border-radius: 2px;
+      color: white;
+      margin: 30px 0 0;
+    }
   }
 
-  #button-signup {
-    display: inline-flex;
-    width: 290px;
-    height: 44px;
-    padding: 12px 15px;
-    background: #16D374;
-    text-align: center;
-    text-transform: uppercase;
-  }
+
 .splashpage{
   .content2 {
     display: flex;

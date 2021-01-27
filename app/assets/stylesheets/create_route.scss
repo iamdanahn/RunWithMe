@@ -2,14 +2,14 @@
 .user-panel {
   display: flex;
   flex-direction: row;
-  height: 100vh;
-  width: 100vw;
+  // height: 100vh;
+  // width: 100vw;
 }
 
 .left-half {
   display: flex;
   flex-direction: column;
-  width: 340px;
+  min-width: 340px;
 }
 
 .right-half {
@@ -17,8 +17,8 @@
   height: 100%;
 }
 
-#map-container {
-  position: absolute;
+.map-container {
+  // position: absolute;
   width: 100%;
-  height: 100%;
+  height: 92vh;
 }

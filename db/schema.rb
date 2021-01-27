@@ -77,19 +77,17 @@ ActiveRecord::Schema.define(version: 2021_01_21_004812) do
   end
 
   create_table "routes", force: :cascade do |t|
-    t.string "route_title", null: false
+    t.string "name", null: false
     t.integer "creator_id", null: false
     t.string "activity", null: false
     t.string "location", null: false
     t.integer "distance", null: false
-    t.float "start_pos_lat", null: false
-    t.float "start_pos_lng", null: false
-    t.float "end_pos_lat", null: false
-    t.float "end_pos_lng", null: false
+    t.string "markers", null: false
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["creator_id"], name: "index_routes_on_creator_id"
-    t.index ["route_title"], name: "index_routes_on_route_title", unique: true
+    t.index ["name"], name: "index_routes_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|

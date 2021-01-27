@@ -10,5 +10,7 @@
 #  updated_at     :datetime         not null
 #
 class Cheer < ApplicationRecord
+  validates :cheerable_id, :cheerable_type, presence: true
+  
   belongs_to :cheerable, polymorphic: true
 end

@@ -1,1 +1,1 @@
-json.extract! route, :id, :route_title, :creator_id, :activity, :location, :distance, :start_pos_lat, :start_pos_lng, :end_pos_lat, :end_pos_lng
+json.extract! route, :id, :name, :creator_id, :activity, :location, :distance, :markers, :description

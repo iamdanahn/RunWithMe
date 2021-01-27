@@ -2,6 +2,7 @@ import React from 'react';
 import { AuthRoute } from "../util/route_util";
 import SignupContainer from "./session/signup_container";
 import LoginContainer from "./session/login_container";
+import { Link } from 'react-router-dom'
 
 class SplashPage extends React.Component {
   
@@ -16,24 +17,27 @@ class SplashPage extends React.Component {
 							<h2> Own every mile </h2>
 							<h3>___</h3>
 						</div>
-						<div className="htext">
+						<br />
+						<div className="h-text">
 							<p>
 								The best mobile run tracking experience, backed by the world's
 								largest digital health and fitness community.
 							</p>
 						</div>
-						<div className="hbuttons">
-							
-								<button className="button-signup" to="/signup">
+						<div className="h-footer">
+
+							<Link to="/signup">
+								<button className="button-signup" onClick={this.handleSignup}>
 									Sign up
 								</button>
-							
-							
-								<button className="button-login" to="/login">
-									Login
+							</Link>
+							<Link to="/login">
+								<button className="button-login" onClick={this.handleLogin}>
+									Log in
 								</button>
+							</Link>
+
 							
-							<div>App Store logo - Google Play logo</div>
 						</div>
 					</div>
 				</div>

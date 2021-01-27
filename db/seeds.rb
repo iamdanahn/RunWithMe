@@ -45,41 +45,35 @@ user3 = User.create!(
 
 route1 = Route.create!(
   id: 1,
-  route_title: 'Tour de New York',
-  creator_id: 7,
+  name: 'Tour de New York',
+  creator_id: 1,
   activity: 'cycling',
   location: 'New York City',
   distance: 50,
-  start_pos_lat: 40.7128,
-  start_pos_lng: 74.0060,
-  end_pos_lat: 40.8249, 
-  end_pos_lng: 74.2109
+  markers: "[{'lat':40.7128, 'lng':74.0060}, {'lat':40.8249, 'lng':74.2109}]",
+  description: "This is madness!"
   )
 
 route2 = Route.create!(
   id: 2,
-  route_title: 'Path of Moguls',
-  creator_id: 5,
+  name: 'Path of Moguls',
+  creator_id: 3,
   activity: 'running',
   location: "Catskills, NY",
   distance: 15,
-  start_pos_lat: 42.0093, 
-  start_pos_lng: 74.3821,
-  end_pos_lat: 42.8249, 
-  end_pos_lng: 74.2109
+  markers: "[{'lat':42.0093, 'lng':74.3821}, {'lat':42.8249,'lng':74.2109}]",
+  description: "Nothing like fresh air"
   )
 
 route3 = Route.create!(
   id: 3,
-  route_title: 'Boulevard of Dreams',
-  creator_id: 6,
+  name: 'Boulevard of Dreams',
+  creator_id: 2,
   activity: 'walking',
   location: "Miami, FL",
   distance: 20,
-  start_pos_lat: 25.7617,
-  start_pos_lng: 80.1918,
-  end_pos_lat: 25.8249, 
-  end_pos_lng: 80.2109
+  markers: "[{'lat':25.7617, 'lng':80.1918}, {'lat':25.8249, 'lng':80.2109}]",
+  description: "Soaking in the sun"
 )
 
 workouts1 = Workout.create!(

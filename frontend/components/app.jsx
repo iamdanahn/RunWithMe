@@ -6,6 +6,7 @@ import LoginContainer from './session/login_container';
 import NavBarContainer from './nav_bar/nav_bar_container';
 import DashboardContainer from './dashboard/dashboard_container'
 import CreateRouteContainer from './routes/create_route_container'
+import EditRouteContainer from './routes/edit_route_container'
 import RouteShowContainer from './routes/route_show_container'
 import SplashPage from './splash_page'
 
@@ -18,9 +19,10 @@ const App = () => {
 			<Switch>
 				<AuthRoute path="/signup" component={SignupContainer} />
 				<AuthRoute path="/login" component={LoginContainer} />
-				<ProtectedRoute path="/routes/create" component={CreateRouteContainer} />
-				<ProtectedRoute path="/routes/:routeId" component={RouteShowContainer} />
 				<ProtectedRoute path="/dashboard" component={DashboardContainer} />
+				<ProtectedRoute path="/routes/create" component={CreateRouteContainer} />
+				<ProtectedRoute path="/routes/:routeId/edit" component={EditRouteContainer} />
+				<ProtectedRoute path="/routes/:routeId" component={RouteShowContainer} />
 				<AuthRoute path="/" component={SplashPage} />
 			</Switch>
 		</div>

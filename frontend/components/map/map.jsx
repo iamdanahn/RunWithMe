@@ -1,4 +1,6 @@
 import React from 'react';
+import MapTools from './map_tools'
+import RouteForm from '../routes/route_form'
 
 const getCoordsObj = (latLng) => ({
 	lat: latLng.lat(),
@@ -9,14 +11,17 @@ const getCoordsObj = (latLng) => ({
 class Map extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-      markers: [],
-      miles: 0,
-		};
+    this.state = this.props.route;
+    // debugger
 
     this.initMap = this.initMap.bind(this);
     // this.addPoint = this.addPoint.bind(this);
-    this.geocoderAddr = this.geocoderAddr.bind(this);
+    // this.geocoderAddr = this.geocoderAddr.bind(this);
+    this.undoMark = this.undoMark.bind(this)
+    this.clearMarks = this.clearMarks.bind(this)
+    this.centerMap = this.centerMap.bind(this)
+    this.reverseMarks = this.reverseMarks.bind(this)
+    this.returnHome = this.returnHome.bind(this)
 	}
 
 	componentDidMount() {
@@ -24,87 +29,90 @@ class Map extends React.Component {
   }
 
 	initMap() {
-    // get default position 
+		// get default position
+    
+    const center = this.state.markers.length > 0 ? this.state.markers[0] : new google.maps.LatLng(40.7362891, -73.9937557);
     const mapProps = {
 			zoom: 15,
-      center: new google.maps.LatLng(40.7362891, -73.9937557),
-      
+			center: center,
+			clickableIcons: false,
 		};
-    const map = new google.maps.Map(this.mapNode, mapProps);
-    this.usersPosition(map);
-    
-    // enables D.Service - initiates direction request with route() method
-    // Returns DirectionsResult & DirectionsStatus code
-    this.directionsService = new google.maps.DirectionsService();
-    // enables D.Renderer - displays DirectionResults
-    this.directionsRenderer = new google.maps.DirectionsRenderer();
-    this.directionsRenderer.setMap(map);
 
-    // creates info window object
-    const infoWindow = new google.maps.InfoWindow();
-    
-    // enable polylines to be used on map
-    const poly = new google.maps.Polyline({
-      strokeColor: "#add8e6",
-      strokeOpacity: 1.0,
-      strokeWeight: 3,
-      editable: true
-    });
-    poly.setMap(map);
+		this.map = new google.maps.Map(this.mapNode, mapProps);
+		this.usersPosition();
 
-    // enable geocoding
-    const geocoder = new google.maps.Geocoder();
-    document.getElementById("geocoder-submit").addEventListener("click", () => {
-      this.geocodeAddr(geocoder, map);
-    })
+		// enables D.Service - initiates direction request with route() method
+		// Returns DirectionsResult & DirectionsStatus code
+		this.directionsService = new google.maps.DirectionsService();
+		// enables D.Renderer - displays DirectionResults
+		this.directionsRenderer = new google.maps.DirectionsRenderer();
+		this.directionsRenderer.setMap(this.map);
 
-    const addPoint = (e) => {
+		// creates info window object
+		const infoWindow = new google.maps.InfoWindow();
+
+		// enable geocoding
+		const geocoder = new google.maps.Geocoder();
+		document.getElementById("geocoder-submit").addEventListener("click", () => {
+			this.geocodeAddr(geocoder, this.map);
+		});
+
+		const addPoint = (e) => {
 			const marker = new google.maps.Marker({
 				position: e.latLng,
 				// label: `${path.getLength()}`,
 				map: this.map,
 			});
 			marker.setMap(map);
-      // setState({ ["markers"]: [...this.state.markers, e.latLng] });
-    };
-    
-    
-    // this.eventListeners(map);
-    map.addListener("click", (e) => {
-      const marker = new google.maps.Marker({
-        position: e.latLng,
-        map: this.map,
-      });
-      //  // debugger
-      marker.setMap(map);
-      this.setState({ ["markers"]: [...this.state.markers, e.latLng] });
-    })
-  }
+			// setState({ ["markers"]: [...this.state.markers, e.latLng] });
+		};
+
+		// this.eventListeners(map);
+		this.map.addListener("click", (e) => {
+			const marker = new google.maps.Marker({
+				position: e.latLng,
+				map: this.map,
+			});
+			//  // debugger
+			marker.setMap(this.map);
+			this.setState({ ["markers"]: [...this.state.markers, e.latLng] });
+		});
+
+		// // enable polylines to be used on map
+		// const poly = new google.maps.Polyline({
+		//   strokeColor: "#add8e6",
+		//   strokeOpacity: 1.0,
+		//   strokeWeight: 3,
+		//   editable: true
+		// });
+		// poly.setMap(map);
+	}
 
   // obtains user's current position if allowed
-  usersPosition(map) {
+  usersPosition() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         const pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         };
-        map.setCenter(pos);
+        this.map.setCenter(pos);
       });
     }
   }
 
-  geocoderAddr(geocoder, map) {
-    const addr = document.getElementById("geocoder-addr").value;
+  // obtains location via address name
+  // geocoderAddr(geocoder, map) {
+  //   const addr = document.getElementById("geocoder-addr").value;
 
-    geocoder.geocode({ address: address}), (results, status) => {
-      if (status ==="OK") {
-        map.setCenter(results[0].geometry.location);
-      } else {
-        alert(`Unable to obtain location due to: ${status}`)
-      }
-    }
-  }
+  //   geocoder.geocode({ address: address}), (results, status) => {
+  //     if (status ==="OK") {
+  //       map.setCenter(results[0].geometry.location);
+  //     } else {
+  //       alert(`Unable to obtain location due to: ${status}`)
+  //     }
+  //   }
+  // }
   
   // Check marker's state and when lenght is > 1, send directionsService.route
   // 
@@ -118,8 +126,7 @@ class Map extends React.Component {
 			stopover: true,
     }));
     
-
-    if (markers.length > 2) {
+    if (markers.length > 1) {
       this.directionsService.route({
         origin: origin,
         destination: dest,
@@ -127,8 +134,13 @@ class Map extends React.Component {
         travelMode: google.maps.TravelMode.WALKING,
       }, (response, status) => {
         if (status === "OK") {
-          // console.log(response)
+          const rtDistance = response.routes[0].legs[markers.length-2].distance.value;
+          this.addDistance(rtDistance)
+          
+          console.log(this.state.distance)
+
           this.directionsRenderer.setDirections(response);
+          // console.log(response)
           // console.log(markers)
           //  // debugger
           // gets details of previous marker to marker just clicked
@@ -139,22 +151,13 @@ class Map extends React.Component {
           console.log("Directions failed")
         }
       })
-    } else if ( markers.length === 2 ) {
-        this.directionsService.route(
-          {
-            origin: origin,
-            destination: dest,
-            travelMode: google.maps.TravelMode.WALKING,
-          },
-          (response, status) => {
-            if (status === "OK") {
-              this.directionsRenderer.setDirections(response);
-            } else {
-              console.log("Directions failed");
-            }
-          },
-        );
-    }
+    } 
+  }
+
+  addDistance(routeDist) {
+    const oldDistance = this.state.distance;
+    const newDistance = oldDistance + routeDist;
+    this.setState({distance: newDistance})
   }
 
     // markers[0].lat()
@@ -163,11 +166,6 @@ class Map extends React.Component {
     // -74.0023508387882
     
     
-    // ATTEMPT TO SET MARKERS IN STATE. ERRORS SAY CANNOT FIND MARKERS
-    // const oldMarkers = Object.assign({}, this.state.markers)
-    // // console.log(oldMarkers)
-    // return this.setState({ markers: [...oldMarkers, coords]})
-    
     // ATTEMPT TO PUSH ROUTEINFO INTO URL
 		// this.props.history.push({
 		// 	pathname: "/routes/create",
@@ -175,14 +173,76 @@ class Map extends React.Component {
 		// });
 	// }
 
+  undoMark() {
+    const oldMarks = this.state.markers
+    const newMarks = () => oldMarks.pop()
+    this.setState({['markers']: newMarks})
+  }
 
+  clearMarks() {
+    this.setState({['markers']: []})
+  }
+
+  centerMap() {
+    () => this.map.panTo(mapProps[center])
+  }
+  reverseMarks() {
+
+  }
+
+  returnHome() {
+
+  }
 	render() {
+    	const {
+				route,
+				route_title,
+				creator_id,
+				activity,
+				location,
+				distance,
+				markers,
+      } = this.state;
+      const { formType } = this.props;
+    debugger
+
 		return (
-			<div id="map-container" ref={(map) => (this.mapNode = map)}>
-				Map
+			<div className="user-panel">
+				<div className="left-half">
+					<RouteForm
+						route_title={route_title}
+						creator_id={creator_id}
+						activity={activity}
+						location={location}
+						distance={distance}
+						markers={markers}
+            formType={formType}
+					/>
+				</div>
+
+				<div className="map-container" ref={(map) => (this.mapNode = map)}>
+					Map
+				</div>
+				<div>
+					<MapTools
+						distance={this.state.distance}
+						undo={this.undoMark}
+						clear={this.clearMarks}
+						center={this.centerMap}
+						reverse={this.reverseMarks}
+						return={this.returnHome}
+					/>
+				</div>
 			</div>
 		);
 	}
 }
 
 export default Map;
+
+  // contains, distance in miles
+  // undo button aka pop from markers array
+  // clear button aka clear markers array
+  // center button aka center map to default lat.lng
+  // reverse button aka reverse markers array
+  // return button aka markers array .push(markers[0])

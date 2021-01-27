@@ -9,7 +9,7 @@ class RouteIndexItem extends React.Component {
   }  
 
   render(){
-    //  // debugger
+    //  debugger
     const { route, deleteRoute, openModal } = this.props;
 
     return (
@@ -25,15 +25,15 @@ class RouteIndexItem extends React.Component {
 				<td className="route-row-distance">{route.distance} mi</td>
 				<td className="route-row-elevation">Elevation</td>
 				<td className="route-row-title">
-					<Link to={`/routes/${route.id}`}>{route.route_title}</Link>
+					<Link to={`/routes/${route.id}`}>{route.name}</Link>
 				</td>
 				<td className="route-row-location">{route.location}</td>
 				<td className="route-row-privacy">Privacy</td>
 				<td className="route-row-options">
 					<Link to={`/routes/${route.id}/edit`}>Edit</Link>
-					<Link routeid={route.id} onClick={() => openModal("open")}>
+					<a routeid={route.id} onClick={() => openModal("open")}>
 						Delete
-					</Link>
+					</a>
 					<Modal deleteRoute={(route) => deleteRoute(route.id)} />
 				</td>
 			</tr>

@@ -1,17 +1,28 @@
 import { connect } from "react-redux";
 import {createRoute } from '../../actions/route_actions'
-import Search from "./create_route";
+// import RouteMap from "./route_map";
+import Map from '../map/map'
 
-// const msp = (state, ownProps) => {
-    // return ({
-    // })
-// };
+const msp = (state, ownProps) => {
+  const { entities, session, errors } = state;
+  debugger
+  return ({
+    route: {
+      route_title: "",
+      creator_id: session.id,
+      activity: "",
+      location: "",
+      distance: 0,
+      markers: ""
+    },
+    formType: "Create"
+  })
+};
 
 const mdp = (dispatch) => {
   return ({
-    createRoute: (route) => dispatch(createRoute(route))
-
+    action: (route) => dispatch(createRoute(route))
   })
 }
 
-export default connect(null, mdp)(Search);
+export default connect(msp, mdp)(Map);
