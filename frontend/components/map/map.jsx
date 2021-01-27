@@ -35,10 +35,10 @@ class Map extends React.Component {
     
     // enables D.Service - initiates direction request with route() method
     // Returns DirectionsResult & DirectionsStatus code
-    const directionsService = new google.maps.DirectionsService();
+    this.directionsService = new google.maps.DirectionsService();
     // enables D.Renderer - displays DirectionResults
-    const directionsRenderer = new google.maps.DirectionsRenderer();
-    directionsRenderer.setMap(map);
+    this.directionsRenderer = new google.maps.DirectionsRenderer();
+    this.directionsRenderer.setMap(map);
 
     // creates info window object
     const infoWindow = new google.maps.InfoWindow();
@@ -65,18 +65,21 @@ class Map extends React.Component {
 				map: this.map,
 			});
 			marker.setMap(map);
-      this.setState({ ["markers"]: [...this.state.markers, e.latLng] });
+      // setState({ ["markers"]: [...this.state.markers, e.latLng] });
     };
     
-    debugger 
+    
     // this.eventListeners(map);
-    map.addListener("click", () =>
-    {debugger 
-      addPoint}
-    )
+    map.addListener("click", (e) => {
+      const marker = new google.maps.Marker({
+        position: e.latLng,
+        map: this.map,
+      });
+      // debugger
+      marker.setMap(map);
+      this.setState({ ["markers"]: [...this.state.markers, e.latLng] });
+    })
   }
-
-
 
   // obtains user's current position if allowed
   usersPosition(map) {
@@ -103,60 +106,34 @@ class Map extends React.Component {
     }
   }
   
-  // addPoint(map, poly) {
-  //   return e => {
-  //     debugger
-  //     const marker = new google.maps.Marker({
-  //       position: e.latLng,
-  //       // label: `${path.getLength()}`,
-  //       map: this.map
-  //     })
-  //     marker.setMap(map)
-    
-  //   // Polyline mapping
-  //   // const path = poly.getPath();
-  //   // path.push(e.latLng);
-  //   // console.log(poly.getPath());
+  // Check marker's state and when lenght is > 1, send directionsService.route
+  // 
+  componentDidUpdate() {
+    const { markers } = this.state;
+    let origin = markers[0];
+    let dest = markers[markers.length-1];
+    let wP = markers.slice(1, markers.length - 1).map((val) => ({
+			location: val,
+			stopover: true,
+		}));
 
-    
-  //   this.setState({ ["markers"]: [...this.state.markers, e.latLng]})
-  //   // not sure why its not saving
-  //   }
-  // }
-
-
-
-
-
-	// eventListeners(map) {
-  //   map.addListener("idle", () => {
-  //     const { north, south, east, west } = map.getBounds().toJSON();
-	// 		const bounds = {
-  //       northEast: { lat: north, lng: east },
-	// 			southWest: { lat: south, lng: west },
-  //     };
-  //     console.log(bounds);
-	// 		// this.props.updateFilter("bounds", bounds);
-	// 	});
-	// 	map.addListener("click", (event) => {
-  //     const coords = getCoordsObj(event.latLng);
-  //     console.log(coords)
-  //     this.handleClick(coords, map);
-  //     // this.addMarker(coords, map)
-	// 	});
-  // }
-  
-  // addMarker(location, map) {
-  //   const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  //   let labelIndex = 0;
-
-  //   new google.maps.Marker({
-  //     position: location,
-  //     label: labels[labelIndex++ % labels.length],
-  //     map: map,
-  //   });
-  // }
-
+    if (markers.length > 2) {
+      this.directionsService.route({
+        origin: origin,
+        destination: dest,
+        waypoints: wP,
+        travelMode: google.maps.TravelMode.WALKING,
+      }, (response, status) => {
+        if (status === "OK") {
+          console.log(response)
+          this.directionsRenderer.setDirections(response);
+          debugger
+        } else {
+          console.log("Directions failed")
+        }
+      })
+    }
+  }
     
     // ATTEMPT TO SET MARKERS IN STATE. ERRORS SAY CANNOT FIND MARKERS
     // const oldMarkers = Object.assign({}, this.state.markers)
@@ -172,7 +149,7 @@ class Map extends React.Component {
 
 
 	render() {
-    debugger
+    // debugger
 		return (
 			<div id="map-container" ref={(map) => (this.mapNode = map)}>
 				Map

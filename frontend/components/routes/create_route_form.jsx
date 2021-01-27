@@ -26,7 +26,7 @@ class CreateRouteForm extends React.Component {
   render () {
     return (
 			<div className="create-route-cntr">
-			
+
 				<div className="cr-search-bar">
 					<input
 						id="geocoder-addr"
@@ -37,6 +37,8 @@ class CreateRouteForm extends React.Component {
 					/>
 					<button  id="geocoder-submit">Search</button>
 				</div>
+
+				<br/>
 
 				<div>
 					<h3>Route Details</h3>
@@ -49,9 +51,9 @@ class CreateRouteForm extends React.Component {
 
 					<select>
 						<option>Choose an Activity</option>
-						<option>Walk</option>
-						<option>Run</option>
-						<option>Bike</option>
+						<option value="walk">Walk</option>
+						<option value="run">Run</option>
+						<option value="bike">Bike</option>
 					</select>
 				</div>
 			</div>
