@@ -11,4 +11,9 @@
 #  updated_at  :datetime         not null
 #
 class Goal < ApplicationRecord
+  validates :title, :user_id, :goal_type, :goal_number
+  
+  belongs_to :user,
+    foreign_key: :user_id,
+    class_name: :User
 end

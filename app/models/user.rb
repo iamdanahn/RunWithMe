@@ -25,9 +25,19 @@ class User < ApplicationRecord
   # Route / Friends / Comments / Cheers / Goal
 
   has_many :routes,
-    primary_key: :id,
     foreign_key: :creator_id,
     class_name: :Route
+
+  has_many :friends,
+    foreign_key: :user_id,
+    class_name: :User
+
+  has_many :comments, as :commentable
+  has_many :cheers, as :cheerable
+  has_many :goals,
+    foreign_key: :user_id,
+    class_name: :Goal
+    
 
   # has_one_attached :photo
 

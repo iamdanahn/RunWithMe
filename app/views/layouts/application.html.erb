@@ -16,6 +16,9 @@
 
       //window.googleAPIKey = "<%= Rails.application.credentials.google[:api_key] %>"
     </script>
+    <script defer
+      src="https://maps.googleapis.com/maps/api/js?key=#<%=ENV['MAPS_API_KEY']%>&libraries=places&callback=initMap">
+    </script>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
     </style>

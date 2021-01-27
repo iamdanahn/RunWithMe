@@ -27,9 +27,11 @@ class Map extends React.Component {
     // get default position 
     const mapProps = {
 			zoom: 15,
-			center: new google.maps.LatLng(40.7362891, -73.9937557),
+      center: new google.maps.LatLng(40.7362891, -73.9937557),
+      
 		};
     const map = new google.maps.Map(this.mapNode, mapProps);
+    this.usersPosition(map);
     
     // enables D.Service - initiates direction request with route() method
     // Returns DirectionsResult & DirectionsStatus code
@@ -56,28 +58,27 @@ class Map extends React.Component {
       this.geocodeAddr(geocoder, map);
     })
 
-    this.usersPosition(map);
     // this.eventListeners(map);
     map.addListener("click", this.addPoint(map, poly))
   }
   
   addPoint(map, poly) {
     return e => {
+      const marker = new google.maps.Marker({
+        position: e.latLng,
+        label: `${path.getLength()}`,
+        map: this.map
+      })
+      marker.setMap(map)
     
     // Polyline mapping
-    const path = poly.getPath();
-    path.push(e.latLng);
-    console.log(poly.getPath());
+    // const path = poly.getPath();
+    // path.push(e.latLng);
+    // console.log(poly.getPath());
 
-    const marker = new google.maps.Marker({
-      position: e.latLng,
-      label: `${path.getLength()}`,
-      map: this.map
-    })
-    marker.setMap(map)
     
     // this.setState({ [markers]: [...markers, e.latLng]})
-    
+    // not sure why its not saving
     }
   }
 

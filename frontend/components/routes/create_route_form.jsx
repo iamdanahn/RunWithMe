@@ -25,7 +25,8 @@ class CreateRouteForm extends React.Component {
 
   render () {
     return (
-			<div className="create-route">
+			<div className="create-route-cntr">
+			
 				<div className="cr-search-bar">
 					<input
 						id="geocoder-addr"
