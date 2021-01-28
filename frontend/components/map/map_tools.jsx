@@ -13,24 +13,24 @@ class MapTools extends React.Component {
 
   render() {
     const { distance, undo, clear, center, reverse, returnHome } = this.props
-    const miles = (distance * 0.000621371).toFixed(2);
+    // const miles = (distance * 0.000621371).toFixed(2);
 
     return (
 			<div className="map-toolbar-cntr">
 				<div className="tb-1">
 					<label> Distance
-						<h2>{miles} MI</h2>
+						<h2>{distance}</h2>
 					</label>
 				</div>
 				<div className="tb-2">
 					<div>
-            <button className="tb-row 1">Undo</button>
-            <button className="tb-row 1">Clear</button>
-            <button className="tb-row 1">Center</button>
+            <button className="tb-row 1" onClick={undo}>Undo</button>
+            <button className="tb-row 1" onClick={clear}>Clear</button>
+            <button className="tb-row 1" onClick={center}>Center</button>
           </div>
 					<div>
-            <button className="tb-row 2">Reverse</button>
-            <button className="tb-row 2">Return</button>
+            <button className="tb-row 2" onClick={reverse}>Reverse</button>
+            <button className="tb-row 2" onClick={returnHome}>Return</button>
           </div>
 				</div>
 			</div>
