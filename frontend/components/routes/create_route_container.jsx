@@ -13,7 +13,7 @@ const msp = (state, ownProps) => {
       activity: "",
       location: "",
       distance: 0,
-      markers: ""
+      markers: []
     },
     formType: "Create"
   })

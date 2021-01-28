@@ -96,7 +96,7 @@ class Map extends React.Component {
 					origin: origin,
 					destination: dest,
 					waypoints: wP,
-					travelMode: google.maps.TravelMode.WALKING,
+					travelMode: google.maps.TravelMode.DRIVING,
 				},
 				(response, status) => {
 					if (status === "OK") {
