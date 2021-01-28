@@ -47,7 +47,7 @@ class Map extends React.Component {
 				? this.state.markers[0]
 				: new google.maps.LatLng(40.7362891, -73.9937557);
 		this.mapProps = {
-			zoom: 15,
+			zoom: 14,
 			center: this.center,
 			clickableIcons: false,
 		};
@@ -64,8 +64,8 @@ class Map extends React.Component {
 		this.directionsRenderer.setOptions({
 			map: this.map,
 			draggable: true,
-			preserveViewport: true
-		})
+			preserveViewport: true,
+		}) 
 
 		//TEST
 		// const wP = this.wayPoints
@@ -110,6 +110,7 @@ class Map extends React.Component {
 	}
 
 	renderMarkers() {
+
 		const { markers } = this.state;
 		const origin = markers[0];
 		let dest = markers[markers.length - 1];
@@ -201,11 +202,21 @@ class Map extends React.Component {
 	}
 
 	clearMarks() {
-		this.wayPoints = [];
-		debugger
-		
-		this.setMap(null) // setMap(null) removes directions from map
-		this.renderMarkers();
+		// https://developers.google.com/maps/documentation/javascript/examples/marker-remove
+		// 1. iterate thru array of markers
+		// 2. set marker's map to null
+		// 3. set Marker Object to [], removes all markers in its array
+		if (this.wayPoints.length > 0) {
+			this.wayPoints = [];
+			debugger
+			
+			
+			this.setState({["distance"]: "0 MI"})
+			this.setState({["markers"]: []})
+			this.directionsRenderer.setDirections({routes:[]}) // setMap(null) removes directions from map
+			// this.directionsRenderer.setMap(null) // setMap(null) removes directions from map
+			this.renderMarkers();
+		}
 	}
 
 	centerMap() {
@@ -214,8 +225,10 @@ class Map extends React.Component {
 		// this.map.panToBounds( <need bounds> )
 	}
 	reverseMarks() {
-		this.wayPoints.reverse();
-		this.renderMarkers();
+		if (this.wayPoints.length > 1) {
+			this.wayPoints.reverse();
+			this.renderMarkers();
+		}
 	}
 
 	returnHome() {

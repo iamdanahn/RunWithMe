@@ -12,7 +12,7 @@ const msp = (state, ownProps) => {
       creator_id: session.id,
       activity: "",
       location: "",
-      distance: 0,
+      distance: "0 MI",
       markers: []
     },
     formType: "Create"
