@@ -67,7 +67,7 @@ class Map extends React.Component {
 			// 	map: this.map,
 			// });
       // marker.setMap(this.map);
-      this.wayPoints.push({lat: e.latLng.lat(), lng: e.latLng.lng()})
+      // this.wayPoints.push({lat: e.latLng.lat(), lng: e.latLng.lng()}) 
       this.setState({ ["markers"]: [...this.state.markers, e.latLng] });
       debugger
 			this.renderMarkers();
@@ -110,7 +110,7 @@ class Map extends React.Component {
 					if (status === "OK") {
 						debugger
 						const rtDistance =
-							response.routes[0].legs[markers.length - 2].distance.value;
+							response.routes[0].legs[0].distance.value;
 						this.addDistance(rtDistance);
 						console.log(this.state.distance);
             debugger
@@ -128,10 +128,12 @@ class Map extends React.Component {
 		this.setState({ distance: newDistance });
 	}
 
-	// console.log(response.routes[0].legs[markers.length-2])
-	// gets details of previous marker to marker just clicked
-	// console.log(response.routes[0].legs[markers.length-2].distance.value);
-	// gets distance from previous marker to marker just clicked
+	// BELOW ONLY APPLIES IF WAYPOINTS STOPOVER ARE SET TO TRUE
+		// console.log(response.routes[0].legs[markers.length-2])
+		// gets details of previous marker to marker just clicked
+		// console.log(response.routes[0].legs[markers.length-2].distance.value);
+		// gets distance from previous marker to marker just clicked
+	// NO NEED TO CHECK MARKERS LENGTH IF STOPOVER = FALSE. 
 
 	// markers[0].lat()
 	// 40.739394483605125
