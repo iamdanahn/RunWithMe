@@ -108,10 +108,7 @@ class Map extends React.Component {
 				},
 				(response, status) => {
 					if (status === "OK") {
-						debugger
-						const rtDistance =
-							response.routes[0].legs[0].distance.value;
-						this.addDistance(rtDistance);
+						this.updateDistance(response)
 						console.log(this.state.distance);
             debugger
 						this.directionsRenderer.setDirections(response);
@@ -122,10 +119,10 @@ class Map extends React.Component {
 			);
 		}
 	}
-	addDistance(routeDist) {
-		const oldDistance = this.state.distance;
-		const newDistance = oldDistance + routeDist;
-		this.setState({ distance: newDistance });
+
+	updateDistance(response) {
+		const distance = response.routes[0].legs[0].distance.text
+		this.setState({ distance: distance });
 	}
 
 	// BELOW ONLY APPLIES IF WAYPOINTS STOPOVER ARE SET TO TRUE
@@ -150,6 +147,14 @@ class Map extends React.Component {
 	undoMark() {
 		if (this.markers.length > 0) {
 			this.wayPoints.pop();
+			const oldMarks = Object.assign({}, this.state.markers)
+			oldMarks.pop();
+			const newMarks = oldMarks;
+			this.setState({ ["markers"]: newMarks })
+			
+			// const 
+			// this.setState({ ["distance"]: newDistance })
+			
 			this.renderMarkers();
 		}
 	}
