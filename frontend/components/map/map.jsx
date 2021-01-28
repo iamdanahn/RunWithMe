@@ -26,6 +26,7 @@ class Map extends React.Component {
 		// this.addPoint = this.addPoint.bind(this);
 		// this.geocoderAddr = this.geocoderAddr.bind(this);
 		this.renderMarkers = this.renderMarkers.bind(this);
+		this.searchAddress = this.searchAddress.bind(this);
 
 		this.undoMark = this.undoMark.bind(this);
 		this.clearMarks = this.clearMarks.bind(this);
@@ -150,18 +151,16 @@ class Map extends React.Component {
 		// }
 	}
 
-	searchAddress() {
+	searchAddress(address) {
+		//https://developers.google.com/maps/documentation/javascript/geocoding#GeocodingResults
+		// GEOCODING converts address <=> coordinates. Usefulf to palc emarkers or position map
 		const geocoder = new google.maps.Geocoder();
-		const address = document.getElementById("geocoder-addr").value;
-		geocoder.geocode(
-			{ 'address': address }, 
-			(res, status) => {
-				if (status === "OK") {
-					this.map.setCenter(results[0].geometry.location)
-				}
+		
+		geocoder.geocode({ address: address }, (res, status) => {
+			if (status === "OK") {
+				this.map.setCenter(res[0].geometry.location);
 			}
-
-		)
+		});
 	}
 
 
@@ -249,6 +248,7 @@ class Map extends React.Component {
 						distance={distance}
 						markers={markers}
 						formType={formType}
+						searchAddy={this.searchAddress}
 					/>
 				</div>
 

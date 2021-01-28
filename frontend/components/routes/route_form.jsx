@@ -3,7 +3,11 @@ import React from 'react';
 class RouteForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = this.props.route
+		this.state = {
+			route: props.route,
+			address: ""
+		}
+		
 
     // this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -21,21 +25,24 @@ class RouteForm extends React.Component {
   // }
 
   render () {
-		const { formType } = this.props;
-		
+		const { formType, searchAddy } = this.props;
+		const address = this.state.address
+
     return (
 			<div className="create-route-cntr">
 				<div className="cr-form">
-					<div className="cr-search-bar">
+					<form className="cr-search-bar" onSubmit={() => searchAddy(address)}>
 						<input
 							id="geocoder-addr"
 							type="text"
 							placeholder="Enter location"
-							// value={this.state.search}
-							// onChange={this.update("search")}
+							value={this.state.address}
+							onChange={this.update("address")}
 						/>
-						<button id="geocoder-submit">Search</button>
-					</div>
+						<button id="geocoder-submit" > {/* onClick={() => searchAddy(address)}> */}
+							Search
+						</button>
+					</form>
 
 					<br />
 
@@ -56,8 +63,6 @@ class RouteForm extends React.Component {
 						</select>
 					</div>
 				</div>
-				
-
 			</div>
 		);
   }
