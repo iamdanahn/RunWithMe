@@ -17,7 +17,9 @@ class Map extends React.Component {
       this.wayPoints = JSON.parse(this.state.markers);
     } else {
       this.wayPoints = this.state.markers;
-    }
+		}
+		
+		debugger
 
 		this.initMap = this.initMap.bind(this);
 		// this.addPoint = this.addPoint.bind(this);
@@ -106,6 +108,7 @@ class Map extends React.Component {
 				},
 				(response, status) => {
 					if (status === "OK") {
+						debugger
 						const rtDistance =
 							response.routes[0].legs[markers.length - 2].distance.value;
 						this.addDistance(rtDistance);
