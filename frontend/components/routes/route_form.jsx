@@ -9,7 +9,7 @@ class RouteForm extends React.Component {
 		}
 		
 
-    // this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   update(field) {
@@ -18,11 +18,10 @@ class RouteForm extends React.Component {
     }
   }
 
-
-  // handleSubmit(e){
-  //   e.preventDefault();
-
-  // }
+  handleSubmit(e){
+    e.preventDefault();
+		
+  }
 
   render () {
 		const { formType, searchAddy } = this.props;
@@ -31,6 +30,7 @@ class RouteForm extends React.Component {
     return (
 			<div className="create-route-cntr">
 				<div className="cr-form">
+					<h4>Choose map location</h4>
 					<form className="cr-search-bar" onSubmit={() => searchAddy(address)}>
 						<input
 							id="geocoder-addr"
@@ -39,29 +39,42 @@ class RouteForm extends React.Component {
 							value={this.state.address}
 							onChange={this.update("address")}
 						/>
-						<button id="geocoder-submit" > {/* onClick={() => searchAddy(address)}> */}
+						<button id="geocoder-submit">
+							{" "}
+							{/* onClick={() => searchAddy(address)}> */}
 							Search
 						</button>
 					</form>
 
 					<br />
 
-					<div>
-						<h3>{formType} Route Details</h3>
-						<input
-							type="text"
-							// value={this.state.route_title}
-							// onChange={this.update("route_title")}
-							placeholder="Route title"
-						/>
+					<form >
+						<div>
+							<h3>{formType} Route Details</h3>
+							<input
+								type="text"
+								// value={this.state.route_title}
+								// onChange={this.update("route_title")}
+								placeholder="Route title"
+							/>
+							<span>*</span>
+						</div>
 
-						<select>
-							<option>Choose an Activity</option>
-							<option value="walk">Walk</option>
-							<option value="run">Run</option>
-							<option value="bike">Bike</option>
-						</select>
-					</div>
+						<div>
+							<select>
+								<option>Choose an Activity</option>
+								<option value="walk">Walk</option>
+								<option value="run">Run</option>
+								<option value="bike">Bike</option>
+							</select>
+							<span>*</span>
+						</div>
+						<div>
+							<button >Save Route</button>
+						</div>
+					</form>
+
+
 				</div>
 			</div>
 		);

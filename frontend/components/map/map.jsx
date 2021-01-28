@@ -19,7 +19,6 @@ class Map extends React.Component {
 			// this.wayPoints = this.state.markers;
 			this.wayPoints = [];
 		}
-		this.wP2 = []
 		debugger
 
 		this.initMap = this.initMap.bind(this);
@@ -139,11 +138,8 @@ class Map extends React.Component {
 						console.log(response);
 						debugger;
 
-
-
-
-
 						this.directionsRenderer.setDirections(response);
+						// renders directions that are inside the response
 					} else {
 						console.log("Directions failed");
 					}
@@ -163,8 +159,6 @@ class Map extends React.Component {
 			}
 		});
 	}
-
-
 
 
 	// BELOW ONLY APPLIES IF WAYPOINTS STOPOVER ARE SET TO TRUE
@@ -223,6 +217,8 @@ class Map extends React.Component {
 		// this.map.panTo(this.center);
 		// https://developers.google.com/maps/documentation/javascript/reference/map#Map.panToBounds
 		// this.map.panToBounds( <need bounds> )
+		// bounds available in response.routes[0].bounds
+		this.map.panToBounds()
 	}
 	reverseMarks() {
 		if (this.wayPoints.length > 1) {
@@ -247,13 +243,14 @@ class Map extends React.Component {
 			distance,
 			markers,
 		} = this.state;
-		const { route, formType } = this.props;
+		const { action, route, formType } = this.props;
 		debugger;
 
 		return (
 			<div className="user-panel">
 				<div className="left-half">
 					<RouteForm
+						action={action}
 						route_title={route_title}
 						creator_id={creator_id}
 						activity={activity}
