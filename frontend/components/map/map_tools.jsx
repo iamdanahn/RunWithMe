@@ -16,18 +16,25 @@ class MapTools extends React.Component {
     const miles = (distance * 0.000621371).toFixed(2);
 
     return (
-      <div className="map-toolbar-cntr">
-        <div className="tb-1">
-          <div>
-            {miles} MI
+			<div className="map-toolbar-cntr">
+				<div className="tb-1">
+					<label> Distance
+						<h2>{miles} MI</h2>
+					</label>
+				</div>
+				<div className="tb-2">
+					<div>
+            <button className="tb-row 1">Undo</button>
+            <button className="tb-row 1">Clear</button>
+            <button className="tb-row 1">Center</button>
           </div>
-        </div>
-        <div className="tb-2">
-          
-          <button></button>
-        </div>
-      </div>
-    )
+					<div>
+            <button className="tb-row 2">Reverse</button>
+            <button className="tb-row 2">Return</button>
+          </div>
+				</div>
+			</div>
+		);
   }
 
 }

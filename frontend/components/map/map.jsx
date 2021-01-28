@@ -12,7 +12,12 @@ class Map extends React.Component {
 		super(props);
 		this.state = this.props.route;
 		// debugger
-		this.wayPoints = this.state.markers;
+    
+    if (this.state.markers.length > 0) {
+      this.wayPoints = JSON.parse(this.state.markers);
+    } else {
+      this.wayPoints = this.state.markers;
+    }
 
 		this.initMap = this.initMap.bind(this);
 		// this.addPoint = this.addPoint.bind(this);
@@ -55,12 +60,12 @@ class Map extends React.Component {
 
 		// this.eventListeners(map);
 		this.map.addListener("click", (e) => {
-			const marker = new google.maps.Marker({
-				position: e.latLng,
-				map: this.map,
-			});
+			// const marker = new google.maps.Marker({
+			// 	position: e.latLng,
+			// 	map: this.map,
+			// });
       // marker.setMap(this.map);
-      // this.wayPoints.push(e.latLng)
+      this.wayPoints.push({lat: e.latLng.lat(), lng: e.latLng.lng()})
       this.setState({ ["markers"]: [...this.state.markers, e.latLng] });
       debugger
 			this.renderMarkers();
@@ -87,8 +92,9 @@ class Map extends React.Component {
 		let dest = markers[markers.length - 1];
 		let wP = markers.slice(1, markers.length - 1).map((val) => ({
 			location: val,
-			stopover: true,
-		}));
+			stopover: false,
+    }));
+    debugger
 
 		if (markers.length > 1) {
 			this.directionsService.route(
@@ -104,7 +110,7 @@ class Map extends React.Component {
 							response.routes[0].legs[markers.length - 2].distance.value;
 						this.addDistance(rtDistance);
 						console.log(this.state.distance);
-
+            debugger
 						this.directionsRenderer.setDirections(response);
 					} else {
 						console.log("Directions failed");
@@ -165,7 +171,6 @@ class Map extends React.Component {
 
 	render() {
 		const {
-			route,
 			route_title,
 			creator_id,
 			activity,
@@ -173,7 +178,7 @@ class Map extends React.Component {
 			distance,
 			markers,
 		} = this.state;
-		const { formType } = this.props;
+		const { route, formType } = this.props;
 		debugger;
 
 		return (

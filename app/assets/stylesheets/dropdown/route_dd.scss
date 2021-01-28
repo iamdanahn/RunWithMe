@@ -1,0 +1,16 @@
+.rdd {
+  position: relative;
+  display: inline-block;
+
+  .item {
+    display: none;
+    position: absolute;
+    background-color: white;
+    z-index: 1;
+  }
+
+  .rdd:hover .item{
+    display: block
+  }
+}
+
