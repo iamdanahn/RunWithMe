@@ -13,7 +13,7 @@
 class Goal < ApplicationRecord
   validates :title, :user_id, :goal_type, :goal_number, presence: true
   
-  has_many :cheerable, as: :cheerable
+  has_many :cheers, as: :cheerable
 
   belongs_to :user,
     foreign_key: :user_id,

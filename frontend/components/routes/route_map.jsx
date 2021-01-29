@@ -7,13 +7,13 @@ import Map from '../map/map';
 class RouteMap extends React.Component {
 	
 	render() {
-		const { route, route_title, creator_id, activity, location, distance, markers} = this.props;
+		const { route, name, creator_id, activity, location, distance, markers} = this.props;
 		
 		return (
 			<section className="user-panel">
 				<div className="left-half">
 					<RouteForm
-						route_title={route_title}
+						name={name}
 						creator_id={creator_id}
 						activity={activity}
 						location={location}
@@ -24,7 +24,7 @@ class RouteMap extends React.Component {
 				<div className="right-half">
 					<Route
 						component={Map}
-						route_title={route_title}
+						name={name}
 						creator_id={creator_id}
 						activity={activity}
 						location={location}

@@ -4,28 +4,52 @@ class RouteForm extends React.Component {
   constructor(props) {
     super(props)
 		this.state = {
-			route: props.route,
-			address: ""
+			route: this.props.route,
+			address: "",
+			name: "",
+			activity: props.activity
 		}
-		
-
-    this.handleSubmit = this.handleSubmit.bind(this);
+		debugger
+	
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.formattedState = this.formattedState.bind(this);
   }
 
   update(field) {
     return e => {
     this.setState({ [field]: e.currentTarget.value})
     }
-  }
+	}
+	
+	formattedState() {
+		debugger
+		const { creator_id, location, distance, markers} = this.state.route;
+		const { name, activity } = this.state;
+		const strMarkers = JSON.stringify(markers)
+
+		return {
+			name,
+			creator_id,
+			activity,
+			location,
+			distance,
+			markers: strMarkers
+		};
+	}
 
   handleSubmit(e){
-    e.preventDefault();
-		
+		const { action } = this.props;
+		e.preventDefault();
+		action(this.formattedState).then( (route) => {
+			this.props.history.push(`/routes/${route.id}`)
+		})
   }
 
   render () {
 		const { formType, searchAddy } = this.props;
-		const address = this.state.address
+		const { address, activity } = this.state
+
+		debugger 
 
     return (
 			<div className="create-route-cntr">
@@ -48,20 +72,20 @@ class RouteForm extends React.Component {
 
 					<br />
 
-					<form >
+					<form onSubmit={this.handleSubmit}>
 						<div>
 							<h3>{formType} Route Details</h3>
 							<input
 								type="text"
-								// value={this.state.route_title}
-								// onChange={this.update("route_title")}
+								value={this.state.name}
+								onChange={this.update("name")}
 								placeholder="Route title"
 							/>
 							<span>*</span>
 						</div>
 
 						<div>
-							<select>
+							<select defaultValue={activity}>
 								<option>Choose an Activity</option>
 								<option value="walk">Walk</option>
 								<option value="run">Run</option>

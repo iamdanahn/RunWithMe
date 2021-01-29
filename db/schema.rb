@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2021_01_21_004812) do
     t.integer "creator_id", null: false
     t.string "activity", null: false
     t.string "location", null: false
-    t.integer "distance", null: false
+    t.string "distance", null: false
     t.string "markers", null: false
     t.text "description"
     t.datetime "created_at", null: false

@@ -6,17 +6,17 @@ import Map from '../map/map'
 const msp = (state, ownProps) => {
   const { entities, session, errors } = state;
   debugger
-  return ({
-    route: {
-      route_title: "",
-      creator_id: session.id,
-      activity: "",
-      location: "",
-      distance: "0 MI",
-      markers: []
-    },
-    formType: "Create"
-  })
+  return {
+		route: {
+			name: "",
+			creator_id: session.id,
+			activity: "",
+			location: "",
+			distance: "0 MI",
+			markers: [],
+		},
+		formType: "Create",
+	};
 };
 
 const mdp = (dispatch) => {

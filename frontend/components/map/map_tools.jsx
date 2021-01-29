@@ -25,8 +25,8 @@ class MapTools extends React.Component {
 				<div className="tb-2">
 					<div>
             <button className="tb-row 1" onClick={undo}>Undo</button>
-            <button className="tb-row 1" onClick={clear}>Clear</button>
-            <button className="tb-row 1" onClick={center}>Center</button>
+            {/* <button className="tb-row 1" onClick={clear}>Clear</button>
+            <button className="tb-row 1" onClick={center}>Center</button> */}
           </div>
 					<div>
             <button className="tb-row 2" onClick={reverse}>Reverse</button>

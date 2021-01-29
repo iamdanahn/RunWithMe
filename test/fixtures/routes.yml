@@ -3,7 +3,7 @@
 # Table name: routes
 #
 #  id            :bigint           not null, primary key
-#  route_title   :string           not null
+#  name          :string           not null
 #  creator_id    :integer          not null
 #  activity      :string           not null
 #  location      :string           not null

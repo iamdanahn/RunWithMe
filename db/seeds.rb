@@ -49,7 +49,7 @@ route1 = Route.create!(
   creator_id: 1,
   activity: 'cycling',
   location: 'New York City',
-  distance: 50,
+  distance: "50 MI",
   markers: "[{'lat':40.7128, 'lng':74.0060}, {'lat':40.8249, 'lng':74.2109}]",
   description: "This is madness!"
   )
@@ -60,7 +60,7 @@ route2 = Route.create!(
   creator_id: 3,
   activity: 'running',
   location: "Catskills, NY",
-  distance: 15,
+  distance: "15 MI",
   markers: "[{'lat':42.0093, 'lng':74.3821}, {'lat':42.8249,'lng':74.2109}]",
   description: "Nothing like fresh air"
   )
@@ -71,7 +71,7 @@ route3 = Route.create!(
   creator_id: 2,
   activity: 'walking',
   location: "Miami, FL",
-  distance: 20,
+  distance: "20 MI",
   markers: "[{'lat':25.7617, 'lng':80.1918}, {'lat':25.8249, 'lng':80.2109}]",
   description: "Soaking in the sun"
 )
@@ -132,13 +132,6 @@ comments2 = Comment.create!(
   user_id: user2.id
 )
 
-cheers1 = Cheer.create!(
-  id: 1,
-  cheerable_id: 1,
-  cheerable_type: "Goal",
-  user_id: 1
-) 
-
 goals1 = Goal.create!(
   id: 1,  
   title: "1st 5k",
@@ -146,3 +139,10 @@ goals1 = Goal.create!(
   goal_type: "Distance",
   goal_number: 5
 )
+  
+cheers1 = Cheer.create!(
+  id: 1,
+  cheerable_id: goals1.id,
+  cheerable_type: "Goal",
+  user_id: 1
+) 

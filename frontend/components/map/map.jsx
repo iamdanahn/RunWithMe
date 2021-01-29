@@ -154,8 +154,10 @@ class Map extends React.Component {
 		const geocoder = new google.maps.Geocoder();
 		
 		geocoder.geocode({ address: address }, (res, status) => {
+			const locationName = res[0]
 			if (status === "OK") {
 				this.map.setCenter(res[0].geometry.location);
+				this.setState({["location"]: res[0]})
 			}
 		});
 	}
@@ -236,7 +238,7 @@ class Map extends React.Component {
 
 	render() {
 		const {
-			route_title,
+			name,
 			creator_id,
 			activity,
 			location,
@@ -251,13 +253,13 @@ class Map extends React.Component {
 				<div className="left-half">
 					<RouteForm
 						action={action}
-						route_title={route_title}
-						creator_id={creator_id}
 						activity={activity}
-						location={location}
+						creator_id={creator_id}
 						distance={distance}
-						markers={markers}
 						formType={formType}
+						location={location}
+						markers={markers}
+						name={name}
 						searchAddy={this.searchAddress}
 					/>
 				</div>

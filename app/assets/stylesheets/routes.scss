@@ -154,7 +154,7 @@
 
   select {
     padding-right: 35px;
-    appearance: none;
+    // appearance: none;
     cursor: pointer;
     color: #9297A3;
     padding: 12px 35px 12px 16px;
@@ -208,6 +208,9 @@
   display: flex;
   flex-direction: column;
   text-decoration: none;
+  a:hover {
+    cursor: pointer;
+  }
 }
 
 a {
