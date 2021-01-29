@@ -1,24 +1,52 @@
-# README
+# RunWithMe
+## [Live app!](https://runwithme-aa.herokuapp.com/)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Overview
+A MapMyRun clone allowing a user to track and share workouts, goals, and running/biking routes with friends
 
-Things you may want to cover:
+## Features
+* User Authentication (Login/Logout, Signup)
+* Create & edit a route for your workouts
+* Search & add friends to check each others progress
+* Comment on runs or routes
+* Track your workouts
 
-* Ruby version
+## Technologies used
+* Backend
+  * Ruby on Rails
+* Database
+  * PostgreSQL
+* Frontend
+  * React
+  * Redux
+  * Google Maps APIs
 
-* System dependencies
+## User Authentication
+- Users can signup or demo login to browse the website
+- BCrypt on the backend to store encrypted passwords, never users actual passwords!
+![Login]()
+![SignUp]()
 
-* Configuration
+## Create/Edit a route
+- Used several Google Maps APIs (Autocomplete (PENDING), Directions, Geocoding, Maps JS) to create a seamless map environment
 
-* Database creation
+- Google Maps JS API
+  - Allows rendering of a Google map to view the world
 
-* Database initialization
+- Directions API
+  - Calculates directions and distance between map locations
 
-* How to run the test suite
+- Geocoding API
+  - Converts address' into latitude/longitude coordinates providing the ability to center a map
 
-* Services (job queues, cache servers, search engines, etc.)
+- Autocomplete API (PENDING)
+  - Autocompletes an address as the user types into the address search bar
 
-* Deployment instructions
+## Search/Add friends
+Coming soon
 
-* ...
+## Comment on runs or routes
+Coming soon
+
+## Track workouts
+Coming soon
