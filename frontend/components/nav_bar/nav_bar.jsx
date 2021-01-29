@@ -5,11 +5,23 @@ import RouteLinks from './dd_route'
 import WorkoutLinks from './dd_workouts';
 
 class NavBar extends React.Component {
-	
-  render() {
-    const { currentUser, logout } = this.props;
+	constructor(props) {
+		super(props);
 
-    return (
+		this.handleClick = this.handleClick.bind(this);
+	}
+
+	handleClick(e) {
+		// debugger;
+		e.preventDefault();
+		this.props.clearErrors([]);
+		this.props.history.push("/login");
+	}
+
+	render() {
+		const { currentUser, logout } = this.props;
+
+		return (
 			<div className="masthead">
 				<div className="masthead logo">
 					<Link to="/">
@@ -41,7 +53,6 @@ class NavBar extends React.Component {
 								{/* https://github.com/friesarecurly/MapMyRun-Clone*/}
 								Github Repo
 							</Link>
-
 						</div>
 					</div>
 
@@ -61,10 +72,39 @@ class NavBar extends React.Component {
 					</div>
 				</div>
 
-				<SessionLinks currentUser={currentUser} logout={logout} />
+				{/* <SessionLinks currentUser={currentUser} logout={logout} clearErrors={clearErrors} history={history}/> */}
+
+				{currentUser ? (
+					<div className="masthead auth">
+						<div className="dropdown">
+							<button className="navbtn" to="/account/my_profile">
+								Welcome {currentUser.first_name}!
+							</button>
+							<div className="dropdown-content">
+								<Link to="">Profile and Settings</Link>
+								<Link to="">Connected Apps</Link>
+								<Link to="">Support</Link>
+								<Link onClick={logout} to="/">
+									Logout
+								</Link>
+							</div>
+						</div>
+					</div>
+				) : (
+					<div className="masthead login-signup">
+						<a>
+							<button className="button-login" onClick={this.handleClick}>
+								Log in
+							</button>
+						</a>
+						<Link to="/signup">
+							<button className="button-signup">Sign up</button>
+						</Link>
+					</div>
+				)}
 			</div>
 		);
-  }
+	}
 }
 
 export default NavBar;

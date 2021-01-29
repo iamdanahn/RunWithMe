@@ -2,11 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 class SessionLinks extends React.Component {
-  
-  render() {
-    const { currentUser, logout } = this.props
+	constructor(props) {
+		super(props)
 
-    return currentUser ? (
+		this.handleClick = this.handleClick.bind(this);
+	}
+	
+	handleClick() {
+		this.props.clearErrors();
+		this.props.history.push("/login")
+	}
+
+	render() {
+		const { currentUser, logout } = this.props;
+
+		return currentUser ? (
 			<div className="masthead auth">
 				<div className="dropdown">
 					<button className="navbtn" to="/account/my_profile">
@@ -16,25 +26,27 @@ class SessionLinks extends React.Component {
 						<Link to="">Profile and Settings</Link>
 						<Link to="">Connected Apps</Link>
 						<Link to="">Support</Link>
-						<Link onClick={logout} to="/">Logout</Link>
+						<Link onClick={logout} to="/">
+							Logout
+						</Link>
 					</div>
 				</div>
 			</div>
 		) : (
 			<div className="masthead login-signup">
-				<Link to="/login">
-					<button className="button-login" onClick={this.handleLogin}>
+				<Link>
+					<button className="button-login" onClick={this.handleClick}>
 						Log in
 					</button>
 				</Link>
 				<Link to="/signup">
-					<button className="button-signup" onClick={this.handleSignup}>
+					<button className="button-signup">
 						Sign up
 					</button>
 				</Link>
 			</div>
 		);
-  }
+	}
 }
 
 export default SessionLinks;

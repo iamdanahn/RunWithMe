@@ -44,7 +44,7 @@ class Login extends React.Component {
 
 
 	render() {
-		 // debugger
+		 debugger
 		const {errors} = this.props;
 		const errPresent = errors.length > 0;
 
@@ -77,7 +77,9 @@ class Login extends React.Component {
 							placeholder="Email"
 						/>
 					</div>
+
 					<br />
+
 					<div>
 						<input
 							className={errPresent ? "input err-border" : "input login"}
@@ -89,12 +91,15 @@ class Login extends React.Component {
 						<div></div>
 					</div>
 					<br />
+
 					<div className="auth-form errors"> {errors} </div>
 
 					<br />
+
 					<button className="auth-form btn" onClick={this.handleSubmit}>
 						LOGIN
 					</button>
+
 				</form>
 			</section>
 		);
