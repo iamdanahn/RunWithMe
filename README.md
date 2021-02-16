@@ -1,5 +1,6 @@
 # RunWithMe
 ## [Live app!](https://runwithme-aa.herokuapp.com/)
+![Run With Me gif](https://raw.githubusercontent.com/iamdanahn/RunWithMe/main/app/assets/images/RunWithMe.gif)
 
 ## Overview
 A MapMyRun clone allowing a user to track and share workouts, goals, and running/biking routes with friends
