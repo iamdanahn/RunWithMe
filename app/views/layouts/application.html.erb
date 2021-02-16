@@ -8,6 +8,17 @@
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAPS_API_KEY']}" %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+
+     <meta property="og:title" content="Run With Me" />
+     <meta property='og:image' content="<%= image_url('RunWithMe2.png') %>"/>
+     <meta property="og:description"
+       content="An online app where users can track and save their running routes using Google Maps."
+     />
+     <meta property="og:url"
+       content="https://runwithme-aa.herokuapp.com/#/"
+     />
+
+
     <script type="text/javascript">
       window.logoURL = "<%= image_url('FSP-logo.png') %>";
       window.splash1a = "<%= image_url('Splash1-v2.jpg') %>";
