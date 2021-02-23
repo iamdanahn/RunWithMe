@@ -20,6 +20,7 @@ const msp = (state, ownProps) => {
 };
 
 const mdp = (dispatch) => {
+	debugger
   return ({
     action: (route) => dispatch(createRoute(route))
   })

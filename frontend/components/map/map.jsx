@@ -9,43 +9,39 @@ const getCoordsObj = (latLng) => ({
 
 class Map extends React.Component {
 	constructor(props) {
-		super(props);
-		this.state = this.props.route;
-		// debugger
-    
+    super(props)
+    this.state = this.props.route
+    // debugger
+
     if (this.state.markers.length > 0) {
-      this.wayPoints = JSON.parse(this.state.markers);
+      this.wayPoints = JSON.parse(this.state.markers)
     } else {
-			// this.wayPoints = this.state.markers;
-			this.wayPoints = [];
-		}
-		debugger
+      // this.wayPoints = this.state.markers;
+      this.wayPoints = []
+    }
+    debugger
 
-		this.initMap = this.initMap.bind(this);
-		// this.addPoint = this.addPoint.bind(this);
-		// this.geocoderAddr = this.geocoderAddr.bind(this);
-		this.renderMarkers = this.renderMarkers.bind(this);
-		this.searchAddress = this.searchAddress.bind(this);
+    this.initMap = this.initMap.bind(this)
+    // this.addPoint = this.addPoint.bind(this);
+    // this.geocoderAddr = this.geocoderAddr.bind(this);
+    this.renderMarkers = this.renderMarkers.bind(this)
+    this.searchAddress = this.searchAddress.bind(this)
 
-		this.undoMark = this.undoMark.bind(this);
-		this.clearMarks = this.clearMarks.bind(this);
-		this.centerMap = this.centerMap.bind(this);
-		this.reverseMarks = this.reverseMarks.bind(this);
-		this.returnHome = this.returnHome.bind(this);
+    this.undoMark = this.undoMark.bind(this)
+    this.clearMarks = this.clearMarks.bind(this)
+    this.centerMap = this.centerMap.bind(this)
+    this.reverseMarks = this.reverseMarks.bind(this)
+    this.returnHome = this.returnHome.bind(this)
+    this.initMap = this.initMap.bind(this)
 
-		// enables D.Service - initiates direction request with route() method
-		// Returns DirectionsResult & DirectionsStatus code
-		this.directionsService = new google.maps.DirectionsService()
-	
-		// enables D.Renderer - displays DirectionResults
-		// https://developers.google.com/maps/documentation/javascript/reference/directions
-		this.directionsRenderer = new google.maps.DirectionsRenderer()
-		this.directionsRenderer.setOptions({
-			map: this.map,
-			draggable: true,
-			preserveViewport: true,
-		})
-	}
+    // enables D.Service - initiates direction request with route() method
+    // Returns DirectionsResult & DirectionsStatus code
+    this.directionsService = new google.maps.DirectionsService()
+
+    // enables D.Renderer - displays DirectionResults
+    // https://developers.google.com/maps/documentation/javascript/reference/directions
+    this.directionsRenderer = new google.maps.DirectionsRenderer()
+  }
 
 	componentDidMount() {
 		this.initMap();
@@ -62,11 +58,17 @@ class Map extends React.Component {
       zoom: 14,
       center: this.center,
       clickableIcons: false,
+      draggableCursor: "crosshair",
     }
 		
 		// mapNode == ref to <div map>
     this.map = new google.maps.Map(this.mapNode, this.mapProps)
     this.usersPosition()
+		this.directionsRenderer.setOptions({
+      map: this.map,
+      draggable: true,
+      preserveViewport: true,
+    })
 
     this.map.addListener("click", (e) => {
       // const marker = new google.maps.Marker({
@@ -108,7 +110,7 @@ class Map extends React.Component {
 
 		const { markers } = this.state; // if a saved route, will fetch those and render onto map
 		const origin = markers[0];
-		let dest = markers[markers.length - 1];
+		let dest = markers.length === 1 ? markers[0] : markers[markers.length - 1]
 		let wP = markers.slice(1, markers.length - 1).map((val) => ({
 			location: val,
 			stopover: false,
@@ -180,18 +182,18 @@ class Map extends React.Component {
 	// }
 
 	undoMark() {
-		if (this.wayPoints.length > 0) {
-			this.wayPoints.pop();
-			// const oldMarks = Object.assign({}, this.state.markers)
-			// oldMarks.pop();
-			// const newMarks = oldMarks;
-			// this.setState({ ["markers"]: this.wayPoints })
-			
-			// const 
-			// this.setState({ ["distance"]: newDistance })
-			console.log(this.wayPoints);
-			this.renderMarkers();
-		}
+		if (this.wayPoints.length > 1) {
+      this.wayPoints.pop()
+      // const oldMarks = Object.assign({}, this.state.markers)
+      // oldMarks.pop();
+      // const newMarks = oldMarks;
+      // this.setState({ ["markers"]: this.wayPoints })
+
+      // const
+      // this.setState({ ["distance"]: newDistance })
+      console.log(this.wayPoints)
+      this.renderMarkers()
+    }
 	}
 
 	clearMarks() {
@@ -234,48 +236,41 @@ class Map extends React.Component {
 	}
 
 	render() {
-		const {
-			name,
-			creator_id,
-			activity,
-			location,
-			distance,
-			markers,
-		} = this.state;
+		let { name, creator_id, activity, location, distance, markers } = this.state
 		const { action, route, formType } = this.props;
 		debugger;
 
 		return (
-			<div className="user-panel">
-				<div className="left-half">
-					<RouteForm
-						action={action}
-						activity={activity}
-						creator_id={creator_id}
-						distance={distance}
-						formType={formType}
-						location={location}
-						markers={markers}
-						name={name}
-						searchAddy={this.searchAddress}
-					/>
-				</div>
+      <div className="user-panel">
+        <div className="left-half">
+          <RouteForm
+            action={action}
+            activity={activity}
+            creator_id={creator_id}
+            distance={distance}
+            formType={formType}
+            location={location}
+            markers={markers}
+            name={name}
+            searchAddy={this.searchAddress}
+          />
+        </div>
 
-				<div className="map-container" ref={(map) => (this.mapNode = map)}>
-					Map
-				</div>
-				<div>
-					<MapTools
-						distance={this.state.distance}
-						undo={this.undoMark}
-						clear={this.clearMarks}
-						center={this.centerMap}
-						reverse={this.reverseMarks}
-						returnHome={this.returnHome}
-					/>
-				</div>
-			</div>
-		);
+        <div className="map-container" ref={(map) => (this.mapNode = map)}>
+          Map
+        </div>
+        <div>
+          <MapTools
+            distance={distance}
+            undo={this.undoMark}
+            clear={this.clearMarks}
+            center={this.centerMap}
+            reverse={this.reverseMarks}
+            returnHome={this.returnHome}
+          />
+        </div>
+      </div>
+    )
 	}
 }
 

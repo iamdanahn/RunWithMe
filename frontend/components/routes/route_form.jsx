@@ -5,11 +5,13 @@ class RouteForm extends React.Component {
   constructor(props) {
     super(props)
 		this.state = {
-      activity: props.activity,
+      activity: this.props.activity,
       address: "",
       creator_id: this.props.creator_id,
       location: this.props.location,
       name: "",
+			distance: this.props.distance,
+			markers: this.props.markers
     }
 		debugger
 	
@@ -18,7 +20,8 @@ class RouteForm extends React.Component {
   }
 
   update(field) {
-    return e => {
+		console.log(this.state)
+		return e => {
     this.setState({ [field]: e.currentTarget.value})
     }
 	}
@@ -46,9 +49,11 @@ class RouteForm extends React.Component {
 	}
 
   handleSubmit(e){
-		const { action } = this.props;
 		e.preventDefault();
-		action(this.formattedState).then( (route) => {
+		debugger
+		console.log(this.formattedState())
+		
+		this.props.action(this.formattedState()).then( (route) => {
 			this.props.history.push(`/routes/${route.id}`)
 		})
   }
@@ -92,7 +97,7 @@ class RouteForm extends React.Component {
             </div>
 
             <div>
-              <select defaultValue={activity}>
+              <select defaultValue={activity} onChange={this.update("activity")}>
                 <option>Choose an Activity</option>
                 <option value="walk">Walk</option>
                 <option value="run">Run</option>
