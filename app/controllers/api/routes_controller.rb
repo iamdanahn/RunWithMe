@@ -29,6 +29,13 @@ class Api::RoutesController < ApplicationController
   end
 
   def destroy
+    @route = Route.find(params[:id])
+    
+    if @route && @route.destroy
+      render 'api/routes/show'
+    else
+      render "One cannot destroy what does not exist"
+    end
     
   end
 

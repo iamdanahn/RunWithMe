@@ -4,10 +4,11 @@ import { closeModal } from '../actions/modal_actions'
 import DeleteRoute from './delete_route'
 
 const msp = (state, ownProps) => {
-  //  // debugger
-  return({
-    route: ownProps.routeid
-  })
+  debugger
+  // ownProps does not have a routeId
+  return {
+    route: ownProps.routeid,
+  }
 }
 
 const mdp = dispatch => {
