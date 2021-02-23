@@ -50,7 +50,7 @@ route1 = Route.create!(
   activity: 'cycling',
   location: 'New York City',
   distance: "50 MI",
-  markers: "[{'lat':40.7128, 'lng':74.0060}, {'lat':40.8249, 'lng':74.2109}]",
+  markers: '[{"lat":40.737754928224,"lng":-73.99263990104978},{"lat":40.72780393671193,"lng":-74.00113713920896},{"lat":40.73964089608967,"lng":-73.98500096977537},{"lat":40.74601377115408,"lng":-73.99409902275389},{"lat":40.737754928224,"lng":-73.99263990104978}]',
   description: "This is madness!"
   )
 
@@ -61,7 +61,7 @@ route2 = Route.create!(
   activity: 'running',
   location: "Catskills, NY",
   distance: "15 MI",
-  markers: "[{'lat':42.0093, 'lng':74.3821}, {'lat':42.8249,'lng':74.2109}]",
+  markers: '[{"lat":40.75674223226639,"lng":-73.98508680046385},{"lat":40.74035624922381,"lng":-73.99710309685057},{"lat":40.72663313398497,"lng":-73.97925031364744},{"lat":40.761943287259584,"lng":-73.96500241936033},{"lat":40.760448025629294,"lng":-73.98989331901853},{"lat":40.75674223226639,"lng":-73.98508680046385}]',
   description: "Nothing like fresh air"
   )
 
@@ -72,7 +72,7 @@ route3 = Route.create!(
   activity: 'walking',
   location: "Miami, FL",
   distance: "20 MI",
-  markers: "[{'lat':25.7617, 'lng':80.1918}, {'lat':25.8249, 'lng':80.2109}]",
+  markers: '[{"lat":25.755614618779823,"lng":-80.19676837993164},{"lat":25.790705399755968,"lng":-80.18861446452637},{"lat":25.755614618779823,"lng":-80.19676837993164}]',
   description: "Soaking in the sun"
 )
 

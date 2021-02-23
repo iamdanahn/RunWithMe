@@ -4,7 +4,8 @@ import { fetchUser } from '../../actions/user_actions'
 import RouteShow from './route_show'
 
 const msp = (state, ownProps) => {
-  const routeId = ownProps.match.params.props.id;
+  debugger
+  const routeId = ownProps.match.params.routeId
   return ({
     route: state.entities.routes[routeId],
     sessionId: state.session.id,
