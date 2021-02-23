@@ -8,18 +8,15 @@
   background: #F0F0F0;
   align-items: center;
   
-  .content1.bg {
-    background-image: image-url('Splash-dblu.png');
-    padding: 20px 64px 140px;
-  }
   // #wline {
-  //   display: block;
-  //   border-color: white;
-  //   width: 87px;
-  //   border-bottom: 6px solid;
-  // }
+    //   display: block;
+    //   border-color: white;
+    //   width: 87px;
+    //   border-bottom: 6px solid;
+    // }
   }
   .content1 {
+    box-sizing: border-box;
     display: flex;
     align-items: flex-end;
     flex-direction: column;
@@ -27,6 +24,8 @@
     width: 960px;
     color: white;
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    padding: 20px 64px 140px;
+    background-image: image-url('Splash-dblu.png');
 
     .heading {
       display: flex;
@@ -59,6 +58,7 @@
         height: 65px;
         font-size: 16px;
         text-align: end;
+        line-height: 21px;
       }
     }
 
@@ -68,7 +68,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-
+    padding-top: 30px;
 
     .button-signup {
       display: inline-flex;
