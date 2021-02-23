@@ -5,11 +5,11 @@ class RouteForm extends React.Component {
   constructor(props) {
     super(props)
 		this.state = {
-      creator_id: this.props.creator_id,
-      route: this.props.route,
-      address: "",
-      name: "",
       activity: props.activity,
+      address: "",
+      creator_id: this.props.creator_id,
+      location: this.props.location,
+      name: "",
     }
 		debugger
 	
@@ -25,8 +25,14 @@ class RouteForm extends React.Component {
 	
 	formattedState() {
 		debugger
-		const { location, distance, markers } = this.state.route
-    const { name, activity, creator_id } = this.state
+    const {
+      activity,
+      creator_id,
+      distance,
+      location,
+      markers,
+      name,
+    } = this.state
 		const strMarkers = JSON.stringify(markers)
 
 		return {

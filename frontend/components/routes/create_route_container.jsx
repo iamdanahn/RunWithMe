@@ -7,16 +7,16 @@ const msp = (state, ownProps) => {
   const { entities, session, errors } = state;
   debugger
   return {
-		route: {
-			name: "",
-			creator_id: session.id,
-			activity: "",
-			location: "",
-			distance: "0 MI",
-			markers: [],
-		},
-		formType: "Create",
-	};
+    route: {
+      name: "",
+      creator_id: session.id,
+      activity: "",
+      location: "New York City",
+      distance: "0 MI",
+      markers: [],
+    },
+    formType: "Create",
+  }
 };
 
 const mdp = (dispatch) => {

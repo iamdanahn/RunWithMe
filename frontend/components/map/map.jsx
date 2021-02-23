@@ -32,6 +32,19 @@ class Map extends React.Component {
 		this.centerMap = this.centerMap.bind(this);
 		this.reverseMarks = this.reverseMarks.bind(this);
 		this.returnHome = this.returnHome.bind(this);
+
+		// enables D.Service - initiates direction request with route() method
+		// Returns DirectionsResult & DirectionsStatus code
+		this.directionsService = new google.maps.DirectionsService()
+	
+		// enables D.Renderer - displays DirectionResults
+		// https://developers.google.com/maps/documentation/javascript/reference/directions
+		this.directionsRenderer = new google.maps.DirectionsRenderer()
+		this.directionsRenderer.setOptions({
+			map: this.map,
+			draggable: true,
+			preserveViewport: true,
+		})
 	}
 
 	componentDidMount() {
@@ -39,63 +52,45 @@ class Map extends React.Component {
 	}
 
 	initMap() {
-		// get default position
+    // get default position
 
-		this.center =
-			this.state.markers.length > 0
-				? this.state.markers[0]
-				: new google.maps.LatLng(40.7362891, -73.9937557);
-		this.mapProps = {
-			zoom: 14,
-			center: this.center,
-			clickableIcons: false,
-		};
+    this.center =
+      this.state.markers.length > 0
+        ? this.state.markers[0]
+        : new google.maps.LatLng(40.7362891, -73.9937557)
+    this.mapProps = {
+      zoom: 14,
+      center: this.center,
+      clickableIcons: false,
+    }
+		
+		// mapNode == ref to <div map>
+    this.map = new google.maps.Map(this.mapNode, this.mapProps)
+    this.usersPosition()
 
-		this.map = new google.maps.Map(this.mapNode, this.mapProps);
-		this.usersPosition();
-
-		// enables D.Service - initiates direction request with route() method
-		// Returns DirectionsResult & DirectionsStatus code
-		this.directionsService = new google.maps.DirectionsService();
-		// enables D.Renderer - displays DirectionResults
-		// https://developers.google.com/maps/documentation/javascript/reference/directions
-		this.directionsRenderer = new google.maps.DirectionsRenderer();
-		this.directionsRenderer.setOptions({
-			map: this.map,
-			draggable: true,
-			preserveViewport: true,
-		}) 
-
-		//TEST
-		// const wP = this.wayPoints
-		// const marks = this.state.markers
-		// this.eventListeners(map);
-
-
-		this.map.addListener("click", (e) => {
-			// const marker = new google.maps.Marker({
-			// 	position: e.latLng,
-			// 	map: this.map,
-			// });
+    this.map.addListener("click", (e) => {
+      // const marker = new google.maps.Marker({
+      // 	position: e.latLng,
+      // 	map: this.map,
+      // });
       // marker.setMap(this.map);
-			this.wayPoints.push({lat: e.latLng.lat(), lng: e.latLng.lng()}) 
-			
-			// this.setState({ ["markers"]: this.wayPoints });
-			// this.setState({ ["markers"]: [...this.state.markers, e.latLng] });
-			
-			//TEST
-			console.log(this.wayPoints)
+
+			// adds lat/lng object to waypoints array
+      this.wayPoints.push({ lat: e.latLng.lat(), lng: e.latLng.lng() })
+
+      //TEST
+      console.log(this.wayPoints)
       debugger
-			// console.log(marks)
-			// this.setState({ ["markers"]: this.wayPoints });
-			// console.log(marks)
-			//TEST
+      // console.log(marks)
+      // this.setState({ ["markers"]: this.wayPoints });
+      // console.log(marks)
+      //TEST
 
-			this.renderMarkers();
-		});
-	}
+      this.renderMarkers()
+    })
+  }
 
-	// obtains user's current position if allowed
+	// obtains user's current position if allowed on browser
 	usersPosition() {
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition((position) => {
@@ -103,6 +98,7 @@ class Map extends React.Component {
 					lat: position.coords.latitude,
 					lng: position.coords.longitude,
 				};
+				debugger
 				this.map.setCenter(pos);
 			});
 		}
@@ -110,7 +106,7 @@ class Map extends React.Component {
 
 	renderMarkers() {
 
-		const { markers } = this.state;
+		const { markers } = this.state; // if a saved route, will fetch those and render onto map
 		const origin = markers[0];
 		let dest = markers[markers.length - 1];
 		let wP = markers.slice(1, markers.length - 1).map((val) => ({
@@ -121,7 +117,7 @@ class Map extends React.Component {
 		
 		this.setState({ ["markers"]: this.wayPoints});
 		
-		// if (markers.length > 1) {
+		// sends directions request to google
 			this.directionsService.route(
 				{
 					origin: origin,
@@ -138,16 +134,17 @@ class Map extends React.Component {
 						console.log(response);
 						debugger;
 
-						this.directionsRenderer.setDirections(response);
 						// renders directions that are inside the response
+						this.directionsRenderer.setDirections(response);
 					} else {
 						console.log("Directions failed");
 					}
 				},
 			);
-		// }
 	}
 
+	
+	// search bar on left side of screen
 	searchAddress(address) {
 		//https://developers.google.com/maps/documentation/javascript/geocoding#GeocodingResults
 		// GEOCODING converts address <=> coordinates. Usefulf to palc emarkers or position map
