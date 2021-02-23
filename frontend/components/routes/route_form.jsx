@@ -1,14 +1,16 @@
 import React from 'react';
 
+// parent in map.jsx
 class RouteForm extends React.Component {
   constructor(props) {
     super(props)
 		this.state = {
-			route: this.props.route,
-			address: "",
-			name: "",
-			activity: props.activity
-		}
+      creator_id: this.props.creator_id,
+      route: this.props.route,
+      address: "",
+      name: "",
+      activity: props.activity,
+    }
 		debugger
 	
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,8 +25,8 @@ class RouteForm extends React.Component {
 	
 	formattedState() {
 		debugger
-		const { creator_id, location, distance, markers} = this.state.route;
-		const { name, activity } = this.state;
+		const { location, distance, markers } = this.state.route
+    const { name, activity, creator_id } = this.state
 		const strMarkers = JSON.stringify(markers)
 
 		return {
@@ -52,56 +54,53 @@ class RouteForm extends React.Component {
 		debugger 
 
     return (
-			<div className="create-route-cntr">
-				<div className="cr-form">
-					<h4>Choose map location</h4>
-					<form className="cr-search-bar" onSubmit={() => searchAddy(address)}>
-						<input
-							id="geocoder-addr"
-							type="text"
-							placeholder="Enter location"
-							value={this.state.address}
-							onChange={this.update("address")}
-						/>
-						<button id="geocoder-submit">
-							{" "}
-							{/* onClick={() => searchAddy(address)}> */}
-							Search
-						</button>
-					</form>
+      <div className="create-route-cntr">
+        <div className="cr-form">
+          <h4>Choose map location</h4>
+          <form className="cr-search-bar" onSubmit={() => searchAddy(address)}>
+            <input
+              id="geocoder-addr"
+              type="text"
+              placeholder="Enter location"
+              value={this.state.address}
+              onChange={this.update("address")}
+            />
+            <button id="geocoder-submit">
+              {/* onClick={() => searchAddy(address)}> */}
+              Search
+            </button>
+          </form>
 
-					<br />
+          <br />
 
-					<form onSubmit={this.handleSubmit}>
-						<div>
-							<h3>{formType} Route Details</h3>
-							<input
-								type="text"
-								value={this.state.name}
-								onChange={this.update("name")}
-								placeholder="Route title"
-							/>
-							<span>*</span>
-						</div>
+          <form onSubmit={this.handleSubmit}>
+            <div>
+              <h3>{formType} Route Details</h3>
+              <input
+                type="text"
+                value={this.state.name}
+                onChange={this.update("name")}
+                placeholder="Route title"
+              />
+              <span>*</span>
+            </div>
 
-						<div>
-							<select defaultValue={activity}>
-								<option>Choose an Activity</option>
-								<option value="walk">Walk</option>
-								<option value="run">Run</option>
-								<option value="bike">Bike</option>
-							</select>
-							<span>*</span>
-						</div>
-						<div>
-							<button >Save Route</button>
-						</div>
-					</form>
-
-
-				</div>
-			</div>
-		);
+            <div>
+              <select defaultValue={activity}>
+                <option>Choose an Activity</option>
+                <option value="walk">Walk</option>
+                <option value="run">Run</option>
+                <option value="bike">Bike</option>
+              </select>
+              <span>*</span>
+            </div>
+            <div>
+              <button>Save Route</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    )
   }
 }
 

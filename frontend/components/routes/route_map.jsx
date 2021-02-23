@@ -1,40 +1,42 @@
-import React from "react";
-import { Route } from 'react-router-dom'
+// Deprecated, holding for review
 
-import RouteForm from './route_form';
-import Map from '../map/map';
+// import React from "react";
+// import { Route } from 'react-router-dom'
 
-class RouteMap extends React.Component {
+// import RouteForm from './route_form';
+// import Map from '../map/map';
+
+// class RouteMap extends React.Component {
 	
-	render() {
-		const { route, name, creator_id, activity, location, distance, markers} = this.props;
+// 	render() {
+// 		const { route, name, creator_id, activity, location, distance, markers} = this.props;
 		
-		return (
-			<section className="user-panel">
-				<div className="left-half">
-					<RouteForm
-						name={name}
-						creator_id={creator_id}
-						activity={activity}
-						location={location}
-						distance={distance}
-						markers={markers}
-					/>
-				</div>
-				<div className="right-half">
-					<Route
-						component={Map}
-						name={name}
-						creator_id={creator_id}
-						activity={activity}
-						location={location}
-						distance={distance}
-						markers={markers}
-					/>
-				</div>
-			</section>
-		);
-	}
-};
+// 		return (
+// 			<section className="user-panel">
+// 				<div className="left-half">
+// 					{/* <RouteForm
+// 						name={name}
+// 						creator_id={creator_id}
+// 						activity={activity}
+// 						location={location}
+// 						distance={distance}
+// 						markers={markers}
+// 					/> */}
+// 				</div>
+// 				<div className="right-half">
+// 					<Route
+// 						component={Map}
+// 						name={name}
+// 						creator_id={creator_id}
+// 						activity={activity}
+// 						location={location}
+// 						distance={distance}
+// 						markers={markers}
+// 					/>
+// 				</div>
+// 			</section>
+// 		);
+// 	}
+// };
 
-export default RouteMap;
+// export default RouteMap;

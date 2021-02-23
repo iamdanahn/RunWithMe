@@ -1,7 +1,7 @@
 import React from 'react'
 import { closeModal } from '../actions/modal_actions';
 import { connect }  from 'react-redux';
-import DeleteRouteContainer from './delete_route_container';
+// import DeleteRouteContainer from './delete_route_container'; DEPRECATED
 
 
 function Modal ({modal, closeModal, deleteRoute}) {
@@ -15,19 +15,19 @@ function Modal ({modal, closeModal, deleteRoute}) {
   switch (modal) {
     case "open":
       // debugger
-      // component = <DeleteRouteContainer deleteRoute={deleteRoute}/>;
-      component = 
-      <div className="modal-delete">
-        <h3>Delete Route?</h3>
-        <div className="modal-btns">
-          <button className="modal-btns-ok" onClick={deleteRoute}>
-            OK
-          </button>
-          <button className="modal-btns-cancel" onClick={closeModal}>
-            CANCEL
-          </button>
+      component = (
+        <div className="modal-delete">
+          <h3>Delete Route?</h3>
+          <div className="modal-btns">
+            <button className="modal-btns-ok" onClick={deleteRoute}>
+              OK
+            </button>
+            <button className="modal-btns-cancel" onClick={closeModal}>
+              CANCEL
+            </button>
+          </div>
         </div>
-      </div>;
+      )
 
       break
     default:
@@ -50,9 +50,9 @@ const msp = state => {
 }
 
 const mdp = dispatch => {
-  //  // debugger
+  // debugger
   return {
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
   }
 }
 
