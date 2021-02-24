@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom"
 
 class RouteShow extends React.Component {
   constructor(props) {
@@ -20,19 +21,14 @@ class RouteShow extends React.Component {
             date created, activity, location, edit button */}
         <div className="rs-body">
           <div className="bar">
-            <button onClick={editPage()}>
-  
-            </button>
+            {/* <button onClick={() => editPage()}>Edit Page</button> */}
+            <Link to={`/routes/${route.id}/edit`}>Edit Page</Link>
           </div>
-  
-          <section className="rs-content1">
-            Route Show
-          </section>
-  
+
+          <section className="rs-content1">Route Show</section>
+
           {/* section 2 - minimap, comments section */}
-          <section className="rs-map">
-  
-          </section>
+          <section className="rs-map"></section>
         </div>
       </div>
     )
