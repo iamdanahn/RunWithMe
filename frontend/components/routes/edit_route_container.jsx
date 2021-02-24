@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom"
 import { fetchRoute, updateRoute } from "../../actions/route_actions";
 // import RouteMap from "./route_map";
 import Map from '../map/map'
@@ -38,4 +39,4 @@ const mdp = (dispatch) => {
 	};
 };
 
-export default connect(msp, mdp)(EditRouteForm);
+export default withRouter(connect(msp, mdp)(EditRouteForm))

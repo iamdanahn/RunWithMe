@@ -11,6 +11,7 @@ class Map extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      id: this.props.route.id,
       name: this.props.route.name,
       creator_id: this.props.route.creator_id,
       activity: this.props.route.activity,
@@ -18,37 +19,26 @@ class Map extends React.Component {
       distance: this.props.route.distance,
       address: "",
       markers:
-      
-         this.props.route.markers.length > 0
-     
-              ? JSON.parse(this.props.route.markers)
-         
+        this.props.route.markers.length > 0
+          ? JSON.parse(this.props.route.markers)
           : this.props.route.markers,
-			formErr: "form-err-hide"
+      formErr: "form-err-hide",
     }
 
-    if (this.state.markers.length > 0) {
-      this.wayPoints = this.state.markers
-      debugger
-    } else {
-      this.wayPoints = []
-    }
+    this.wayPoints = this.state.markers
 
     this.initMap = this.initMap.bind(this)
-    // this.addPoint = this.addPoint.bind(this);
-    // this.geocoderAddr = this.geocoderAddr.bind(this);
     this.renderMarkers = this.renderMarkers.bind(this)
     this.searchAddress = this.searchAddress.bind(this)
 
+    this.formattedState = this.formattedState.bind(this)
     this.undoMark = this.undoMark.bind(this)
     this.clearMarks = this.clearMarks.bind(this)
     this.centerMap = this.centerMap.bind(this)
     this.reverseMarks = this.reverseMarks.bind(this)
     this.returnHome = this.returnHome.bind(this)
-    this.initMap = this.initMap.bind(this)
-		this.handleSubmit = this.handleSubmit.bind(this)
-		this.formattedState = this.formattedState.bind(this)
-		
+    this.handleSubmit = this.handleSubmit.bind(this)
+
     // enables D.Service - initiates direction request with route() method
     // Returns DirectionsResult & DirectionsStatus code
     this.directionsService = new google.maps.DirectionsService()
@@ -84,6 +74,8 @@ class Map extends React.Component {
     // mapNode == ref to <div map>
     this.map = new google.maps.Map(this.mapNode, this.mapProps)
     this.usersPosition()
+
+    // sets directions rendering options, draggable = points draggable
     this.directionsRenderer.setOptions({
       map: this.map,
       draggable: true,
@@ -91,21 +83,12 @@ class Map extends React.Component {
     })
 
     this.map.addListener("click", (e) => {
-      // const marker = new google.maps.Marker({
-      // 	position: e.latLng,
-      // 	map: this.map,
-      // });
-      // marker.setMap(this.map);
-
       // adds lat/lng object to waypoints array
       this.wayPoints.push({ lat: e.latLng.lat(), lng: e.latLng.lng() })
 
       //TEST
       console.log(this.wayPoints)
       debugger
-      // console.log(marks)
-      // this.setState({ ["markers"]: this.wayPoints });
-      // console.log(marks)
       //TEST
 
       this.renderMarkers()
@@ -127,10 +110,11 @@ class Map extends React.Component {
   }
 
   renderMarkers() {
-    const { markers } = this.state // if a saved route, will fetch those and render onto map
-    const origin = markers[0]
-    let dest = markers.length === 1 ? markers[0] : markers[markers.length - 1]
-    let wP = markers.slice(1, markers.length - 1).map((val) => ({
+    
+		const origin = this.wayPoints[0]
+    let dest = this.wayPoints[this.wayPoints.length - 1]
+
+    let wP = this.wayPoints.slice(1, this.wayPoints.length - 1).map((val) => ({
       location: val,
       stopover: false,
     }))
@@ -152,7 +136,6 @@ class Map extends React.Component {
           const distance = response.routes[0].legs[0].distance.text
           this.setState({ distance: distance })
 
-          console.log(response)
           debugger
 
           // renders directions that are inside the response
@@ -201,15 +184,9 @@ class Map extends React.Component {
   undoMark() {
     if (this.wayPoints.length > 1) {
       this.wayPoints.pop()
-      // const oldMarks = Object.assign({}, this.state.markers)
-      // oldMarks.pop();
-      // const newMarks = oldMarks;
-      // this.setState({ ["markers"]: this.wayPoints })
-
-      // const
-      // this.setState({ ["distance"]: newDistance })
-      console.log(this.wayPoints)
       this.renderMarkers()
+    } else if (this.wayPoints.length === 1) {
+      this.clearMarks()
     }
   }
 
@@ -224,9 +201,10 @@ class Map extends React.Component {
 
       this.setState({ ["distance"]: "0 MI" })
       this.setState({ ["markers"]: [] })
-      this.directionsRenderer.setDirections({ routes: [] }) // setMap(null) removes directions from map
-      // this.directionsRenderer.setMap(null) // setMap(null) removes directions from map
-      this.renderMarkers()
+
+      //commented out below due to error in console
+      // this.directionsRenderer.setDirections({ routes: [] }) // setMap(null) removes directions from map
+      // this.renderMarkers()
     }
   }
 
@@ -235,7 +213,13 @@ class Map extends React.Component {
     // https://developers.google.com/maps/documentation/javascript/reference/map#Map.panToBounds
     // this.map.panToBounds( <need bounds> )
     // bounds available in response.routes[0].bounds
-    this.map.panToBounds()
+    const { markers } = this.state.markers
+    let latLngBounds = this.directionsRenderer.getDirections().routes[0].bounds
+    const padding = { top: 500, right: 500, bottom: 500, left: 500 }
+
+    if (markers.length > 1) {
+      this.map.panToBounds(latLngBounds, padding)
+    }
   }
   reverseMarks() {
     if (this.wayPoints.length > 1) {
@@ -252,10 +236,10 @@ class Map extends React.Component {
   }
 
   update(field) {
-    console.log(this.state)
-    console.log(JSON.stringify(this.state.markers))
+    // console.log(JSON.stringify(this.state.markers))
 
     return (e) => {
+      console.log(this.state)
       this.setState({ [field]: e.currentTarget.value })
     }
   }
@@ -263,6 +247,7 @@ class Map extends React.Component {
   formattedState() {
     debugger
     const {
+      id,
       activity,
       creator_id,
       distance,
@@ -273,6 +258,7 @@ class Map extends React.Component {
     const strMarkers = JSON.stringify(markers)
 
     return {
+      id,
       name,
       creator_id,
       activity,
@@ -284,17 +270,20 @@ class Map extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    debugger
     console.log(this.formattedState())
 
 		if (this.state.name.length === 0) {
-			this.setState({ formErr: "form-err-show" })
-		} else {
+      this.setState({ formErr: "form-err-show" })
+
+      // return out to avoid unnecessary backend hit
+      return
+    } else {
 			this.setState({ formErr: "form-err-hide" })
 		}
 		console.log(this.formErr)
 
 		if (this.wayPoints.length > 1) {
+			debugger
 				this.props.action(this.formattedState()).then((response) => {
 				debugger
 				// res is whole action pkg

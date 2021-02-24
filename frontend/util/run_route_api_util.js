@@ -31,7 +31,8 @@ export const createRoute = (route) => {
 	});
 }
 export const updateRoute = (route) => {
-  return $.ajax({
+  debugger
+	return $.ajax({
 		url: `/api/routes/${route.id}`,
 		method: `PATCH`,
 		data: { route },
