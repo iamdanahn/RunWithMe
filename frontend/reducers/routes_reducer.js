@@ -6,21 +6,21 @@ import {
 import merge from 'lodash/merge'
 
 const RoutesReducer = (state = {}, action) => {
-  debugger
-  Object.freeze(state);
-  const { routes, route, routeId } = action;
+  Object.freeze(state)
+  const { routes, route, routeId } = action
 
   switch (action.type) {
     case RECEIVE_ROUTES:
-      return routes;
+      return routes
     case RECEIVE_ROUTE:
-      return merge({}, state, {[route.id]: route})
+      debugger
+      return merge({}, state, { [route.id]: route })
     case REMOVE_ROUTE:
-      const newState = merge({}, state);
+      const newState = merge({}, state)
       delete newState[routeId]
-      return newState;
+      return newState
     default:
-      return state;
+      return state
   }
 }
 

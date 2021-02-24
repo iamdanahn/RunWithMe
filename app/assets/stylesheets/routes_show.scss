@@ -1,0 +1,22 @@
+// Place all the styles related to the routes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.route-show-cntr {
+  max-width: 1320px;
+  padding: 20px 0 85px 0;
+  margin: auto;
+
+  .rs-body {
+    display: flex;
+    flex-direction: column;
+
+    .bar {
+      display: flex;
+      margin-right: 12px;
+      justify-content: flex-end;
+    }
+  }
+
+
+}

@@ -78,7 +78,7 @@ class Map extends React.Component {
     // sets directions rendering options, draggable = points draggable
     this.directionsRenderer.setOptions({
       map: this.map,
-      draggable: true,
+      // draggable: true,
       preserveViewport: true,
     })
 
@@ -203,7 +203,7 @@ class Map extends React.Component {
       this.setState({ ["markers"]: [] })
 
       //commented out below due to error in console
-      // this.directionsRenderer.setDirections({ routes: [] }) // setMap(null) removes directions from map
+      this.directionsRenderer.setDirections({ routes: [] }) // setMap(null) removes directions from map
       // this.renderMarkers()
     }
   }
@@ -213,9 +213,14 @@ class Map extends React.Component {
     // https://developers.google.com/maps/documentation/javascript/reference/map#Map.panToBounds
     // this.map.panToBounds( <need bounds> )
     // bounds available in response.routes[0].bounds
-    const { markers } = this.state.markers
+    const { markers } = this.state
+
     let latLngBounds = this.directionsRenderer.getDirections().routes[0].bounds
     const padding = { top: 500, right: 500, bottom: 500, left: 500 }
+
+    // console.log(
+    //   JSON.stringify(this.directionsRenderer.getDirections().routes[0].bounds),
+    // )
 
     if (markers.length > 1) {
       this.map.panToBounds(latLngBounds, padding)
@@ -270,28 +275,27 @@ class Map extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    console.log(this.formattedState())
+    // console.log(this.formattedState())
 
-		if (this.state.name.length === 0) {
+    if (this.state.name.length === 0) {
       this.setState({ formErr: "form-err-show" })
 
       // return out to avoid unnecessary backend hit
       return
     } else {
-			this.setState({ formErr: "form-err-hide" })
-		}
-		console.log(this.formErr)
+      this.setState({ formErr: "form-err-hide" })
+    }
 
-		if (this.wayPoints.length > 1) {
-			debugger
-				this.props.action(this.formattedState()).then((response) => {
-				debugger
-				// res is whole action pkg
-				this.props.history.push(`/dashboard`)
-			})
-		} else {
-			alert("Must have 2 points to save route")
-		}
+    if (this.wayPoints.length > 1) {
+      debugger
+      this.props.action(this.formattedState()).then((response) => {
+        debugger
+        // res is whole action pkg
+        this.props.history.push(`/dashboard`)
+      })
+    } else {
+      alert("Must have 2 points to save route")
+    }
   }
 
   render() {

@@ -33,6 +33,7 @@ const msp = (state, ownProps) => {
 };
 
 const mdp = (dispatch) => {
+  debugger
 	return {
     action: (route) => dispatch(updateRoute(route)),
     fetchRoute: (routeId) => dispatch(fetchRoute(routeId)) 
