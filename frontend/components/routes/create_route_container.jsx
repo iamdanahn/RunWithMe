@@ -10,7 +10,7 @@ const msp = (state, ownProps) => {
     route: {
       name: "",
       creator_id: session.id,
-      activity: "",
+      activity: "walk",
       location: "New York City",
       distance: "0 MI",
       markers: [],

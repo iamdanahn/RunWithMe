@@ -16,17 +16,23 @@ class Map extends React.Component {
       activity: this.props.route.activity,
       location: this.props.route.location,
       distance: this.props.route.distance,
-      markers: this.props.route.markers,
       address: "",
+      markers:
+      
+         this.props.route.markers.length > 0
+     
+              ? JSON.parse(this.props.route.markers)
+         
+          : this.props.route.markers,
+			formErr: "form-err-hide"
     }
 
     if (this.state.markers.length > 0) {
-      this.wayPoints = JSON.parse(this.state.markers)
+      this.wayPoints = this.state.markers
+      debugger
     } else {
-      // this.wayPoints = this.state.markers;
       this.wayPoints = []
     }
-    debugger
 
     this.initMap = this.initMap.bind(this)
     // this.addPoint = this.addPoint.bind(this);
@@ -54,6 +60,9 @@ class Map extends React.Component {
 
   componentDidMount() {
     this.initMap()
+    if (this.props.formType === "Edit") {
+      this.renderMarkers()
+    }
   }
 
   initMap() {
@@ -63,6 +72,8 @@ class Map extends React.Component {
       this.state.markers.length > 0
         ? this.state.markers[0]
         : new google.maps.LatLng(40.7362891, -73.9937557)
+
+    debugger
     this.mapProps = {
       zoom: 14,
       center: this.center,
@@ -276,33 +287,32 @@ class Map extends React.Component {
     debugger
     console.log(this.formattedState())
 
-    this.props.action(this.formattedState()).then((response) => {
-			debugger
-			// res is whole action pkg
-      this.props.history.push(`/routes/${response.route.id}`)
-    })
+		if (this.state.name.length === 0) {
+			this.setState({ formErr: "form-err-show" })
+		} else {
+			this.setState({ formErr: "form-err-hide" })
+		}
+		console.log(this.formErr)
+
+		if (this.wayPoints.length > 1) {
+				this.props.action(this.formattedState()).then((response) => {
+				debugger
+				// res is whole action pkg
+				this.props.history.push(`/dashboard`)
+			})
+		} else {
+			alert("Must have 2 points to save route")
+		}
   }
 
   render() {
-    let { name, creator_id, activity, location, distance, markers , address} = this.state
+    let { name, creator_id, activity, location, distance, markers , address, formErr} = this.state
     const { action, route, formType } = this.props
     debugger
 
     return (
       <div className="user-panel">
         <div className="left-half">
-          {/* <RouteForm
-            action={action}
-            activity={activity}
-            creator_id={creator_id}
-            distance={distance}
-            formType={formType}
-            location={location}
-            markers={markers}
-            name={name}
-            searchAddy={this.searchAddress}
-          /> */}
-
           <div className="create-route-cntr">
             <div className="cr-form">
               <h4>Choose map location</h4>
@@ -317,9 +327,7 @@ class Map extends React.Component {
                   value={this.state.address}
                   onChange={this.update("address")}
                 />
-                <button id="geocoder-submit">
-                  Search
-                </button>
+                <button id="geocoder-submit">Search</button>
               </form>
 
               <br />
@@ -341,7 +349,9 @@ class Map extends React.Component {
                     defaultValue={activity}
                     onChange={this.update("activity")}
                   >
-                    <option>Choose an Activity</option>
+                    <option default disabled>
+                      Choose an Activity
+                    </option>
                     <option value="walk">Walk</option>
                     <option value="run">Run</option>
                     <option value="bike">Bike</option>
@@ -350,6 +360,9 @@ class Map extends React.Component {
                 </div>
                 <div>
                   <button>Save Route</button>
+                </div>
+                <div className={formErr}>
+                  <h2>Route Title cannot be blank!</h2>
                 </div>
               </form>
             </div>

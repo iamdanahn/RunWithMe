@@ -9,10 +9,12 @@ class RouteIndex extends React.Component {
   }
 
   render() {
-    // const { deleteModal } = this.props;
+    const { currentUserId } = this.props
     const route = this.props.routes.map((route) => {
       debugger
-      return <RIIContainer route={route} key={route.id} />
+      if (route.creator_id === currentUserId) {
+        return <RIIContainer route={route} key={route.id} />
+      }
     })
 
     return (
