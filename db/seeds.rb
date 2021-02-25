@@ -10,7 +10,7 @@ User.destroy_all
 Route.destroy_all
 Workout.destroy_all
 Goal.destroy_all
-Friend.destroy_all
+Friendship.destroy_all
 Comment.destroy_all
 Cheer.destroy_all
 
@@ -106,12 +106,12 @@ workouts3 = Workout.create!(
   duration: 1227 # 00:20:27,
 )
 
-friending1 = Friend.create!(
+friending1 = Friendship.create!(
   id: 1,
   user_id: user1.id,
   friend_id: user2.id
 )
-friending2 = Friend.create!(
+friending2 = Friendship.create!(
   id: 2,
   user_id: user1.id,
   friend_id: user3.id

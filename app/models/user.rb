@@ -28,9 +28,12 @@ class User < ApplicationRecord
     foreign_key: :creator_id,
     class_name: :Route
 
-  has_many :friends,
-    foreign_key: :user_id,
-    class_name: :Friend
+  # has_many :friends,
+  #   foreign_key: :user_id,
+  #   class_name: :Friend
+
+  has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships
 
   has_many :comments, as: :commentable
   has_many :cheers, as: :cheerable
@@ -38,8 +41,6 @@ class User < ApplicationRecord
     foreign_key: :user_id,
     class_name: :Goal
     
-
-  # has_one_attached :photo
 
   def self.find_by_credentials(email, pw)
     user = User.find_by(email: email)
