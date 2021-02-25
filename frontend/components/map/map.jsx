@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom"
 import MapTools from "./map_tools";
 import RouteForm from "../routes/route_form";
 
@@ -30,6 +31,7 @@ class Map extends React.Component {
     this.initMap = this.initMap.bind(this)
     this.renderMarkers = this.renderMarkers.bind(this)
     this.searchAddress = this.searchAddress.bind(this)
+    this.updateLocation = this.updateLocation.bind(this)
 
     this.formattedState = this.formattedState.bind(this)
     this.undoMark = this.undoMark.bind(this)
@@ -46,6 +48,10 @@ class Map extends React.Component {
     // enables D.Renderer - displays DirectionResults
     // https://developers.google.com/maps/documentation/javascript/reference/directions
     this.directionsRenderer = new google.maps.DirectionsRenderer()
+
+    // GEOCODING converts address <=> coordinates. Usefulf to palc emarkers or position map
+    //https://developers.google.com/maps/documentation/javascript/geocoding#GeocodingResults
+    this.geocoder = new google.maps.Geocoder()
   }
 
   componentDidMount() {
@@ -110,8 +116,7 @@ class Map extends React.Component {
   }
 
   renderMarkers() {
-    
-		const origin = this.wayPoints[0]
+    const origin = this.wayPoints[0]
     let dest = this.wayPoints[this.wayPoints.length - 1]
 
     let wP = this.wayPoints.slice(1, this.wayPoints.length - 1).map((val) => ({
@@ -121,6 +126,7 @@ class Map extends React.Component {
     debugger
 
     this.setState({ ["markers"]: this.wayPoints })
+    this.updateLocation()
 
     // sends directions request to google
     this.directionsService.route(
@@ -147,13 +153,28 @@ class Map extends React.Component {
     )
   }
 
+  updateLocation() {
+    if (this.wayPoints.length > 0) {        
+      this.geocoder.geocode({
+        location: this.wayPoints[0]
+      }, (res, status) => {
+        if (status === "OK") {
+          console.log(res)
+
+          for (let i = 0; i < res.length; i++) {
+            if (res[i].types[0] === "locality") {
+              this.setState({location: res[i].formatted_address});
+              break;
+            }
+          }
+        }
+      })
+    }
+  }
+
   // search bar on left side of screen
   searchAddress(address) {
-    //https://developers.google.com/maps/documentation/javascript/geocoding#GeocodingResults
-    // GEOCODING converts address <=> coordinates. Usefulf to palc emarkers or position map
-    const geocoder = new google.maps.Geocoder()
-
-    geocoder.geocode({ address: address }, (res, status) => {
+    this.geocoder.geocode({ address: address }, (res, status) => {
       const locationName = res[0]
       if (status === "OK") {
         this.map.setCenter(res[0].geometry.location)
@@ -299,7 +320,16 @@ class Map extends React.Component {
   }
 
   render() {
-    let { name, creator_id, activity, location, distance, markers , address, formErr} = this.state
+    let {
+      name,
+      creator_id,
+      activity,
+      location,
+      distance,
+      markers,
+      address,
+      formErr,
+    } = this.state
     const { action, route, formType } = this.props
     debugger
 
@@ -380,5 +410,5 @@ class Map extends React.Component {
   }
 }
 
-export default Map;
+export default withRouter(Map)
 
