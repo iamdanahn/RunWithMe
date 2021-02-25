@@ -24,7 +24,6 @@ class User < ApplicationRecord
   # Add associations
   # Route / Friends / Comments / Cheers / Goal
 
-  has_many :comments, as: :commentable
 
   has_many :routes,
     foreign_key: :creator_id,
