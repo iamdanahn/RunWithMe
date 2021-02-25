@@ -1,8 +1,17 @@
 import React from "react"
 
 class Friends extends React.Component {
+  // componentDidMount() {
+
+  // }
+
   render() {
-    return <div>Inside Friend Main</div>
+    return (
+      <div>
+        <div>Inside Friend Main</div>
+        <div>blahblahblah</div>
+      </div>
+    )
   }
 }
 

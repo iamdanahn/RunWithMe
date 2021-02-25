@@ -2,11 +2,13 @@ class Api::CommentsController < ApplicationController
 
   def index
     @comments = Comment.all
+    # @comments = Routes.where
   end
   
-  def show
-    @comment = Comment.find(params[:id])
-  end
+  # Use if showing a single comment
+  # def show
+  #   @comment = Comment.find(params[:id])
+  # end
 
   def create
     @comment = Comment.new(comment_params)

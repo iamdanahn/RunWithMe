@@ -30,7 +30,7 @@ class User < ApplicationRecord
 
   has_many :friends,
     foreign_key: :user_id,
-    class_name: :User
+    class_name: :Friend
 
   has_many :comments, as: :commentable
   has_many :cheers, as: :cheerable
