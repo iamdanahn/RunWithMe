@@ -1,6 +1,8 @@
 class Api::FriendshipsController < ApplicationController
   def index
     @friends = current_user.friends
+    #friends == full user info
+    @friendships = current_user.friendships
   end
 
   def show

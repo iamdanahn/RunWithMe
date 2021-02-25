@@ -1,7 +1,7 @@
 export const fetchFriends = () => {
   debugger;
   return $.ajax({
-    url: `api/friends`,
+    url: `api/friendships`,
     method: `GET`,
   });
 };

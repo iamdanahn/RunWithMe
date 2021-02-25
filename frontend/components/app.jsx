@@ -34,11 +34,11 @@ const App = () => {
           path="/routes/:routeId"
           component={RouteShowContainer}
         />
-        <ProtectedRoute path="/friends" component={FriendMainContainer} />
+        <ProtectedRoute path="/friendships" component={FriendMainContainer} />
         <AuthRoute path="/" component={SplashPage} />
       </Switch>
     </div>
-  )
+  );
 }
 
 export default App;

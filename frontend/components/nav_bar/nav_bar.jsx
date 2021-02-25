@@ -37,7 +37,6 @@ class NavBar extends React.Component {
             <RouteLinks currentUser={currentUser} logout={logout} />
           </div>
 
-					
           {/* FUTURE FEATURE
 					<div className="dropdown">
             <button className="navbtn" to="/">
@@ -51,9 +50,7 @@ class NavBar extends React.Component {
               Commmunity
             </button>
             <div className="dropdown-content">
-              <Link to="/friends">
-                Friends
-              </Link>
+              <Link to="/friendships">Friends</Link>
             </div>
           </div>
 
@@ -113,7 +110,7 @@ class NavBar extends React.Component {
           </div>
         )}
       </div>
-    )
+    );
 	}
 }
 

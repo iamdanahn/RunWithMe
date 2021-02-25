@@ -28,12 +28,10 @@ class User < ApplicationRecord
     foreign_key: :creator_id,
     class_name: :Route
 
-  # has_many :friends,
-  #   foreign_key: :user_id,
-  #   class_name: :Friend
-
+    # user has friends through friendships
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
+
 
   has_many :comments, as: :commentable
   has_many :cheers, as: :cheerable

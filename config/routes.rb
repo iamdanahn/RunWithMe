@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     
     resources :routes, only: [:index, :show, :create, :update, :destroy]
     resources :comments, only: [:index, :show, :create, :update, :destroy]
-    resources :friends, only: [:index, :show, :create, :update, :destroy]
+    resources :friendships, only: [:index, :show, :create, :update, :destroy]
 
   end
 end

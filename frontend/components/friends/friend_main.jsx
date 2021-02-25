@@ -10,11 +10,13 @@ class Friends extends React.Component {
     debugger;
     console.log(this.props.friends);
 
-    const frands = this.props.friends.map(friend => {
-      return <li key={friend.friend_id} > Friend's ID: {friend.friend_id} </li>
-    })
-
-    console.log(frands)
+    const frands = this.props.friends.map((friend) => {
+      return (
+        <li key={friend.id}>
+          Friends name: {`${friend.first_name} ${friend.last_name}`}
+        </li>
+      );
+    });
 
     return (
       <div>
