@@ -20,20 +20,4 @@ class Friendship < ApplicationRecord
     # look in Users table, not Friends Table (which also doesnt exist)
 
 
-    # creates Friendship object for both parties
-  def self.create_other(user_id, friend_id)
-    user_friendship = Friendship.create(user_id: user_id, friend_id: friend_id)
-    friends_friendship = Friendship.create(user_id: friend_id, friend_id: user_id)
-
-    [user_friendship, friends_friendship]
-  end
-
-    # destroys Friendship object for both parties
-  def self.destroy_other(user_id, friend_id)
-    goodbye1 = Friendship.find_by(user_id: user_id, friend_id: friend_id)
-    goodbye2 = Friendship.find_by(user_id: friend_id, friend_id: user_id)
-
-    goodbye1.destroy
-    goodbye2.destroy
-  end
 end

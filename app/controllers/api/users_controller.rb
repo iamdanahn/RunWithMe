@@ -1,5 +1,22 @@
 class Api::UsersController < ApplicationController
 
+  def index
+    debugger
+    term = user_params
+    debugger
+    
+    # User.where(["first_name = :u", {u: "Demo"}])
+    # ^ this works in console
+
+    unless term[:search].empty?
+      debugger
+      @users = User.where("first_name ILIKE :term OR last_name ILIKE :term OR email ILIKE :term", {term: "%#{term.search.downcase}%"})
+    else
+      debugger
+      @users = current_user.friends
+    end
+  end
+
   def create
     @user = User.new(user_params)
 
@@ -20,7 +37,15 @@ class Api::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :password, :email, :birthday, :gender)
+    params.require(:user).permit(
+      :first_name, 
+      :last_name, 
+      :password, 
+      :email, 
+      :birthday, 
+      :gender, 
+      :search
+      )
   end
 
 end
