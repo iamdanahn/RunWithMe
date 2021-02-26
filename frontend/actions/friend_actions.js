@@ -2,39 +2,61 @@ import * as FriendsAPIUtil from "../util/users_api_util";
 
 export const RECEIVE_FRIENDS = "RECEIVE_FRIENDS";
 export const RECEIVE_PEOPLE = "RECEIVE_PEOPLE";
+export const RECEIVE_FRIEND_REQ = "RECEIVE_FRIEND_REQ" 
 
+// sets up friends in redux
 const receiveFriends = (friends) => {
-  debugger;
+  debugger
   return {
     type: RECEIVE_FRIENDS,
     friends,
-  };
-};
+  }
+}
 
+// sets up searched users in find friends
 const receivePeople = (people) => {
-  debugger;
+  debugger
   return {
     type: RECEIVE_PEOPLE,
     people,
-  };
-};
+  }
+}
 
+const receiveFriendReq = (friendReq) => {
+  debugger
+  return {
+    type: RECEIVE_FRIEND_REQ,
+    friendReq,
+  }
+}
+
+// finds user's friends from Back end
 export const fetchFriends = () => {
   return (dispatch) => {
-    debugger;
+    debugger
     return FriendsAPIUtil.fetchFriends().then((friends) => {
-      debugger;
-      return dispatch(receiveFriends(friends));
-    });
-  };
-};
+      debugger
+      return dispatch(receiveFriends(friends))
+    })
+  }
+}
 
+// finds people from Back end
 export const findFriends = (criteria) => {
   return (dispatch) => {
-    debugger;
+    debugger
     return FriendsAPIUtil.findFriends(criteria).then((people) => {
-      debugger;
-      return dispatch(receivePeople(people));
-    });
-  };
-};
+      debugger
+      return dispatch(receivePeople(people))
+    })
+  }
+}
+
+// Creates friend request in Back end
+export const sendFriendReq = (request) => {
+  return (dispatch) => {
+    return FriendsAPIUtil.sendFriendReq(request).then((friendReq) => {
+      return dispatch(receiveFriendReq(friendReq))
+    })
+  }
+}

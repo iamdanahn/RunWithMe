@@ -16,9 +16,9 @@ class FriendRequest < ApplicationRecord
 
   belongs_to :user,
     foreign_key: :requester_id,
-    class_name: :User,
+    class_name: :User
 
   belongs_to :receiver,
     foreign_key: :receiver_id,
-    class_name: :User,
+    class_name: :User
 end

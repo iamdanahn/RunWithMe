@@ -28,13 +28,17 @@ class User < ApplicationRecord
     foreign_key: :creator_id,
     class_name: :Route
 
-    # user has friends through friendships
+    # friendships is the actual friendship object
   has_many :friendships, dependent: :destroy
+    # friends are user info found thru friendships "joins"
   has_many :friends, through: :friendships
 
+    # shows friend_requests SENT by current user
   has_many :friend_requests,
     foreign_key: :requester_id,
     class_name: :FriendRequest
+    # shows who received friend_requests, used to show pending requests
+  has_many :receivers, through: :friend_requests
 
   has_many :comments, as: :commentable
   has_many :cheers, as: :cheerable

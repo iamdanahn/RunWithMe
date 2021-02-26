@@ -16,8 +16,9 @@ class Friends extends React.Component {
       return (
         <li key={friend.id}>
           Friends name: {`${friend.first_name} ${friend.last_name}`}
+          
         </li>
-      );
+      )
     });
 
     return (
@@ -31,6 +32,7 @@ class Friends extends React.Component {
             <Link to="/friendships/find">Find Friends Link</Link>
           </div>
         </section>
+
         <section className="friends-body">
           <div>Friend Body Header </div>
           <div>Friends Body List</div>
@@ -40,7 +42,7 @@ class Friends extends React.Component {
           </div>
         </section>
       </div>
-    );
+    )
   }
 }
 

@@ -16,3 +16,14 @@ export const findFriends = (criteria) => {
     },
   })
 }
+
+export const sendFriendReq = (request) => {
+  debugger
+  return $.ajax({
+    url: `api/friend_requests`,
+    method: `POST`,
+    data: {
+      friend_request: request,
+    },
+  })
+}

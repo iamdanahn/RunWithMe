@@ -14,6 +14,19 @@ class FriendFind extends React.Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick(friend_id) {
+    return (e) => {
+      e.preventDefault()
+      debugger
+      const { currentUser, sendFriendReq } = this.props
+      const request = { requester_id: currentUser.id, receiver_id: friend_id }
+      // create request payload to go and send
+
+      sendFriendReq(request)
+    }
   }
 
   handleChange(e) {
@@ -35,7 +48,8 @@ class FriendFind extends React.Component {
       return (
         <li key={person.id}>
           <div>
-            {person.first_name} {person.last_name} <button>ADD</button>
+            {person.first_name} {person.last_name}
+            <button onClick={this.handleClick(person.id)}>ADD</button>
           </div>
         </li>
       )

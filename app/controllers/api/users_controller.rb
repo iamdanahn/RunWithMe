@@ -16,7 +16,7 @@ class Api::UsersController < ApplicationController
       @users = User.where("first_name ILIKE :term OR last_name ILIKE :term OR email ILIKE :term", {term: "%#{term[:search].downcase}%"})
     else
       # debugger
-      @users = current_user.friends
+      @users = User.all
     end
   end
 
