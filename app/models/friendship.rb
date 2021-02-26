@@ -10,6 +10,7 @@
 #
 class Friendship < ApplicationRecord
   validates :user_id, :friend_id, presence: true
+  validates :user_id, uniqueness: { scope: :friend_id }
 
   # friendship has 1 user to 1 friend relationship
   belongs_to :user

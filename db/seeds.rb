@@ -11,6 +11,7 @@ Route.destroy_all
 Workout.destroy_all
 Goal.destroy_all
 Friendship.destroy_all
+FriendRequest.destroy_all
 Comment.destroy_all
 Cheer.destroy_all
 
@@ -27,7 +28,7 @@ user2 = User.create!(
   id: 2,
   first_name: 'Cat',
   last_name: 'Feline',
-  password: 'abcdef', 
+  password: 'password', 
   email: 'imfaster@yahoo.com', 
   birthday: '2000-03-29',
   gender:'F'
@@ -36,8 +37,35 @@ user3 = User.create!(
   id: 3,
   first_name: 'Ash', 
   last_name: 'Ketchum',
-  password: 'pokemon',
+  password: 'password',
   email: 'smoothsailing@gmail.com', 
+  birthday: '1986-06-14',
+  gender:'M'
+  )
+user4 = User.create!(
+  id: 4,
+  first_name: 'Logitech', 
+  last_name: 'Pro',
+  password: 'password',
+  email: 'logitech@gmail.com', 
+  birthday: '1986-06-14',
+  gender:'F'
+  )
+user5 = User.create!(
+  id: 5,
+  first_name: 'Tiger', 
+  last_name: 'Cereal',
+  password: 'password',
+  email: 'cereal@gmail.com', 
+  birthday: '1986-06-14',
+  gender:'M'
+  )
+user6 = User.create!(
+  id: 6,
+  first_name: 'Josh', 
+  last_name: 'Planter',
+  password: 'password',
+  email: 'smoothdemo@gmail.com', 
   birthday: '1986-06-14',
   gender:'M'
   )
@@ -146,3 +174,15 @@ cheers1 = Cheer.create!(
   cheerable_type: "Goal",
   user_id: 1
 ) 
+
+connection1 = FriendRequest.create!(requester_id: user1.id, receiver_id: user4.id, pending: true)
+connection1a = FriendRequest.create!(requester_id: user4.id, receiver_id: user1.id, pending: true)
+
+connection2 = FriendRequest.create!(requester_id: user1.id, receiver_id: user5.id, pending: true)
+connection2a = FriendRequest.create!(requester_id: user5.id, receiver_id: user1.id, pending: true)
+
+connection3 = FriendRequest.create!(requester_id: user1.id, receiver_id: user6.id, pending: true)
+connection3a = FriendRequest.create!(requester_id: user6.id, receiver_id: user1.id, pending: true)
+
+connection4 = FriendRequest.create!(requester_id: user5.id, receiver_id: user3.id, pending: true)
+connection4a = FriendRequest.create!(requester_id: user3.id, receiver_id: user5.id, pending: true)

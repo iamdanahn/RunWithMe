@@ -1,22 +1,26 @@
 class Api::UsersController < ApplicationController
 
+
+  # I used friendship's user search here because we want to search 
+  # all existing users in the App's database
   def index
-    debugger
+    # debugger
     term = user_params
-    debugger
+    # debugger
     
     # User.where(["first_name = :u", {u: "Demo"}])
     # ^ this works in console
 
     unless term[:search].empty?
-      debugger
-      @users = User.where("first_name ILIKE :term OR last_name ILIKE :term OR email ILIKE :term", {term: "%#{term.search.downcase}%"})
+      # debugger
+      @users = User.where("first_name ILIKE :term OR last_name ILIKE :term OR email ILIKE :term", {term: "%#{term[:search].downcase}%"})
     else
-      debugger
+      # debugger
       @users = current_user.friends
     end
   end
 
+  # Creates new user from signup screen
   def create
     @user = User.new(user_params)
 
@@ -35,6 +39,8 @@ class Api::UsersController < ApplicationController
     end
   end
 
+
+  # permits only these categories to enter the controller
   private
   def user_params
     params.require(:user).permit(

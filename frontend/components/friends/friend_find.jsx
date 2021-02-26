@@ -30,33 +30,36 @@ class FriendFind extends React.Component {
   }
 
   render() {
-    // const { people } = this.props;
-    // const members = people.map((person) => {
-    //   return;
-    //   <li> persons fname, lname, add button </li>;
-    // });
+    const { people } = this.props
+    const members = people.map((person) => {
+      return (
+        <li key={person.id}>
+          <div>
+            {person.first_name} {person.last_name} <button>ADD</button>
+          </div>
+        </li>
+      )
+    })
 
     return (
       <div className="friends-cntr">
         <section className="friends-header">
           Friends Header
           <div className="friends-links 1">
-            <Link to="/friendships">My Friends Link, no button</Link>
+            <Link to="/friendships">My Friends Link</Link>
           </div>
           <div className="friends-links 2">
-            <button>
-              <Link to="/friendships/find">Find Friends Link in a button</Link>
-            </button>
+            <Link to="/friendships/find">Find Friends Link</Link>
           </div>
         </section>
         <section className="friends-body">
-          <div>Find RunWithME Friends by First Name, Last Name, or Email:</div>
+          <div>Find RunWithMe Friends by First Name, Last Name, or Email:</div>
           <form onSubmit={this.handleSubmit}>
             <input type="text" onChange={this.handleChange}></input>
             <button>Submit</button>
           </form>
 
-          {/* <ul>{members}</ul> */}
+          <ul>{members}</ul>
         </section>
       </div>
     )

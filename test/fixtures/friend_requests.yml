@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: friend_requests
+#
+#  id           :bigint           not null, primary key
+#  pending      :boolean          not null
+#  requester_id :integer          not null
+#  receiver_id  :integer          not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+one:
+  pending: false
+  requester_id: 1
+  receiver_id: 1
+
+two:
+  pending: false
+  requester_id: 1
+  receiver_id: 1
