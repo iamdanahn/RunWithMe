@@ -4,19 +4,25 @@ class Api::UsersController < ApplicationController
   # I used friendship's user search here because we want to search 
   # all existing users in the App's database
   def index
-    # debugger
     term = user_params
     # debugger
+    user_friends = current_user.friends.ids
     
-    # User.where(["first_name = :u", {u: "Demo"}])
-    # ^ this works in console
+    # SAMPLE: User.where(["first_name = :u", {u: "Demo"}])
+    # If search criteria is empty, grab all users EXCEPT 
+    # current user and friends
 
     unless term[:search].empty?
       # debugger
-      @users = User.where("first_name ILIKE :term OR last_name ILIKE :term OR email ILIKE :term", {term: "%#{term[:search].downcase}%"})
+      # ILIKE matches case-INSENSITIVELY
+      @users = User.where("first_name ILIKE :term OR last_name ILIKE :term OR email ILIKE :term", {term: "%#{term[:search].downcase}%"}) #.downcase is not necessary here, but added for double-security
     else
       # debugger
       @users = User.all
+      # @users = User.where.not("id LIKE current_user.id OR user_friends")
+
+
+      # User.where.not("id IN (1, 2, 3)") works, will return users who are not in the array
     end
   end
 

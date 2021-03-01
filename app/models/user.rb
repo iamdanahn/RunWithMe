@@ -40,7 +40,10 @@ class User < ApplicationRecord
     # shows who received friend_requests, used to show pending requests
   has_many :receivers, through: :friend_requests
 
-  has_many :comments, as: :commentable
+    # reg assciation to comments
+  has_many :comments
+
+
   has_many :cheers, as: :cheerable
   has_many :goals,
     foreign_key: :user_id,

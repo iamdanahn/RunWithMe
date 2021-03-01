@@ -27,7 +27,7 @@ class Api::FriendRequestsController < ApplicationController
         debugger
         if @request.save
           debugger
-          render "/api/friend_request/show"
+          render "/api/friend_requests/show"
         else
           debugger
           render json: @request.errors.full_messages, status: 422

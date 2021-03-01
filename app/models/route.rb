@@ -16,6 +16,8 @@
 class Route < ApplicationRecord
   validates :name, :creator_id, :activity, :location, :distance, :markers, presence: true
 
+  # Route does not have a comments column
+  # this is handled by the separate comments table
   has_many :comments, as: :commentable
 
   belongs_to :creator,
