@@ -1,9 +1,23 @@
 class Api::CommentsController < ApplicationController
 
+  # need comments related to the instance only
   def index
-    @comments = Comment.all
-    # @comments = Routes.where
+    comment_id = comment_params[:commentable_id].to_i
+      #grabs all comments in database
+    # @comments = Comment.all
+    
+      # grabs all ROUTE comments and preloads User table (rids N+1)
+    @comments = Comment.where("commentable_type ILIKE 'Route'").where(commentable_id: comment_id).includes(:user)
+    # debugger
+    # how do 
   end
+
+  # try a .includes with association name
+
+  # SELECT *
+  # FROM Comment
+  # JOIN User
+  # ON Comment.user_id = User.id
   
   # Use if showing a single comment
   # def show

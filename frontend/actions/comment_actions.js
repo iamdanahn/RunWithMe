@@ -18,16 +18,16 @@ const receiveComment = (comment) => {
   }
 }
 
-const removeComment = (comment) => {
+const removeComment = (commentId) => {
   return {
     type: REMOVE_COMMENT,
-    comment,
+    commentId,
   }
 }
 
-export const fetchComments = () => {
+export const fetchComments = (routeId) => {
   return (dispatch) => {
-    return CommentAPIUtil.fetchComments().then((comments) => {
+    return CommentAPIUtil.fetchComments(routeId).then((comments) => {
       return dispatch(receiveComments(comments))
     })
   }

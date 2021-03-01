@@ -11,6 +11,7 @@ class RouteShow extends React.Component {
   componentDidMount() {
     const routeId = this.props.match.params.routeId
     this.props.fetchRoute(routeId)
+    this.props.fetchComments(routeId)
     // fetches single route and saves it in state to be used
   }
 
@@ -25,12 +26,28 @@ class RouteShow extends React.Component {
     // need to return null for cDM, then route info can be fetched
     if (!this.props.route) return null
 
-    const { route, user } = this.props
+    const { route, user, comments, deleteComment } = this.props
     const createDate = new Date(route.created_at).toDateString()
     const updateDate = new Date(route.updated_at).toDateString()
     
     console.log(route)
     console.log(this.props)
+
+    const routeComments = comments.map((comment) => {
+      return (
+        <li key={comment.id} className="comment-cntr">
+          <div className="comment-body">
+            <h4>
+              {comment.first_name} {comment.last_name}
+            </h4>
+            <p>{comment.body}</p>
+          </div>
+          <div className="comment-delete">
+            <button onClick={() => deleteComment(comment.id)}>Delete</button>
+          </div>
+        </li>
+      )
+    })
     
     return (
       <div className="route-show-cntr">
@@ -63,8 +80,8 @@ class RouteShow extends React.Component {
             </div>
           </section>
 
-          <section>
-            Comments section
+          <section className="rs-comments">
+            <ul>{routeComments}</ul>
           </section>
 
           {/* section 2 - minimap, comments section */}

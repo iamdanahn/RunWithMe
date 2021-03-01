@@ -3,10 +3,11 @@
 // fetchComment(s)
 // deleteComment
 
-export const fetchComments = (comment) => {
+export const fetchComments = (routeId) => {
   return $.ajax({
     url: `/api/comments`,
     method: `GET`,
+    data: { comment: { commentable_id: routeId } },
     error: (err) => console.log(err),
   })
 }

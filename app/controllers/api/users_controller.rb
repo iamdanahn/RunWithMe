@@ -19,10 +19,11 @@ class Api::UsersController < ApplicationController
     else
       # debugger
       @users = User.all
-      # @users = User.where.not("id LIKE current_user.id OR user_friends")
+      # @users = User.where.not("id LIKE current_user.id OR user_friends") 
 
-
+      # @users = User.where()
       # User.where.not("id IN (1, 2, 3)") works, will return users who are not in the array
+
     end
   end
 

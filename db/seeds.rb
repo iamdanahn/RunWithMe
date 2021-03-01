@@ -159,6 +159,41 @@ comments2 = Comment.create!(
   commentable_type: "Workout",
   user_id: user2.id
 )
+comments3 = Comment.create!(
+  id: 3,
+  body: "test - route 1",
+  commentable_id: route1.id,
+  commentable_type: "Route",
+  user_id: user2.id
+)
+comments4 = Comment.create!(
+  id: 4,
+  body: "testtttt - route 1",
+  commentable_id: route1.id,
+  commentable_type: "Route",
+  user_id: user2.id
+)
+comments5 = Comment.create!(
+  id: 5,
+  body: "Woohooo look at you go - route 1",
+  commentable_id: route1.id,
+  commentable_type: "Route",
+  user_id: user5.id
+)
+comments6 = Comment.create!(
+  id: 6,
+  body: "Woohooo look at you gogogogo - route 1",
+  commentable_id: route1.id,
+  commentable_type: "Route",
+  user_id: user4.id
+)
+comments7 = Comment.create!(
+  id: 7,
+  body: "Wompmpmpmp - route 1",
+  commentable_id: route1.id,
+  commentable_type: "Route",
+  user_id: user4.id
+)
 
 goals1 = Goal.create!(
   id: 1,  
