@@ -11,7 +11,7 @@
 #
 class FriendRequest < ApplicationRecord
 
-  validates :requester_id, :requestee_id, presence: true
+  validates :requester_id, :requester_id, presence: true
   validates :pending, inclusion: { in: [true, false] }
 
   belongs_to :user,
