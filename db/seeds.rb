@@ -77,7 +77,7 @@ route1 = Route.create!(
   creator_id: 1,
   activity: 'cycling',
   location: 'New York City',
-  distance: "29 MI",
+  distance: "29 mi",
   markers: '[{"lat":40.71411115971662,"lng":-74.01132169889046},{"lat":40.7033821221302,"lng":-74.01622629240303},{"lat":40.71079944830665,"lng":-73.97940492704659},{"lat":40.738664689525265,"lng":-73.97315883889469},{"lat":40.77474843800661,"lng":-73.94294643655094},{"lat":40.82411915550898,"lng":-73.93480985667082},{"lat":40.86850561436029,"lng":-73.9204045210102},{"lat":40.78914261494821,"lng":-73.98014268018989},{"lat":40.71411115971662,"lng":-74.01132169889046}]',
   description: "This is madness!"
   )
@@ -85,10 +85,10 @@ route1 = Route.create!(
 route2 = Route.create!(
   id: 2,
   name: 'Path of Moguls',
-  creator_id: 3,
+  creator_id: 1,
   activity: 'running',
   location: "Catskills, NY",
-  distance: "15 MI",
+  distance: "8.4 mi",
   markers: '[{"lat":40.75674223226639,"lng":-73.98508680046385},{"lat":40.74035624922381,"lng":-73.99710309685057},{"lat":40.72663313398497,"lng":-73.97925031364744},{"lat":40.761943287259584,"lng":-73.96500241936033},{"lat":40.760448025629294,"lng":-73.98989331901853},{"lat":40.75674223226639,"lng":-73.98508680046385}]',
   description: "Nothing like fresh air"
   )
@@ -96,11 +96,11 @@ route2 = Route.create!(
 route3 = Route.create!(
   id: 3,
   name: 'Boulevard of Dreams',
-  creator_id: 2,
+  creator_id: 1,
   activity: 'walking',
   location: "Miami, FL",
-  distance: "20 MI",
-  markers: '[{"lat":25.755614618779823,"lng":-80.19676837993164},{"lat":25.790705399755968,"lng":-80.18861446452637},{"lat":25.755614618779823,"lng":-80.19676837993164}]',
+  distance: "23.8 mi",
+  markers: '[{"lat":25.766513967793152,"lng":-80.19050273967285},{"lat":25.726544797952293,"lng":-80.2397695548584},{"lat":25.81110583843507,"lng":-80.18906731292041},{"lat":25.80932804978399,"lng":-80.13535927392678},{"lat":25.773365948021038,"lng":-80.18726097681186}]',
   description: "Soaking in the sun"
 )
 
@@ -210,14 +210,14 @@ cheers1 = Cheer.create!(
   user_id: 1
 ) 
 
-connection1 = FriendRequest.create!(requester_id: user1.id, receiver_id: user4.id, pending: true)
-connection1a = FriendRequest.create!(requester_id: user4.id, receiver_id: user1.id, pending: true)
+# connection1 = FriendRequest.create!(requester_id: user1.id, receiver_id: user4.id, pending: true)
+# connection1a = FriendRequest.create!(requester_id: user4.id, receiver_id: user1.id, pending: true)
 
-connection2 = FriendRequest.create!(requester_id: user1.id, receiver_id: user5.id, pending: true)
-connection2a = FriendRequest.create!(requester_id: user5.id, receiver_id: user1.id, pending: true)
+# connection2 = FriendRequest.create!(requester_id: user1.id, receiver_id: user5.id, pending: true)
+# connection2a = FriendRequest.create!(requester_id: user5.id, receiver_id: user1.id, pending: true)
 
-connection3 = FriendRequest.create!(requester_id: user1.id, receiver_id: user6.id, pending: true)
-connection3a = FriendRequest.create!(requester_id: user6.id, receiver_id: user1.id, pending: true)
+# connection3 = FriendRequest.create!(requester_id: user1.id, receiver_id: user6.id, pending: true)
+# connection3a = FriendRequest.create!(requester_id: user6.id, receiver_id: user1.id, pending: true)
 
-connection4 = FriendRequest.create!(requester_id: user5.id, receiver_id: user3.id, pending: true)
-connection4a = FriendRequest.create!(requester_id: user3.id, receiver_id: user5.id, pending: true)
+# connection4 = FriendRequest.create!(requester_id: user5.id, receiver_id: user3.id, pending: true)
+# connection4a = FriendRequest.create!(requester_id: user3.id, receiver_id: user5.id, pending: true)

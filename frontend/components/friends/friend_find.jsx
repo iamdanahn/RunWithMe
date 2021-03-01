@@ -17,6 +17,11 @@ class FriendFind extends React.Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
+  componentWillUnmount() {
+    debugger
+    this.props.clearPeople()
+  }
+
   handleClick(friend_id) {
     return (e) => {
       e.preventDefault()

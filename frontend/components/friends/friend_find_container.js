@@ -1,6 +1,10 @@
 import { connect } from "react-redux";
 import FriendFind from "./friend_find.jsx";
-import { findFriends, sendFriendReq } from "../../actions/friend_actions.js"
+import {
+  clearPeople,
+  findFriends,
+  sendFriendReq,
+} from "../../actions/friend_actions.js"
 
 const msp = (state, ownProps) => {
   debugger
@@ -17,6 +21,7 @@ const mdp = (dispatch) => {
   return {
     findFriends: (criteria) => dispatch(findFriends(criteria)),
     sendFriendReq: (request) => dispatch(sendFriendReq(request)),
+    clearPeople: () => dispatch(clearPeople()),
   }
 };
 

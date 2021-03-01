@@ -3,6 +3,7 @@ import * as FriendsAPIUtil from "../util/users_api_util";
 export const RECEIVE_FRIENDS = "RECEIVE_FRIENDS";
 export const RECEIVE_PEOPLE = "RECEIVE_PEOPLE";
 export const RECEIVE_FRIEND_REQ = "RECEIVE_FRIEND_REQ" 
+export const CLEAR_PEOPLE = "CLEAR_PEOPLE"
 
 // sets up friends in redux
 const receiveFriends = (friends) => {
@@ -27,6 +28,13 @@ const receiveFriendReq = (friendReq) => {
   return {
     type: RECEIVE_FRIEND_REQ,
     friendReq,
+  }
+}
+
+export const clearPeople = () => {
+  debugger
+  return {
+    type: CLEAR_PEOPLE,
   }
 }
 
