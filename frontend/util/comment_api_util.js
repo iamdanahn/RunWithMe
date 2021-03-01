@@ -1,17 +1,7 @@
 
 // createComment
 // fetchComment(s)
-// updateComment
 // deleteComment
-
-export const createComment = (comment) => {
-  return $.ajax({
-    url: `/api/comments`,
-    method: `POST`,
-    data: { comment },
-    error: (err) => console.log(err),
-  })
-}
 
 export const fetchComments = (comment) => {
   return $.ajax({
@@ -28,9 +18,14 @@ export const fetchComment = (commentId) => {
     error: (err) => console.log(err),
   })
 }
-
-
-
+export const createComment = (comment) => {
+  return $.ajax({
+    url: `/api/comments`,
+    method: `POST`,
+    data: { comment },
+    error: (err) => console.log(err),
+  })
+}
 export const deleteComment = (commentId) => {
   return $.ajax({
     url: `/api/comments/${commentId}`,

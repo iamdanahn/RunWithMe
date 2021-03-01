@@ -16,11 +16,12 @@ const msp = (state, ownProps) => {
 }
 
 const mdp = dispatch => {
-  return ({
-    deleteRoute: route => dispatch(deleteRoute(route)),
-    fetchRoute: routeId => dispatch(fetchRoute(routeId)),
-    fetchUser: id => dispatch(fetchUser(id))
-  })
+  return {
+    deleteRoute: (route) => dispatch(deleteRoute(route)),
+    fetchRoute: (routeId) => dispatch(fetchRoute(routeId)),
+    fetchUser: (id) => dispatch(fetchUser(id)),
+    fetchComments: () => dispatch(fetchComments()),
+  }
 }
 
 export default connect(msp, mdp)(RouteShow)
