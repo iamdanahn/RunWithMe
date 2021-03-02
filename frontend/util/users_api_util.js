@@ -1,3 +1,5 @@
+// Regular friending section
+//
 export const fetchFriends = () => {
   debugger
   return $.ajax({
@@ -17,6 +19,25 @@ export const findFriends = (criteria) => {
   })
 }
 
+export const addFriend = (friendId) => {
+  return $.ajax({
+    url: `api/friendships`,
+    method: `POST`,
+    data: {
+      friends: { friend_id: friendId },
+    },
+  })
+}
+
+export const unFriend = (friendId) => {
+  return $.ajax({
+    url: `api/friendships/${friendId}`,
+    method: `DELETE`,
+  })
+}
+
+//Friend request section
+//
 export const sendFriendReq = (request) => {
   debugger
   return $.ajax({
@@ -24,16 +45,6 @@ export const sendFriendReq = (request) => {
     method: `POST`,
     data: {
       friend_request: request,
-    },
-  })
-}
-
-export const addFriend = (friendId) => {
-  return $.ajax({
-    url: `api/friendships`,
-    method: `POST`,
-    data: {
-      friends: { friend_id: friendId },
     },
   })
 }

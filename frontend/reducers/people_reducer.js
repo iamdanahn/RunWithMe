@@ -1,4 +1,8 @@
-import { CLEAR_PEOPLE, RECEIVE_PEOPLE } from "../actions/friend_actions"
+import {
+  CLEAR_PEOPLE,
+  RECEIVE_PEOPLE,
+  RECEIVE_FRIENDS,
+} from "../actions/friend_actions"
 
 const peopleReducer = (state = {}, action) => {
   Object.freeze(state)

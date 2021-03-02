@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import { fetchFriends } from "../../actions/friend_actions"
 
 class FriendFind extends React.Component {
   constructor(props) {
@@ -25,12 +26,13 @@ class FriendFind extends React.Component {
       debugger
       const { addFriend, currentUser, sendFriendReq } = this.props
       // this section for direct friend request (demo purpose)
-      addFriend(friend_id)
+      // find friends == promise otherwise, non-friends list will not update after click
+      addFriend(friend_id).then(() => this.props.findFriends(this.state))
 
       // this section for friend request functionality
       // create request payload to go and send
-        // const request = { requester_id: currentUser.id, receiver_id: friend_id }
-        // sendFriendReq(request)
+      // const request = { requester_id: currentUser.id, receiver_id: friend_id }
+      // sendFriendReq(request)
     }
   }
 
@@ -41,10 +43,11 @@ class FriendFind extends React.Component {
   handleSubmit(e) {
     debugger
     e.preventDefault()
-    // search function from propssett
+    // search function from props set
     // const { search } = this.state
     this.props.findFriends(this.state)
-    this.setState({ search: "" })
+
+    // this.setState({ search: "" })
   }
 
   render() {

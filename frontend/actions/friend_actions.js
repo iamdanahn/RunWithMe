@@ -77,3 +77,11 @@ export const addFriend = (friendId) => {
     })
   }
 }
+
+export const unFriend = (friendId) => {
+  return (dispatch) => {
+    return FriendsAPIUtil.unFriend(friendId).then((friends) => {
+      return dispatch(receiveFriends(friends))
+    })
+  }
+}
