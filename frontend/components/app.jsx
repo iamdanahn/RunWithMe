@@ -41,7 +41,7 @@ const App = () => {
           component={FriendFindContainer}
         />
         <ProtectedRoute path="/friendships" component={FriendMainContainer} />
-        <ProtectedRoute path="/profile/:friendId" component={UserContainer} />
+        <ProtectedRoute path="/profile/:id" component={UserContainer} />
         <AuthRoute path="/" component={SplashPage} />
       </Switch>
     </div>

@@ -4,9 +4,14 @@ class Api::UsersController < ApplicationController
   # I used friendship's user search here because we want to search 
   # all existing users in the App's database
   def index
+      #search terms
     term = user_params
     # debugger
+
+    user_id = current_user.id
     user_friends = current_user.friends.ids
+      # current user & friends IDs 
+    insiders_ids = user_friends.unshift(user_id)
     
     # SAMPLE: User.where(["first_name = :u", {u: "Demo"}])
     # If search criteria is empty, grab all users EXCEPT 
@@ -18,13 +23,15 @@ class Api::UsersController < ApplicationController
       @users = User.where("first_name ILIKE :term OR last_name ILIKE :term OR email ILIKE :term", {term: "%#{term[:search].downcase}%"}) #.downcase is not necessary here, but added for double-security
     else
       # debugger
-      @users = User.all
-      # @users = User.where.not("id LIKE current_user.id OR user_friends") 
-
-      # @users = User.where()
+      # @users = User.all
       # User.where.not("id IN (1, 2, 3)") works, will return users who are not in the array
+      @users = User.where.not(id: insiders_ids)
 
     end
+  end
+
+  def show
+    @user = User.find(params[:id]).includes(:routes)
   end
 
   # Creates new user from signup screen
