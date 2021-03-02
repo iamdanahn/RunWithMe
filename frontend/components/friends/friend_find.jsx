@@ -6,9 +6,6 @@ class FriendFind extends React.Component {
     super(props)
 
     this.state = {
-      // firstName: "",
-      // lastName: "",
-      // email: "",
       search: "",
     }
 

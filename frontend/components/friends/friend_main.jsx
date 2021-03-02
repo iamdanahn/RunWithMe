@@ -15,8 +15,9 @@ class Friends extends React.Component {
       debugger;
       return (
         <li key={friend.id}>
-          Friends name: {`${friend.first_name} ${friend.last_name}`}
-          
+          <Link to={`/profile/${friend.id}`} >
+            Friends name: {`${friend.first_name} ${friend.last_name}`}
+          </Link>
         </li>
       )
     });
@@ -36,10 +37,10 @@ class Friends extends React.Component {
         <section className="friends-body">
           <div>Friend Body Header </div>
           <div>Friends Body List</div>
-          <div>
+          <section className="fb list">
             My Friends
             <ul> {frands} </ul>
-          </div>
+          </section>
         </section>
       </div>
     )

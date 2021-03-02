@@ -7,9 +7,9 @@ const msp = (state, ownProps) => {
   debugger;
   const currentUserId = state.session.id;
   return {
-    currentUser: state.entities.users[currentUserId],
+    currentUser: state.entities.user[currentUserId],
     friends: Object.values(state.entities.friends),
-  };
+  }
 }
 
 const mdp = dispatch => {

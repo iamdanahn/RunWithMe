@@ -10,6 +10,7 @@ import EditRouteContainer from './routes/edit_route_container'
 import RouteShowContainer from './routes/route_show_container'
 import FriendMainContainer from "./friends/friend_main_container"
 import FriendFindContainer from "./friends/friend_find_container";
+import UserContainer from "./user/user_profile_container"
 import SplashPage from './splash_page'
 
 
@@ -40,10 +41,11 @@ const App = () => {
           component={FriendFindContainer}
         />
         <ProtectedRoute path="/friendships" component={FriendMainContainer} />
+        <ProtectedRoute path="/profile/:friendId" component={UserContainer} />
         <AuthRoute path="/" component={SplashPage} />
       </Switch>
     </div>
-  );
+  )
 }
 
 export default App;

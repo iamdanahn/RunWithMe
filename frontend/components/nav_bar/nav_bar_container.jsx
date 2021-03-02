@@ -9,11 +9,11 @@ const msp = (state, ownProps) => {
   const { entities, session } = state;
   //  // debugger
   return {
-		currentUser: entities.users[session.id],
+    currentUser: entities.user[session.id],
     loggedIn: Boolean(state.session.id),
-    login_page: <Link to="/login"/>,
-    signup_page: <Link to="/signup"/>,
-	};
+    login_page: <Link to="/login" />,
+    signup_page: <Link to="/signup" />,
+  }
 }
 
 const mdp = dispatch => {
