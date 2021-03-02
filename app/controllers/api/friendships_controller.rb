@@ -11,7 +11,9 @@ class Api::FriendshipsController < ApplicationController
   end
 
   def create
-    if @friend = create_other(current_user.id, friend_params)
+    debugger
+    friend_id = friend_params["friend_id"].to_i
+    if @friend = create_other(current_user.id, friend_id)
       debugger
       render 'api/friends/show'
     else
@@ -23,7 +25,7 @@ class Api::FriendshipsController < ApplicationController
     @friend = Friend.find()
 
     if @friend && @friend.destroy
-      render 'api/friends/show'
+      render 'api/friendships/show'
     else
       render json: @comment.errors.full_messages, status: 422
     end
@@ -31,7 +33,7 @@ class Api::FriendshipsController < ApplicationController
 
   private
   def friend_params
-    params.require(friends).permit(:user_id, :friend_id)
+    params.require(:friends).permit(:user_id, :friend_id)
   end
 
     # creates Friendship object for both parties

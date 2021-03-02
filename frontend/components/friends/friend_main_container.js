@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchFriends } from "../../actions/friend_actions";
+import { fetchFriends, unFriend } from "../../actions/friend_actions"
 import FriendMain from './friend_main.jsx'
 
 
@@ -16,7 +16,8 @@ const mdp = dispatch => {
   debugger;
   return {
     fetchFriends: () => dispatch(fetchFriends()),
-  };
+    unFriend: (friendId) => dispatch(unFriend(friendId)),
+  }
 }
 
 export default connect(msp, mdp)(FriendMain)

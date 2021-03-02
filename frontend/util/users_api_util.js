@@ -33,7 +33,7 @@ export const addFriend = (friendId) => {
     url: `api/friendships`,
     method: `POST`,
     data: {
-      friends: friendId,
+      friends: { friend_id: friendId },
     },
   })
 }
