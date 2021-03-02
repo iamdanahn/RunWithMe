@@ -23,11 +23,14 @@ class FriendFind extends React.Component {
     return (e) => {
       e.preventDefault()
       debugger
-      const { currentUser, sendFriendReq } = this.props
-      const request = { requester_id: currentUser.id, receiver_id: friend_id }
-      // create request payload to go and send
+      const { addFriend, currentUser, sendFriendReq } = this.props
+      // this section for direct friend request (demo purpose)
+      addFriend(friend_id)
 
-      sendFriendReq(request)
+      // this section for friend request functionality
+      // create request payload to go and send
+        // const request = { requester_id: currentUser.id, receiver_id: friend_id }
+        // sendFriendReq(request)
     }
   }
 

@@ -5,8 +5,11 @@
 debugger
 json.extract! @user, :id, :first_name, :last_name, :email, :created_at
 
-@routes.each do |route|
-  json.set! route.id do 
-    json.extract! route, :id, :name, :activity, :location, :distance, :description
+# checks if routes exists since it does not when logging in
+if @routes 
+  @routes.each do |route|
+    json.set! route.id do 
+      json.extract! route, :id, :name, :activity, :location, :distance, :description
+    end
   end
 end

@@ -68,3 +68,12 @@ export const sendFriendReq = (request) => {
     })
   }
 }
+
+// Adds friend w/o request (used for demo purposes)
+export const addFriend = (friendId) => {
+  return dispatch => {
+    return FriendsAPIUtil.addFriend(friendId).then((friends) => {
+      return dispatch(receiveFriends(friends))
+    })
+  }
+}

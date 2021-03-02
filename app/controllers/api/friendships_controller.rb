@@ -12,6 +12,7 @@ class Api::FriendshipsController < ApplicationController
 
   def create
     if @friend = create_other(current_user.id, friend_params)
+      debugger
       render 'api/friends/show'
     else
       render json: @comment.errors.full_messages, status: 422

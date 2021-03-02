@@ -4,6 +4,7 @@ import {
   clearPeople,
   findFriends,
   sendFriendReq,
+  addFriend,
 } from "../../actions/friend_actions.js"
 
 const msp = (state, ownProps) => {
@@ -19,6 +20,7 @@ const msp = (state, ownProps) => {
 const mdp = (dispatch) => {
   debugger
   return {
+    addFriend: (friendId) => dispatch(addFriend(friendId)),
     findFriends: (criteria) => dispatch(findFriends(criteria)),
     sendFriendReq: (request) => dispatch(sendFriendReq(request)),
     clearPeople: () => dispatch(clearPeople()),

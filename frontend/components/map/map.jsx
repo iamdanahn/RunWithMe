@@ -49,7 +49,7 @@ class Map extends React.Component {
     // https://developers.google.com/maps/documentation/javascript/reference/directions
     this.directionsRenderer = new google.maps.DirectionsRenderer()
 
-    // GEOCODING converts address <=> coordinates. Usefulf to palc emarkers or position map
+    // GEOCODING converts address <=> coordinates. Useful to palce markers or position map
     //https://developers.google.com/maps/documentation/javascript/geocoding#GeocodingResults
     this.geocoder = new google.maps.Geocoder()
   }
@@ -78,6 +78,7 @@ class Map extends React.Component {
     }
 
     // mapNode == ref to <div map>
+    // actual map creation onto page
     this.map = new google.maps.Map(this.mapNode, this.mapProps)
     this.usersPosition()
 

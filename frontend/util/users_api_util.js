@@ -27,3 +27,13 @@ export const sendFriendReq = (request) => {
     },
   })
 }
+
+export const addFriend = (friendId) => {
+  return $.ajax({
+    url: `api/friendships`,
+    method: `POST`,
+    data: {
+      friends: friendId,
+    },
+  })
+}
