@@ -6,9 +6,10 @@ import { fetchUser } from "../../actions/user_actions"
 
 const msp = (state, ownProps) => {
   debugger
+  const userId = ownProps.match.params.id
   return {
-    currentUser: Object.values(state.entities.user)[0],
-    // userProfile: ,
+    userProfile: state.entities.user,
+    // userProfile: state.entities.user,
     routes: Object.values(state.entities.routes),
   }
 }

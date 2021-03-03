@@ -12,12 +12,14 @@ class Api::FriendshipsController < ApplicationController
 
   def create
     # debugger
-    user_id = current_user.id
+    # find users id #s to make an array
     user_friends = current_user.friends.ids
     
-    insiders_ids = user_friends.unshift(user_id)
+    # combine user ids to a single array
+    insiders_ids = user_friends.unshift(current_user.id)
     friend_id = friend_params["friend_id"].to_i
 
+    # see private method below
     if create_other(current_user.id, friend_id)
       # debugger
       # for rendering back users who are NOT friends

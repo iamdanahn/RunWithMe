@@ -50,7 +50,7 @@ class NavBar extends React.Component {
               Commmunity
             </button>
             <div className="dropdown-content">
-              <Link to="/friendships">Friends</Link>
+              <Link to="/friends">Friends</Link>
             </div>
           </div>
 
@@ -110,7 +110,7 @@ class NavBar extends React.Component {
           </div>
         )}
       </div>
-    );
+    )
 	}
 }
 

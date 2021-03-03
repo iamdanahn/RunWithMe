@@ -37,10 +37,10 @@ const App = () => {
           component={RouteShowContainer}
         />
         <ProtectedRoute
-          path="/friendships/find"
+          path="/friends/find"
           component={FriendFindContainer}
         />
-        <ProtectedRoute path="/friendships" component={FriendMainContainer} />
+        <ProtectedRoute path="/friends" component={FriendMainContainer} />
         <ProtectedRoute path="/profile/:id" component={UserContainer} />
         <AuthRoute path="/" component={SplashPage} />
       </Switch>

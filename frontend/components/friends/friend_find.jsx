@@ -51,11 +51,20 @@ class FriendFind extends React.Component {
   }
 
   render() {
+    const selected1 =
+      this.props.match.path === "/friends"
+        ? "friends-links selected"
+        : "friends-links"
+    const selected2 =
+      this.props.match.path === "/friends/find"
+        ? "friends-links selected"
+        : "friends-links"
+
     const { people } = this.props
     const members = people.map((person) => {
       return (
-        <li key={person.id}>
-          <div>
+        <li key={person.id} className="friend-item-cntr">
+          <div className="friend-item">
             {person.first_name} {person.last_name}
             <button onClick={this.handleClick(person.id)}>ADD</button>
           </div>
@@ -64,25 +73,33 @@ class FriendFind extends React.Component {
     })
 
     return (
-      <div className="friends-cntr">
-        <section className="friends-header">
-          Friends Header
-          <div className="friends-links 1">
-            <Link to="/friendships">My Friends Link</Link>
-          </div>
-          <div className="friends-links 2">
-            <Link to="/friendships/find">Find Friends Link</Link>
-          </div>
-        </section>
-        <section className="friends-body">
-          <div>Find RunWithMe Friends by First Name, Last Name, or Email:</div>
-          <form onSubmit={this.handleSubmit}>
-            <input type="text" onChange={this.handleChange}></input>
-            <button>Submit</button>
-          </form>
+      <div className="friends-bg">
+        <div className="friends-cntr">
+          <section className="friends-header">
+            <Link to="/friends" className={selected1}>
+              My Friends
+            </Link>
+            <Link to="/friends/find" className={selected2}>
+              Find Friends
+            </Link>
+          </section>
+          
+          <section className="friends-body">
+            <h3>
+              Find RunWithMe Friends by First Name, Last Name, or Email:
+            </h3>
+            <form onSubmit={this.handleSubmit}>
+              <div className="input-cntr">
+                <input type="text" onChange={this.handleChange}></input>
+              </div>
+              <div className="button-cntr">
+                <button>Search</button>
+              </div>
+            </form>
 
-          <ul>{members}</ul>
-        </section>
+            <ul>{members}</ul>
+          </section>
+        </div>
       </div>
     )
   }

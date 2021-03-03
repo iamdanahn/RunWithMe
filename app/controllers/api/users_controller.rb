@@ -32,7 +32,7 @@ class Api::UsersController < ApplicationController
 
   def show
     # @user = User.where(id: params[:id]).includes(:routes)
-    debugger
+    # debugger
     @user = User.find(params[:id])
     @routes = @user.routes
   end

@@ -13,10 +13,21 @@ class UserProfile extends React.Component {
     this.props.fetchUser(id)
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.id !== prevProps.match.params.id) {
+      this.props.fetchUser(this.props.match.params.id)
+    }
+  }
+
   render() {
-    const { currentUser, routes } = this.props
-    const date = new Date(currentUser.created_at)
+    debugger
+    const { userProfile, routes } = this.props
+
+    if (!userProfile) return null
+
+    const date = new Date(userProfile.created_at)
     const joinYear = date.getFullYear()
+    // const userProfile
 
     debugger
     let runs = routes.map((route) => {
@@ -36,7 +47,7 @@ class UserProfile extends React.Component {
       <div className="user-profile-cntr">
         <header className="up header">
           <h2>
-            {currentUser.first_name} {currentUser.last_name}
+            {userProfile.first_name} {userProfile.last_name}
           </h2>
           <h4>Member since: {joinYear}</h4>
         </header>

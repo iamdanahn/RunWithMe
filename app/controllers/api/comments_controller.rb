@@ -35,21 +35,17 @@ class Api::CommentsController < ApplicationController
     end
   end
 
-  def update
-    @comment = Comment.find(params[:id])
-
-    if @comment.update(comment_params)
-      render 'api/comments/show'
-    else
-      render json: @comment.errors.full_messages, status: 422
-    end
-  end
+  # def update
+  #   Update does not exist
+  # end
   
   def destroy
-    @comment = Comment.find(params[:id])
+    # limits delete to only current users comments
+    @comment = current_user.comments.find(params[:id])
 
-    if @comment && @comment.destroy
-      render 'api/comments/show'
+    if @comment 
+      @comment.destroy
+      # render 'api/comments/show'
     else
       render json: @comment.errors.full_messages, status: 422
     end
