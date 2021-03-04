@@ -10,6 +10,7 @@
 #  distance    :string           not null
 #  markers     :string           not null
 #  description :text
+#  thumbnail   :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
