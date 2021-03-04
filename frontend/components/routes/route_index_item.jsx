@@ -29,7 +29,7 @@ class RouteIndexItem extends React.Component {
 					</Link>
 				</td>
 				<td className="route-row-distance">{route.distance}</td>
-				<td className="route-row-elevation">Elevation</td>
+				<td className="route-row-activity">{route.activity}</td>
 				<td className="route-row-title">
 					<Link to={`/routes/${route.id}`}>{route.name}</Link>
 				</td>

@@ -6,13 +6,14 @@
 //deleteRoute(routeId)
 
 
-export const fetchRoutes = () => {
-  return $.ajax({
+export const fetchRoutes = (userId) => {
+	return $.ajax({
 		url: `/api/routes`,
 		method: `GET`,
+		data: { route: {  creator_id: userId  }  },
 		error: (err) => console.log(err),
 	});
-}
+};
 
 export const fetchRoute = (routeId) => {
   return $.ajax({

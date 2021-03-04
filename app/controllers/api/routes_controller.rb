@@ -2,7 +2,9 @@ class Api::RoutesController < ApplicationController
   before_action :ensure_logged_in
 
   def index
-    @routes = Route.all
+    # @routes = Route.all
+    # gets routes for only the user id requested
+    @routes = User.find(route_params[:creator_id]).routes
   end
 
   def show

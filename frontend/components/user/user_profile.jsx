@@ -11,6 +11,7 @@ class UserProfile extends React.Component {
      
     const id = parseInt(this.props.match.params.id)
     this.props.fetchUser(id)
+    this.props.fetchRoutes(id);
   }
 
   componentDidUpdate(prevProps) {
@@ -54,17 +55,15 @@ class UserProfile extends React.Component {
 									{userProfile.first_name} {userProfile.last_name}
 								</h2>
 								<span>
-									<i class="fas fa-calendar-day fa-xs"></i>
+									<i className="fas fa-calendar-day fa-xs"></i>
 									Member since: {joinYear}
 								</span>
 							</div>
 						</div>
 						<div className="header-bottom">
 							<span>
-                <p>
-                  Activity Feed
-                </p>
-              </span>
+								<p>Activity Feed</p>
+							</span>
 						</div>
 					</header>
 					<section className="up feed">
