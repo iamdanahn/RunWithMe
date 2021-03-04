@@ -64,7 +64,7 @@ class FriendFind extends React.Component {
     const members = people.map((person) => {
       return (
         <li key={person.id} className="friend-item-cntr">
-          <div className="friend-item">
+          <div className="friend-item main">
             {person.first_name} {person.last_name}
             <button onClick={this.handleClick(person.id)}>ADD</button>
           </div>

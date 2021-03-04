@@ -44,22 +44,36 @@ class UserProfile extends React.Component {
     })
 
     return (
-      <div className="user-profile-cntr">
-        <header className="up header">
-          <h2>
-            {userProfile.first_name} {userProfile.last_name}
-          </h2>
-          <h4>Member since: {joinYear}</h4>
-        </header>
-        <div className="up feed-header">
-          <p>Activity Feed</p>
-        </div>
-        <section className="up feed">
-          List of runs
-          <ul>{runs}</ul>
-        </section>
-      </div>
-    )
+			<div className="user-profile-bg">
+				<div className="user-profile-cntr">
+					<header className="up header">
+						<div className="header-top">
+							<i class="fas fa-running fa-3x"></i>
+							<div className="ht-right">
+								<h2>
+									{userProfile.first_name} {userProfile.last_name}
+								</h2>
+								<span>
+									<i class="fas fa-calendar-day fa-xs"></i>
+									Member since: {joinYear}
+								</span>
+							</div>
+						</div>
+						<div className="header-bottom">
+							<span>
+                <p>
+                  Activity Feed
+                </p>
+              </span>
+						</div>
+					</header>
+					<section className="up feed">
+						List of runs
+						<ul>{runs}</ul>
+					</section>
+				</div>
+			</div>
+		);
   }
 }
 

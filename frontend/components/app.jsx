@@ -18,31 +18,30 @@ const App = () => {
   return (
     <div className="main-app">
       <Route path="/" component={NavBarContainer} />
-      {/* <Modal /> */}
 
       <Switch>
-        <AuthRoute path="/signup" component={SignupContainer} />
-        <AuthRoute path="/login" component={LoginContainer} />
-        <ProtectedRoute path="/dashboard" component={DashboardContainer} />
+        <AuthRoute exact path="/" component={SplashPage} />
+        <AuthRoute exact path="/signup" component={SignupContainer} />
+        <AuthRoute exact path="/login" component={LoginContainer} />
+        <ProtectedRoute exact path="/dashboard" component={DashboardContainer} />
         <ProtectedRoute
-          path="/routes/create"
+          exact path="/routes/create"
           component={CreateRouteContainer}
         />
         <ProtectedRoute
-          path="/routes/:routeId/edit"
+          exact path="/routes/:routeId/edit"
           component={EditRouteContainer}
         />
         <ProtectedRoute
-          path="/routes/:routeId"
+          exact path="/routes/:routeId"
           component={RouteShowContainer}
         />
         <ProtectedRoute
-          path="/friends/find"
+          exact path="/friends/find"
           component={FriendFindContainer}
         />
-        <ProtectedRoute path="/friends" component={FriendMainContainer} />
-        <ProtectedRoute path="/profile/:id" component={UserContainer} />
-        <AuthRoute path="/" component={SplashPage} />
+        <ProtectedRoute exact path="/friends" component={FriendMainContainer} />
+        <ProtectedRoute exact path="/profile/:id" component={UserContainer} />
       </Switch>
     </div>
   )

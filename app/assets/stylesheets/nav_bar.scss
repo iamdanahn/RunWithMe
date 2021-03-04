@@ -26,6 +26,7 @@
 .dropdown {
   position: relative;
   display: inline-block;
+  box-sizing: border-box;
 }
 
 .navbtn {
@@ -35,10 +36,16 @@
   border: none;
   align-items: center;
   background: transparent;
+  font-weight: 500;
 
   &:focus {
     outline:0;
   } 
+}
+.navbtn.selected, .dropdown.selected {
+  border-bottom: 2px solid black;
+  color: #212121;
+  
 }
 
 .dropdown-content {

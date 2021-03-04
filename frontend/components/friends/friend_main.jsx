@@ -37,17 +37,19 @@ class Friends extends React.Component {
     const frands = this.props.friends.map((friend) => {
       debugger
       return (
-        <li key={friend.id} className="friend-item-cntr">
-              <div className="friend-item">
-                <Link to={`/profile/${friend.id}`}>
-                  {`${friend.first_name} ${friend.last_name}`}
-                </Link>
-                <div>
-                  <button onClick={this.unFriend(friend.id)}>Unfriend</button>
-                </div>
-              </div>
-        </li>
-      )
+				<li key={friend.id} className="friend-item-cntr">
+					<div className="friend-item">
+						<Link to={`/profile/${friend.id}`}>
+							{`${friend.first_name} ${friend.last_name}`}
+						</Link>
+						<div>
+							<Link to="" onClick={this.unFriend(friend.id)}>
+								Unfriend
+							</Link>
+						</div>
+					</div>
+				</li>
+			);
     })
 
     return (

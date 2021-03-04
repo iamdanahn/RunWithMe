@@ -1,0 +1,79 @@
+.user-profile-bg {
+  background: #f9f9f9;
+  height: 100vh;
+}
+
+.user-profile-cntr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0 85px;
+}
+
+.up.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 960px;
+  
+  h2 {
+    font-size: 36px;
+    font-weight: 900;
+    color: #212121
+  }
+  h4 {
+    font-size: 12px;
+  }
+  
+  .header-top {
+    display: flex;
+    margin: 0 0 10px;
+    box-sizing: border-box;
+    max-width: 960px;
+    width: 100%;
+    justify-content: center;
+    
+    i {
+      size: 100px 100px
+    }
+
+    .ht-right {
+      margin: 0 0 0 20px
+    }
+  }
+  .fas.fa-calendar-day.fa-xs {
+    color: #d3d3d3;
+    margin: 0 5px 0 0;
+  }
+  span {
+    color: #616161
+  }
+}
+
+.header-bottom {
+  display: flex;
+  justify-content: center;
+  border-bottom: 3px solid #009CE9;
+  margin-bottom: 16px;
+
+  span {
+    box-sizing: border-box;
+    width: 160px;
+    height: 33px;
+    padding: 6px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  p {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #222628;
+  }
+}
+
+.up.feed {
+
+}

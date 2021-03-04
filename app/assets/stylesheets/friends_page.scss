@@ -17,6 +17,7 @@
   box-sizing: border-box;
   max-width: 960px;
   padding: 20px 0 85px 0;
+  margin: auto;
 }
 
 .friends-header {
@@ -108,20 +109,36 @@
   }
 }
 
+//=============
+// FRIEND ITEM (each box containing single user)
+//==============
+
 .friend-item-cntr {
   width: 50%;
   display: inline-block;
   box-sizing: border-box;
-  padding: 0 15px 15px 0;
+  padding: 0 15px 8px 0;
 }
 .friend-item {
   box-sizing: border-box;
   display: flex;
+  align-items: center;
+  justify-content: space-around;
   min-height: 80px;
   width: 100%;
   padding: 10px;
-  align-items: center;
-  justify-content: space-between;
   background: white;
   border: 1px solid #eee;
+  color: #0076C0;
+
+  button {
+    background: transparent;
+    border: none;
+    font-size: 12.25px;
+    color: #0076C0;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
