@@ -10,7 +10,7 @@ const msp = (state, ownProps) => {
 
 	return {
 		route: state.entities.routes[routeId],
-		user: state.entities.user[currentUserId],
+		user: state.session.currentUser,
 		sessionId: currentUserId,
 		comments: Object.values(state.entities.comments),
 	};

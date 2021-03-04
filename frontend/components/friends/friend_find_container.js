@@ -12,7 +12,7 @@ const msp = (state, ownProps) => {
 	return {
 		// state.entities.people is an Object so need to Object.values for each user's info
 		people: Object.values(state.entities.people),
-		currentUser: state.entities.user[currentUserId],
+		currentUser: state.session.currentUser,
 	};
 };
 
