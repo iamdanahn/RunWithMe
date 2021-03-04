@@ -8,7 +8,7 @@ class UserProfile extends React.Component {
   }
 
   componentDidMount() {
-    debugger
+     
     const id = parseInt(this.props.match.params.id)
     this.props.fetchUser(id)
   }
@@ -20,7 +20,7 @@ class UserProfile extends React.Component {
   }
 
   render() {
-    debugger
+     
     const { userProfile, routes } = this.props
 
     if (!userProfile) return null
@@ -29,7 +29,7 @@ class UserProfile extends React.Component {
     const joinYear = date.getFullYear()
     // const userProfile
 
-    debugger
+     
     let runs = routes.map((route) => {
       return (
         <li key={route.id}>

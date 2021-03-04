@@ -10,18 +10,17 @@ const RoutesReducer = (state = {}, action) => {
   const { routes, route, routeId } = action
 
   switch (action.type) {
-    case RECEIVE_ROUTES:
-      return routes
-    case RECEIVE_ROUTE:
-      debugger
-      return merge({}, state, { [route.id]: route })
-    case REMOVE_ROUTE:
-      const newState = merge({}, state)
-      delete newState[routeId]
-      return newState
-    default:
-      return state
-  }
+		case RECEIVE_ROUTES:
+			return routes;
+		case RECEIVE_ROUTE:
+			return merge({}, state, { [route.id]: route });
+		case REMOVE_ROUTE:
+			const newState = merge({}, state);
+			delete newState[routeId];
+			return newState;
+		default:
+			return state;
+	}
 }
 
 export default RoutesReducer;

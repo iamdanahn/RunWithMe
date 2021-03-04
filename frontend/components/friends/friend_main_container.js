@@ -4,20 +4,18 @@ import FriendMain from './friend_main.jsx'
 
 
 const msp = (state, ownProps) => {
-  debugger;
-  const currentUserId = state.session.id;
-  return {
-    currentUser: state.entities.user[currentUserId],
-    friends: Object.values(state.entities.friends),
-  }
+	const currentUserId = state.session.id;
+	return {
+		currentUser: state.entities.user[currentUserId],
+		friends: Object.values(state.entities.friends),
+	};
 }
 
 const mdp = dispatch => {
-  debugger;
-  return {
-    fetchFriends: () => dispatch(fetchFriends()),
-    unFriend: (friendId) => dispatch(unFriend(friendId)),
-  }
+	return {
+		fetchFriends: () => dispatch(fetchFriends()),
+		unFriend: (friendId) => dispatch(unFriend(friendId)),
+	};
 }
 
 export default connect(msp, mdp)(FriendMain)

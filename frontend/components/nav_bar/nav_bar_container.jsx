@@ -6,14 +6,14 @@ import { logout, receiveSessionErrors } from '../../actions/session_actions';
 import NavBar from './nav_bar';
 
 const msp = (state, ownProps) => {
-  const { entities, session } = state;
-  //  // debugger
-  return {
-    currentUser: entities.user[session.id],
-    loggedIn: Boolean(state.session.id),
-    login_page: <Link to="/login" />,
-    signup_page: <Link to="/signup" />,
-  }
+	const { entities, session } = state;
+
+	return {
+		currentUser: entities.user[session.id],
+		loggedIn: Boolean(state.session.id),
+		login_page: <Link to="/login" />,
+		signup_page: <Link to="/signup" />,
+	};
 }
 
 const mdp = dispatch => {

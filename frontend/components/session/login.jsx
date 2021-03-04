@@ -44,10 +44,8 @@ class Login extends React.Component {
 
 
 	render() {
-		 debugger
-		const {errors} = this.props;
+		const { errors } = this.props;
 		const errPresent = errors.length > 0;
-
 
 		return (
 			<section className="auth-form-ctr">
@@ -99,7 +97,6 @@ class Login extends React.Component {
 					<button className="auth-form btn" onClick={this.handleSubmit}>
 						LOGIN
 					</button>
-
 				</form>
 			</section>
 		);

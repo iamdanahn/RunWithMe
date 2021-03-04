@@ -23,73 +23,73 @@ class RouteShow extends React.Component {
   }
 
   render() {
-    // need to return null for cDM, then route info can be fetched
-    if (!this.props.route) return null
+		// need to return null for cDM, then route info can be fetched
+		if (!this.props.route) return null;
 
-    const { route, user, comments, deleteComment } = this.props
-    const createDate = new Date(route.created_at).toDateString()
-    const updateDate = new Date(route.updated_at).toDateString()
-    
-    console.log(route)
-    console.log(this.props)
+		const { route, user, comments, deleteComment } = this.props;
+		const createDate = new Date(route.created_at).toDateString();
+		const updateDate = new Date(route.updated_at).toDateString();
 
-    const routeComments = comments.map((comment) => {
-      return (
-        <li key={comment.id} className="comment-cntr">
-          <div className="comment-body">
-            <h4>
-              {comment.first_name} {comment.last_name}
-            </h4>
-            <p>{comment.body}</p>
-          </div>
-          <div className="comment-delete">
-            <button onClick={() => deleteComment(comment.id)}>Delete</button>
-          </div>
-        </li>
-      )
-    })
-    
-    return (
-      <div className="route-show-cntr">
-        {/* section 1 - route title, distance, user name, 
+		// console.log(route)
+		// console.log(this.props)
+
+		const routeComments = comments.map((comment) => {
+			return (
+				<li key={comment.id} className="comment-cntr">
+					<div className="comment-body">
+						<h4>
+							{comment.first_name} {comment.last_name}
+						</h4>
+						<p>{comment.body}</p>
+					</div>
+					<div className="comment-delete">
+						<button onClick={() => deleteComment(comment.id)}>Delete</button>
+					</div>
+				</li>
+			);
+		});
+
+		return (
+			<div className="route-show-cntr">
+				{/* section 1 - route title, distance, user name, 
             date created, activity, location, edit button */}
-        <div className="rs-body">
-          <div className="bar">
-            <Link to={`/routes/${route.id}/edit`}>Edit Page</Link>
-          </div>
+				<div className="rs-body">
+					<div className="bar">
+						<Link to={`/routes/${route.id}/edit`}>Edit Page</Link>
+					</div>
 
-          <section className="rs-content1">
-            <div className="rs-left-half">
-              <h2>{route.name}</h2>
-              <h1>{route.distance}</h1>
-              <h5>Distance (MI)</h5>
-            </div>
-            <div className="rs-right-half">
-              <br />
-              <div className="rs-user">
-                User: {`${user.first_name} ${user.last_name}`}
-              </div>
-              <br />
-              Created Date: {createDate}
-              <br />
-              Updated Date: {updateDate}
-              <br />
-              Activity: {route.activity}
-              <br />
-              Location: {route.location}
-            </div>
-          </section>
+					<section className="rs-content1">
+						<div className="rs-left-half">
+							<h2>{route.name}</h2>
+							<h1>{route.distance}</h1>
+							<h5>Distance (MI)</h5>
+						</div>
+						<div className="rs-right-half">
+							<br />
+							<div className="rs-user">
+								User: {`${user.first_name} ${user.last_name}`}
+							</div>
+							<br />
+							Created Date: {createDate}
+							<br />
+							Updated Date: {updateDate}
+							<br />
+							Activity: {route.activity}
+							<br />
+							Location: {route.location}
+						</div>
+					</section>
 
-          <section className="rs-comments">
-            <ul>{routeComments}</ul>
-          </section>
+					<section className="rs-comments">
+						<ul>{routeComments}</ul>
+					</section>
 
-          {/* section 2 - minimap, comments section */}
-          <section className="rs-map"></section>
-        </div>
-      </div>
-    )
-  }
+					{/* section 2 - minimap, comments section */}
+					<section className="rs-map"></section>
+				</div>
+			</div>
+		);
+	}
 }
 
 export default RouteShow;

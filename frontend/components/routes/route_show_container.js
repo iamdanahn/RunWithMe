@@ -5,16 +5,15 @@ import { fetchComments, deleteComment } from "../../actions/comment_actions"
 import RouteShow from './route_show'
 
 const msp = (state, ownProps) => {
-  debugger
-  const routeId = ownProps.match.params.routeId
-  const currentUserId = state.session.id
+	const routeId = ownProps.match.params.routeId;
+	const currentUserId = state.session.id;
 
-  return {
-    route: state.entities.routes[routeId],
-    user: state.entities.user[currentUserId],
-    sessionId: state.session.id,
-    comments: Object.values(state.entities.comments),
-  }
+	return {
+		route: state.entities.routes[routeId],
+		user: state.entities.user[currentUserId],
+		sessionId: state.session.id,
+		comments: Object.values(state.entities.comments),
+	};
 }
 
 const mdp = dispatch => {

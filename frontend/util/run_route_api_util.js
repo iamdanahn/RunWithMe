@@ -22,8 +22,7 @@ export const fetchRoute = (routeId) => {
 	});
 }
 export const createRoute = (route) => {
-	debugger
-  return $.ajax({
+	return $.ajax({
 		url: `/api/routes`,
 		method: `POST`,
 		data: { route },
@@ -31,7 +30,6 @@ export const createRoute = (route) => {
 	});
 }
 export const updateRoute = (route) => {
-  debugger
 	return $.ajax({
 		url: `/api/routes/${route.id}`,
 		method: `PATCH`,

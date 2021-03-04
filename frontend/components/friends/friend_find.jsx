@@ -16,24 +16,23 @@ class FriendFind extends React.Component {
   }
 
   componentWillUnmount() {
-    debugger
-    this.props.clearPeople()
-  }
+		this.props.clearPeople();
+	}
 
   handleClick(friend_id) {
     return (e) => {
-      e.preventDefault()
-      debugger
-      const { addFriend, currentUser, sendFriendReq } = this.props
-      // this section for direct friend request (demo purpose)
-      // find friends == promise otherwise, non-friends list will not update after click
-      addFriend(friend_id).then(() => this.props.findFriends(this.state))
+			e.preventDefault();
 
-      // this section for friend request functionality
-      // create request payload to go and send
-      // const request = { requester_id: currentUser.id, receiver_id: friend_id }
-      // sendFriendReq(request)
-    }
+			const { addFriend, currentUser, sendFriendReq } = this.props;
+			// this section for direct friend request (demo purpose)
+			// find friends == promise otherwise, non-friends list will not update after click
+			addFriend(friend_id).then(() => this.props.findFriends(this.state));
+
+			// this section for friend request functionality
+			// create request payload to go and send
+			// const request = { requester_id: currentUser.id, receiver_id: friend_id }
+			// sendFriendReq(request)
+		}
   }
 
   handleChange(e) {
@@ -41,14 +40,13 @@ class FriendFind extends React.Component {
   }
 
   handleSubmit(e) {
-    debugger
-    e.preventDefault()
-    // search function from props set
-    // const { search } = this.state
-    this.props.findFriends(this.state)
+		e.preventDefault();
+		// search function from props set
+		// const { search } = this.state
+		this.props.findFriends(this.state);
 
-    // this.setState({ search: "" })
-  }
+		// this.setState({ search: "" })
+	}
 
   render() {
     const selected1 =

@@ -9,15 +9,18 @@ class RouteIndexItem extends React.Component {
   }  
 
   render(){
-     debugger
-    const { route, deleteRoute, openModal } = this.props;
+		const { route, deleteRoute, openModal } = this.props;
 
-    return (
+		return (
 			<tr className="route-row">
 				<td className="route-row-img">
 					<Link to={`/routes/${route.id}`}>
-            <img className="route-thumbnail" src={route.thumbnail} alt="route thumbnail" />
-          </Link>
+						<img
+							className="route-thumbnail"
+							src={route.thumbnail}
+							alt="route thumbnail"
+						/>
+					</Link>
 				</td>
 				<td className="route-row-date">
 					<Link to={`/routes/${route.id}`}>
@@ -41,7 +44,7 @@ class RouteIndexItem extends React.Component {
 				</td>
 			</tr>
 		);
-  }
+	}
 }
 
 

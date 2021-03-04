@@ -8,7 +8,7 @@ class Api::CommentsController < ApplicationController
     
       # grabs all ROUTE comments and preloads User table (rids N+1)
     @comments = Comment.where("commentable_type ILIKE 'Route'").where(commentable_id: comment_id).includes(:user)
-    # debugger
+    #  
     # how do 
   end
 

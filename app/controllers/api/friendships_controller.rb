@@ -11,7 +11,7 @@ class Api::FriendshipsController < ApplicationController
   end
 
   def create
-    # debugger
+    #  
     # find users id #s to make an array
     user_friends = current_user.friends.ids
     
@@ -21,7 +21,7 @@ class Api::FriendshipsController < ApplicationController
 
     # see private method below
     if create_other(current_user.id, friend_id)
-      # debugger
+      #  
       # for rendering back users who are NOT friends
       @users = User.where.not(id: insiders_ids)
       render 'api/users/index'  
@@ -35,7 +35,7 @@ class Api::FriendshipsController < ApplicationController
   end
 
   def destroy
-    # debugger
+    #  
     friend_id = params[:id].to_i
 
     # find friendship where user_id = current user and friend_id = clicked user

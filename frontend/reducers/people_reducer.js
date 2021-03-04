@@ -9,14 +9,13 @@ const peopleReducer = (state = {}, action) => {
   const { people } = action
 
   switch (action.type) {
-    case RECEIVE_PEOPLE:
-      return people
-    case CLEAR_PEOPLE:
-      debugger
-      return {}
-    default:
-      return state
-  }
+		case RECEIVE_PEOPLE:
+			return people;
+		case CLEAR_PEOPLE:
+			return {};
+		default:
+			return state;
+	}
 }
 
 export default peopleReducer;

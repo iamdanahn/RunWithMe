@@ -41,7 +41,7 @@ export const fetchRoute = (routeId) => {
 }
 export const createRoute = (route) => {
   return dispatch => {
-    debugger
+     
     return RouteAPIUtil.createRoute(route).then(route => {
       return dispatch(receiveRoute(route))
     })
@@ -49,9 +49,9 @@ export const createRoute = (route) => {
 }
 export const updateRoute = (route) => {
   return dispatch => {
-    debugger
+     
     return RouteAPIUtil.updateRoute(route).then(route => {
-      debugger
+       
       return dispatch(receiveRoute(route))
     })
   }

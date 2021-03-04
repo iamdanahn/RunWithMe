@@ -1,11 +1,10 @@
 export const RECEIVE_USER = "RECEIVE_USER";
 
 const receiveUser = (user) => {
-    debugger
-    return {
-        type: RECEIVE_USER,
-        user,
-    }
+	return {
+		type: RECEIVE_USER,
+		user,
+	};
 }
 
 export const fetchUserUtil = (id) => {
@@ -16,6 +15,5 @@ export const fetchUserUtil = (id) => {
 };
 
 export const fetchUser = (id) => (dispatch) => {
-    debugger
-    return fetchUserUtil(id).then(user => dispatch(receiveUser(user)))
+	return fetchUserUtil(id).then((user) => dispatch(receiveUser(user)));
 };

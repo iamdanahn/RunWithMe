@@ -3,10 +3,9 @@ import { login, receiveSessionErrors } from '../../actions/session_actions'
 import Login from './login'
 
 const msp = (state, ownProps) => {
-   // debugger
-  return ({
-    errors: state.errors.session
-  })
+	return {
+		errors: state.errors.session,
+	};
 }
 
 const mdp = dispatch => {

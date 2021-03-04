@@ -12,20 +12,19 @@ class EditRouteForm extends React.Component {
   }
 
   render() {
-    const { route, formType, action } = this.props
-    debugger
-    return route ? (
-      <Map route={route} formType={formType} action={action} />
-    ) : null
-  }
+		const { route, formType, action } = this.props;
+
+		return route ? (
+			<Map route={route} formType={formType} action={action} />
+		) : null;
+	}
 }
 
 
 const msp = (state, ownProps) => {
 	const { entities, session, errors } = state;
-  const routesId = ownProps.match.params.routeId
+	const routesId = ownProps.match.params.routeId;
 
-  debugger
 	return {
 		route: entities.routes[routesId],
 		formType: "Edit",
@@ -33,10 +32,9 @@ const msp = (state, ownProps) => {
 };
 
 const mdp = (dispatch) => {
-  debugger
 	return {
-    action: (route) => dispatch(updateRoute(route)),
-    fetchRoute: (routeId) => dispatch(fetchRoute(routeId)) 
+		action: (route) => dispatch(updateRoute(route)),
+		fetchRoute: (routeId) => dispatch(fetchRoute(routeId)),
 	};
 };
 

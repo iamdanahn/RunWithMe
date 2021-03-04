@@ -6,7 +6,7 @@
 // import DeleteRoute from './delete_route'
 
 // const msp = (state, ownProps) => {
-//   debugger
+//    
 //   // ownProps does not have a routeId
 //   return {
 //     route: ownProps.routeid,

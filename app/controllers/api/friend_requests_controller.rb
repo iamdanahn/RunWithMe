@@ -17,23 +17,23 @@ class Api::FriendRequestsController < ApplicationController
       # save friend_request object
       # do this for both parties
 
-      debugger
+       
     if current_user.id == request_params[:requester_id].to_i #enters as a string
       @request = FriendRequest.new(request_params) #prepopulate on FE
 
         #checks to see if all of current user's friend rqsts do not include the receiver
       if current_user.friend_requests.all? { |req| req[:receiver_id] != request_params[:receiver_id] }
         @request[:pending] = true
-        debugger
+         
         if @request.save
-          debugger
+           
           render "/api/friend_requests/show"
         else
-          debugger
+           
           render json: @request.errors.full_messages, status: 422
         end
       else
-        debugger
+         
         render json: ["You're already friends or pending request!"]
       end
     end

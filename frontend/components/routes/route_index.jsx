@@ -11,11 +11,10 @@ class RouteIndex extends React.Component {
   render() {
     const { currentUserId } = this.props
     const route = this.props.routes.map((route) => {
-      debugger
-      if (route.creator_id === currentUserId) {
-        return <RIIContainer route={route} key={route.id} />
-      }
-    })
+			if (route.creator_id === currentUserId) {
+				return <RIIContainer route={route} key={route.id} />;
+			}
+		})
 
     return (
       <div className="my-routes">

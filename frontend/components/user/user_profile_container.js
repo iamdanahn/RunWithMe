@@ -5,13 +5,12 @@ import { findFriends } from "../../actions/friend_actions"
 import { fetchUser } from "../../actions/user_actions"
 
 const msp = (state, ownProps) => {
-  debugger
-  const userId = ownProps.match.params.id
-  return {
-    userProfile: state.entities.user,
-    // userProfile: state.entities.user,
-    routes: Object.values(state.entities.routes),
-  }
+	const userId = ownProps.match.params.id;
+	return {
+		userProfile: state.entities.user,
+		// userProfile: state.entities.user,
+		routes: Object.values(state.entities.routes),
+	};
 }
 
 const mdp = (dispatch) => {

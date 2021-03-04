@@ -9,30 +9,29 @@ function Modal ({modal, closeModal, deleteRoute}) {
     return null;
   }
 
-  debugger
+   
 
   let component;
   switch (modal) {
-    case "open":
-      // debugger
-      component = (
-        <div className="modal-delete">
-          <h3>Delete Route?</h3>
-          <div className="modal-btns">
-            <button className="modal-btns-ok" onClick={deleteRoute}>
-              OK
-            </button>
-            <button className="modal-btns-cancel" onClick={closeModal}>
-              CANCEL
-            </button>
-          </div>
-        </div>
-      )
+		case "open":
+			component = (
+				<div className="modal-delete">
+					<h3>Delete Route?</h3>
+					<div className="modal-btns">
+						<button className="modal-btns-ok" onClick={deleteRoute}>
+							OK
+						</button>
+						<button className="modal-btns-cancel" onClick={closeModal}>
+							CANCEL
+						</button>
+					</div>
+				</div>
+			);
 
-      break
-    default:
-      return null
-  }
+			break;
+		default:
+			return null;
+	}
 
   return (
 		<div className="modal-background" onClick={closeModal}>
@@ -50,10 +49,9 @@ const msp = state => {
 }
 
 const mdp = dispatch => {
-  // debugger
-  return {
-    closeModal: () => dispatch(closeModal()),
-  }
+	return {
+		closeModal: () => dispatch(closeModal()),
+	};
 }
 
 export default connect(msp, mdp)(Modal)

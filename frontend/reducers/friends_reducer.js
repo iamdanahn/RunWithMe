@@ -6,12 +6,11 @@ const FriendsReducer = (state = [], action) => {
   const { friends } = action;
 
   switch (action.type) {
-    case RECEIVE_FRIENDS:
-      debugger;
-      return friends;
-    default:
-      return state;
-  }
+		case RECEIVE_FRIENDS:
+			return friends;
+		default:
+			return state;
+	}
 };
 
 export default FriendsReducer;

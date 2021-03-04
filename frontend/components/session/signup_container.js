@@ -3,7 +3,6 @@ import { login, createNewUser, receiveSessionErrors } from "../../actions/sessio
 import Signup from "./signup";
 
 const msp = (state, ownProps) => {
-	//  // debugger;
 	return {
 		errors: state.errors.session,
 	};

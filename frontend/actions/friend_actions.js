@@ -7,7 +7,7 @@ export const CLEAR_PEOPLE = "CLEAR_PEOPLE"
 
 // sets up friends in redux
 const receiveFriends = (friends) => {
-  debugger
+   
   return {
     type: RECEIVE_FRIENDS,
     friends,
@@ -16,7 +16,7 @@ const receiveFriends = (friends) => {
 
 // sets up searched users in find friends
 const receivePeople = (people) => {
-  debugger
+   
   return {
     type: RECEIVE_PEOPLE,
     people,
@@ -24,7 +24,7 @@ const receivePeople = (people) => {
 }
 
 const receiveFriendReq = (friendReq) => {
-  debugger
+   
   return {
     type: RECEIVE_FRIEND_REQ,
     friendReq,
@@ -32,7 +32,7 @@ const receiveFriendReq = (friendReq) => {
 }
 
 export const clearPeople = () => {
-  debugger
+   
   return {
     type: CLEAR_PEOPLE,
   }
@@ -41,9 +41,9 @@ export const clearPeople = () => {
 // finds user's friends from Back end
 export const fetchFriends = () => {
   return (dispatch) => {
-    debugger
+     
     return FriendsAPIUtil.fetchFriends().then((friends) => {
-      debugger
+       
       return dispatch(receiveFriends(friends))
     })
   }
@@ -52,9 +52,9 @@ export const fetchFriends = () => {
 // finds people from Back end
 export const findFriends = (criteria) => {
   return (dispatch) => {
-    debugger
+     
     return FriendsAPIUtil.findFriends(criteria).then((people) => {
-      debugger
+       
       return dispatch(receivePeople(people))
     })
   }

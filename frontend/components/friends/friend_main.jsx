@@ -9,7 +9,7 @@ class Friends extends React.Component {
   }
   
   componentDidMount() {
-    debugger;
+     ;
     this.props.fetchFriends();
   }
 
@@ -21,7 +21,7 @@ class Friends extends React.Component {
   }
 
   render() {
-    debugger
+     
     console.log("grabbing friends")
     console.log(this.props.friends)
 
@@ -35,7 +35,7 @@ class Friends extends React.Component {
         : "friends-links"
 
     const frands = this.props.friends.map((friend) => {
-      debugger
+       
       return (
 				<li key={friend.id} className="friend-item-cntr">
 					<div className="friend-item">
