@@ -5,13 +5,16 @@ import RIIContainer from './route_index_item_container'
 class RouteIndex extends React.Component {
 
   componentDidMount() {
-    this.props.fetchRoutes();
+    this.props.fetchRoutes(this.props.currentUserId);
   }
 
   render() {
     const { currentUserId } = this.props
+    
+debugger; 
+
     const route = this.props.routes.map((route) => {
-			if (route.creator_id === currentUserId) {
+			if (route.creator_id === currentUserId.id) {
 				return <RIIContainer route={route} key={route.id} />;
 			}
 		})

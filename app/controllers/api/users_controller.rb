@@ -34,7 +34,7 @@ class Api::UsersController < ApplicationController
     # @user = User.where(id: params[:id]).includes(:routes)
     #  
     @user = User.find(params[:id])
-    @routes = @user.routes
+    # @routes = @user.routes
   end
 
   # Creates new user from signup screen

@@ -7,10 +7,10 @@ import NavBar from './nav_bar';
 
 const msp = (state, ownProps) => {
 	const { entities, session } = state;
-
+	debugger;
 	return {
-		currentUser: entities.user[session.id],
-		loggedIn: Boolean(state.session.id),
+		currentUser: session.currentUser,
+		loggedIn: Boolean(session.currentUser.id),
 		login_page: <Link to="/login" />,
 		signup_page: <Link to="/signup" />,
 	};

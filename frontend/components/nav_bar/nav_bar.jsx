@@ -20,7 +20,7 @@ class NavBar extends React.Component {
 	render() {
 		const { currentUser, logout } = this.props;
 		 ;
-
+		debugger;
 		// (this.props.location.pathname === "/friends") ? "navbtn selected" : "navbtn"
 		// (this.props.location.pathname.startsWith("/friends")) ? "navbtn selected" : "navbtn"
 

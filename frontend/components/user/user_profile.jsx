@@ -3,53 +3,51 @@ import { Link } from "react-router-dom"
 
 // for showing User info and activity feed
 class UserProfile extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+	constructor(props) {
+		super(props);
+	}
 
-  componentDidMount() {
-     
-    const id = parseInt(this.props.match.params.id)
-    this.props.fetchUser(id)
-    this.props.fetchRoutes(id);
-  }
+	componentDidMount() {
+		const id = parseInt(this.props.match.params.id);
+		this.props.fetchUser(id);
+		this.props.fetchRoutes(id);
+	}
 
-  componentDidUpdate(prevProps) {
-    if (this.props.match.params.id !== prevProps.match.params.id) {
-      this.props.fetchUser(this.props.match.params.id)
-    }
-  }
+	componentDidUpdate(prevProps) {
+		if (this.props.match.params.id !== prevProps.match.params.id) {
+			this.props.fetchUser(this.props.match.params.id);
+		}
+	}
 
-  render() {
-     
-    const { userProfile, routes } = this.props
+	render() {
+		const { userProfile, routes } = this.props;
 
-    if (!userProfile) return null
+		if (userProfile.id !== parseInt(this.props.match.params.id)) return null;
 
-    const date = new Date(userProfile.created_at)
-    const joinYear = date.getFullYear()
-    // const userProfile
+		const date = new Date(userProfile.created_at);
+		const joinYear = date.getFullYear();
 
-     
-    let runs = routes.map((route) => {
-      return (
-        <li key={route.id}>
-          <div>
-            Title: {route.name}
-            Distance: {route.distance}
-            Description: {route.description}
-          </div>
-          <footer className="up comments">Comments section</footer>
-        </li>
-      )
-    })
+		let runs = routes.map((route) => {
+			return (
+				<li key={route.id}>
+					<div>
+						Title: {route.name}
+						Distance: {route.distance}
+						Description: {route.description}
+					</div>
+					<footer className="up comments">Comments section</footer>
+				</li>
+			);
+		});
 
-    return (
+		return (
 			<div className="user-profile-bg">
 				<div className="user-profile-cntr">
 					<header className="up header">
 						<div className="header-top">
-							<i class="fas fa-running fa-3x"></i>
+							<div className="ht-left">
+								<i className="fas fa-running fa-7x"></i>
+							</div>
 							<div className="ht-right">
 								<h2>
 									{userProfile.first_name} {userProfile.last_name}
@@ -73,7 +71,7 @@ class UserProfile extends React.Component {
 				</div>
 			</div>
 		);
-  }
+	}
 }
 
 export default UserProfile

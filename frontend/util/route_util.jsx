@@ -2,9 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import { Redirect, Route, withRouter } from "react-router-dom";
 
-const msp = (state) => ({
-	loggedIn: Boolean(state.session.id),
-});
+const msp = (state) => {
+	debugger;;
+	return {
+		loggedIn: Boolean(state.session.currentUser.id),
+	};;
+};;
 
 // Sends to homepage if logged in (prevents lookin at signup/login page)
 const Auth = ({ component: Component, path, loggedIn }) => (

@@ -9,7 +9,6 @@ const msp = (state, ownProps) => {
 	const userId = ownProps.match.params.id;
 	return {
 		userProfile: state.entities.user,
-		// userProfile: state.entities.user,
 		routes: Object.values(state.entities.routes),
 	};
 }

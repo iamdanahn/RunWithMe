@@ -3,17 +3,17 @@ import { fetchRoutes, createRoute, deleteRoute } from '../../actions/route_actio
 import Dashboard from './dashboard'
 
 const msp = (state, ownProps) => {
-  return({
-    routes: Object.values(state.entities.routes)
-  })
+  return {
+		routes: Object.values(state.entities.routes),
+	};
 }
 
 const mdp = dispatch => {
-  return({
-    fetchRoutes: (routeId) => dispatch(fetchRoutes(routeId)),
-    createRoute: (route) => dispatch(createRoute(route)),
-    deleteRoute: (routeId) => dispatch(deleteRoute(routeId))
-  })
+  return {
+		fetchRoutes: (userId) => dispatch(fetchRoutes(userId)),
+		createRoute: (route) => dispatch(createRoute(route)),
+		deleteRoute: (routeId) => dispatch(deleteRoute(routeId)),
+	};
 }
 
 export default connect(msp, mdp)(Dashboard)

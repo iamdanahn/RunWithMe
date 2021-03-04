@@ -4,7 +4,7 @@ import FriendMain from './friend_main.jsx'
 
 
 const msp = (state, ownProps) => {
-	const currentUserId = state.session.id;
+	const currentUserId = state.session.currentUser.id;
 	return {
 		currentUser: state.entities.user[currentUserId],
 		friends: Object.values(state.entities.friends),

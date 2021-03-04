@@ -6,12 +6,12 @@ import RouteShow from './route_show'
 
 const msp = (state, ownProps) => {
 	const routeId = ownProps.match.params.routeId;
-	const currentUserId = state.session.id;
+	const currentUserId = state.session.currentUser.id;
 
 	return {
 		route: state.entities.routes[routeId],
 		user: state.entities.user[currentUserId],
-		sessionId: state.session.id,
+		sessionId: currentUserId,
 		comments: Object.values(state.entities.comments),
 	};
 }

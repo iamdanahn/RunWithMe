@@ -8,7 +8,7 @@ import {
 } from "../../actions/friend_actions.js"
 
 const msp = (state, ownProps) => {
-	const currentUserId = state.session.id;
+	const currentUserId = state.session.currentUser.id;
 	return {
 		// state.entities.people is an Object so need to Object.values for each user's info
 		people: Object.values(state.entities.people),

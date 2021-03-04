@@ -1,7 +1,15 @@
+//===============
+// Background
+//===============
+
 .user-profile-bg {
   background: #f9f9f9;
   height: 100vh;
 }
+
+//===============
+// Main container
+//===============
 
 .user-profile-cntr {
   display: flex;
@@ -10,6 +18,9 @@
   padding: 20px 0 85px;
 }
 
+//===============
+// Header upper ("Icon and user name")
+//===============
 .up.header {
   display: flex;
   flex-direction: column;
@@ -33,12 +44,20 @@
     width: 100%;
     justify-content: center;
     
-    i {
-      size: 100px 100px
+    .ht-left {
+      text-align: center;
+    }
+    // running icon
+    .fas.fa-running {
+      height: 100px;
+      width: 132px;
     }
 
     .ht-right {
-      margin: 0 0 0 20px
+      margin: 0 0 0 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
     }
   }
   .fas.fa-calendar-day.fa-xs {
@@ -49,6 +68,11 @@
     color: #616161
   }
 }
+
+//===============
+// Header lower ("Activity Feed")
+//===============
+
 
 .header-bottom {
   display: flex;
@@ -74,6 +98,3 @@
   }
 }
 
-.up.feed {
-
-}
