@@ -1,7 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom"
 import MapTools from "./map_tools";
-import RouteForm from "../routes/route_form";
 
 const getCoordsObj = (latLng) => ({
 	lat: latLng.lat(),

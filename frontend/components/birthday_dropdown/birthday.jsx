@@ -176,38 +176,3 @@ class BirthDay extends Component {
 	}
 }
 export default BirthDay;
-
-
-// Was originally on signup component. Replaced with this componenet
-          // <div className="session-form birthdate">
-					// 	<div className="session-form bday">
-					// 		<label>
-					// 			Day:
-					// 			<input
-					// 				type="integer"
-					// 				value={this.state.birth_day}
-					// 				onChange={this.update("birth_day")}
-					// 			/>
-					// 		</label>
-					// 	</div>
-					// 	<div className="session-form bmonth">
-					// 		<label>
-					// 			Month:
-					// 			<input
-					// 				type="integer"
-					// 				value={this.state.birth_month}
-					// 				onChange={this.update("birth_month")}
-					// 			/>
-					// 		</label>
-					// 	</div>
-					// 	<div className="session-form byear">
-					// 		<label>
-					// 			Year:
-					// 			<input
-					// 				type="integer"
-					// 				value={this.state.birth_year}
-					// 				onChange={this.update("birth_year")}
-					// 			/>
-					// 		</label>
-					// 	</div>
-					// </div>;
