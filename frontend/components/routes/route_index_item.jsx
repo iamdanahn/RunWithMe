@@ -36,10 +36,12 @@ class RouteIndexItem extends React.Component {
 				<td className="route-row-location">{route.location}</td>
 				<td className="route-row-privacy">Privacy</td>
 				<td className="route-row-options">
-					<Link to={`/routes/${route.id}/edit`}>Edit</Link>
-					<a routeid={route.id} onClick={() => openModal("open")}>
-						Delete
-					</a>
+					<div>
+						<Link to={`/routes/${route.id}/edit`}>Edit</Link>
+						<a routeid={route.id} onClick={() => openModal("open")}>
+							Delete
+						</a>
+					</div>
 					<Modal deleteRoute={() => deleteRoute(route.id)} />
 				</td>
 			</tr>
