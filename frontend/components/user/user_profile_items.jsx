@@ -27,17 +27,17 @@ class ProfileItems extends React.Component {
 				: route.activity === "walk" ? "walked": "ran";
 				
 				// if comments exist, arrays comments
+				let comments = [];
 				if (route.route_comments) {
-					const comments = Object.values(route.route_comments);
-				} else {
-					const comments = []
+					comments = Object.values(route.route_comments);
 				}
 
+				debugger;
 				const routeComments = comments.map((comment) => {
 					return (
 						<li key={comment.id}>
 							<div className="comment-left">
-								<Link>
+								<Link to={`/profile/${userProfile.id}`}>
 									{comment.first_name} {comment.last_name}
 								</Link>
 								<p>{comment.body}</p>
