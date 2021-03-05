@@ -63,7 +63,9 @@ class FriendFind extends React.Component {
       return (
         <li key={person.id} className="friend-item-cntr">
           <div className="friend-item main">
-            {person.first_name} {person.last_name}
+            <Link to={`/profile/${person.id}`}>
+              {person.first_name} {person.last_name}
+            </Link>
             <button onClick={this.handleClick(person.id)}>ADD</button>
           </div>
         </li>

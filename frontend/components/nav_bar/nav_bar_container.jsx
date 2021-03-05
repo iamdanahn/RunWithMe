@@ -10,7 +10,7 @@ const msp = (state, ownProps) => {
 	debugger;
 	return {
 		currentUser: session.currentUser,
-		loggedIn: Boolean(session.currentUser.id),
+		loggedIn: Boolean(session.currentUser),
 		login_page: <Link to="/login" />,
 		signup_page: <Link to="/signup" />,
 	};

@@ -49,7 +49,7 @@ class Login extends React.Component {
 
 		return (
 			<section className="auth-form-ctr">
-				<form className="auth-form">
+				<div className="auth-form">
 					<div className="header">
 						<Link className="other-link" to="/signup">
 							<span>SIGN UP</span>
@@ -66,38 +66,40 @@ class Login extends React.Component {
 						<span className="or-box line"></span>
 					</div>
 
-					<div>
-						<input
-							className={errPresent ? "input err-border" : "input login"}
-							type="email"
-							value={this.state.email}
-							onChange={this.update("email")}
-							placeholder="Email"
-						/>
-					</div>
+					<form className="auth-form input-area">
+						<div>
+							<input
+								className={errPresent ? "input err-border" : "input login"}
+								type="email"
+								value={this.state.email}
+								onChange={this.update("email")}
+								placeholder="Email"
+							/>
+						</div>
 
-					<br />
+						<br />
 
-					<div>
-						<input
-							className={errPresent ? "input err-border" : "input login"}
-							type="password"
-							value={this.state.password}
-							onChange={this.update("password")}
-							placeholder="Password"
-						/>
-						<div></div>
-					</div>
-					<br />
+						<div>
+							<input
+								className={errPresent ? "input err-border" : "input login"}
+								type="password"
+								value={this.state.password}
+								onChange={this.update("password")}
+								placeholder="Password"
+							/>
+							<div></div>
+						</div>
+						<br />
 
-					<div className="auth-form errors"> {errors} </div>
+						<div className="auth-form errors"> {errors} </div>
 
-					<br />
+						<br />
 
-					<button className="auth-form btn" onClick={this.handleSubmit}>
-						LOGIN
-					</button>
-				</form>
+						<button className="auth-form btn" onClick={this.handleSubmit}>
+							LOGIN
+						</button>
+					</form>
+				</div>
 			</section>
 		);
 	}
