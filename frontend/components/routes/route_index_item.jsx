@@ -10,6 +10,12 @@ class RouteIndexItem extends React.Component {
 
   render(){
 		const { route, deleteRoute, openModal } = this.props;
+		debugger;
+		let month = new Date(route.created_at).getMonth();
+		let day = new Date(route.created_at).getDay();
+		let year = new Date(route.created_at).getFullYear();
+
+		debugger;
 
 		return (
 			<tr className="route-row">
@@ -24,8 +30,7 @@ class RouteIndexItem extends React.Component {
 				</td>
 				<td className="route-row-date">
 					<Link to={`/routes/${route.id}`}>
-						{/* {new Intl.DateTimeFormat("en-US").format(route.created_at)} */}
-						{new Date(route.created_at).toDateString()}
+						{month}/{day}/{year}
 					</Link>
 				</td>
 				<td className="route-row-distance">{route.distance}</td>

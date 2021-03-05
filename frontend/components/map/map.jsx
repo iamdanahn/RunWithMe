@@ -187,11 +187,12 @@ class Map extends React.Component {
 	getThumbnailUrl(res) {
     const start = "https://maps.googleapis.com/maps/api/staticmap?"
     const size = "size=75x75";
+		const scale = "scale=2";
     let location = res.routes[0].overview_polyline
     location = "path=enc:".concat(location);
     let key = "key=".concat(window.googleAPIKey);
     let url = []
-    url.push(start, size, location, key)
+    url.push(start, size, scale, location, key);
     url = url.join("&")
     return url
   }

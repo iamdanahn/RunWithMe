@@ -98,3 +98,39 @@
   }
 }
 
+//===============
+// List item
+//===============
+
+.up-feed {
+  max-width: 630px;
+  margin: auto;
+}
+
+.up-list-cntr {
+  display: flex;
+  flex-direction: column;
+  width: 550px;
+  margin-bottom: 40px;
+  background: white;
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.15);
+}
+
+.up-list-header {
+  display: flex;
+  padding: 16px;
+  background: #ffffff;
+  align-items: center;
+  border-bottom: 1px solid #DFE0E5;
+  p {
+    font-size: 14px
+  }
+}
+
+.up-list-body {
+  display: flex;
+  
+  img {
+    height: 150px;
+  }
+}

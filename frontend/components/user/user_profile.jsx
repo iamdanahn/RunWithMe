@@ -28,18 +28,40 @@ class UserProfile extends React.Component {
 		const joinYear = date.getFullYear();
 
 		let runs = routes.map((route) => {
+			// format activity wording
+			let activity =
+				route.activity === "bike"
+					? "biked"
+					: route.activity === "walk"
+					? "walked"
+					: "ran";
+
+			// create each route's contents
 			return (
-				<li key={route.id}>
-					<div>
-						Title: {route.name}
-						Distance: {route.distance}
-						Description: {route.description}
+				<li key={route.id} className="up-list-cntr">
+					<header className="up-list-header">
+						<p>
+							{userProfile.first_name} {userProfile.last_name} {activity}{" "}
+							{route.distance}les
+						</p>
+					</header>
+					<div className="up-list-body">
+						<div className="ulb-left">
+							<img src={route.thumbnail} alt="route thumbnail" />
+						</div>
+						<div className="ulb-right">
+							<h4>Title: {route.name}</h4>
+							<h2>Distance: {route.distance}</h2>
+
+						</div>
 					</div>
+
 					<footer className="up comments">Comments section</footer>
 				</li>
 			);
 		});
 
+		// entire profile page
 		return (
 			<div className="user-profile-bg">
 				<div className="user-profile-cntr">
@@ -64,9 +86,11 @@ class UserProfile extends React.Component {
 							</span>
 						</div>
 					</header>
-					<section className="up feed">
+					<section className="up-feed">
 						List of runs
-						<ul>{runs}</ul>
+						<div>
+							<ul>{runs}</ul>
+						</div>
 					</section>
 				</div>
 			</div>
