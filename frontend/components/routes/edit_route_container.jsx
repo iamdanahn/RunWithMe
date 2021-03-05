@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom"
 import { fetchRoute, updateRoute } from "../../actions/route_actions";
-// import RouteMap from "./route_map";
 import Map from '../map/map'
 
 class EditRouteForm extends React.Component {

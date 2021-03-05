@@ -1,15 +1,15 @@
-//===============
+//=============================================
 // Background
-//===============
+//=============================================
 
 .user-profile-bg {
   background: #f9f9f9;
   height: 100%;
 }
 
-//===============
+//=============================================
 // Main container
-//===============
+//=============================================
 
 .user-profile-cntr {
   display: flex;
@@ -18,9 +18,9 @@
   padding: 20px 0 85px;
 }
 
-//===============
+//=============================================
 // Header upper ("Icon and user name")
-//===============
+//=============================================
 .up.header {
   display: flex;
   flex-direction: column;
@@ -69,9 +69,9 @@
   }
 }
 
-//===============
+//=============================================
 // Header lower ("Activity Feed")
-//===============
+//=============================================
 
 
 .header-bottom {
@@ -98,9 +98,9 @@
   }
 }
 
-//===============
+//=============================================
 // List item
-//===============
+//=============================================
 
 .up-feed {
   max-width: 630px;
@@ -160,6 +160,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    color: #000000;
   }
 
   h4 {
@@ -175,20 +176,7 @@
 
     span {
       font-size: 14px;
+      font-weight: normal;
     }
   }
-}
-
-
-//====================
-// Comments section
-//====================
-
-.up-comments-cntr {
-  padding: 10px;
-  color: #666666;
-  display: flex;
-  border-top: 1px solid #DFE0E5;
-  margin-top: -2px;
-  align-items: center;
 }

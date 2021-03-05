@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
-import {createRoute } from '../../actions/route_actions'
-// import RouteMap from "./route_map";
+import { createRoute } from "../../actions/route_actions";
 import Map from '../map/map'
 
 const msp = (state, ownProps) => {

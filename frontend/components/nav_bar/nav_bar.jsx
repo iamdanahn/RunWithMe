@@ -102,9 +102,9 @@ class NavBar extends React.Component {
 								Welcome {currentUser.first_name}!
 							</button>
 							<div className="dropdown-content">
-								<Link to="">Profile and Settings</Link>
+								{/* <Link to="">Profile and Settings</Link>
 								<Link to="">Connected Apps</Link>
-								<Link to="">Support</Link>
+								<Link to="">Support</Link> */}
 								<Link onClick={logout} to="/">
 									Logout
 								</Link>

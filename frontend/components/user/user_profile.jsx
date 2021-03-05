@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import { ProfileItems } from "./user_profile_items"
 
 // for showing User info and activity feed
 class UserProfile extends React.Component {
@@ -16,6 +17,7 @@ class UserProfile extends React.Component {
 	componentDidUpdate(prevProps) {
 		if (this.props.match.params.id !== prevProps.match.params.id) {
 			this.props.fetchUser(this.props.match.params.id);
+			this.props.fetchRoutes(this.props.match.params.id);
 		}
 	}
 
@@ -26,53 +28,6 @@ class UserProfile extends React.Component {
 
 		const date = new Date(userProfile.created_at);
 		const joinYear = date.getFullYear();
-
-		let runs = routes.map((route) => {
-			// format activity wording
-			let activity =
-				route.activity === "bike"
-					? "biked"
-					: route.activity === "walk"
-					? "walked"
-					: "ran";
-
-			let distance = route.distance.split(" ")[0];
-
-			// create each route's contents
-			return (
-				<li key={route.id} className="up-list-cntr">
-					<header className="up-list-header">
-						<p>
-							{userProfile.first_name} {userProfile.last_name} {activity}{" "}
-							{route.distance}les
-						</p>
-						<i className="fas fa-map-marker-alt fa-2x"></i>
-					</header>
-					<div className="up-list-body">
-						<div className="ulb-left">
-							<img src={route.thumbnail} alt="route thumbnail" />
-						</div>
-						<div className="ulb-right-cntr">
-							<div className="ulb-right">
-								<h4>Distance</h4>
-								<h2>
-									{distance} <span>mi</span>
-								</h2>
-							</div>
-						</div>
-					</div>
-
-					<footer className="up-comments-cntr">
-						<div>
-							<i className="far fa-comments fa-2x"></i>
-						</div>
-						<div>
-							
-						</div>
-					</footer>
-				</li>
-			);
-		});
 
 		// entire profile page
 		return (
@@ -102,7 +57,8 @@ class UserProfile extends React.Component {
 					<section className="up-feed">
 						List of runs
 						<div>
-							<ul>{runs}</ul>
+							<ul>
+							<ProfileItems  userProfile={userProfile} routes={routes} />							</ul>
 						</div>
 					</section>
 				</div>

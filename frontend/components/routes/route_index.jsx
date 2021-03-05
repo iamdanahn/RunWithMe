@@ -38,7 +38,11 @@ class RouteIndex extends React.Component {
 				<div className="mr-search-cntr">
 					<div className="mrsc-left">
 						<div className="search-box">
-							<input type="text" placeholder="Enter a keyword" />
+							<input
+								type="text"
+								placeholder="Enter a keyword (coming soon)"
+								disabled
+							/>
 						</div>
 						<div className="search-buttons">
 							<Link to="" className="search-btn">

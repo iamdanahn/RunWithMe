@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-// import { openModal } from '../../actions/modal_actions' 
+import { Link } from "react-router-dom";
 import Modal from "../../modal/modal";
 
 class RouteIndexItem extends React.Component {
@@ -15,7 +14,12 @@ class RouteIndexItem extends React.Component {
 		let day = new Date(route.created_at).getDay();
 		let year = new Date(route.created_at).getFullYear();
 
-		debugger;
+		let activity =
+			route.activity === "bike"
+				? "Cycling"
+				: route.activity === "walk"
+				? "Walking"
+				: "Running";
 
 		return (
 			<tr className="route-row">
@@ -34,12 +38,14 @@ class RouteIndexItem extends React.Component {
 					</Link>
 				</td>
 				<td className="route-row-distance">{route.distance}</td>
-				<td className="route-row-activity">{route.activity}</td>
+				<td className="route-row-activity">{activity}</td>
 				<td className="route-row-title">
 					<Link to={`/routes/${route.id}`}>{route.name}</Link>
 				</td>
 				<td className="route-row-location">{route.location}</td>
-				<td className="route-row-privacy">Privacy</td>
+				<td className="route-row-privacy">
+					<i className="fas fa-globe-americas"></i>
+				</td>
 				<td className="route-row-options">
 					<div>
 						<Link to={`/routes/${route.id}/edit`}>Edit</Link>
