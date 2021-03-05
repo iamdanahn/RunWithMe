@@ -4,7 +4,7 @@
 
 .user-profile-bg {
   background: #f9f9f9;
-  height: 100vh;
+  height: 100%;
 }
 
 //===============
@@ -118,19 +118,77 @@
 
 .up-list-header {
   display: flex;
-  padding: 16px;
+  padding: 12px 16px;
   background: #ffffff;
   align-items: center;
+  justify-content: space-between;
   border-bottom: 1px solid #DFE0E5;
+  
   p {
     font-size: 14px
+  }
+
+  i {
+    color: lightgray;
+    font-size: 22px
   }
 }
 
 .up-list-body {
   display: flex;
+  justify-content: space-evenly;
   
   img {
-    height: 150px;
+    width: 100%;
   }
+  
+}
+
+.ulb-left {
+  width: 50%;
+  align-items: center;
+}
+
+.ulb-right-cntr {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .ulb-right {
+    display: inherit;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  h4 {
+    color: #262B2D;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    font-size: 32px;
+    font-weight: bold;
+
+    span {
+      font-size: 14px;
+    }
+  }
+}
+
+
+//====================
+// Comments section
+//====================
+
+.up-comments-cntr {
+  padding: 10px;
+  color: #666666;
+  display: flex;
+  border-top: 1px solid #DFE0E5;
+  margin-top: -2px;
+  align-items: center;
 }
