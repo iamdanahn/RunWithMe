@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { ProfileItems } from "./user_profile_items"
+import ProfileItems from "./user_profile_items";
 
 // for showing User info and activity feed
 class UserProfile extends React.Component {
@@ -22,12 +22,14 @@ class UserProfile extends React.Component {
 	}
 
 	render() {
-		const { userProfile, routes } = this.props;
+		const { deleteComment, userProfile, routes, fetchRoutes } = this.props;
 
 		if (userProfile.id !== parseInt(this.props.match.params.id)) return null;
 
 		const date = new Date(userProfile.created_at);
 		const joinYear = date.getFullYear();
+
+		debugger;
 
 		// entire profile page
 		return (
@@ -58,7 +60,13 @@ class UserProfile extends React.Component {
 						List of runs
 						<div>
 							<ul>
-							<ProfileItems  userProfile={userProfile} routes={routes} />							</ul>
+								<ProfileItems
+									userProfile={userProfile}
+									routes={routes}
+									deleteComment={deleteComment}
+									fetchRoutes={fetchRoutes}
+								/>
+							</ul>
 						</div>
 					</section>
 				</div>

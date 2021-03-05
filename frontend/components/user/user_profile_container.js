@@ -18,6 +18,7 @@ const mdp = (dispatch) => {
 		fetchUser: (id) => dispatch(fetchUser(id)),
 		findFriends: (criteria) => dispatch(findFriends(criteria)),
 		fetchRoutes: (userId) => dispatch(fetchRoutes(userId)),
+		deleteComment: (commentId) => dispatch(deleteComment(commentId)),
 	};
 }
 
