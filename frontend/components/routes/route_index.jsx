@@ -55,8 +55,10 @@ class RouteIndex extends React.Component {
 					</div>
 					<div className="mrsc-right">
 						<div className="search-filter">
-							<select defaultValue="-date_created">
-								<option value="-date_created"> Most Recent </option>
+							<select defaultValue="-date_created" disabled>
+								<option value="-date_created">
+									(Filter coming soon) {/* Most Recent */}
+								</option>
 								<option value="date_created"> Oldest </option>
 								<option value="-distance"> Longest </option>
 								<option value="distance"> Shortest </option>
