@@ -23,65 +23,64 @@ class Signup extends React.Component {
 	}
 
 	componentWillUnmount() {
-		  
 		const errors = [];
-		this.props.clearErrors(errors)
-		  
+		this.props.clearErrors(errors);
 	}
 
-
 	formattedState() {
-		const {first_name, last_name, email, password, bday, bmonth, byear, gender} = this.state;
+		const {
+			first_name,
+			last_name,
+			email,
+			password,
+			bday,
+			bmonth,
+			byear,
+			gender,
+		} = this.state;
 		return {
 			first_name,
 			last_name,
 			email,
 			password,
 			birthday: `${byear}-${bmonth}-${bday}`,
-			gender
+			gender,
 		};
 	}
 
 	update(field) {
-		
-		return (e) => {	
-			e.target.className = "input"
+		return (e) => {
+			e.target.className = "input";
 			return this.setState({ [field]: e.target.value });
 		};
 	}
 
 	handleClick(e) {
-		  ;
 		e.preventDefault();
-		this.props.clearErrors([])
-		this.props.history.push("/login")
+		this.props.clearErrors([]);
+		this.props.history.push("/login");
 	}
 
 	handleSubmit(e) {
 		e.preventDefault();
 		this.props
 			.createNewUser(this.formattedState())
-			.then(() => this.props.history.push("/dashboard")
-			 );
+			.then(() => this.props.history.push("/dashboard"));
 	}
-
 
 	handleDemoLogin(e) {
 		e.preventDefault();
-		  
 		this.props.loginDemo().then(() => this.props.history.push("/dashboard"));
-		  
 	}
 
 	render() {
 		const { errors } = this.props;
-		
 
 		return (
 			<div className="auth-form-ctr">
 				<form className="auth-form">
 					<div className="header">
-						<Link className="other-link" onClick={this.handleClick}>
+						<Link to="" className="other-link" onClick={this.handleClick}>
 							LOG IN
 						</Link>
 					</div>
@@ -147,10 +146,10 @@ class Signup extends React.Component {
 						<div className="auth-form errors">{errors.password}</div>
 					</div>
 
-					<BirthDay update={this.update} errors={errors}/>
+					<BirthDay update={this.update} errors={errors} />
 					<div className="auth-form errors">{errors.birthday}</div>
 
-					<div className= {errors['gender'] ? "input err-border" : "input"}>
+					<div className={errors["gender"] ? "input err-border" : "input"}>
 						<div className="gender">
 							<label>
 								Male:
@@ -172,7 +171,7 @@ class Signup extends React.Component {
 									value="F"
 									onChange={this.update("gender")}
 								/>
-							</label>	
+							</label>
 						</div>
 					</div>
 					<div className="auth-form errors">{errors.gender}</div>

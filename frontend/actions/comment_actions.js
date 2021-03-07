@@ -25,6 +25,15 @@ const removeComment = (commentId) => {
   }
 }
 
+export const RECEIVE_ROUTES = "RECEIVE_ROUTES";
+const receiveRoutes = (routes) => {
+	return {
+		type: RECEIVE_ROUTES,
+		routes,
+	};
+};
+
+
 export const fetchComments = (routeId) => {
   return (dispatch) => {
     return CommentAPIUtil.fetchComments(routeId).then((comments) => {
@@ -48,8 +57,8 @@ export const createComment = (comment) => {
 }
 export const deleteComment = (commentId) => {
   return (dispatch) => {
-    return CommentAPIUtil.deleteComment(commentId).then((comment) => {
-      return dispatch(removeComment(comment.id))
-    })
+    return CommentAPIUtil.deleteComment(commentId).then((routes) => {
+			return dispatch(receiveRoutes(routes));
+		});
   }
 }

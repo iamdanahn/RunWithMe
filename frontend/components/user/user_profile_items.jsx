@@ -11,7 +11,7 @@ class ProfileItems extends React.Component {
 	}
 
 	handleClick(commentId) {
-		// this.props.deleteComment(commentId);
+		this.props.deleteComment(commentId);
 	}
 
 	render() {

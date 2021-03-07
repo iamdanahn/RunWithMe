@@ -39,11 +39,14 @@ class Api::CommentsController < ApplicationController
   
   def destroy
     # limits delete to only current users comments
-    @comment = current_user.comments.find(params[:id])
+    # @comment = current_user.comments.find(params[:id])
+    @comment = Comments.find(params[:id])
+    route_owner = @comment.commentable.creator_id
+    @routes = User.find(route_owner).routes
 
     if @comment 
       @comment.destroy
-      # render 'api/comments/show'
+      render 'api/routes/index'
     else
       render json: @comment.errors.full_messages, status: 422
     end
