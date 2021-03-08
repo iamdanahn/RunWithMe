@@ -4,10 +4,10 @@ export const RECEIVE_ROUTES = "RECEIVE_ROUTES";
 export const RECEIVE_ROUTE = 'RECEIVE_ROUTE';
 export const REMOVE_ROUTE = 'REMOVE_ROUTE'
 
-const receiveRoutes = (routes) => {
+const receiveRoutes = (routesInfo) => {
   return ({
     type: RECEIVE_ROUTES,
-    routes
+    routesInfo
   })
 }
 
@@ -27,8 +27,9 @@ const removeRoute = (routeId) => {
 
 export const fetchRoutes = (userId) => {
   return dispatch => {
-    return RouteAPIUtil.fetchRoutes(userId).then(routes => {
-      return dispatch(receiveRoutes(routes))
+    return RouteAPIUtil.fetchRoutes(userId).then(routesInfo => {
+      debugger;
+      return dispatch(receiveRoutes(routesInfo))
     })
   }
 }

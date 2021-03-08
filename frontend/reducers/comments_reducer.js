@@ -3,19 +3,20 @@ import {
   RECEIVE_COMMENT,
   REMOVE_COMMENT,
 } from "../actions/comment_actions"
+import { RECEIVE_ROUTES } from "../actions/route_actions";
 
 const commentsReducer = (state = {}, action) => {
   Object.freeze(state)
 
-  const { comment, comments, commentId } = action
+  const { comment, comments, commentId, routesInfo } = action;
 	debugger;
   switch (action.type) {
 		case RECEIVE_COMMENTS:
 			return comments;
 		case RECEIVE_COMMENT:
 			return Object.assign({}, state, { [comment.id]: comment });
-		// case RECEIVE_ROUTE:
-		// 	return
+		case RECEIVE_ROUTES:
+			return routesInfo.route_comments;
 		case REMOVE_COMMENT:
 			const nextState = Object.assign({}, state);
 			delete nextState[commentId];

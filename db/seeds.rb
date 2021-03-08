@@ -171,32 +171,40 @@ comments3 = Comment.create!(
 )
 comments4 = Comment.create!(
   id: 4,
-  body: "testtttt - route 1",
-  commentable_id: route1.id,
+  body: "good run!",
+  commentable_id: route9.id,
   commentable_type: "Route",
-  user_id: user2.id
+  user_id: user3.id
 )
 comments5 = Comment.create!(
   id: 5,
-  body: "Woohooo look at you go - route 1",
-  commentable_id: route1.id,
+  body: "Woohooo look at you go",
+  commentable_id: route10.id,
   commentable_type: "Route",
   user_id: user5.id
 )
 comments6 = Comment.create!(
   id: 6,
-  body: "Woohooo look at you gogogogo - route 1",
-  commentable_id: route1.id,
+  body: "I wish I could do this",
+  commentable_id: route9.id,
   commentable_type: "Route",
   user_id: user4.id
 )
 comments7 = Comment.create!(
   id: 7,
-  body: "Wompmpmpmp - route 1",
-  commentable_id: route1.id,
+  body: "Beautiful spot to hike",
+  commentable_id: route11.id,
   commentable_type: "Route",
   user_id: user4.id
 )
+comments8 = Comment.create!(id=8, commentable_type: "Route", commentable_id: 2, user_id: 3, body:"nice run! let me join next time")
+comments9 = Comment.create!(id=9, commentable_type: "Route", commentable_id: 2, user_id: 2, body:"lmk too!")
+comments10 = Comment.create!(id=10, commentable_type: "Route", commentable_id: 3, user_id: 2, body:"wow this look like a nice walk")
+comments11 = Comment.create!(id=11, commentable_type: "Route", commentable_id: 3, user_id: 6, body:"almost 24 miles?! what a beast!")
+comments12 = Comment.create!(id=12, commentable_type: "Route", commentable_id: 4, user_id: 3, body:"you passed by my place here")
+comments13 = Comment.create!(id=13, commentable_type: "Route", commentable_id: 4, user_id: 1, body:"invite us over!")
+comments14 = Comment.create!(id=14, commentable_type: "Route", commentable_id: 5, user_id: 2, body:"where on earth were you trying to go LOL")
+
 
 goals1 = Goal.create!(
   id: 1,  

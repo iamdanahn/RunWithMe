@@ -4,7 +4,7 @@ class Api::RoutesController < ApplicationController
   def index
     # @routes = Route.all
     # gets routes for only the user id requested
-    @routes = User.find(route_params[:creator_id]).routes
+    @routes = User.where(id: route_params[:creator_id])[0].routes.includes(:comments)
   end
 
   def show

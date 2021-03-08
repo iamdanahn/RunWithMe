@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import ProfileItems from "./user_profile_items";
+import ActivityFeed from "./activity_feed";
 
 // for showing User info and activity feed
 class UserProfile extends React.Component {
@@ -12,7 +12,8 @@ class UserProfile extends React.Component {
 		const id = parseInt(this.props.match.params.id);
 		this.props.fetchUser(id);
 		this.props.fetchRoutes(id);
-		
+		// const routes = Object.keys(this.props.routes);
+		// this.props.fetchComments(routes);
 	}
 
 
@@ -62,7 +63,7 @@ class UserProfile extends React.Component {
 						List of runs
 						<div>
 							<ul>
-								<ProfileItems
+								<ActivityFeed
 									userProfile={userProfile}
 									routes={routes}
 									deleteComment={deleteComment}

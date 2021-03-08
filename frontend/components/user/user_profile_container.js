@@ -4,7 +4,7 @@ import UserProfile from "./user_profile"
 import { findFriends } from "../../actions/friend_actions"
 import { fetchUser } from "../../actions/user_actions"
 import { fetchRoutes } from "../../actions/route_actions";
-import { deleteComment } from "../../actions/comment_actions";
+import { fetchComments, deleteComment } from "../../actions/comment_actions";
 
 const msp = (state, ownProps) => {
 	const userId = ownProps.match.params.id;
@@ -19,6 +19,7 @@ const mdp = (dispatch) => {
 		fetchUser: (id) => dispatch(fetchUser(id)),
 		findFriends: (criteria) => dispatch(findFriends(criteria)),
 		fetchRoutes: (userId) => dispatch(fetchRoutes(userId)),
+		fetchComments: (routeIds) => dispatch(fetchComments(routeIds)),
 		deleteComment: (commentId) => dispatch(deleteComment(commentId)),
 	};
 }
