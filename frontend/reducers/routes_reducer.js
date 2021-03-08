@@ -13,8 +13,11 @@ const RoutesReducer = (state = {}, action) => {
 
 	switch (action.type) {
 		case RECEIVE_ROUTES:
-			debugger;
-			return routesInfo.routes;
+			if (Object.keys(routesInfo).length) {
+				return routesInfo.routes;
+			} else {
+				return state;
+			}
 		case RECEIVE_ROUTE:
 			return route;
 		case REMOVE_ROUTE:

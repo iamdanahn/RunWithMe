@@ -23,7 +23,6 @@ class UserProfile extends React.Component {
 			this.props.fetchUser(this.props.match.params.id);
 			this.props.fetchRoutes(this.props.match.params.id);
 		}
-		
 	}
 
 	render() {
@@ -35,7 +34,12 @@ class UserProfile extends React.Component {
 			routes, 
 			fetchRoutes } = this.props;
 
+		debugger;
 		if (userProfile.id !== parseInt(this.props.match.params.id)) return null;
+
+		let activityFeed;
+		
+
 
 		const date = new Date(userProfile.created_at);
 		const joinYear = date.getFullYear();

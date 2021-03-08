@@ -16,7 +16,11 @@ const commentsReducer = (state = {}, action) => {
 		case RECEIVE_COMMENT:
 			return Object.assign({}, state, { [comment.id]: comment });
 		case RECEIVE_ROUTES:
-			return routesInfo.route_comments;
+			if (Object.keys(routesInfo).length) {
+				return routesInfo.route_comments;
+			} else {
+				return state;
+			}
 		case REMOVE_COMMENT:
 			const nextState = Object.assign({}, state);
 			delete nextState[commentId];
