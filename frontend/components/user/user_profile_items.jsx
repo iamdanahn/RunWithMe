@@ -43,7 +43,9 @@ class ProfileItems extends React.Component {
 								<p>{comment.body}</p>
 							</div>
 							<div className="comment-right">
-								<button onClick={this.handleClick(comment.id)}>Delete</button>
+								<button onClick={() => this.handleClick(comment.id)}>
+									Delete
+								</button>
 							</div>
 						</li>
 					);

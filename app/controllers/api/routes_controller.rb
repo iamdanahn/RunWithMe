@@ -1,5 +1,5 @@
 class Api::RoutesController < ApplicationController
-  before_action :ensure_logged_in
+  # before_action :ensure_logged_in
 
   def index
     # @routes = Route.all
@@ -8,7 +8,9 @@ class Api::RoutesController < ApplicationController
   end
 
   def show
+    # debugger
     @route = Route.find(params[:id])
+    @comments = @route.comments
   end
 
   def create

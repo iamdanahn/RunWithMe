@@ -10,6 +10,8 @@ class RouteShow extends React.Component {
 
   componentDidMount() {
     const routeId = this.props.match.params.routeId
+
+		debugger;
     this.props.fetchRoute(routeId)
     this.props.fetchComments(routeId)
     // fetches single route and saves it in state to be used
@@ -23,15 +25,27 @@ class RouteShow extends React.Component {
   }
 
   render() {
+		debugger;
 		// need to return null for cDM, then route info can be fetched
 		if (!this.props.route) return null;
 
-		const { route, user, comments, deleteComment } = this.props;
+		debugger;
+
+		const { route, currentUser, comments, deleteComment } = this.props;
 		const createDate = new Date(route.created_at).toDateString();
 		const updateDate = new Date(route.updated_at).toDateString();
 
 		// console.log(route)
 		// console.log(this.props)
+
+		let deleteButton;
+		if (comments.user_id === currentUser.id) {
+			deleteButton = (
+				<button onClick={() => deleteComment(comment.id)}>Delete</button>
+			);
+		} else {
+			deleteButton = null;
+		}
 
 		const routeComments = comments.map((comment) => {
 			return (
@@ -42,9 +56,7 @@ class RouteShow extends React.Component {
 						</h4>
 						<p>{comment.body}</p>
 					</div>
-					<div className="comment-delete">
-						<button onClick={() => deleteComment(comment.id)}>Delete</button>
-					</div>
+					<div className="comment-delete">{deleteButton}</div>
 				</li>
 			);
 		});
@@ -67,7 +79,7 @@ class RouteShow extends React.Component {
 						<div className="rs-right-half">
 							<br />
 							<div className="rs-user">
-								User: {`${user.first_name} ${user.last_name}`}
+								User: {`${currentUser.first_name} ${currentUser.last_name}`}
 							</div>
 							<br />
 							Created Date: {createDate}

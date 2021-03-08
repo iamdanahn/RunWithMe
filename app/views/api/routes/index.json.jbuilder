@@ -4,13 +4,8 @@
     
     # Created custom nesting 
     # json.route_comments makes a 'route_comments' key and the values are the comments
-    json.route_comments do        
-      route.comments.each do |comment|
-        json.set! comment.id do
-          json.partial! 'api/comments/comment', comment: comment
-        end
-      end
-    end
-  
+    json.route_comments route.comments.pluck(:id)
   end
+
+  
 end

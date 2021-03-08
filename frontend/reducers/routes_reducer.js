@@ -9,11 +9,14 @@ const RoutesReducer = (state = {}, action) => {
   Object.freeze(state)
   const { routes, route, routeId } = action
 
+	debugger; 
+
   switch (action.type) {
 		case RECEIVE_ROUTES:
+			debugger;
 			return routes;
 		case RECEIVE_ROUTE:
-			return merge({}, state, { [route.id]: route });
+			return route;
 		case REMOVE_ROUTE:
 			const newState = merge({}, state);
 			delete newState[routeId];

@@ -12,7 +12,9 @@ class UserProfile extends React.Component {
 		const id = parseInt(this.props.match.params.id);
 		this.props.fetchUser(id);
 		this.props.fetchRoutes(id);
+		
 	}
+
 
 	componentDidUpdate(prevProps) {
 		if (this.props.match.params.id !== prevProps.match.params.id) {
