@@ -3,7 +3,7 @@
 // Comments section
 //=============================================
 
-.up-comments-cntr {
+.up-comments-cntr, .comments-lower-cntr {
   padding: 10px;
   color: #666666;
   display: flex;
@@ -12,3 +12,67 @@
   margin-top: -2px;
 }
 
+.comments-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 13px 0px;
+
+  .ci-body {
+    margin: 5px 0 0;
+  }
+
+  button {
+    font-size: 13px;
+    color: #0076C0;
+    background-color: transparent;
+    border: none;
+    
+    &:hover {
+      cursor: pointer; 
+    }
+
+  }
+}
+
+.create-comment-box {
+  display: flex;
+  padding: 10px;
+
+  form {
+    display: flex;
+    height: 40px;
+    width: 100%;
+
+    input {
+      box-sizing: border-box;
+      border: 1px solid #D3D6DC;
+      padding: 12px 16px;
+      margin-right: 12px;
+      width: 85%;
+
+      &:focus {
+        border-color: #007EFF;
+        background: none;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 126, 255, 0.08)
+      }
+    }
+    button {
+      color: #ffffff;
+      font-weight: bold;
+      background-color: #009CE9;
+      transition: 250ms;
+      min-width: 64px;
+      width: 18%;
+      border: none;
+      border-radius: 4px;
+
+      &:hover, &:focus {
+        background-color: #006DA3;
+        transition: 250ms;
+        cursor: pointer;
+        outline: none;
+      }
+    }
+  }
+}

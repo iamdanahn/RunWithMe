@@ -22,9 +22,10 @@ class ActivityFeed extends React.Component {
 	}
 
 	handleDelete(commentId) {
+		// promised below so fetchRoutes would happen immediately after
 		this.props.deleteComment(commentId).then(() => {
-			this.props.fetchRoutes(this.props.match.params.id)
-		});	
+			this.props.fetchRoutes(this.props.match.params.id);
+		});
 	}
 
 	handleSubmit(routeId) {
@@ -66,16 +67,18 @@ class ActivityFeed extends React.Component {
 			}
 
 			debugger;
+
+			// list of each route's comments 
 			const routeComments = comments.map((comment) => {
 				return (
-					<li key={comment.id}>
-						<div className="comment-left">
+					<li key={comment.id} className="comments-item">
+						<div className="ci-left">
 							<Link to={`/profile/${userProfile.id}`}>
 								{comment.first_name} {comment.last_name}
 							</Link>
-							<p>{comment.body}</p>
+							<div className="ci-body">{comment.body}</div>
 						</div>
-						<div className="comment-right">
+						<div className="ci-right">
 							<button onClick={() => this.handleDelete(comment.id)}>
 								Delete
 							</button>
@@ -84,6 +87,8 @@ class ActivityFeed extends React.Component {
 				);
 			});
 
+
+			// list of each route
 			return (
 				<li key={route.id} className="up-list-cntr">
 					<header className="up-list-header">
@@ -108,15 +113,19 @@ class ActivityFeed extends React.Component {
 						</div>
 					</Link>
 
+					{/* lower portion of route's div */}
 					<section className="up-comments-cntr">
 						<div className="comments-cntr upper">
 							<i className="far fa-comments fa-2x"> </i>
 						</div>
-						<div className="comments-cntr lower">
-							<ul>{routeComments}</ul>
-						</div>
 					</section>
+					<div className="comments-lower-cntr">
+						<ul className="comments-lower">
+							{routeComments}
+						</ul>
+					</div>
 
+					{/* comments input box */}
 					<footer className="create-comment-cntr">
 						<div className="create-comment-box">
 							<form onSubmit={this.handleSubmit(route.id)}>
