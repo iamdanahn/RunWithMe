@@ -9,13 +9,13 @@ class RouteShow extends React.Component {
   }
 
   componentDidMount() {
-    const routeId = this.props.match.params.routeId
+		const routeId = this.props.match.params.routeId;
 
-		debugger;
-    this.props.fetchRoute(routeId)
-    this.props.fetchComments(routeId)
-    // fetches single route and saves it in state to be used
-  }
+		// debugger;
+		this.props.fetchRoute(routeId);
+		this.props.fetchComments(routeId);
+		// fetches single route and saves it in state to be used
+	}
 
   editPage(e) {
     e.preventDefault()
@@ -25,11 +25,11 @@ class RouteShow extends React.Component {
   }
 
   render() {
-		debugger;
+		// debugger;
 		// need to return null for cDM, then route info can be fetched
 		if (!this.props.route) return null;
 
-		debugger;
+		// debugger;
 
 		const { route, currentUser, comments, deleteComment } = this.props;
 		const createDate = new Date(route.created_at).toDateString();

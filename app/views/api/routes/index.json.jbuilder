@@ -12,7 +12,7 @@
   # debugger
   json.route_comments do
     json.set! route.id do
-      json.array route.comments.each do |comment|
+      json.comments route.comments.each do |comment|
         json.extract! comment, :id, :body
         json.extract! comment.user, :first_name, :last_name
       end

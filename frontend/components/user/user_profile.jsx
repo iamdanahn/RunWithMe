@@ -18,21 +18,27 @@ class UserProfile extends React.Component {
 
 
 	componentDidUpdate(prevProps) {
+		// checks if url changed, if yes, update
 		if (this.props.match.params.id !== prevProps.match.params.id) {
 			this.props.fetchUser(this.props.match.params.id);
 			this.props.fetchRoutes(this.props.match.params.id);
 		}
+		
 	}
 
 	render() {
-		const { deleteComment, userProfile, routes, fetchRoutes } = this.props;
+		const { 
+			comments, 
+			deleteComment, 
+			createComment, 
+			userProfile, 
+			routes, 
+			fetchRoutes } = this.props;
 
 		if (userProfile.id !== parseInt(this.props.match.params.id)) return null;
 
 		const date = new Date(userProfile.created_at);
 		const joinYear = date.getFullYear();
-
-		debugger;
 
 		// entire profile page
 		return (
@@ -67,6 +73,8 @@ class UserProfile extends React.Component {
 									userProfile={userProfile}
 									routes={routes}
 									deleteComment={deleteComment}
+									createComment={createComment}
+									comments={comments}
 									fetchRoutes={fetchRoutes}
 								/>
 							</ul>

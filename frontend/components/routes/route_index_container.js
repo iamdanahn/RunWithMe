@@ -7,7 +7,7 @@ import {
 import RouteIndex from './route_index';
 
 const msp = (state, ownProps) => {
-	debugger;
+	// debugger;
 	return {
 		routes: Object.values(state.entities.routes),
 		currentUserId: state.session.currentUser.id,

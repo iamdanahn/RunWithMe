@@ -9,19 +9,19 @@ const _nullUser = Object.freeze({
 }); 
 
 const sessionReducer = (state = _nullUser, action) => {
-  Object.freeze(state);
-  const { currentUser } = action;
+	Object.freeze(state);
+	const { currentUser } = action;
 
-  debugger;
+	// debugger;
 
-  switch (action.type) {
-    case RECEIVE_CURRENT_USER:
-      return { currentUser: currentUser };
-    case LOGOUT_CURRENT_USER:
-      return _nullUser;
-    default:
-      return state;
-  }
+	switch (action.type) {
+		case RECEIVE_CURRENT_USER:
+			return { currentUser: currentUser };
+		case LOGOUT_CURRENT_USER:
+			return _nullUser;
+		default:
+			return state;
+	}
 }
 
 export default sessionReducer

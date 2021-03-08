@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 class ActivityFeed extends React.Component {
 	constructor(props) {
@@ -8,22 +8,43 @@ class ActivityFeed extends React.Component {
 			comment: "",
 		};
 
-		this.handleClick = this.handleClick.bind(this);
+		this.handleDelete = this.handleDelete.bind(this);
 	}
 
-	handleChange(value) {
+	componentDidUpdate() {
+		// this.props.fetchRoutes(this.props.match.params.id)
+	}
+
+	update(value) {
 		return (e) => {
-			e.preventDefault();
 			this.setState({ [value]: e.currentTarget.value });
 		};
 	}
 
-	handleClick(commentId) {
-		this.props.deleteComment(commentId);
+	handleDelete(commentId) {
+		this.props.deleteComment(commentId).then(() => {
+			this.props.fetchRoutes(this.props.match.params.id)
+		});	
+	}
+
+	handleSubmit(routeId) {
+		return (e) => {
+			e.preventDefault();
+			const newComment = {
+				"body": this.state.comment, 
+				"commentable_id": routeId, 
+				"commentable_type": "Route",
+				// "user_id": this.props.userProfile.id // this is handled in the backend controlller
+			}
+			this.props.createComment(newComment).then(() => {
+				this.props.fetchRoutes(this.props.match.params.id)
+				// fetch routes in the end to update the list
+			})
+		};
 	}
 
 	render() {
-		const { userProfile, routes } = this.props;
+		const { comments, userProfile, routes } = this.props;
 
 		// create each route's contents
 		return routes.map((route) => {
@@ -40,8 +61,8 @@ class ActivityFeed extends React.Component {
 
 			// if comments exist, arrays comments
 			let comments = [];
-			if (route.route_comments) {
-				comments = Object.values(route.route_comments);
+			if (this.props.comments) {
+				comments = this.props.comments[route.id].comments;
 			}
 
 			debugger;
@@ -55,7 +76,7 @@ class ActivityFeed extends React.Component {
 							<p>{comment.body}</p>
 						</div>
 						<div className="comment-right">
-							<button onClick={() => this.handleClick(comment.id)}>
+							<button onClick={() => this.handleDelete(comment.id)}>
 								Delete
 							</button>
 						</div>
@@ -98,9 +119,13 @@ class ActivityFeed extends React.Component {
 
 					<footer className="create-comment-cntr">
 						<div className="create-comment-box">
-							<form onChange={this.handleChange("comment")}>
-								<input input="text" placeholder="Write a comment..." />
-								<button type="submit">POST</button>
+							<form onSubmit={this.handleSubmit(route.id)}>
+								<input
+									input="text"
+									placeholder="Write a comment..."
+									onChange={this.update("comment")}
+								/>
+								<button>POST</button>
 							</form>
 						</div>
 					</footer>
@@ -110,4 +135,4 @@ class ActivityFeed extends React.Component {
 	}
 }
 
-export default ActivityFeed;
+export default withRouter(ActivityFeed);

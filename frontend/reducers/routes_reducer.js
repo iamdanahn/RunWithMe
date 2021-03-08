@@ -6,12 +6,12 @@ import {
 import merge from 'lodash/merge'
 
 const RoutesReducer = (state = {}, action) => {
-  Object.freeze(state)
-  const { routesInfo, route, routeId } = action;
+	Object.freeze(state);
+	const { routesInfo, route, routeId } = action;
 
-	debugger; 
+	// debugger;
 
-  switch (action.type) {
+	switch (action.type) {
 		case RECEIVE_ROUTES:
 			debugger;
 			return routesInfo.routes;

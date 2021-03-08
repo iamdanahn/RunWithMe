@@ -6,11 +6,11 @@ import {
 import { RECEIVE_ROUTES } from "../actions/route_actions";
 
 const commentsReducer = (state = {}, action) => {
-  Object.freeze(state)
+	Object.freeze(state);
 
-  const { comment, comments, commentId, routesInfo } = action;
-	debugger;
-  switch (action.type) {
+	const { comment, comments, commentId, routesInfo } = action;
+	// debugger;
+	switch (action.type) {
 		case RECEIVE_COMMENTS:
 			return comments;
 		case RECEIVE_COMMENT:

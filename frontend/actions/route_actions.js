@@ -28,9 +28,9 @@ const removeRoute = (routeId) => {
 export const fetchRoutes = (userId) => {
   return dispatch => {
     return RouteAPIUtil.fetchRoutes(userId).then(routesInfo => {
-      debugger;
-      return dispatch(receiveRoutes(routesInfo))
-    })
+			// debugger;
+			return dispatch(receiveRoutes(routesInfo));
+		})
   }
 }
 export const fetchRoute = (routeId) => {

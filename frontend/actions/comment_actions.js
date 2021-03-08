@@ -58,7 +58,7 @@ export const createComment = (comment) => {
 export const deleteComment = (commentId) => {
   return (dispatch) => {
     return CommentAPIUtil.deleteComment(commentId).then((routes) => {
-			return dispatch(receiveRoutes(routes));
+			return null;
 		});
   }
 }

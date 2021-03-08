@@ -9,17 +9,17 @@ class RouteIndex extends React.Component {
   }
 
   render() {
-    const { currentUserId } = this.props
-    
-    debugger; 
+		const { currentUserId } = this.props;
 
-    const route = this.props.routes.map((route) => {
+		// debugger;
+
+		const route = this.props.routes.map((route) => {
 			if (route.creator_id === currentUserId) {
 				return <RIIContainer route={route} key={route.id} />;
 			}
-		})
+		});
 
-    return (
+		return (
 			<div className="my-routes">
 				<div className="mr-header">
 					<div>
@@ -86,7 +86,7 @@ class RouteIndex extends React.Component {
 				</section>
 			</div>
 		);
-  }
+	}
 }
 
 export default RouteIndex;
