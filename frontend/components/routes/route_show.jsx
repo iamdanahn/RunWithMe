@@ -111,17 +111,24 @@ class RouteShow extends React.Component {
 		const { route, currentUser, comments, deleteComment } = this.props;
 		const createDate = new Date(route.created_at).toDateString();
 		const updateDate = new Date(route.updated_at).toDateString();
-
+		debugger;
+		
 		// console.log(route)
 		// console.log(this.props)
-
+		
 		let deleteButton;
-		if (comments.user_id === currentUser.id) {
-			deleteButton = (
-				<button onClick={() => deleteComment(comment.id)}>Delete</button>
-			);
+		if (Object.keys(route).length) {
+			// deleteButton = (
+			// 	<button onClick={() => deleteComment(comment.id)}>Delete</button>
+			// );
+			debugger;
+			const markers = JSON.parse(route.markers);
+			this.startCoord = markers[0];
+			this.endCoord = markers[markers.length - 1];
 		} else {
-			deleteButton = null;
+			// deleteButton = null;
+			this.startCoord = { lat: 0, lng: 0 };
+			this.endCoord = { lat: 0, lng: 0 };
 		}
 
 		const routeComments = comments.map((comment) => {
@@ -146,6 +153,8 @@ class RouteShow extends React.Component {
 					<section className="rs-header">
 						<div className="rs-header-content">
 							{/* <Link to={`/routes/${route.id}/edit`}>Edit Page</Link> */}
+
+							{/* HEADER TOP  */}
 							<div className="rs-top">
 								<div className="rs-top-1">
 									<span className="rst1-name">
@@ -175,18 +184,49 @@ class RouteShow extends React.Component {
 									<h2>{route.name}</h2>
 								</div>
 							</div>
+
+							{/* HEADER BOTTOM */}
 							<div className="rs-bottom-cntr">
 								<div className="rs-bottom-content">
-									User: {`${currentUser.first_name} ${currentUser.last_name}`}
+									<div className="coords-cntr">
+										<h4>Start Coordinates:</h4>
+										<div className="coords">
+											<span>Lat: {this.startCoord.lat.toFixed(4)}</span>
+											<span>Lng: {this.startCoord.lng.toFixed(4)}</span>
+										</div>
+									</div>
 								</div>
 								<div className="rs-bottom-content">
-									Created Date: {createDate}
+									<div className="coords-cntr">
+										<h4>End Coordinates:</h4>
+										<div className="coords">
+											<span>Lat: {this.endCoord.lat.toFixed(4)}</span>
+											<span>Lng: {this.endCoord.lng.toFixed(4)}</span>
+										</div>
+									</div>
 								</div>
 								<div className="rs-bottom-content">
-									Updated Date: {updateDate}
+									<div className="center-cntr">
+										<div className="center-content">
+											<i className="fas fa-walking fa-2x"></i>
+											<i className="fas fa-running fa-2x"></i>
+											<i className="fas fa-biking fa-2x"></i>
+										</div>
+									</div>
 								</div>
-								<div className="rs-bottom-content"></div>
-								<div className="rs-bottom-content"></div>
+								<div className="rs-bottom-content">
+									<div className="rsb-create-date">
+										<span>Route Created:</span>
+										<span>{createDate}</span>
+									</div>
+								</div>
+								<div className="rs-bottom-content">
+									{/* <div className="edit-link"> */}
+										<Link to={`/routes/${route.id}/edit`} className="edit-link">
+											Edit
+										</Link>
+									{/* </div> */}
+								</div>
 							</div>
 						</div>
 					</section>
