@@ -145,7 +145,7 @@ class Map extends React.Component {
             thumbnail: thumbnail
           });
 
-					 ;
+					console.log(response);
 
 					// renders directions that are inside the response
 					this.directionsRenderer.setDirections(response);
