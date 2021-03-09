@@ -6,14 +6,20 @@ class RouteShow extends React.Component {
 		super(props);
 
 		this.editPage = this.editPage.bind(this);
+
+		this.directionsService = new google.maps.DirectionsService();
+		this.directionsRenderer = new google.maps.DirectionsRenderer();
+		this.geocoder = new google.maps.Geocoder();
 	}
 
 	componentDidMount() {
 		const routeId = this.props.match.params.routeId;
 		// debugger;
-		this.props.fetchRoute(routeId);
-		this.props.fetchComments(routeId);
 		// fetches single route and saves it in state to be used
+		this.props.fetchRoute(routeId).then
+		(() => this.props.fetchComments(routeId)).then(() => 
+			this.initMap()
+		)
 	}
 
 	componentDidUpdate(prevProps) {
@@ -31,12 +37,32 @@ class RouteShow extends React.Component {
 		this.props.history.push(`/routes/${route.id}/edit`);
 	}
 
+	initMap() {
+		debugger
+		this.center = JSON.parse(this.props.route.markers)[0];
+
+		this.mapProps = {
+			zoom: 14,
+			center: this.center,
+			clickableIcons: false,
+			draggableCursor: "crosshair"
+		}
+
+		this.map = new google.maps.Map(this.mapNode, this.mapProps);
+		this.bounds = new google.maps.LatLngBounds()
+
+		this.directionsRenderer.setOptions({
+			map:this.map,
+			preserveViewport: true,
+		})
+
+
+	}
+
+
 	render() {
-		// debugger;
 		// need to return null for cDM, then route info can be fetched
 		if (!this.props.route) return null;
-
-		// debugger;
 
 		const { route, currentUser, comments, deleteComment } = this.props;
 		const createDate = new Date(route.created_at).toDateString();
@@ -99,11 +125,11 @@ class RouteShow extends React.Component {
 						</div>
 					</section>
 
+					{/* section 2 - minimap */}
 					<section className="rs-comments">
 						<ul>{routeComments}</ul>
 					</section>
 
-					{/* section 2 - minimap, comments section */}
 					<section 
 						id="rs-map"
 						ref={map => this.mapNode = map}

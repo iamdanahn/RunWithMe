@@ -7,7 +7,7 @@ import RouteShow from './route_show'
 const msp = (state, ownProps) => {
 	const routeId = ownProps.match.params.routeId;
 	const currentUserId = state.session.currentUser.id;
-
+	debugger;
 	return {
 		route: state.entities.routes,
 		currentUser: state.session.currentUser,
@@ -17,6 +17,7 @@ const msp = (state, ownProps) => {
 }
 
 const mdp = dispatch => {
+	debugger;
   return {
     deleteRoute: (route) => dispatch(deleteRoute(route)),
     fetchRoute: (routeId) => dispatch(fetchRoute(routeId)),
