@@ -148,15 +148,28 @@ class RouteShow extends React.Component {
 							{/* <Link to={`/routes/${route.id}/edit`}>Edit Page</Link> */}
 							<div className="rs-top">
 								<div className="rs-top-1">
-									<h5>
+									<span className="rst1-name">
 										{currentUser.first_name} {currentUser.last_name}
-									</h5>
-									<span></span>
+									</span>
+									<span className="rst1-filler"></span>
+									<span className="rst1-globe">
+										<i className="fas fa-globe"></i>
+									</span>
+									<span className="rst1-status"> Public </span>
 								</div>
 								<div className="rs-top-2">
-									<span>{route.activity}</span>
-									<span>{route.location}</span>
-									<span>{route.distance}</span>
+									<span className="rst2 activity">
+										<div>{route.activity}</div>
+									</span>
+									<span className="rst2 location">
+										<div>
+											<i className="fas fa-map-marker-alt"></i>
+											{route.location}
+										</div>
+									</span>
+									<span className="rst2 distance">
+										<div>{route.distance}</div>
+									</span>
 								</div>
 								<div className="rs-top-3">
 									<h2>{route.name}</h2>
