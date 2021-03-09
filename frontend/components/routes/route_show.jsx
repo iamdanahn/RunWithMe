@@ -17,9 +17,10 @@ class RouteShow extends React.Component {
 		// debugger;
 		// fetches single route and saves it in state to be used
 		this.props.fetchRoute(routeId).then
-		(() => this.props.fetchComments(routeId)).then(() => 
-			this.initMap()
-		)
+		(() => this.props.fetchComments(routeId))
+		// .then(() => 
+		// 	this.initMap()
+		// )
 	}
 
 	componentDidUpdate(prevProps) {

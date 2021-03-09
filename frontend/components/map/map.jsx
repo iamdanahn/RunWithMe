@@ -278,7 +278,7 @@ class Map extends React.Component {
 	// =======================
 
 	update(field) {
-		console.log(JSON.stringify(this.state.markers));
+		// console.log(JSON.stringify(this.state.markers));
 
 		return (e) => {
 			this.setState({ [field]: e.currentTarget.value });

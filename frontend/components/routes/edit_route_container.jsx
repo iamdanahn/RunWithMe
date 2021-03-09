@@ -7,13 +7,15 @@ import Map from '../map/map'
 class EditRouteForm extends React.Component {
   componentDidMount() {
     const routeId = this.props.match.params.routeId;
+		debugger;
     this.props.fetchRoute(routeId);
+		debugger;
   }
 
   render() {
 		const { route, formType, action } = this.props;
-
-		return route ? (
+		debugger;
+		return Object.keys(route).length ? (
 			<Map route={route} formType={formType} action={action} />
 		) : null;
 	}
@@ -25,7 +27,7 @@ const msp = (state, ownProps) => {
 	const routesId = ownProps.match.params.routeId;
 
 	return {
-		route: entities.routes[routesId],
+		route: entities.routes,
 		formType: "Edit",
 	};
 };
