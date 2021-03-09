@@ -2,29 +2,36 @@ import React from 'react'
 import { Link } from "react-router-dom"
 
 class RouteShow extends React.Component {
-  constructor(props) {
-    super(props)
+	constructor(props) {
+		super(props);
 
-    this.editPage = this.editPage.bind(this)
-  }
+		this.editPage = this.editPage.bind(this);
+	}
 
-  componentDidMount() {
+	componentDidMount() {
 		const routeId = this.props.match.params.routeId;
-
 		// debugger;
 		this.props.fetchRoute(routeId);
 		this.props.fetchComments(routeId);
 		// fetches single route and saves it in state to be used
 	}
 
-  editPage(e) {
-    e.preventDefault()
-    const { route } = this.props
+	componentDidUpdate(prevProps) {
+		// checks if url changed, if yes, update
+		if (this.props.match.params.id !== prevProps.match.params.id) {
+			this.props.fetchUser(this.props.match.params.id);
+			this.props.fetchComments(this.props.match.params.id);
+		}
+	}
 
-    this.props.history.push(`/routes/${route.id}/edit`)
-  }
+	editPage(e) {
+		e.preventDefault();
+		const { route } = this.props;
 
-  render() {
+		this.props.history.push(`/routes/${route.id}/edit`);
+	}
+
+	render() {
 		// debugger;
 		// need to return null for cDM, then route info can be fetched
 		if (!this.props.route) return null;
@@ -97,7 +104,12 @@ class RouteShow extends React.Component {
 					</section>
 
 					{/* section 2 - minimap, comments section */}
-					<section className="rs-map"></section>
+					<section 
+						id="rs-map"
+						ref={map => this.mapNode = map}
+					>
+						Map
+					</section>
 				</div>
 			</div>
 		);

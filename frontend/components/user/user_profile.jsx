@@ -10,36 +10,49 @@ class UserProfile extends React.Component {
 
 	componentDidMount() {
 		const id = parseInt(this.props.match.params.id);
-		this.props.fetchUser(id);
 		this.props.fetchRoutes(id);
+		this.props.fetchUser(id);
 		// const routes = Object.keys(this.props.routes);
 		// this.props.fetchComments(routes);
 	}
 
-
 	componentDidUpdate(prevProps) {
 		// checks if url changed, if yes, update
 		if (this.props.match.params.id !== prevProps.match.params.id) {
-			this.props.fetchUser(this.props.match.params.id);
 			this.props.fetchRoutes(this.props.match.params.id);
+			this.props.fetchUser(this.props.match.params.id);
 		}
 	}
 
 	render() {
-		const { 
-			comments, 
-			deleteComment, 
-			createComment, 
-			userProfile, 
-			routes, 
-			fetchRoutes } = this.props;
+		const {
+			comments,
+			deleteComment,
+			createComment,
+			userProfile,
+			routes,
+			fetchRoutes,
+		} = this.props;
 
-		debugger;
 		if (userProfile.id !== parseInt(this.props.match.params.id)) return null;
 
 		let activityFeed;
-		
+		if (routes.length > 0) {
+			activityFeed = (
+				<ActivityFeed
+					userProfile={userProfile}
+					routes={routes}
+					deleteComment={deleteComment}
+					createComment={createComment}
+					comments={comments}
+					fetchRoutes={fetchRoutes}
+				/>
+			);
+		} else {
+			activityFeed = <h3>This user has not logged any routes yet!</h3>;
+		}
 
+		debugger;
 
 		const date = new Date(userProfile.created_at);
 		const joinYear = date.getFullYear();
@@ -70,18 +83,8 @@ class UserProfile extends React.Component {
 						</div>
 					</header>
 					<section className="up-feed">
-						List of runs
 						<div>
-							<ul>
-								<ActivityFeed
-									userProfile={userProfile}
-									routes={routes}
-									deleteComment={deleteComment}
-									createComment={createComment}
-									comments={comments}
-									fetchRoutes={fetchRoutes}
-								/>
-							</ul>
+							<ul>{activityFeed}</ul>
 						</div>
 					</section>
 				</div>
