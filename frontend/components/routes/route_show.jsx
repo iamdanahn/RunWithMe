@@ -39,7 +39,8 @@ class RouteShow extends React.Component {
 
 	initMap() {
 		debugger
-		this.center = JSON.parse(this.props.route.markers)[0];
+		const wayPoints = JSON.parse(this.props.route.markers);
+		this.center = wayPoints[0];
 
 		this.mapProps = {
 			zoom: 14,
@@ -55,8 +56,33 @@ class RouteShow extends React.Component {
 			map:this.map,
 			preserveViewport: true,
 		})
+		console.log(wayPoints);
+		const origin = wayPoints[0];
+		const dest = wayPoints[wayPoints.length - 1];
+		const wP = wayPoints.slice(1, wayPoints.length - 1).map((val) => ({
+			location: val,
+			stopover: false,
+		}));
 
+		this.directionsService.route(
+			{
+				origin: origin,
+				destination: dest,
+				waypoints: wP,
+				travelMode: google.maps.TravelMode.WALKING,
+			},
+			(response, status) => {
+				if (status === "OK") {
+					// updates distance state
+					// const distance = response.routes[0].legs[0].distance.text;
 
+					// renders directions that are inside the response
+					this.directionsRenderer.setDirections(response);
+				} else {
+					console.log("Directions failed");
+				}
+			}
+		);
 	}
 
 
