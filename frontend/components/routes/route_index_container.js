@@ -3,6 +3,7 @@ import {
 	fetchRoutes,
 	createRoute,
 	updateRoute,
+	clearRoutes,
 } from "../../actions/route_actions";
 import RouteIndex from './route_index';
 
@@ -19,6 +20,7 @@ const mdp = dispatch => {
 		fetchRoutes: (userId) => dispatch(fetchRoutes(userId)),
 		createRoute: (route) => dispatch(createRoute(route)),
 		updateRoute: (route) => dispatch(updateRoute(route)),
+		clearRoutes: () => dispatch(clearRoutes()),
 	};
 }
 

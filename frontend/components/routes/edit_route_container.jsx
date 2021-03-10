@@ -8,15 +8,20 @@ class EditRouteForm extends React.Component {
   componentDidMount() {
     const routeId = this.props.match.params.routeId;
 		debugger;
-    this.props.fetchRoute(routeId);
+		if (!this.props.routes[routeId]) {
+			this.props.fetchRoute(routeId);
+		}
 		debugger;
   }
 
   render() {
-		const { route, formType, action } = this.props;
+		const { routes, formType, action } = this.props;
+		const routeId = this.props.match.params.routeId;
+		
 		debugger;
-		return Object.keys(route).length ? (
-			<Map route={route} formType={formType} action={action} />
+
+		return routes[routeId] ? (
+			<Map route={routes[routeId]} formType={formType} action={action} />
 		) : null;
 	}
 }
@@ -26,8 +31,9 @@ const msp = (state, ownProps) => {
 	const { entities, session, errors } = state;
 	const routesId = ownProps.match.params.routeId;
 
+	debugger;
 	return {
-		route: entities.routes,
+		routes: entities.routes,
 		formType: "Edit",
 	};
 };

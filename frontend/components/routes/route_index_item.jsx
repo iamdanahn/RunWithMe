@@ -3,11 +3,17 @@ import { Link } from "react-router-dom";
 import Modal from "../../modal/modal";
 
 class RouteIndexItem extends React.Component {
-  constructor(props) {
-    super(props)
-  }  
+	constructor(props) {
+		super(props);
+	}
 
-  render(){
+	// componentWillUnmount() {
+	// 	debugger;
+	// 	this.props.clearRoutes();
+	// 	debugger;
+	// }
+
+	render() {
 		const { route, deleteRoute, openModal } = this.props;
 		// debugger;
 		let month = new Date(route.created_at).getMonth() + 1;

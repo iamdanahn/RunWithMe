@@ -15,12 +15,20 @@ class RouteShow extends React.Component {
 
 	componentDidMount() {
 		const routeId = this.props.match.params.routeId;
-		// debugger;
+		debugger;
 		// fetches single route and saves it in state to be used
-		this.props
-			.fetchRoute(routeId)
-			.then(() => this.props.fetchComments(routeId))
-			.then(() => this.initMap());
+		// this.props
+		// 	.fetchRoute(routeId)
+		// 	.then(() => this.props.fetchComments(routeId))
+		// 	.then(() => this.initMap());
+
+		this.props.fetchRoute(routeId);
+		debugger;
+		this.props.fetchComments(routeId).then(() => {
+			debugger;
+			return this.initMap();
+		});
+		debugger;
 	}
 
 	componentDidUpdate(prevProps) {
@@ -29,10 +37,10 @@ class RouteShow extends React.Component {
 		if (this.props.match.params.routeId !== prevProps.match.params.routeId) {
 			debugger;
 			// this.props.fetchComments(this.props.match.params.routeId);
-			this.props.fetchRoute(this.props.match.params.routeId);
 			this.props
-				.fetchUser(this.props.match.params.routeId)
-				.then(() => this.renderMarkers());
+				.fetchRoute(this.props.match.params.routeId)
+				.then(() => this.props.fetchUser(this.props.match.params.routeId))
+				.then(() => this.initMap());
 		}
 	}
 
@@ -44,8 +52,9 @@ class RouteShow extends React.Component {
 	}
 
 	initMap() {
+		const { route } = this.props;
 		debugger;
-		this.wayPoints = JSON.parse(this.props.route.markers);
+		this.wayPoints = JSON.parse(route.markers);
 		this.center = this.wayPoints[0];
 
 		this.mapProps = {
@@ -58,12 +67,7 @@ class RouteShow extends React.Component {
 		this.map = new google.maps.Map(this.mapNode, this.mapProps);
 
 		// renders the whole route on map
-		this.map.fitBounds({
-			south: 40.70131000000001,
-			west: -74.01636,
-			north: 40.86892,
-			east: -73.91801000000001,
-		});
+		this.map.fitBounds(JSON.parse(route.bounds));
 
 		this.directionsRenderer.setOptions({
 			map: this.map,

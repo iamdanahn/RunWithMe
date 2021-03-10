@@ -80,7 +80,8 @@ route1 = Route.create!(
   distance: "29 mi",
   markers: '[{"lat":40.71411115971662,"lng":-74.01132169889046},{"lat":40.7033821221302,"lng":-74.01622629240303},{"lat":40.71079944830665,"lng":-73.97940492704659},{"lat":40.738664689525265,"lng":-73.97315883889469},{"lat":40.77474843800661,"lng":-73.94294643655094},{"lat":40.82411915550898,"lng":-73.93480985667082},{"lat":40.86850561436029,"lng":-73.9204045210102},{"lat":40.78914261494821,"lng":-73.98014268018989},{"lat":40.71411115971662,"lng":-74.01132169889046}]',
   description: "This is madness!",
-  thumbnail: ""
+  thumbnail: "",
+  bounds: "" 
   )
 
 route2 = Route.create!(
@@ -92,7 +93,8 @@ route2 = Route.create!(
   distance: "8.4 mi",
   markers: '[{"lat":40.75674223226639,"lng":-73.98508680046385},{"lat":40.74035624922381,"lng":-73.99710309685057},{"lat":40.72663313398497,"lng":-73.97925031364744},{"lat":40.761943287259584,"lng":-73.96500241936033},{"lat":40.760448025629294,"lng":-73.98989331901853},{"lat":40.75674223226639,"lng":-73.98508680046385}]',
   description: "Nothing like fresh air",
-  thumbnail: ""
+  thumbnail: "",
+  bounds: "" 
   )
 
 route3 = Route.create!(
@@ -104,7 +106,8 @@ route3 = Route.create!(
   distance: "23.8 mi",
   markers: '[{"lat":25.766513967793152,"lng":-80.19050273967285},{"lat":25.726544797952293,"lng":-80.2397695548584},{"lat":25.81110583843507,"lng":-80.18906731292041},{"lat":25.80932804978399,"lng":-80.13535927392678},{"lat":25.773365948021038,"lng":-80.18726097681186}]',
   description: "Soaking in the sun",
-  thumbnail: ""
+  thumbnail: "",
+  bounds: "" 
 )
 route4 = Route.create!(
   id: 4,
@@ -115,7 +118,8 @@ route4 = Route.create!(
   distance: "7.0 mi",
   markers: '[{"lat":40.75715924591939,"lng":-73.98440015495603},{"lat":40.736025908011385,"lng":-73.97418630302732},{"lat":40.73947499759127,"lng":-73.99736658500376},{"lat":40.72640215768758,"lng":-73.99968401359263},{"lat":40.75143992246376,"lng":-73.996508278119}]',
   description: "Just another day",
-  thumbnail: ""
+  thumbnail: "",
+  bounds: "" 
 )
 route5 = Route.create!(
   id: 5,
@@ -126,7 +130,8 @@ route5 = Route.create!(
   distance: "7.0 mi",
   markers: '[{"lat":40.7143026147416,"lng":-73.97844091819468},{"lat":40.71098461393403,"lng":-73.96161810325327},{"lat":40.718856464276016,"lng":-73.9494301454896},{"lat":40.70525904728222,"lng":-73.95741239951792},{"lat":40.719702144892764,"lng":-73.98805395530405}]',
   description: "Bridge run wasn't so bad",
-  thumbnail: ""
+  thumbnail: "",
+  bounds: "" 
 )
 route6 = Route.create!(
   id: 6,
@@ -137,7 +142,8 @@ route6 = Route.create!(
   distance: "7.0 mi",
   markers: '[{"lat":40.7143026147416,"lng":-73.97844091819468},{"lat":40.71098461393403,"lng":-73.96161810325327},{"lat":40.718856464276016,"lng":-73.9494301454896},{"lat":40.70525904728222,"lng":-73.95741239951792},{"lat":40.719702144892764,"lng":-73.98805395530405}]',
   description: "Bridge run wasn't so bad",
-  thumbnail: ""
+  thumbnail: "",
+  bounds: "" 
 )
 route7 = Route.create!(
   id: 7,
@@ -148,7 +154,8 @@ route7 = Route.create!(
   distance: "7.4 mi",
   markers: '[{"lat":40.71848957495466,"lng":-73.98650900291148},{"lat":40.7077549436641,"lng":-73.95560995505991},{"lat":40.69532663353187,"lng":-73.97380606101694},{"lat":40.71256947719181,"lng":-74.00504843162241},{"lat":40.71848957495466,"lng":-73.98650900291148}]',
   description: "Bridge run is getting better",
-  thumbnail: ""
+  thumbnail: "",
+  bounds: "" 
 )
 
 

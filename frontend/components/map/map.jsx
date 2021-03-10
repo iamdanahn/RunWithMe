@@ -13,7 +13,8 @@ class Map extends React.Component {
 			location: this.props.route.location,
 			distance: this.props.route.distance,
 			address: "",
-      thumbnail: this.props.route.thumbnail,
+			thumbnail: this.props.route.thumbnail,
+			bounds: this.props.route.bounds,
 			markers:
 				this.props.route.markers.length > 0
 					? JSON.parse(this.props.route.markers)
@@ -139,11 +140,16 @@ class Map extends React.Component {
 					// updates distance state
 					const distance = response.routes[0].legs[0].distance.text;
           let thumbnail = this.getThumbnailUrl(response)
+					let bounds = response.routes[0].bounds;
 					
-          this.setState({ 
-            distance: distance,
-            thumbnail: thumbnail
-          });
+					debugger;
+
+					console.log(bounds);
+          this.setState({
+						distance: distance,
+						thumbnail: thumbnail,
+						bounds: JSON.stringify(bounds),
+					});
 
 					console.log(response);
 
@@ -299,7 +305,8 @@ class Map extends React.Component {
 			location,
 			markers,
 			name,
-      thumbnail
+			thumbnail,
+			bounds,
 		} = this.state;
 		const strMarkers = JSON.stringify(markers);
 
@@ -311,7 +318,8 @@ class Map extends React.Component {
 			location,
 			distance,
 			markers: strMarkers,
-      thumbnail
+			thumbnail,
+			bounds,
 		};
 	}
 

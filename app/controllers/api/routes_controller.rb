@@ -27,6 +27,8 @@ class Api::RoutesController < ApplicationController
 
   def update
     @route = Route.find(params[:id])
+    @comments = @route.comments
+
     if @route.update(route_params)
       render 'api/routes/show'
     else
@@ -47,6 +49,7 @@ class Api::RoutesController < ApplicationController
 
   private
   def route_params
-    params.require(:route).permit(:name, :creator_id, :activity, :location, :distance, :markers, :thumbnail )
+    params.require(:route).permit(:name, :creator_id, :activity, 
+    :location, :distance, :markers, :thumbnail, :bounds)
   end
 end

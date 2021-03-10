@@ -1,8 +1,9 @@
 import {
-  RECEIVE_ROUTES,
-  RECEIVE_ROUTE,
-  REMOVE_ROUTE
-} from '../actions/route_actions';
+	RECEIVE_ROUTES,
+	RECEIVE_ROUTE,
+	REMOVE_ROUTE,
+	CLEAR_ROUTES,
+} from "../actions/route_actions";
 import merge from 'lodash/merge'
 
 const RoutesReducer = (state = {}, action) => {
@@ -19,11 +20,13 @@ const RoutesReducer = (state = {}, action) => {
 				return state;
 			}
 		case RECEIVE_ROUTE:
-			return route;
+			return { [route.id]: route };
 		case REMOVE_ROUTE:
 			const newState = merge({}, state);
 			delete newState[routeId];
 			return newState;
+		case CLEAR_ROUTES:
+			return {};
 		default:
 			return state;
 	}

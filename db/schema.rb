@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2021_02_26_152345) do
     t.string "markers", null: false
     t.text "description"
     t.text "thumbnail"
+    t.text "bounds"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["creator_id"], name: "index_routes_on_creator_id"

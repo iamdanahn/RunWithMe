@@ -3,12 +3,17 @@ import { Link } from 'react-router-dom';
 import RIIContainer from './route_index_item_container'
 
 class RouteIndex extends React.Component {
+	componentDidMount() {
+		this.props.fetchRoutes(this.props.currentUserId);
+	}
 
-  componentDidMount() {
-    this.props.fetchRoutes(this.props.currentUserId);
-  }
+	// componentWillUnmount() {
+	// 	debugger;
+	// 	this.props.clearRoutes();
+	// 	debugger;
+	// }
 
-  render() {
+	render() {
 		const { currentUserId } = this.props;
 
 		// debugger;
