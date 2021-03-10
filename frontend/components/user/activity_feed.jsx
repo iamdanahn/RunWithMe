@@ -8,6 +8,7 @@ class ActivityFeed extends React.Component {
 			comment: "",
 		};
 
+		this.clearInput = this.clearInput.bind(this);
 		this.handleDelete = this.handleDelete.bind(this);
 	}
 
@@ -32,16 +33,21 @@ class ActivityFeed extends React.Component {
 		return (e) => {
 			e.preventDefault();
 			const newComment = {
-				"body": this.state.comment, 
-				"commentable_id": routeId, 
-				"commentable_type": "Route",
+				body: this.state.comment,
+				commentable_id: routeId,
+				commentable_type: "Route",
 				// "user_id": this.props.userProfile.id // this is handled in the backend controlller
-			}
+			};
 			this.props.createComment(newComment).then(() => {
-				this.props.fetchRoutes(this.props.match.params.id)
+				this.clearInput();
 				// fetch routes in the end to update the list
-			})
+				this.props.fetchRoutes(this.props.match.params.id);
+			});
 		};
+	}
+
+	clearInput() {
+		document.getElementById("comment-input").value = "";
 	}
 
 	render() {
@@ -68,7 +74,7 @@ class ActivityFeed extends React.Component {
 
 			debugger;
 
-			// list of each route's comments 
+			// list of each route's comments
 			const routeComments = comments.map((comment) => {
 				return (
 					<li key={comment.id} className="comments-item">
@@ -86,7 +92,6 @@ class ActivityFeed extends React.Component {
 					</li>
 				);
 			});
-
 
 			// list of each route
 			return (
@@ -120,9 +125,7 @@ class ActivityFeed extends React.Component {
 						</div>
 					</section>
 					<div className="comments-lower-cntr">
-						<ul className="comments-lower">
-							{routeComments}
-						</ul>
+						<ul className="comments-lower">{routeComments}</ul>
 					</div>
 
 					{/* comments input box */}
@@ -133,6 +136,7 @@ class ActivityFeed extends React.Component {
 									input="text"
 									placeholder="Write a comment..."
 									onChange={this.update("comment")}
+									id="comment-input"
 								/>
 								<button>POST</button>
 							</form>
