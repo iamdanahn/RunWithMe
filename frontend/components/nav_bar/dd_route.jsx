@@ -8,7 +8,7 @@ class RouteLinks extends React.Component {
 
     return currentUser ? (
 			<div className="dropdown-content">
-				<Link to="/routes/search">Find Route</Link>
+				{/* <Link to="/routes/search">Find Route</Link> */}
 				<Link to="/routes/create">Create Route</Link>
 				<Link to="/dashboard">My Routes</Link>
 			</div>

@@ -9,6 +9,7 @@ function Modal ({modal, closeModal, deleteRoute}) {
 		return null;
 	}
 
+	debugger;
 	let component;
 	switch (modal) {
 		case "open":

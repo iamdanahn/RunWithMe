@@ -8,7 +8,7 @@ const msp = (state, ownProps) => {
 	return {
 		route: {
 			name: "",
-			creator_id: session.id,
+			creator_id: session.currentUser.id,
 			activity: "walk",
 			location: "New York City",
 			distance: "0 MI",

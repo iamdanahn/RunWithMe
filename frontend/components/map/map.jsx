@@ -337,9 +337,7 @@ class Map extends React.Component {
 		}
 
 		if (this.wayPoints.length > 1) {
-			 ;
 			this.props.action(this.formattedState()).then((response) => {
-				 ;
 				// res is whole action pkg
 				this.props.history.push(`/dashboard`);
 			});

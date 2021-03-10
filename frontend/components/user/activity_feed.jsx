@@ -46,6 +46,7 @@ class ActivityFeed extends React.Component {
 		};
 	}
 
+	// clears comment input box after submitting
 	clearInput() {
 		document.getElementById("comment-input").value = "";
 	}

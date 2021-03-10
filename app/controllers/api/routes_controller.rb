@@ -17,10 +17,13 @@ class Api::RoutesController < ApplicationController
   def create
     #  
     @route = Route.new(route_params)
-
+    @comments = @route.comments
+    # @comments
+    # debugger
     if @route.save
       render 'api/routes/show'
     else
+      # debugger
       render json: @route.errors.full_messages, status: 422
     end
   end
@@ -38,11 +41,14 @@ class Api::RoutesController < ApplicationController
 
   def destroy
     @route = Route.find(params[:id])
-    
-    if @route 
-      @route.destroy
+    # debugger
+    if @route && @route.destroy
+      # debugger
+      @routes = current_user.routes.includes(:comments).to_a
+
+      render 'api/routes/index'
     else
-      render "One cannot destroy what does not exist"
+      render json: "One cannot destroy what does not exist"
     end
     
   end

@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import RIIContainer from './route_index_item_container'
 
 class RouteIndex extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+
 	componentDidMount() {
 		this.props.fetchRoutes(this.props.currentUserId);
 	}
@@ -16,7 +20,7 @@ class RouteIndex extends React.Component {
 	render() {
 		const { currentUserId } = this.props;
 
-		// debugger;
+		debugger;
 
 		const route = this.props.routes.map((route) => {
 			if (route.creator_id === currentUserId) {
