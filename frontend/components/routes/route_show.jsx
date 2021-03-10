@@ -22,13 +22,14 @@ class RouteShow extends React.Component {
 		// 	.then(() => this.props.fetchComments(routeId))
 		// 	.then(() => this.initMap());
 
-		this.props.fetchRoute(routeId);
-		debugger;
-		this.props.fetchComments(routeId).then(() => {
+		if (!this.props.routes[routeId]) {
+			this.props.fetchRoute(routeId);
 			debugger;
-			return this.initMap();
-		});
-		debugger;
+			this.props.fetchComments(routeId).then(() => this.initMap());;
+			debugger;
+		} else {
+			this.initMap();
+		}
 	}
 
 	componentDidUpdate(prevProps) {
@@ -46,13 +47,13 @@ class RouteShow extends React.Component {
 
 	editPage(e) {
 		e.preventDefault();
-		const { route } = this.props;
+		const route = this.props.routes[this.props.routeId];
 
 		this.props.history.push(`/routes/${route.id}/edit`);
 	}
 
 	initMap() {
-		const { route } = this.props;
+		const route = this.props.routes[this.props.routeId];
 		debugger;
 		this.wayPoints = JSON.parse(route.markers);
 		this.center = this.wayPoints[0];
@@ -110,16 +111,18 @@ class RouteShow extends React.Component {
 
 	render() {
 		// need to return null for cDM, then route info can be fetched
-		if (!this.props.route) return null;
-
-		const { route, currentUser, comments, deleteComment } = this.props;
-		const createDate = new Date(route.created_at).toDateString();
-		const updateDate = new Date(route.updated_at).toDateString();
+		const route = this.props.routes[this.props.routeId];
+		debugger;
+		if (!route) return null;
 		debugger;
 		
+		const { currentUser, comments, deleteComment } = this.props;
+		const createDate = new Date(route.created_at).toDateString();
+		const updateDate = new Date(route.updated_at).toDateString();
+
 		// console.log(route)
 		// console.log(this.props)
-		
+
 		let deleteButton;
 		if (Object.keys(route).length) {
 			// deleteButton = (
@@ -226,9 +229,9 @@ class RouteShow extends React.Component {
 								</div>
 								<div className="rs-bottom-content">
 									{/* <div className="edit-link"> */}
-										<Link to={`/routes/${route.id}/edit`} className="edit-link">
-											Edit
-										</Link>
+									<Link to={`/routes/${route.id}/edit`} className="edit-link">
+										Edit
+									</Link>
 									{/* </div> */}
 								</div>
 							</div>

@@ -5,14 +5,12 @@ import { connect }  from 'react-redux';
 
 
 function Modal ({modal, closeModal, deleteRoute}) {
-  if (!modal) {
-    return null;
-  }
+	if (!modal) {
+		return null;
+	}
 
-   
-
-  let component;
-  switch (modal) {
+	let component;
+	switch (modal) {
 		case "open":
 			component = (
 				<div className="modal-delete">
@@ -33,9 +31,9 @@ function Modal ({modal, closeModal, deleteRoute}) {
 			return null;
 	}
 
-  return (
+	return (
 		<div className="modal-background" onClick={closeModal}>
-			<div className="modal-child" onClick={(e) => e.stopPropagation()} >
+			<div className="modal-child" onClick={(e) => e.stopPropagation()}>
 				{component}
 			</div>
 		</div>

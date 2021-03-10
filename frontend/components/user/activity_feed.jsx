@@ -45,7 +45,7 @@ class ActivityFeed extends React.Component {
 	}
 
 	render() {
-		const { comments, userProfile, routes } = this.props;
+		const { userProfile, routes } = this.props;
 
 		// create each route's contents
 		return routes.map((route) => {
@@ -73,8 +73,8 @@ class ActivityFeed extends React.Component {
 				return (
 					<li key={comment.id} className="comments-item">
 						<div className="ci-left">
-							<Link to={`/profile/${userProfile.id}`}>
-								{comment.first_name} {comment.last_name}
+							<Link to={`/profile/${comment.commenter.id}`}>
+								{comment.commenter.first_name} {comment.commenter.last_name}
 							</Link>
 							<div className="ci-body">{comment.body}</div>
 						</div>

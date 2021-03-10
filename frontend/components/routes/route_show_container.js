@@ -9,7 +9,8 @@ const msp = (state, ownProps) => {
 	const currentUserId = state.session.currentUser.id;
 	debugger;
 	return {
-		route: state.entities.routes,
+		routeId: routeId,
+		routes: state.entities.routes,
 		currentUser: state.session.currentUser,
 		sessionId: currentUserId,
 		comments: Object.values(state.entities.comments),
