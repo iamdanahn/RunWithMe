@@ -165,7 +165,9 @@ class RouteShow extends React.Component {
 							<div className="rs-top">
 								<div className="rs-top-1">
 									<span className="rst1-name">
-										{currentUser.first_name} {currentUser.last_name}
+										<Link to={`/profile/${route.creator_id}`}>
+											{currentUser.first_name} {currentUser.last_name}
+										</Link>
 									</span>
 									<span className="rst1-filler"></span>
 									<span className="rst1-globe">
@@ -184,7 +186,10 @@ class RouteShow extends React.Component {
 										</div>
 									</span>
 									<span className="rst2 distance">
-										<div>{route.distance}</div>
+										<div>
+											<i className="fas fa-route"></i>
+											{route.distance}
+										</div>
 									</span>
 								</div>
 								<div className="rs-top-3">

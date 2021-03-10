@@ -18,7 +18,7 @@
 	.rs-header {
 		position: absolute;
 		width: 100%;
-		z-index: 100;
+		z-index: 1 ;
 		background-color: rgba(255, 255, 255, 0.7);
 		backdrop-filter: blur(4px);
 		box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
@@ -40,6 +40,10 @@
     
 		.rst1-name {
 			font-size: 13px;
+
+      &:hover {
+        cursor: pointer;
+      }
 		}
 		.rst1-filler {
 			height: 20px;
@@ -82,7 +86,7 @@
       div {
         margin: 0 10px;
       }
-      .fas.fa-map-makrer-alt {
+      .fas.fa-map-marker-alt, .fas.fa-route {
         color: white;
         margin-right: 5px;
       }
@@ -139,7 +143,8 @@
         font-weight: bold;
 
         &:hover, &:focus {
-          color: #0076C0
+          color: #0076C0;
+          font-size: 16px;
         }
       }
     }

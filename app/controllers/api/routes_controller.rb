@@ -43,12 +43,9 @@ class Api::RoutesController < ApplicationController
     @route = Route.find(params[:id])
     # debugger
     if @route && @route.destroy
-      # debugger
-      @routes = current_user.routes.includes(:comments).to_a
-
-      render 'api/routes/index'
+      render json: ["Route destroyed"]
     else
-      render json: "One cannot destroy what does not exist"
+      render json: ["One cannot destroy what does not exist"]
     end
     
   end

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import BirthDay from '../birthday_dropdown/birthday'
+import BirthDay from "./birthday_dd";
 
 class Signup extends React.Component {
 	constructor(props) {

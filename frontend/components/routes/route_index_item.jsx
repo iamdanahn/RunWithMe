@@ -14,7 +14,7 @@ class RouteIndexItem extends React.Component {
 	// }
 
 	render() {
-		const { route, deleteRoute, openModal } = this.props;
+		const { route, deleteRoute, openModal, closeModal } = this.props;
 		debugger;
 		let month = new Date(route.created_at).getMonth() + 1;
 		let day = new Date(route.created_at).getDate();
@@ -59,7 +59,9 @@ class RouteIndexItem extends React.Component {
 							Delete
 						</a>
 					</div>
-					<Modal deleteRoute={() => deleteRoute(route.id)} />
+					<Modal
+						deleteRoute={() => deleteRoute(route.id).then(() => closeModal())}
+					/>
 				</td>
 			</tr>
 		);

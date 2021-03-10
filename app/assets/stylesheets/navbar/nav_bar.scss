@@ -57,7 +57,7 @@
   z-index: 1;
   border-radius: 0 0 6px 6px;
 
-  :focus, input {
+  &:focus, input {
     outline:0;
   } 
 }
@@ -71,7 +71,7 @@
   border-top: 1px solid lightgray;
   font-size: 12.25px;
     
-  :focus, input {
+  &:focus, input {
     outline:0;
   } 
 }
@@ -86,6 +86,7 @@
 
 .dropdown:hover .dropdown-content {
   display: block;
+  z-index: 10;
 }
 
 .dropdown:hover .navbtn {

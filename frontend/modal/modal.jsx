@@ -1,7 +1,6 @@
 import React from 'react'
 import { closeModal } from '../actions/modal_actions';
-import { connect }  from 'react-redux';
-// import DeleteRouteContainer from './delete_route_container'; DEPRECATED
+import { connect } from "react-redux";
 
 
 function Modal ({modal, closeModal, deleteRoute}) {
