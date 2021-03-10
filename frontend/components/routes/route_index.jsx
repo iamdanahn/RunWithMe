@@ -28,15 +28,24 @@ class RouteIndex extends React.Component {
 			}
 		});
 
+		let routeSelected;
+		if (this.props.match.path === "/dashboard") {
+			routeSelected = "mrh-tabs selected";
+		}
+
 		return (
 			<div className="my-routes">
 				<div className="mr-header">
 					<div>
-						<h1>MY ROUTES</h1>
+						<h1>DASHBOARD</h1>
 					</div>
 					<div className="mr-header links">
-						<Link to="">ROUTES</Link>
-						<Link to="">BOOKMARKED</Link>
+						<Link to="/dashboard" className={routeSelected}>
+							ROUTES
+						</Link>
+						<Link to={`/profile/${currentUserId}`} className="mrh-tabs">
+							ACTIVITY FEED
+						</Link>
 					</div>
 				</div>
 				<div className="mr-create">

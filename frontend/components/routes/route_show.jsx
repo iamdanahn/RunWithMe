@@ -115,13 +115,10 @@ class RouteShow extends React.Component {
 		debugger;
 		if (!route) return null;
 		debugger;
-		
+
 		const { currentUser, comments, deleteComment } = this.props;
 		const createDate = new Date(route.created_at).toDateString();
 		const updateDate = new Date(route.updated_at).toDateString();
-
-		// console.log(route)
-		// console.log(this.props)
 
 		let deleteButton;
 		if (Object.keys(route).length) {

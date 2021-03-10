@@ -24,28 +24,33 @@
     box-shadow: inset 0 -1px 0 0px #cccccc;
     margin: 0 0 20px 0;
 
-    a {
-      display: inline-block;
-      width: 33.333%;
-      cursor: pointer;
-      box-sizing: border-box;
-      border-left: 1px solid #dddddd;
-      border-right: 1px solid #dddddd;
-      border-top: 1px solid #2e35a5;
-      font-size: 12px;
-      font-weight: 900;
-      text-decoration: none;
-      padding: 15px 23px;
-      margin: 0 1px 0 0 ;
-
-      &:hover, &:focus {
-        background: white;
-        color: black;
-        border-top: 3px solid #5355f5;
-      }
-
-    }
   }
+  .mrh-tabs {
+    display: inline-block;
+    width: 33.333%;
+    cursor: pointer;
+    box-sizing: border-box;
+    border-left: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+    border-top: 1px solid #2e35a5;
+    font-size: 12px;
+    font-weight: 900;
+    text-decoration: none;
+    padding: 15px 23px;
+    margin: 0 1px 0 0 ;
+
+    &:hover, &:focus, {
+      background: white;
+      color: black;
+      border-top: 3px solid #5355f5;
+    }
+
+  }
+  .mrh-tabs.selected {
+      background: white;
+      color: black;
+      border-top: 3px solid #5355f5;
+    }
 }
 
 
