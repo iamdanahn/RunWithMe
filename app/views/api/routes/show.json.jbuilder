@@ -1,5 +1,5 @@
 #  
-# debugger
+ 
 # json.route do
   json.partial! 'api/routes/route', route: @route
   json.comments @comments.pluck(:id)

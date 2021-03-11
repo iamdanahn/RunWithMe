@@ -73,8 +73,6 @@ class ActivityFeed extends React.Component {
 				comments = this.props.comments[route.id].comments;
 			}
 
-			debugger;
-
 			// list of each route's comments
 			const routeComments = comments.map((comment) => {
 				return (

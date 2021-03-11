@@ -7,7 +7,6 @@ import RouteShow from './route_show'
 const msp = (state, ownProps) => {
 	const routeId = ownProps.match.params.routeId;
 	const currentUserId = state.session.currentUser.id;
-	debugger;
 	return {
 		routeId: routeId,
 		routes: state.entities.routes,
@@ -18,14 +17,13 @@ const msp = (state, ownProps) => {
 }
 
 const mdp = dispatch => {
-	debugger;
-  return {
-    deleteRoute: (route) => dispatch(deleteRoute(route)),
-    fetchRoute: (routeId) => dispatch(fetchRoute(routeId)),
-    fetchUser: (id) => dispatch(fetchUser(id)),
-    fetchComments: (routeId) => dispatch(fetchComments(routeId)),
-    deleteComment: (commentId) => dispatch(deleteComment(commentId)),
-  }
+	return {
+		deleteRoute: (route) => dispatch(deleteRoute(route)),
+		fetchRoute: (routeId) => dispatch(fetchRoute(routeId)),
+		fetchUser: (id) => dispatch(fetchUser(id)),
+		fetchComments: (routeId) => dispatch(fetchComments(routeId)),
+		deleteComment: (commentId) => dispatch(deleteComment(commentId)),
+	};
 }
 
 export default connect(msp, mdp)(RouteShow)

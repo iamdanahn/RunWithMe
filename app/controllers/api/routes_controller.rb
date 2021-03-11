@@ -9,7 +9,7 @@ class Api::RoutesController < ApplicationController
   end
 
   def show
-    # debugger
+     
     @route = Route.find(params[:id])
     @comments = @route.comments
   end
@@ -19,11 +19,11 @@ class Api::RoutesController < ApplicationController
     @route = Route.new(route_params)
     @comments = @route.comments
     # @comments
-    # debugger
+     
     if @route.save
       render 'api/routes/show'
     else
-      # debugger
+       
       render json: @route.errors.full_messages, status: 422
     end
   end
@@ -41,7 +41,7 @@ class Api::RoutesController < ApplicationController
 
   def destroy
     @route = Route.find(params[:id])
-    # debugger
+     
     if @route && @route.destroy
       render json: ["Route destroyed"]
     else

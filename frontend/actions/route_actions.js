@@ -34,10 +34,9 @@ export const clearRoutes = () => {
 
 export const fetchRoutes = (userId) => {
   return dispatch => {
-    return RouteAPIUtil.fetchRoutes(userId).then(routesInfo => {
-			// debugger;
+    return RouteAPIUtil.fetchRoutes(userId).then((routesInfo) => {
 			return dispatch(receiveRoutes(routesInfo));
-		})
+		});
   }
 }
 export const fetchRoute = (routeId) => {
@@ -67,8 +66,7 @@ export const updateRoute = (route) => {
 export const deleteRoute = (routeId) => {
   return dispatch => {
     return RouteAPIUtil.deleteRoute(routeId).then(route => {
-      debugger;
 			return dispatch(removeRoute(routeId));
-    })
+		})
   }
 }

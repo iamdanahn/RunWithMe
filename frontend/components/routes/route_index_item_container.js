@@ -10,7 +10,6 @@ import RouteIndexItem from "./route_index_item";
 // };
 
 const mdp = dispatch => {
-	debugger;
 	return {
 		openModal: (modal) => dispatch(openModal(modal)),
 		closeModal: () => dispatch(closeModal()),

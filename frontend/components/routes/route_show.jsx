@@ -15,7 +15,7 @@ class RouteShow extends React.Component {
 
 	componentDidMount() {
 		const routeId = this.props.match.params.routeId;
-		debugger;
+		 ;
 		// fetches single route and saves it in state to be used
 		// this.props
 		// 	.fetchRoute(routeId)
@@ -24,19 +24,19 @@ class RouteShow extends React.Component {
 
 		if (!this.props.routes[routeId]) {
 			this.props.fetchRoute(routeId);
-			debugger;
+			 ;
 			this.props.fetchComments(routeId).then(() => this.initMap());;
-			debugger;
+			 ;
 		} else {
 			this.initMap();
 		}
 	}
 
 	componentDidUpdate(prevProps) {
-		debugger;
+		 ;
 		// checks if url changed, if yes, update
 		if (this.props.match.params.routeId !== prevProps.match.params.routeId) {
-			debugger;
+			 ;
 			// this.props.fetchComments(this.props.match.params.routeId);
 			this.props
 				.fetchRoute(this.props.match.params.routeId)
@@ -54,7 +54,7 @@ class RouteShow extends React.Component {
 
 	initMap() {
 		const route = this.props.routes[this.props.routeId];
-		debugger;
+		 ;
 		this.wayPoints = JSON.parse(route.markers);
 		this.center = this.wayPoints[0];
 
@@ -112,9 +112,9 @@ class RouteShow extends React.Component {
 	render() {
 		// need to return null for cDM, then route info can be fetched
 		const route = this.props.routes[this.props.routeId];
-		debugger;
+		 ;
 		if (!route) return null;
-		debugger;
+		 ;
 
 		const { currentUser, comments, deleteComment } = this.props;
 		const createDate = new Date(route.created_at).toDateString();
@@ -125,7 +125,7 @@ class RouteShow extends React.Component {
 			// deleteButton = (
 			// 	<button onClick={() => deleteComment(comment.id)}>Delete</button>
 			// );
-			debugger;
+			 ;
 			const markers = JSON.parse(route.markers);
 			this.startCoord = markers[0];
 			this.endCoord = markers[markers.length - 1];

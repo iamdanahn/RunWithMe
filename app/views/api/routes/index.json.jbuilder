@@ -9,7 +9,7 @@
     end
   end
 
-  # debugger
+   
   json.route_comments do
     json.set! route.id do
       json.comments route.comments.each do |comment|

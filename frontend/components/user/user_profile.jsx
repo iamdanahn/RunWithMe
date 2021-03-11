@@ -52,8 +52,6 @@ class UserProfile extends React.Component {
 			activityFeed = <h3>This user has not logged any routes yet!</h3>;
 		}
 
-		debugger;
-
 		const date = new Date(userProfile.created_at);
 		const joinYear = date.getFullYear();
 

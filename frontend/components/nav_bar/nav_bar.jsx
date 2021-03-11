@@ -19,7 +19,6 @@ class NavBar extends React.Component {
 
 	render() {
 		const { currentUser, logout } = this.props;
-		// debugger;
 		// (this.props.location.pathname === "/friends") ? "navbtn selected" : "navbtn"
 		// (this.props.location.pathname.startsWith("/friends")) ? "navbtn selected" : "navbtn"
 
@@ -68,11 +67,8 @@ class NavBar extends React.Component {
 					</div>
 
 					<div className="dropdown">
-						<Link
-							className="navbtn"
-							to="https://github.com/iamdanahn/RunWithMe"
-						>
-							Github Repo
+						<Link className="navbtn" to="https://angel.co/u/daniel-ahn-1">
+							AngelList
 						</Link>
 					</div>
 

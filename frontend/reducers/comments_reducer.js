@@ -9,7 +9,6 @@ const commentsReducer = (state = {}, action) => {
 	Object.freeze(state);
 
 	const { comment, comments, commentId, routesInfo } = action;
-	// debugger;
 	switch (action.type) {
 		case RECEIVE_COMMENTS:
 			return comments;

@@ -1,5 +1,5 @@
 import React from "react";
-import { Links } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class Footer extends React.Component {
 	render() {
@@ -44,20 +44,41 @@ class Footer extends React.Component {
 							<div className="f3c-right">
 								<div className="f3cr social">
 									<ul>
-										<li className="f3cr-link-headers">Github</li>
-										<li>Check out my code here</li>
-										<li>Follow me on GitHub</li>
-										<li></li>
+										<li className="f3cr-link-headers">Social</li>
+										<li>
+											<Link to="https://angel.co/u/daniel-ahn-1">
+												AngelList
+											</Link>
+										</li>
+										<li>
+											<Link to="https://www.linkedin.com/in/daniel-ahn-6b34151bb/">
+												LinkedIn
+											</Link>
+										</li>
 									</ul>
 								</div>
-								<div className="f3cr help">
+								<div className="f3cr github">
 									<ul>
-										<li className="f3cr-link-headers">Help</li>
+										<li className="f3cr-link-headers">Github</li>
+										<li>
+											<Link to="https://www.github.com/iamdanahn/RunWithMe">
+												Check out this project's repo
+											</Link>
+										</li>
+										<li>
+											<Link to="https://www.github.com/iamdanahn">
+												Follow me on GitHub
+											</Link>
+										</li>
+										<li></li>
 									</ul>
 								</div>
 								<div className="f3cr about">
 									<ul>
-										<li className="f3cr-link-headers">About us</li>
+										<li className="f3cr-link-headers">About Me</li>
+										<li>Car Enthusiast</li>
+										<li>Food Lover</li>
+										<li>Always Coding</li>
 									</ul>
 								</div>
 							</div>
