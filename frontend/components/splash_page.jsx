@@ -44,19 +44,19 @@ class SplashPage extends React.Component {
 						<div className="c2 left">
 							<h2 className="c2l-title">
 								<hr></hr>
-								  Syncs with Run With Me Smart Shoes
+								Syncs with Run With Me Smart Shoes
 								<hr></hr>
 							</h2>
-              <div className="c2l-text-cntr">
-                <p className="c2l-text">
-                  Track everything from pace, stride length, and cadence, plus get
-                  personalized coaching tips along the way.
-                </p>
-              </div>
+							<div className="c2l-text-cntr">
+								<p className="c2l-text">
+									Track everything from pace, stride length, and cadence, plus
+									get personalized coaching tips along the way.
+								</p>
+							</div>
 						</div>
 						<div className="c2 right">
-              
-            </div>
+							<img src={window.splash2r} />
+						</div>
 					</div>
 				</div>
 
