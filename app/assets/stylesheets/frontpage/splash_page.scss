@@ -108,7 +108,6 @@
 // Content 2
 //==================
 
-
 .content2-bg {
   background-image: image-url("Splash-2.png");
   width: 100%;
@@ -153,21 +152,36 @@
   }
 }
 
+//==================
+// Content 3
+//==================
 
-
-
-
+.content3-bg {
+  background-image: image-url("Splash3.jpg");
+  width: 100%;
+}
 .content3 {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  height: 600;
+  max-width: 280px;
+  margin: auto;
 
-  .heading {
-    padding: 10px;
+  h3 {
+    font-size: 18px;
+    font-weight: bolder;
+    line-height: 1;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
 
-    .text {
-      font-size: 20px;
-    }
+  p {
+    font-size: 16px;
+    margin-top: 4px;
+    line-height: 1.2;
+  }
+
+  .c3.middle, .c3.bottom {
+    margin-top: 30px;
   }
 }

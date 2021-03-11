@@ -60,36 +60,31 @@ class SplashPage extends React.Component {
 					</div>
 				</div>
 
-				<div className="splashpage content3">
-					<h2> - Splash content 3 - </h2>
-					<div>
-						<div>
+				<div className="content3-bg">
+					<div className="content3">
+						<div className="c3 top">
 							<h3>Track Everything</h3>
 							<p>
 								Log any kind of workout using just your phone or with your
 								favorite device like Garmin or Apple Watch.
 							</p>
 						</div>
-						<div>
+						<div className="c3 middle">
 							<h3>Get Social</h3>
 							<p>
 								Find support and motivation from other runners, plus create
 								challenges for you and your friends.
 							</p>
 						</div>
-						<div>
+						<div className="c3 bottom">
 							<h3>Train Smarter</h3>
 							<p>
 								Analyze your data in the app or on the web, then conquer that 5K
 								or marathon using our adaptive training plans.
 							</p>
 						</div>
-						<div>
-							'Check it out' a tag (Make div with hover pointer and onClick
-							action?)
-						</div>
+
 					</div>
-					<div>Image on Content 3</div>
 				</div>
 			</div>
 		);
