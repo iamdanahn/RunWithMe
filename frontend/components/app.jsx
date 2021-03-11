@@ -12,39 +12,50 @@ import FriendMainContainer from "./friends/friend_main_container"
 import FriendFindContainer from "./friends/friend_find_container";
 import UserContainer from "./user/user_profile_container"
 import SplashPage from './splash_page'
+import FooterContainer from "./footer/footer_container";
 
 
 const App = () => {
   return (
-    <div className="main-app">
-      <Route path="/" component={NavBarContainer} />
+		<div className="main-app">
+			<Route path="/" component={NavBarContainer} />
 
-      <Switch>
-        <AuthRoute exact path="/" component={SplashPage} />
-        <AuthRoute exact path="/signup" component={SignupContainer} />
-        <AuthRoute exact path="/login" component={LoginContainer} />
-        <ProtectedRoute exact path="/dashboard" component={DashboardContainer} />
-        <ProtectedRoute
-          exact path="/routes/create"
-          component={CreateRouteContainer}
-        />
-        <ProtectedRoute
-          exact path="/routes/:routeId/edit"
-          component={EditRouteContainer}
-        />
-        <ProtectedRoute
-          exact path="/routes/:routeId"
-          component={RouteShowContainer}
-        />
-        <ProtectedRoute
-          exact path="/friends/find"
-          component={FriendFindContainer}
-        />
-        <ProtectedRoute exact path="/friends" component={FriendMainContainer} />
-        <ProtectedRoute exact path="/profile/:id" component={UserContainer} />
-      </Switch>
-    </div>
-  )
+			<Switch>
+				<AuthRoute exact path="/" component={SplashPage} />
+				<AuthRoute exact path="/signup" component={SignupContainer} />
+				<AuthRoute exact path="/login" component={LoginContainer} />
+				<ProtectedRoute
+					exact
+					path="/dashboard"
+					component={DashboardContainer}
+				/>
+				<ProtectedRoute
+					exact
+					path="/routes/create"
+					component={CreateRouteContainer}
+				/>
+				<ProtectedRoute
+					exact
+					path="/routes/:routeId/edit"
+					component={EditRouteContainer}
+				/>
+				<ProtectedRoute
+					exact
+					path="/routes/:routeId"
+					component={RouteShowContainer}
+				/>
+				<ProtectedRoute
+					exact
+					path="/friends/find"
+					component={FriendFindContainer}
+				/>
+				<ProtectedRoute exact path="/friends" component={FriendMainContainer} />
+				<ProtectedRoute exact path="/profile/:id" component={UserContainer} />
+			</Switch>
+
+			<Route path="/" component={FooterContainer} />
+		</div>
+	);
 }
 
 export default App;
