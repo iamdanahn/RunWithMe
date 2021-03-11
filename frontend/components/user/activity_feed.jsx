@@ -67,9 +67,9 @@ class ActivityFeed extends React.Component {
 					? "walked"
 					: "ran";
 
-			// if comments exist, arrays comments
 			let comments = [];
-			if (this.props.comments) {
+				// if comments exist, arrays comments
+			if (Object.keys(this.props.comments).length) {
 				comments = this.props.comments[route.id].comments;
 			}
 

@@ -26,21 +26,28 @@ class MapTools extends React.Component {
 				<div className="tb-2">
 					<div className="tb2-row 1">
 						<button className="tb undo" onClick={undo}>
-							Undo
+							<i className="fas fa-undo fa"></i>
+							<p>Undo</p>
 						</button>
 						<button className="tb clear" onClick={clear}>
-							Clear
+							<i className="fas fa-times"></i>
+							<p>Clear</p>
 						</button>
 						<button className="tb center" onClick={center}>
-							Center
+							<i className="fas fa-compress-arrows-alt"></i>
+							<p>Center</p>
 						</button>
 					</div>
-					<div className="tb-row 2">
+					<div className="tb2-row 2">
 						<button className="tb reverse" onClick={reverse}>
-							Reverse
+							<i className="fas fa-exchange-alt"></i>
+							<p>Reverse</p>
 						</button>
 						<button className="tb return" onClick={returnHome}>
-							Return
+							<i className="fas fa-sync"></i>
+							<p>
+                Return
+              </p>
 						</button>
 					</div>
 				</div>

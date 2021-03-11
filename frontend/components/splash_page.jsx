@@ -10,6 +10,7 @@ class SplashPage extends React.Component {
   
     return (
       <div className="splashpage">
+
         <div className="content1-bg">
           <div className="content1">
             <div className="heading">
@@ -38,21 +39,24 @@ class SplashPage extends React.Component {
             </div>
           </div>
         </div>
-        <div className="splashpage content2">
-          <h2> - Splash content 2 - </h2>
-          <div>
+
+        <div className="content2-bg">
+          <div className="content2">
+            <h2> - Splash content 2 - </h2>
             <div>
-              <h4>SYNCS WITH UNDER ARMOUR SMART SHOES</h4>
-            </div>
-            <div>
-              <p>
-                Track everything from pace, stride length, and cadence, plus get
-                personalized coaching tips along the way.
-              </p>
-            </div>
-            <div>
-              Learn More button (Make div with hover pointer and onClick
-              action?)
+              <div>
+                <h4>SYNCS WITH UNDER ARMOUR SMART SHOES</h4>
+              </div>
+              <div>
+                <p>
+                  Track everything from pace, stride length, and cadence, plus get
+                  personalized coaching tips along the way.
+                </p>
+              </div>
+              <div>
+                Learn More button (Make div with hover pointer and onClick
+                action?)
+              </div>
             </div>
           </div>
         </div>
