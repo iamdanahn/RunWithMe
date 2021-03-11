@@ -1,13 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import Footer from "./footer";
 
 const msp = (state, ownProps) => {
-	return null;
+	debugger;
+	return {};
 };
 
 const mdp = (dispatch) => {
-	return null;
+	return {};
 };
 
-export default connect(msp, mdp)(Footer);
+export default withRouter(connect(msp, mdp)(Footer));

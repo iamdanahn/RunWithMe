@@ -363,13 +363,13 @@ class Map extends React.Component {
 				<div className="left-half">
 					<div className="create-route-cntr">
 						<div className="cr-form">
-							<h4>Choose map location</h4>
 							<form
 								className="cr-search-bar"
 								onSubmit={() => this.searchAddress(address)}
 							>
+								<label>Choose map location</label>
 								<input
-									id="geocoder-addr"
+									className="input geocoder"
 									type="text"
 									placeholder="Enter location"
 									value={this.state.address}
@@ -378,12 +378,11 @@ class Map extends React.Component {
 								<button id="geocoder-submit">Search</button>
 							</form>
 
-							<br />
-
-							<form onSubmit={this.handleSubmit}>
+							<form onSubmit={this.handleSubmit} className="cr-route-details">
+								<label>{formType} Route Details</label>
 								<div>
-									<h3>{formType} Route Details</h3>
 									<input
+										className="input route-title"
 										type="text"
 										value={this.state.name}
 										onChange={this.update("name")}
@@ -394,6 +393,7 @@ class Map extends React.Component {
 
 								<div>
 									<select
+										className="input activity"
 										defaultValue={activity}
 										onChange={this.update("activity")}
 									>
@@ -407,7 +407,7 @@ class Map extends React.Component {
 									<span>*</span>
 								</div>
 								<div>
-									<button>Save Route</button>
+									<button id="route-submit">Save Route</button>
 								</div>
 								<div className={formErr}>
 									<h2>Route Title cannot be blank!</h2>
