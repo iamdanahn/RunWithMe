@@ -3,9 +3,6 @@ import { Link } from "react-router-dom";
 
 class Footer extends React.Component {
 	render() {
-		// if (this.props.location.pathname === `/routes/${routeId}/edit`)
-		debugger;
-
 		return (
 			<footer className="footer-main-cntr">
 				<section className="f1-bg">

@@ -15,7 +15,6 @@ class RouteShow extends React.Component {
 
 	componentDidMount() {
 		const routeId = this.props.match.params.routeId;
-		 ;
 		// fetches single route and saves it in state to be used
 		// this.props
 		// 	.fetchRoute(routeId)
@@ -24,19 +23,15 @@ class RouteShow extends React.Component {
 
 		if (!this.props.routes[routeId]) {
 			this.props.fetchRoute(routeId);
-			 ;
-			this.props.fetchComments(routeId).then(() => this.initMap());;
-			 ;
+			this.props.fetchComments(routeId).then(() => this.initMap());
 		} else {
 			this.initMap();
 		}
 	}
 
 	componentDidUpdate(prevProps) {
-		 ;
 		// checks if url changed, if yes, update
 		if (this.props.match.params.routeId !== prevProps.match.params.routeId) {
-			 ;
 			// this.props.fetchComments(this.props.match.params.routeId);
 			this.props
 				.fetchRoute(this.props.match.params.routeId)
@@ -54,7 +49,6 @@ class RouteShow extends React.Component {
 
 	initMap() {
 		const route = this.props.routes[this.props.routeId];
-		 ;
 		this.wayPoints = JSON.parse(route.markers);
 		this.center = this.wayPoints[0];
 
@@ -79,13 +73,14 @@ class RouteShow extends React.Component {
 	}
 
 	renderMarkers() {
-				console.log(this.wayPoints);
 		const origin = this.wayPoints[0];
 		const dest = this.wayPoints[this.wayPoints.length - 1];
-		const wP = this.wayPoints.slice(1, this.wayPoints.length - 1).map((val) => ({
-			location: val,
-			stopover: false,
-		}));
+		const wP = this.wayPoints
+			.slice(1, this.wayPoints.length - 1)
+			.map((val) => ({
+				location: val,
+				stopover: false,
+			}));
 
 		this.directionsService.route(
 			{
@@ -108,14 +103,10 @@ class RouteShow extends React.Component {
 		);
 	}
 
-
 	render() {
 		// need to return null for cDM, then route info can be fetched
 		const route = this.props.routes[this.props.routeId];
-		 ;
 		if (!route) return null;
-		 ;
-
 		const { currentUser, comments, deleteComment } = this.props;
 		const createDate = new Date(route.created_at).toDateString();
 		const updateDate = new Date(route.updated_at).toDateString();
@@ -125,7 +116,6 @@ class RouteShow extends React.Component {
 			// deleteButton = (
 			// 	<button onClick={() => deleteComment(comment.id)}>Delete</button>
 			// );
-			 ;
 			const markers = JSON.parse(route.markers);
 			this.startCoord = markers[0];
 			this.endCoord = markers[markers.length - 1];
