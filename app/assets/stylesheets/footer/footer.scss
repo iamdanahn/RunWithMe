@@ -28,7 +28,10 @@
   div {
     text-align: right;
     width: 300px;
-    height: 52px;
+    line-height: 20px;
+  }
+  p {
+    font-style: italic;
   }
 }
 
@@ -58,6 +61,14 @@
   flex-direction: row;
   justify-content: space-around;
   width: 30em;
+  margin-left: 10%;
+
+  .f2 {
+    color: #9297A3;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 5px;
+  }
 }
 
 //============================
@@ -70,8 +81,9 @@
   align-items: center;
   justify-content: center;
   background-image: image-url('footer-bg.png');
-  height: 75%;
+  height: 100%;
 }
+
 .f3-content {
   display: flex;
   margin: 0 0 0 140px;
@@ -79,7 +91,7 @@
   img {
     position: absolute;
     display: block;
-    top: -183px;
+    top: -180px;
     left: 0;
   }
 }
@@ -87,6 +99,12 @@
   display: flex;
   flex-direction: row;
   color: white;
+
+  .f3cr {
+    width: 150px;
+    padding-left: 20px;
+    margin: 25px 0;
+  }
 }
 
 //============================
@@ -97,4 +115,5 @@
 }
 .f4-cntr {
   justify-content: center;
+  padding: 20px 0;
 }

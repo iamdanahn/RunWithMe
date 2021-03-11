@@ -42,9 +42,24 @@ class Footer extends React.Component {
 								className="footer-iphone"
 							/>
 							<div className="f3c-right">
-								<div>Social</div>
-								<div>Help</div>
-								<div>About us</div>
+								<div className="f3cr social">
+									<ul>
+										<li className="f3cr-link-headers">Github</li>
+										<li>Check out my code here</li>
+										<li>Follow me on GitHub</li>
+										<li></li>
+									</ul>
+								</div>
+								<div className="f3cr help">
+									<ul>
+										<li className="f3cr-link-headers">Help</li>
+									</ul>
+								</div>
+								<div className="f3cr about">
+									<ul>
+										<li className="f3cr-link-headers">About us</li>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</div>
