@@ -20,7 +20,7 @@ class RouteShow extends React.Component {
 		// 	.fetchRoute(routeId)
 		// 	.then(() => this.props.fetchComments(routeId))
 		// 	.then(() => this.initMap());
-		this.props.fetchUser(this.props.match.params.routeId);
+		this.props.fetchUser(this.props.routes[routeId].creator_id);
 
 		if (!this.props.routes[routeId]) {
 			this.props.fetchRoute(routeId).then(() => this.initMap());
@@ -35,7 +35,7 @@ class RouteShow extends React.Component {
 			// this.props.fetchComments(this.props.match.params.routeId);
 			this.props
 				.fetchRoute(this.props.match.params.routeId)
-				.then(() => this.props.fetchUser(this.props.match.params.routeId))
+				.then(() => this.props.fetchUser(this.props.routes[routeId]).creator_id)
 				.then(() => this.initMap());
 		}
 	}
