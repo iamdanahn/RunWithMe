@@ -17,13 +17,23 @@
 // CSS Reset
 @import "base/reset.scss";
 
-
-html, body, div{
+html {
+  height: 100%
+}
+html:first-child body{
   padding: 0;
   margin: 0;
   font-family: inherit;
   font-size: 14px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
+
+.main-app {
+  height: 100%
+}
+
 
 // body {
 //   display: flex;

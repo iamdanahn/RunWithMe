@@ -1,9 +1,9 @@
-.footer-main-cntr {
-  position: absolute;
-  width: 100%;
-  flex-shrink: 0;
-  height: 100px
-}
+// .footer-main-cntr {
+//   position: absolute;
+//   width: 100%;
+//   flex-shrink: 0;
+//   height: 100px
+// }
 
 .f1-bg, .f2-bg, .f3-bg, .f4-bg {
   display: flex;
@@ -88,10 +88,11 @@
   display: flex;
   margin: 0 0 0 140px;
 
+  // iphone image
   img {
     position: absolute;
     display: block;
-    top: -180px;
+    top: -140px;
     left: 0;
   }
 }
