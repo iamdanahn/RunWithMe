@@ -23,6 +23,7 @@ class RouteShow extends React.Component {
 
 		if (!this.props.routes[routeId]) {
 			this.props.fetchRoute(routeId);
+			this.props.fetchUser(this.props.match.params.routeId);
 			this.props.fetchComments(routeId).then(() => this.initMap());
 		} else {
 			this.initMap();
@@ -107,7 +108,8 @@ class RouteShow extends React.Component {
 		// need to return null for cDM, then route info can be fetched
 		const route = this.props.routes[this.props.routeId];
 		if (!route) return null;
-		const { currentUser, comments, deleteComment } = this.props;
+
+		const { currentUser, comments, deleteComment, user } = this.props;
 		const createDate = new Date(route.created_at).toDateString();
 		const updateDate = new Date(route.updated_at).toDateString();
 
@@ -139,6 +141,7 @@ class RouteShow extends React.Component {
 			);
 		});
 
+		debugger;
 		return (
 			<div className="route-show-cntr">
 				{/* section 1 - route title, distance, user name, 
@@ -153,7 +156,7 @@ class RouteShow extends React.Component {
 								<div className="rs-top-1">
 									<span className="rst1-name">
 										<Link to={`/profile/${route.creator_id}`}>
-											{currentUser.first_name} {currentUser.last_name}
+											{user.first_name} {user.last_name}
 										</Link>
 									</span>
 									<span className="rst1-filler"></span>

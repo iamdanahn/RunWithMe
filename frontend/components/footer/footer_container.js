@@ -4,7 +4,6 @@ import { withRouter } from "react-router-dom";
 import Footer from "./footer";
 
 const msp = (state, ownProps) => {
-	debugger;
 	return {};
 };
 
