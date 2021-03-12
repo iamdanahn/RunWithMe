@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SessionLinks from './dd_session'
 import RouteLinks from './dd_route'
-import WorkoutLinks from './dd_workouts';
+import CommunityLinks from "./dd_community";
 
 class NavBar extends React.Component {
 	constructor(props) {
@@ -58,9 +58,7 @@ class NavBar extends React.Component {
 						}
 					>
 						<button className="navbtn">Commmunity</button>
-						<div className="dropdown-content">
-							<a href="/friends">Friends</a>
-						</div>
+						<CommunityLinks currentUser={currentUser} />
 					</div>
 
 					<div className="dropdown">
