@@ -5,7 +5,10 @@ class Api::RoutesController < ApplicationController
     # @routes = Route.all
     # gets routes for only the user id requested
     @user = User.where(id: route_params[:creator_id]).includes(:routes)[0]
-    @routes = @user.routes.includes(:comments).to_a
+    @routes = @user.routes.limit(10).includes(:comments).to_a
+    # @routes.each do |route|  
+    #   route.comments.includes(:user).to_a
+    # end
   end
 
   def show
