@@ -46,14 +46,14 @@ class Footer extends React.Component {
 									<ul>
 										<li className="f3cr-link-headers">Social</li>
 										<li>
-											<Link to="https://angel.co/u/daniel-ahn-1">
+											<a href="https://angel.co/u/daniel-ahn-1">
 												AngelList
-											</Link>
+											</a>
 										</li>
 										<li>
-											<Link to="https://www.linkedin.com/in/daniel-ahn-6b34151bb/">
+											<a href="https://www.linkedin.com/in/daniel-ahn-6b34151bb/">
 												LinkedIn
-											</Link>
+											</a>
 										</li>
 									</ul>
 								</div>
@@ -61,14 +61,14 @@ class Footer extends React.Component {
 									<ul>
 										<li className="f3cr-link-headers">Github</li>
 										<li>
-											<Link to="https://www.github.com/iamdanahn/RunWithMe">
+											<a href="https://www.github.com/iamdanahn/RunWithMe">
 												Check out this project's repo
-											</Link>
+											</a>
 										</li>
 										<li>
-											<Link to="https://www.github.com/iamdanahn">
+											<a href="https://www.github.com/iamdanahn">
 												Follow me on GitHub
-											</Link>
+											</a>
 										</li>
 										<li></li>
 									</ul>

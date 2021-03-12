@@ -17,12 +17,3 @@ class RouteLinks extends React.Component {
 }
 
 export default RouteLinks;
-
-
-{
-	/* <div className="dropdown-content">
-	<Link to="/routes/search">Find Route</Link>
-	<Link to="/routes/create">Create Route</Link>
-	<Link to="/routes">My Routes</Link>
-</div> */
-}
