@@ -24,6 +24,12 @@ const removeComment = (commentId) => {
     commentId,
   }
 }
+const receiveCommentErrors = (errors) => {
+	return {
+		type: RECEIVE_COMMENT_ERRORS,
+		errors,
+	};
+};
 
 export const RECEIVE_ROUTES = "RECEIVE_ROUTES";
 const receiveRoutes = (routes) => {
@@ -35,30 +41,50 @@ const receiveRoutes = (routes) => {
 
 
 export const fetchComments = (routeId) => {
-  return (dispatch) => {
-    return CommentAPIUtil.fetchComments(routeId).then((comments) => {
-      return dispatch(receiveComments(comments))
-    })
-  }
+	return (dispatch) => {
+		return CommentAPIUtil.fetchComments(routeId).then(
+			(comments) => {
+				return dispatch(receiveComments(comments));
+			},
+			(err) => {
+				return dispatch(receiveCommentErrors(err.responseJSON));
+			}
+		);
+	};
 }
 export const fetchComment = (commentId) => {
   return (dispatch) => {
-    return CommentAPIUtil.fetchComment(commentId).then((comment) => {
-      return dispatch(receiveComment(comment))
-    })
+    return CommentAPIUtil.fetchComment(commentId).then(
+			(comment) => {
+				return dispatch(receiveComment(comment));
+			},
+			(err) => {
+				return dispatch(receiveCommentErrors(err.responseJSON));
+			}
+		);
   }
 }
 export const createComment = (comment) => {
   return (dispatch) => {
-    return CommentAPIUtil.createComment(comment).then((comment) => {
-      return dispatch(receiveComment(comment))
-    })
+    return CommentAPIUtil.createComment(comment).then(
+			(comment) => {
+				return dispatch(receiveComment(comment));
+			},
+			(err) => {
+				return dispatch(receiveCommentErrors(err.responseJSON));
+			}
+		);
   }
 }
 export const deleteComment = (commentId) => {
   return (dispatch) => {
-    return CommentAPIUtil.deleteComment(commentId).then((routes) => {
-			return null;
-		});
+    return CommentAPIUtil.deleteComment(commentId).then(
+			(routes) => {
+				return null;
+			},
+			(err) => {
+				return dispatch(receiveCommentErrors(err.responseJSON));
+			}
+		);
   }
 }
