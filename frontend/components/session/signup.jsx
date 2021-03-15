@@ -107,7 +107,6 @@ class Signup extends React.Component {
 						<div className="auth-form errors">{errors.first}</div>
 					</div>
 					<div>
-						<label>
 							<input
 								className={errors["last"] ? "input err-border" : "input"}
 								type="text"
@@ -116,7 +115,6 @@ class Signup extends React.Component {
 								placeholder="Last name"
 								required
 							/>
-						</label>
 						<div className="auth-form errors">{errors.last}</div>
 					</div>
 					<div>

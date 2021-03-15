@@ -20,7 +20,7 @@ class Api::UsersController < ApplicationController
     unless term[:search].empty?
       #  
       # ILIKE matches case-INSENSITIVELY
-      @users = User.where("first_name ILIKE :term OR last_name ILIKE :term OR email ILIKE :term", {term: "%#{term[:search].downcase}%"}) #.downcase is not necessary here, but added for double-security
+      @users = User.where.not(id: insiders_ids).where("first_name ILIKE :term OR last_name ILIKE :term OR email ILIKE :term", {term: "%#{term[:search].downcase}%"}) #.downcase is not necessary here, but added for double-security
     else
       #  
       # @users = User.all

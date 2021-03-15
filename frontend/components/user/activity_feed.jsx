@@ -40,6 +40,7 @@ class ActivityFeed extends React.Component {
 			};
 			this.props.createComment(newComment).then(() => {
 				this.clearInput();
+
 				// fetch routes in the end to update the list
 				this.props.fetchRoutes(this.props.match.params.id);
 			});
@@ -49,6 +50,7 @@ class ActivityFeed extends React.Component {
 	// clears comment input box after submitting
 	clearInput() {
 		document.getElementById("comment-input").value = "";
+		this.setState({ ["comment"]: "" });
 	}
 
 	render() {

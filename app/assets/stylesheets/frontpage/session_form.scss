@@ -1,8 +1,7 @@
 
-.form-bg {
-  height: 600px;
-  background-color: #F0F0F0;
-}
+//==================
+// Sign up form
+//==================
 
 .auth-form-ctr {
   margin: auto;
@@ -21,18 +20,11 @@
       text-align: end;
       padding: 6px 0px;
       margin-bottom: 10px;
-      // padding-top: 80px;
-      
-      .other-link {
-        text-decoration: none;
-        color: darkgray;
-      }
     }
 
     .or-box {
       display: flex;
       align-items: center;
-
 
       .line{
         display: block;
@@ -55,7 +47,7 @@
       text-align: right;
       font-weight: 500;
       text-decoration: none;
-      color: inherit;
+      color: darkgray;
       cursor: pointer;
       margin-bottom: 20px;
       font-size: 14px;
@@ -64,15 +56,17 @@
     }
 
     .errors {
-      margin-bottom: 15px;
+      margin: 5px 0 15px;
       font-size: 12px;
       color: red;
-      
     }
-    
+
+//==================
+// All input boxes
+//==================
+
   .input{
     display: block;
-    // margin-top: 10px;
     height: 44px;
     padding: 12px 16px 12px;
     box-sizing: border-box;
@@ -84,14 +78,20 @@
     font-size: 15px;
 
     &:focus {
-      outline: 0.2;
-      border: 1px solid blue($color: #377dce);
+      outline: none;
+      border: 1px solid #377dce;
+      background: white;
+      box-shadow: 0 0 0 3px rgba(0, 126, 255, 0.1);
     } 
   }
   
   .input.err-border {
     border: 1px solid red;
   }
+
+//==================
+// Bday input boxes
+//==================
 
   .input.bday {
     padding: 0;
@@ -101,23 +101,42 @@
     border: none;
     margin-bottom: 0;
   
-    .day{ 
-      
-      select {
-        box-sizing: border-box;
-        height: 44px;
-        width: 78px;
-        padding: 12px 0px 12px 12px;
-        background: transparent;
-        color: dimgray;
-        font-size: 15px;
-        border: 1px solid lightgray;
-      }
-      .err-border {
-        border: 1px solid red;
-      }
+
+    select {
+      box-sizing: border-box;
+      height: 44px;
+      width: 78px;
+      padding: 12px 0px 12px 12px;
+      background: transparent;
+      color: dimgray;
+      font-size: 15px;
+      border: 1px solid lightgray;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: image-url("down_arrow.svg");
+      background-size: 10px;
+      background-repeat: no-repeat;
+      background-position: 85% 55%;
+      background-color: transparent;
+      background-blend-mode: darken;
+
+      &:focus {
+        outline: none;
+        border: 1px solid #377dce;
+        background: white;
+        box-shadow: 0 0 0 3px rgba(0, 126, 255, 0.1);
+        background-image: image-url("down_arrow.svg");
+        background-size: 10px;
+        background-repeat: no-repeat;
+        background-position: 85% 55%;
+        background-blend-mode: darken;
+        background-color: white;
+      } 
     }
-    
+    .err-border {
+      border: 1px solid red;
+    }
+
 
     .month {
       select{
@@ -129,28 +148,38 @@
         border: 1px solid lightgray;
         color: dimgray;
         font-size: 15px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-image: image-url("down_arrow.svg");
+        background-size: 10px;
+        background-repeat: no-repeat;
+        background-position: 85% 55%;
+        background-color: transparent;
+        background-blend-mode: darken;
+        
+        &:focus {
+          outline: none;
+          border: 1px solid #377dce;
+          background: white;
+          box-shadow: 0 0 0 3px rgba(0, 126, 255, 0.1);
+          background-image: image-url("down_arrow.svg");
+          background-size: 10px;
+          background-repeat: no-repeat;
+          background-position: 85% 55%;
+          background-blend-mode: darken;
+          background-color: white;
+        } 
       }
       .err-border {
         border: 1px solid red;
       }
     }
   
-    .year {
-      select {
-        box-sizing: border-box;
-        height: 44px;
-        width: 85px;
-        padding: 12px 0px 12px 12px;
-        background: transparent;
-        border: 1px solid lightgray;
-        color: dimgray;
-        font-size: 15px;
-      }
-      .err-border {
-        border: 1px solid red;
-      }
-    }
   }
+
+//==================
+// Gender box
+//==================
 
 
     .gender {
@@ -175,7 +204,7 @@
     .btn {
       color: #FFFFFF;
       padding: 12px 15px;
-      margin: 2px auto;
+      margin: 2px auto; 
       width: 100%;
       background-color: #1DDD7C;
       border: 0;
@@ -199,6 +228,11 @@
   
   
 }
+
+//==================
+// Demo button
+//==================
+
 #btn-demo {
   background-color: #3B5998;
   color: #FFFFFF;
