@@ -6,14 +6,19 @@ class ActivityFeed extends React.Component {
 		super(props);
 		this.state = {
 			comment: "",
+			showError: false,
 		};
 
 		this.clearInput = this.clearInput.bind(this);
 		this.handleDelete = this.handleDelete.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	componentDidUpdate() {
 		// this.props.fetchRoutes(this.props.match.params.id)
+		// if (this.state.showError) {
+		// 	this.setState({ ["showError"]: false });
+		// }
 	}
 
 	update(value) {
@@ -32,29 +37,38 @@ class ActivityFeed extends React.Component {
 	handleSubmit(routeId) {
 		return (e) => {
 			e.preventDefault();
+
 			const newComment = {
 				body: this.state.comment,
 				commentable_id: routeId,
 				commentable_type: "Route",
-				// "user_id": this.props.userProfile.id // this is handled in the backend controlller
+				// "user_id" is handled in the backend controlller
 			};
-			this.props.createComment(newComment).then(() => {
-				this.clearInput();
 
-				// fetch routes in the end to update the list
-				this.props.fetchRoutes(this.props.match.params.id);
-			});
+			if (!this.state.showError) {
+				this.setState({ showError: true });
+			} else {
+				this.props.createComment(newComment).then(() => {
+					this.clearInput();
+
+					// fetch routes in the end to update the list
+					this.props.fetchRoutes(this.props.match.params.id);
+				});
+			}
 		};
 	}
 
 	// clears comment input box after submitting
 	clearInput() {
 		document.getElementById("comment-input").value = "";
-		this.setState({ ["comment"]: "" });
+		this.setState({
+			["comment"]: "",
+			["showError"]: false,
+		});
 	}
 
 	render() {
-		const { userProfile, routes } = this.props;
+		const { commentErrors, userProfile, routes } = this.props;
 
 		// create each route's contents
 		return routes.map((route) => {
@@ -70,7 +84,7 @@ class ActivityFeed extends React.Component {
 					: "ran";
 
 			let comments = [];
-				// if comments exist, arrays comments
+			// if comments exist, arrays comments
 			if (Object.keys(this.props.comments).length) {
 				comments = this.props.comments[route.id].comments;
 			}
@@ -93,6 +107,15 @@ class ActivityFeed extends React.Component {
 					</li>
 				);
 			});
+
+			let commentError = null;
+			if (this.state.showError) {
+				commentError = (
+					<div className="comment-errors-cntr">
+						<p className="comment-error"> Please enter some text. </p>
+					</div>
+				);
+			}
 
 			// list of each route
 			return (
@@ -142,6 +165,7 @@ class ActivityFeed extends React.Component {
 								<button>POST</button>
 							</form>
 						</div>
+						{commentError}
 					</footer>
 				</li>
 			);

@@ -34,6 +34,10 @@
   }
 }
 
+//========================
+// Write a comment section
+//========================
+
 .create-comment-box {
   display: flex;
   padding: 10px;
@@ -74,5 +78,18 @@
         outline: none;
       }
     }
+  }
+}
+
+
+//======================
+// Comment error section
+//======================
+
+.comment-errors-cntr {
+  padding: 0px 10px 10px;
+
+  p {
+    color: red;
   }
 }

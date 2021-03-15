@@ -4,6 +4,7 @@ import UserProfile from "./user_profile"
 import { findFriends } from "../../actions/friend_actions"
 import { fetchUser } from "../../actions/user_actions"
 import { fetchRoutes } from "../../actions/route_actions";
+import { clearErrors } from "../../actions/comment_actions";
 import {
 	fetchComments,
 	deleteComment,
@@ -16,6 +17,7 @@ const msp = (state, ownProps) => {
 		userProfile: state.entities.user,
 		routes: Object.values(state.entities.routes),
 		comments: state.entities.comments,
+		commentErrors: state.errors.comments,
 	};
 }
 
@@ -27,6 +29,7 @@ const mdp = (dispatch) => {
 		fetchComments: (routeIds) => dispatch(fetchComments(routeIds)),
 		deleteComment: (commentId) => dispatch(deleteComment(commentId)),
 		createComment: (comment) => dispatch(createComment(comment)),
+		clearErrors: () => dispatch(clearErrors()),
 	};
 }
 

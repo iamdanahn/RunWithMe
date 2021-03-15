@@ -27,6 +27,8 @@ class UserProfile extends React.Component {
 	render() {
 		const {
 			comments,
+			commentErrors,
+			clearErrors,
 			deleteComment,
 			createComment,
 			userProfile,
@@ -45,6 +47,8 @@ class UserProfile extends React.Component {
 					deleteComment={deleteComment}
 					createComment={createComment}
 					comments={comments}
+					commentErrors={commentErrors}
+					clearErrors={clearErrors}
 					fetchRoutes={fetchRoutes}
 				/>
 			);
