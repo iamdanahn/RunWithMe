@@ -81,6 +81,18 @@
   }
 }
 
+.comments-cntr.upper {
+  display: flex;
+  align-items: center;
+
+  h3 {
+    padding-left: 9px;
+    font-size: 16px;
+  }
+  i:hover {
+    cursor: pointer;
+  }
+}
 
 //======================
 // Comment error section

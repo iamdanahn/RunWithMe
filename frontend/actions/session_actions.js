@@ -25,6 +25,7 @@ export const receiveSessionErrors = (errors) => {
 export const login = (user) => {
   return dispatch => {
     return APIUtil.login(user).then(user => {
+      debugger;
       return dispatch(receiveCurrentUser(user))
     }, err => {
 			return dispatch(receiveSessionErrors(err.responseJSON));

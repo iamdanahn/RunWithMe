@@ -7,9 +7,11 @@ class ActivityFeed extends React.Component {
 		this.state = {
 			comment: "",
 			showError: false,
+			showComments: false,
 		};
 
 		this.clearInput = this.clearInput.bind(this);
+		this.renderComments = this.renderComments.bind(this);
 		this.handleDelete = this.handleDelete.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
@@ -19,6 +21,24 @@ class ActivityFeed extends React.Component {
 		// if (this.state.showError) {
 		// 	this.setState({ ["showError"]: false });
 		// }
+	}
+	
+	// clears comment input box after submitting
+	clearInput() {
+		document.getElementById("comment-input").value = "";
+		this.setState({
+			["comment"]: "",
+			["showError"]: false,
+		});
+	}
+
+	renderComments() {
+		if (this.state.showComments) {
+			this.setState({ ["showComments"]: false })
+		} else {
+			this.setState({ ["showComments"]: true })
+		}
+		this.setState({ ["showError"]: false})
 	}
 
 	update(value) {
@@ -58,14 +78,6 @@ class ActivityFeed extends React.Component {
 		};
 	}
 
-	// clears comment input box after submitting
-	clearInput() {
-		document.getElementById("comment-input").value = "";
-		this.setState({
-			["comment"]: "",
-			["showError"]: false,
-		});
-	}
 
 	render() {
 		const { commentErrors, userProfile, routes } = this.props;
@@ -117,6 +129,32 @@ class ActivityFeed extends React.Component {
 				);
 			}
 
+			let lowerComments = null
+			if (this.state.showComments) {
+				lowerComments = (
+					<div>
+							<div className="comments-lower-cntr">
+								<ul className="comments-lower">{routeComments}</ul>
+							</div>
+
+							<footer className="create-comment-cntr">
+								<div className="create-comment-box">
+									<form onSubmit={this.handleSubmit(route.id)}>
+										<input
+											input="text"
+											placeholder="Write a comment..."
+											onChange={this.update("comment")}
+											id="comment-input"
+										/>
+										<button>POST</button>
+									</form>
+								</div>
+								{commentError}
+							</footer>
+						</div>
+				)
+			} 
+			
 			// list of each route
 			return (
 				<li key={route.id} className="up-list-cntr">
@@ -144,29 +182,14 @@ class ActivityFeed extends React.Component {
 
 					{/* lower portion of route's div */}
 					<section className="up-comments-cntr">
-						<div className="comments-cntr upper">
+						<div className="comments-cntr upper" onClick={this.renderComments}>
 							<i className="far fa-comments fa-2x"> </i>
+							<h3 className="comment-count">{comments.length}</h3>
 						</div>
 					</section>
-					<div className="comments-lower-cntr">
-						<ul className="comments-lower">{routeComments}</ul>
-					</div>
 
-					{/* comments input box */}
-					<footer className="create-comment-cntr">
-						<div className="create-comment-box">
-							<form onSubmit={this.handleSubmit(route.id)}>
-								<input
-									input="text"
-									placeholder="Write a comment..."
-									onChange={this.update("comment")}
-									id="comment-input"
-								/>
-								<button>POST</button>
-							</form>
-						</div>
-						{commentError}
-					</footer>
+					{lowerComments}
+
 				</li>
 			);
 		});

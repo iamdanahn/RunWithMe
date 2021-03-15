@@ -4,6 +4,7 @@ import {
   REMOVE_COMMENT,
 } from "../actions/comment_actions"
 import { RECEIVE_ROUTES } from "../actions/route_actions";
+import { LOGOUT_CURRENT_USER } from "../actions/session_actions";
 
 const commentsReducer = (state = {}, action) => {
 	Object.freeze(state);
@@ -24,6 +25,8 @@ const commentsReducer = (state = {}, action) => {
 			const nextState = Object.assign({}, state);
 			delete nextState[commentId];
 			return nextState;
+		case LOGOUT_CURRENT_USER:
+			return {};
 		default:
 			return state;
 	}
