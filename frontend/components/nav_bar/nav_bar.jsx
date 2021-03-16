@@ -11,6 +11,12 @@ class NavBar extends React.Component {
 		this.handleClick = this.handleClick.bind(this);
 	}
 
+	handleLogout() {
+		this.props.clearRoutes();
+		this.props.clearComments();
+		this.props.logout();
+	}
+
 	handleClick(e) {
 		e.preventDefault();
 		this.props.clearErrors([]);
@@ -38,7 +44,7 @@ class NavBar extends React.Component {
 						}
 					>
 						<button className="navbtn">Routes</button>
-						<RouteLinks currentUser={currentUser} logout={logout} />
+						<RouteLinks currentUser={currentUser} logout={this.handleLogout} />
 					</div>
 
 					{/* FUTURE FEATURE

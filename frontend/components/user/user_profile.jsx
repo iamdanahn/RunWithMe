@@ -24,8 +24,8 @@ class UserProfile extends React.Component {
 		}
 	}
 	componentWillUnmount() {
-		this.props.clearRoutes();
-		this.props.clearComments();
+		// this.props.clearRoutes();
+		// this.props.clearComments();
 	}
 
 	render() {

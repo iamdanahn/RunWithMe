@@ -9,7 +9,7 @@ class ActivityFeed extends React.Component {
 			comment: "",
 			showError: false,
 			showComments: false,
-			routeIdx: {}
+			routeIdx: {},
 		};
 
 		this.clearInput = this.clearInput.bind(this);
@@ -18,13 +18,10 @@ class ActivityFeed extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	componentDidUpdate() {
-		// this.props.fetchRoutes(this.props.match.params.id)
-		// if (this.state.showError) {
-		// 	this.setState({ ["showError"]: false });
-		// }
+	componentWillUnmount() {
+		this.setState({ routeIdx: {} });
 	}
-	
+
 	// clears comment input box after submitting
 	clearInput() {
 		document.getElementById("comment-input").value = "";
@@ -35,18 +32,18 @@ class ActivityFeed extends React.Component {
 	}
 
 	renderComments(routeId) {
+		let showRoutes = Object.assign({}, this.state.routeIdx);
 
-		let showRoutes = Object.assign({}, this.state.routeIdx)
-		
 		if (showRoutes[routeId]) {
-			delete showRoutes[routeId]
-			this.setState({ "routeIdx": showRoutes})
+			delete showRoutes[routeId];
+			this.setState({ routeIdx: showRoutes });
 		} else {
-			debugger
-			const newRoutes = Object.assign({}, this.state.routeIdx, {[routeId]: routeId})
-			this.setState({ "routeIdx": newRoutes});
+			debugger;
+			const newRoutes = Object.assign({}, this.state.routeIdx, {
+				[routeId]: routeId,
+			});
+			this.setState({ routeIdx: newRoutes });
 		}
-		
 	}
 
 	update(value) {
@@ -86,7 +83,6 @@ class ActivityFeed extends React.Component {
 			}
 		};
 	}
-
 
 	render() {
 		console.log(this.state);
@@ -145,7 +141,6 @@ class ActivityFeed extends React.Component {
 							{deleteButton}
 						</div>
 					</li>
-					
 				);
 			});
 			//==========================================
@@ -160,15 +155,17 @@ class ActivityFeed extends React.Component {
 				);
 			}
 
-			let feedComments = null
+			let feedComments = null;
 			if (this.state.routeIdx[route.id]) {
-				feedComments = <FeedComments 
-					commentError={commentError}
-					route={route} 
-					routeComments={routeComments}
-					handleSubmit={this.handleSubmit}
-					update={this.update}
-				/>
+				feedComments = (
+					<FeedComments
+						commentError={commentError}
+						route={route}
+						routeComments={routeComments}
+						handleSubmit={this.handleSubmit}
+						update={this.update}
+					/>
+				);
 			}
 
 			// list of each route
