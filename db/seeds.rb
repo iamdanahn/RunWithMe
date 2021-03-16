@@ -199,6 +199,16 @@ friending2 = Friendship.create!(
   user_id: user1.id,
   friend_id: user3.id
 )
+friending3 = Friendship.create!(
+  id: 3,
+  user_id: user2.id,
+  friend_id: user1.id
+)
+friending4 = Friendship.create!(
+  id: 4,
+  user_id: user3.id,
+  friend_id: user1.id
+)
 
 comments1 = Comment.create!(
   id: 1,

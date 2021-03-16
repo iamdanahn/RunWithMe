@@ -65,10 +65,11 @@ class ActivityFeed extends React.Component {
 				// "user_id" is handled in the backend controlller
 			};
 
-			if (!this.state.showError) {
+			if ((this.state.comment === "") & !this.state.showError) {
 				this.setState({ showError: true });
 			} else {
 				this.props.createComment(newComment).then(() => {
+					// clears input text area
 					this.clearInput();
 
 					// fetch routes in the end to update the list
@@ -80,6 +81,8 @@ class ActivityFeed extends React.Component {
 
 
 	render() {
+		console.log(this.state);
+
 		const { currentUser, userProfile, routes } = this.props;
 
 		// create each route's contents
@@ -103,7 +106,7 @@ class ActivityFeed extends React.Component {
 
 			// list of each route's comments
 			const routeComments = comments.map((comment) => {
-
+				// setup for creation date
 				let month = new Date(comment.created_at).getMonth() + 1;
 				let day = new Date(comment.created_at).getDate();
 				let year = new Date(comment.created_at).getFullYear();
@@ -136,6 +139,7 @@ class ActivityFeed extends React.Component {
 				);
 			});
 
+			// comment error div
 			let commentError = null;
 			if (this.state.showError) {
 				commentError = (
@@ -145,6 +149,7 @@ class ActivityFeed extends React.Component {
 				);
 			}
 
+			// route's comments and input text box
 			let lowerComments = null;
 			if (this.state.showComments) {
 				lowerComments = (
@@ -198,8 +203,11 @@ class ActivityFeed extends React.Component {
 
 					{/* lower portion of route's div */}
 					<section className="up-comments-cntr">
-						<div className="comments-cntr upper" onClick={this.renderComments}>
-							<i className="far fa-comments fa-2x"> </i>
+						<div className="comments-cntr upper">
+							<i
+								className="far fa-comments fa-2x"
+								onClick={this.renderComments}
+							/>
 							<h3 className="comment-count">{comments.length}</h3>
 						</div>
 					</section>
