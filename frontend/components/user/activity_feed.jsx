@@ -37,7 +37,6 @@ class ActivityFeed extends React.Component {
 			delete showRoutes[routeId];
 			this.setState({ routeIdx: showRoutes });
 		} else {
-			debugger;
 			const newRoutes = Object.assign({}, this.state.routeIdx, {
 				[routeId]: routeId,
 			});

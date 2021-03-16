@@ -140,7 +140,6 @@ class RouteShow extends React.Component {
 			);
 		});
 
-		debugger;
 		return (
 			<div className="route-show-cntr">
 				{/* section 1 - route title, distance, user name, 

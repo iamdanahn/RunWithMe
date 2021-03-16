@@ -24,9 +24,8 @@ const RoutesReducer = (state = {}, action) => {
 			const newState = merge({}, state);
 			delete newState[routeId];
 			return newState;
-		case CLEAR_ROUTES:			
+		case CLEAR_ROUTES:
 		case LOGOUT_CURRENT_USER:
-			debugger
 			return {};
 		default:
 			return state;
