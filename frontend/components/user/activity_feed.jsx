@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
+import FeedComments from "./activity_feed_comments";
 
 class ActivityFeed extends React.Component {
 	constructor(props) {
@@ -8,6 +9,7 @@ class ActivityFeed extends React.Component {
 			comment: "",
 			showError: false,
 			showComments: false,
+			routeIdx: {}
 		};
 
 		this.clearInput = this.clearInput.bind(this);
@@ -32,13 +34,19 @@ class ActivityFeed extends React.Component {
 		});
 	}
 
-	renderComments() {
-		if (this.state.showComments) {
-			this.setState({ ["showComments"]: false })
+	renderComments(routeId) {
+
+		let showRoutes = Object.assign({}, this.state.routeIdx)
+		
+		if (showRoutes[routeId]) {
+			delete showRoutes[routeId]
+			this.setState({ "routeIdx": showRoutes})
 		} else {
-			this.setState({ ["showComments"]: true })
+			debugger
+			const newRoutes = Object.assign({}, this.state.routeIdx, {[routeId]: routeId})
+			this.setState({ "routeIdx": newRoutes});
 		}
-		this.setState({ ["showError"]: false})
+		
 	}
 
 	update(value) {
@@ -86,7 +94,7 @@ class ActivityFeed extends React.Component {
 		const { currentUser, userProfile, routes } = this.props;
 
 		// create each route's contents
-		return routes.map((route) => {
+		return routes.map((route, idx) => {
 			// grab distance # only
 			const distance = route.distance.split(" ")[0];
 
@@ -104,6 +112,7 @@ class ActivityFeed extends React.Component {
 				comments = this.props.comments[route.id].comments;
 			}
 
+			//============================================
 			// list of each route's comments
 			const routeComments = comments.map((comment) => {
 				// setup for creation date
@@ -136,8 +145,10 @@ class ActivityFeed extends React.Component {
 							{deleteButton}
 						</div>
 					</li>
+					
 				);
 			});
+			//==========================================
 
 			// comment error div
 			let commentError = null;
@@ -149,31 +160,15 @@ class ActivityFeed extends React.Component {
 				);
 			}
 
-			// route's comments and input text box
-			let lowerComments = null;
-			if (this.state.showComments) {
-				lowerComments = (
-					<div>
-						<div className="comments-lower-cntr">
-							<ul className="comments-lower">{routeComments}</ul>
-						</div>
-
-						<footer className="create-comment-cntr">
-							<div className="create-comment-box">
-								<form onSubmit={this.handleSubmit(route.id)}>
-									<input
-										input="text"
-										placeholder="Write a comment..."
-										onChange={this.update("comment")}
-										id="comment-input"
-									/>
-									<button>POST</button>
-								</form>
-							</div>
-							{commentError}
-						</footer>
-					</div>
-				);
+			let feedComments = null
+			if (this.state.routeIdx[route.id]) {
+				feedComments = <FeedComments 
+					commentError={commentError}
+					route={route} 
+					routeComments={routeComments}
+					handleSubmit={this.handleSubmit}
+					update={this.update}
+				/>
 			}
 
 			// list of each route
@@ -206,13 +201,14 @@ class ActivityFeed extends React.Component {
 						<div className="comments-cntr upper">
 							<i
 								className="far fa-comments fa-2x"
-								onClick={this.renderComments}
+								onClick={() => this.renderComments(route.id)}
 							/>
 							<h3 className="comment-count">{comments.length}</h3>
 						</div>
 					</section>
 
-					{lowerComments}
+					{/* route's comments and input text box */}
+					{feedComments}
 				</li>
 			);
 		});
