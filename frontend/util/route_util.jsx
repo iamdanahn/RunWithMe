@@ -9,14 +9,16 @@ const msp = (state) => {
 };
 
 // Sends to homepage if logged in (prevents lookin at signup/login page)
-const Auth = ({ component: Component, path, loggedIn }) => (
-	<Route
-		path={path}
-		render={(props) =>
-			loggedIn ? <Redirect to="/dashboard" /> : <Component {...props} />
-		}
-	/>
-);
+const Auth = ({ component: Component, path, loggedIn }) => {
+	return (
+		<Route
+			path={path}
+			render={(props) =>
+				loggedIn ? <Redirect to="/dashboard" /> : <Component {...props} />
+			}
+		/>
+	);
+};
 
 // Sends to component if logged in (sends to login/signup is not logged in)
 const Protected = ({ component: Component, path, loggedIn }) => (

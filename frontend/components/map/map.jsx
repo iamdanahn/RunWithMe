@@ -147,7 +147,7 @@ class Map extends React.Component {
 					// renders directions that are inside the response
 					this.directionsRenderer.setDirections(response);
 				} else {
-					console.log("Directions failed");
+					console.log("Directions failed, please press undo");
 				}
 			}
 		);

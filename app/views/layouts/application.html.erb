@@ -35,7 +35,7 @@
       @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
     </style>
 
-    <% if current_user %>
+    <% if logged_in? %>
       <script>
         window.currentUser = {
         "id": <%= current_user.id %>,

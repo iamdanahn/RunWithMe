@@ -12,15 +12,11 @@ class RouteIndex extends React.Component {
 	}
 
 	// componentWillUnmount() {
-	// 	 ;
 	// 	this.props.clearRoutes();
-	// 	 ;
 	// }
 
 	render() {
 		const { currentUserId } = this.props;
-
-		 ;
 
 		const route = this.props.routes.map((route) => {
 			if (route.creator_id === currentUserId) {

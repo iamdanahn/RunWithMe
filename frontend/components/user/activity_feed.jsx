@@ -82,8 +82,6 @@ class ActivityFeed extends React.Component {
 	}
 
 	render() {
-		console.log(this.state);
-
 		const { currentUser, userProfile, routes } = this.props;
 
 		// create each route's contents

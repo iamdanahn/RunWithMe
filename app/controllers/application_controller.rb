@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_logged_in
-    render '/api/session' unless logged_in? 
+    render json: ["Please log in"] unless logged_in? 
   end
 
   def logged_in?

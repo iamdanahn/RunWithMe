@@ -9,11 +9,11 @@ class NavBar extends React.Component {
 		super(props);
 
 		this.handleClick = this.handleClick.bind(this);
+		this.handleLogout = this.handleLogout.bind(this);
 	}
 
-	handleLogout() {
-		this.props.clearRoutes();
-		this.props.clearComments();
+	handleLogout(e) {
+		e.preventDefault();
 		this.props.logout();
 	}
 
@@ -44,16 +44,8 @@ class NavBar extends React.Component {
 						}
 					>
 						<button className="navbtn">Routes</button>
-						<RouteLinks currentUser={currentUser} logout={this.handleLogout} />
+						<RouteLinks currentUser={currentUser} />
 					</div>
-
-					{/* FUTURE FEATURE
-					<div className="dropdown">
-            <button className="navbtn" to="/">
-              Workouts
-            </button>
-            <WorkoutLinks currentUser={currentUser} logout={logout} />
-          </div> */}
 
 					<div
 						className={
@@ -98,12 +90,9 @@ class NavBar extends React.Component {
 								Welcome {currentUser.first_name}!
 							</button>
 							<div className="dropdown-content">
-								{/* <Link to="">Profile and Settings</Link>
-								<Link to="">Connected Apps</Link>
-								<Link to="">Support</Link> */}
-								<Link onClick={logout} to="/">
+								<button className="button-logout" onClick={this.handleLogout}>
 									Logout
-								</Link>
+								</button>
 							</div>
 						</div>
 					</div>
