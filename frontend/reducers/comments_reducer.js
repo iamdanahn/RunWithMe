@@ -1,8 +1,9 @@
 import {
-  RECEIVE_COMMENTS,
-  RECEIVE_COMMENT,
-  REMOVE_COMMENT,
-} from "../actions/comment_actions"
+	RECEIVE_COMMENTS,
+	RECEIVE_COMMENT,
+	REMOVE_COMMENT,
+	CLEAR_COMMENTS,
+} from "../actions/comment_actions";
 import { RECEIVE_ROUTES } from "../actions/route_actions";
 import { LOGOUT_CURRENT_USER } from "../actions/session_actions";
 
@@ -26,6 +27,7 @@ const commentsReducer = (state = {}, action) => {
 			delete nextState[commentId];
 			return nextState;
 		case LOGOUT_CURRENT_USER:
+		case CLEAR_COMMENTS:
 			return {};
 		default:
 			return state;

@@ -80,7 +80,7 @@ class ActivityFeed extends React.Component {
 
 
 	render() {
-		const { commentErrors, userProfile, routes } = this.props;
+		const { currentUser, userProfile, routes } = this.props;
 
 		// create each route's contents
 		return routes.map((route) => {
@@ -103,6 +103,21 @@ class ActivityFeed extends React.Component {
 
 			// list of each route's comments
 			const routeComments = comments.map((comment) => {
+
+				let month = new Date(comment.created_at).getMonth() + 1;
+				let day = new Date(comment.created_at).getDate();
+				let year = new Date(comment.created_at).getFullYear();
+
+				// delete button only if creator
+				let deleteButton = null;
+				if (comment.commenter.id === currentUser.id) {
+					deleteButton = (
+						<button onClick={() => this.handleDelete(comment.id)}>
+							Delete
+						</button>
+					);
+				}
+
 				return (
 					<li key={comment.id} className="comments-item">
 						<div className="ci-left">
@@ -112,9 +127,10 @@ class ActivityFeed extends React.Component {
 							<div className="ci-body">{comment.body}</div>
 						</div>
 						<div className="ci-right">
-							<button onClick={() => this.handleDelete(comment.id)}>
-								Delete
-							</button>
+							<div>
+								{month}/{day}/{year}
+							</div>
+							{deleteButton}
 						</div>
 					</li>
 				);
@@ -129,32 +145,32 @@ class ActivityFeed extends React.Component {
 				);
 			}
 
-			let lowerComments = null
+			let lowerComments = null;
 			if (this.state.showComments) {
 				lowerComments = (
 					<div>
-							<div className="comments-lower-cntr">
-								<ul className="comments-lower">{routeComments}</ul>
-							</div>
-
-							<footer className="create-comment-cntr">
-								<div className="create-comment-box">
-									<form onSubmit={this.handleSubmit(route.id)}>
-										<input
-											input="text"
-											placeholder="Write a comment..."
-											onChange={this.update("comment")}
-											id="comment-input"
-										/>
-										<button>POST</button>
-									</form>
-								</div>
-								{commentError}
-							</footer>
+						<div className="comments-lower-cntr">
+							<ul className="comments-lower">{routeComments}</ul>
 						</div>
-				)
-			} 
-			
+
+						<footer className="create-comment-cntr">
+							<div className="create-comment-box">
+								<form onSubmit={this.handleSubmit(route.id)}>
+									<input
+										input="text"
+										placeholder="Write a comment..."
+										onChange={this.update("comment")}
+										id="comment-input"
+									/>
+									<button>POST</button>
+								</form>
+							</div>
+							{commentError}
+						</footer>
+					</div>
+				);
+			}
+
 			// list of each route
 			return (
 				<li key={route.id} className="up-list-cntr">
@@ -189,7 +205,6 @@ class ActivityFeed extends React.Component {
 					</section>
 
 					{lowerComments}
-
 				</li>
 			);
 		});

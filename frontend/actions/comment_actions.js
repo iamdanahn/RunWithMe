@@ -4,6 +4,7 @@ export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS"
 export const RECEIVE_COMMENT = "RECEIVE_COMMENT"
 export const REMOVE_COMMENT = "REMOVE_COMMENT"
 export const RECEIVE_COMMENT_ERRORS = "RECEIVE_COMMENT_ERRORS";
+export const CLEAR_COMMENTS = "CLEAR_COMMENTS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
 const receiveComments = (comments) => {
@@ -30,6 +31,12 @@ const receiveCommentErrors = (errors) => {
 	return {
 		type: RECEIVE_COMMENT_ERRORS,
 		errors,
+	};
+};
+
+export const clearComments = () => {
+	return {
+		type: CLEAR_COMMENTS,
 	};
 };
 

@@ -23,17 +23,15 @@ class UserProfile extends React.Component {
 			this.props.fetchUser(this.props.match.params.id);
 		}
 	}
+	componentWillUnmount() {
+		this.props.clearRoutes();
+		this.props.clearComments();
+	}
 
 	render() {
 		const {
-			comments,
-			commentErrors,
-			clearErrors,
-			deleteComment,
-			createComment,
-			userProfile,
-			routes,
-			fetchRoutes,
+			comments, commentErrors, clearErrors, deleteComment,
+			createComment, userProfile, currentUser, routes, fetchRoutes,
 		} = this.props;
 
 		if (userProfile.id !== parseInt(this.props.match.params.id)) return null;
@@ -43,6 +41,7 @@ class UserProfile extends React.Component {
 			activityFeed = (
 				<ActivityFeed
 					userProfile={userProfile}
+					currentUser={currentUser}
 					routes={routes}
 					deleteComment={deleteComment}
 					createComment={createComment}

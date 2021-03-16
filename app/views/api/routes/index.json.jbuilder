@@ -13,7 +13,7 @@
   json.route_comments do
     json.set! route.id do
       json.comments route.comments.each do |comment|
-        json.extract! comment, :id, :body
+        json.extract! comment, :id, :body, :created_at
         
         json.commenter do 
           json.extract! comment.user, :first_name, :last_name, :id

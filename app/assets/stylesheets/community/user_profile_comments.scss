@@ -26,11 +26,15 @@
     color: #0076C0;
     background-color: transparent;
     border: none;
+    padding-top: 5px;
     
     &:hover {
       cursor: pointer; 
     }
+  }
 
+  .ci-right {
+    text-align: end;
   }
 }
 
