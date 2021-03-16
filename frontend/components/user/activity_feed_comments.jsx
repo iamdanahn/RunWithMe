@@ -2,13 +2,7 @@ import React from "react";
 
 class FeedComments extends React.Component {
 	render() {
-		const {
-			commentError,
-			handleSubmit,
-			route,
-			routeComments,
-			update,
-		} = this.props;
+		const { handleSubmit, route, routeComments, update } = this.props;
 		return (
 			<div className="comment-hide">
 				<div className="comments-lower-cntr">
@@ -27,7 +21,6 @@ class FeedComments extends React.Component {
 							<button>POST</button>
 						</form>
 					</div>
-					{commentError}
 				</footer>
 			</div>
 		);

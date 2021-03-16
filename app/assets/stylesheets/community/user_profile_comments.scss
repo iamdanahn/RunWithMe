@@ -26,8 +26,10 @@
     color: #0076C0;
     background-color: transparent;
     border: none;
-    padding-top: 5px;
-    
+    padding-right: 5px;
+    height: 14px;
+    border-right: 1px solid;    
+
     &:hover {
       cursor: pointer; 
     }
@@ -35,6 +37,12 @@
 
   .ci-right {
     text-align: end;
+    display: flex;
+    
+    .post-date {
+      padding-left: 5px;
+      padding-top: 1px;
+    }
   }
 }
 

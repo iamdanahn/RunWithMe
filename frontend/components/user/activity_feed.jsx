@@ -7,9 +7,8 @@ class ActivityFeed extends React.Component {
 		super(props);
 		this.state = {
 			comment: "",
-			showError: false,
-			showComments: false,
 			routeIdx: {},
+			commentIdx: {},
 		};
 
 		this.clearInput = this.clearInput.bind(this);
@@ -70,9 +69,7 @@ class ActivityFeed extends React.Component {
 				// "user_id" is handled in the backend controlller
 			};
 
-			if ((this.state.comment === "") & !this.state.showError) {
-				this.setState({ showError: true });
-			} else {
+			if (!(this.state.comment === "")) {
 				this.props.createComment(newComment).then(() => {
 					// clears input text area
 					this.clearInput();
@@ -135,10 +132,10 @@ class ActivityFeed extends React.Component {
 							<div className="ci-body">{comment.body}</div>
 						</div>
 						<div className="ci-right">
-							<div>
+							{deleteButton}
+							<div className="post-date">
 								{month}/{day}/{year}
 							</div>
-							{deleteButton}
 						</div>
 					</li>
 				);
@@ -146,20 +143,19 @@ class ActivityFeed extends React.Component {
 			//==========================================
 
 			// comment error div
-			let commentError = null;
-			if (this.state.showError) {
-				commentError = (
-					<div className="comment-errors-cntr">
-						<p className="comment-error"> Please enter some text. </p>
-					</div>
-				);
-			}
+			// let commentError = null;
+			// if (this.state.showError) {
+			// 	commentError = (
+			// 		<div className="comment-errors-cntr">
+			// 			<p className="comment-error"> Please enter some text. </p>
+			// 		</div>
+			// 	);
+			// }
 
 			let feedComments = null;
 			if (this.state.routeIdx[route.id]) {
 				feedComments = (
 					<FeedComments
-						commentError={commentError}
 						route={route}
 						routeComments={routeComments}
 						handleSubmit={this.handleSubmit}
