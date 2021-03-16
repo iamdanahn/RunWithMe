@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 
 	// // TESTING
-	// window.getState = store.getState;
+	window.getState = store.getState;
 	// window.dispatch = store.dispatch;
 	// window.fetchRoutes = fetchRoutes;
 	// // REMOVE AFTER TEST
