@@ -15,6 +15,7 @@ class ActivityFeed extends React.Component {
 		this.renderComments = this.renderComments.bind(this);
 		this.handleDelete = this.handleDelete.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.update = this.update.bind(this);
 	}
 
 	componentWillUnmount() {
