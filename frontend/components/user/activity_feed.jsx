@@ -22,14 +22,7 @@ class ActivityFeed extends React.Component {
 		this.setState({ routeIdx: {} });
 	}
 
-	// clears comment input box after submitting
-	clearInput() {
-		document.getElementById("comment-input").value = "";
-		this.setState({
-			["comment"]: "",
-			["showError"]: false,
-		});
-	}
+
 
 	renderComments(routeId) {
 		let showRoutes = Object.assign({}, this.state.routeIdx);
@@ -79,6 +72,15 @@ class ActivityFeed extends React.Component {
 				});
 			}
 		};
+	}	
+	
+	// clears comment input box after submitting
+	clearInput() {
+		document.getElementById("comment-input").value = "";
+		this.setState({
+			["comment"]: "",
+			["showError"]: false,
+		});
 	}
 
 	render() {
