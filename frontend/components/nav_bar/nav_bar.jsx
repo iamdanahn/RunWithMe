@@ -60,13 +60,23 @@ class NavBar extends React.Component {
 					</div>
 
 					<div className="dropdown">
-						<a className="navbtn" href="https://angel.co/u/daniel-ahn-1">
+						<a
+							className="navbtn"
+							href="https://angel.co/u/daniel-ahn-1"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
 							AngelList
 						</a>
 					</div>
 
 					<div className="dropdown">
-						<a className="navbtn" href="https://github.com/friesarecurly">
+						<a
+							className="navbtn"
+							href="https://github.com/iamdanahn"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
 							Github
 						</a>
 					</div>
@@ -75,6 +85,8 @@ class NavBar extends React.Component {
 						<a
 							className="navbtn"
 							href="https://www.linkedin.com/in/daniel-ahn-6b34151bb/"
+							target="_blank"
+							rel="noopener noreferrer"
 						>
 							LinkedIn
 						</a>
