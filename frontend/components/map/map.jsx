@@ -21,7 +21,6 @@ class Map extends React.Component {
 					: this.props.route.markers,
 			formErr: "form-err-hide",
 		};
-
 		this.wayPoints = this.state.markers;
 
 		this.initMap = this.initMap.bind(this);
