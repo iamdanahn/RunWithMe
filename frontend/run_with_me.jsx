@@ -26,5 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	// window.dispatch = store.dispatch;
 	// window.fetchRoutes = fetchRoutes;
 	// // REMOVE AFTER TEST
+
 	ReactDOM.render(<Root store={store} />, root);
 });
