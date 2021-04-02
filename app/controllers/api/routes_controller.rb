@@ -7,21 +7,17 @@ class Api::RoutesController < ApplicationController
   end
 
   def show
-     
     @route = Route.find(params[:id])
     @comments = @route.comments
   end
 
   def create
-    #  
     @route = Route.new(route_params)
     @comments = @route.comments
-    # @comments
      
     if @route.save
       render 'api/routes/show'
     else
-       
       render json: @route.errors.full_messages, status: 422
     end
   end

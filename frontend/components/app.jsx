@@ -12,7 +12,7 @@ import FriendMainContainer from "./friends/friend_main_container"
 import FriendFindContainer from "./friends/friend_find_container";
 import UserContainer from "./user/user_profile_container"
 import SplashPage from './splash_page'
-import FooterContainer from "./footer/footer_container";
+import Footer from "./footer/footer";
 
 
 const App = () => {
@@ -53,7 +53,7 @@ const App = () => {
 				<ProtectedRoute exact path="/profile/:id" component={UserContainer} />
 			</Switch>
 
-			<Route path="/" component={FooterContainer} />
+			<Route path="/" component={Footer} />
 		</div>
 	);
 }
