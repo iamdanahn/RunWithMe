@@ -17,7 +17,7 @@ class SessionLinks extends React.Component {
 		const { currentUser, logout } = this.props;
 
 		return currentUser ? (
-			<div className="masthead auth">
+			<section className="masthead auth">
 				<div className="dropdown">
 					<button className="navbtn" to="/account/my_profile">
 						Welcome {currentUser.first_name}!
@@ -31,9 +31,9 @@ class SessionLinks extends React.Component {
 						</Link>
 					</div>
 				</div>
-			</div>
+			</section>
 		) : (
-			<div className="masthead login-signup">
+			<section className="masthead login-signup">
 				<Link>
 					<button className="button-login" onClick={this.handleClick}>
 						Log in
@@ -44,38 +44,9 @@ class SessionLinks extends React.Component {
 						Sign up
 					</button>
 				</Link>
-			</div>
+			</section>
 		);
 	}
 }
 
 export default SessionLinks;
-
-
-    // const sessionLinks = currentUser ? (
-		// 	<div className="masthead auth">
-		// 		<div className="user-pic">
-		// 			<Link className="button button-user" to="/account/my_profile">
-		// 				Welcome {currentUser.first_name}!
-		// 			</Link>
-		// 		</div>
-		// 		<div className="button-logout">
-		// 			<Link onClick={logout} to="/login">
-		// 				Logout
-		// 			</Link>
-		// 		</div>
-		// 	</div>
-		// ) : (
-		// 	<div className="masthead login-signup">
-		// 		<Link to="/login">
-		// 			<button className="button-login" onClick={this.handleLogin}>
-		// 				Login
-		// 			</button>
-		// 		</Link>
-		// 		<Link to="/signup">
-		// 			<button className="button-signup" onClick={this.handleSignup}>
-		// 				Sign up
-		// 			</button>
-		// 		</Link>
-		// 	</div>
-		// );
