@@ -44,10 +44,10 @@ A MapMyRun clone allowing a user to track and share workouts, goals, and running
   - Autocompletes an address as the user types into the address search bar
 
 ## Search/Add friends
-Coming soon
+- Search for other users and add them to your friends list
 
 ## Comment on runs or routes
-Coming soon
+- Write comments on your or your friends running routes
 
-## Track workouts
-Coming soon
+## Track runs or routes
+- See your saved routes on the dashboard
