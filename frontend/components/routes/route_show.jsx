@@ -2,36 +2,129 @@ import React from 'react'
 import { Link } from "react-router-dom"
 
 class RouteShow extends React.Component {
-  constructor(props) {
-    super(props)
+	constructor(props) {
+		super(props);
 
-    this.editPage = this.editPage.bind(this)
-  }
+		this.editPage = this.editPage.bind(this);
+		this.renderMarkers = this.renderMarkers.bind(this);
 
-  componentDidMount() {
-    const routeId = this.props.match.params.routeId
-    this.props.fetchRoute(routeId)
-    this.props.fetchComments(routeId)
-    // fetches single route and saves it in state to be used
-  }
+		this.directionsService = new google.maps.DirectionsService();
+		this.directionsRenderer = new google.maps.DirectionsRenderer();
+		this.geocoder = new google.maps.Geocoder();
+	}
 
-  editPage(e) {
-    e.preventDefault()
-    const { route } = this.props
+	componentDidMount() {
+		const routeId = this.props.match.params.routeId;
+		// fetches single route and saves it in state to be used
+		// this.props
+		// 	.fetchRoute(routeId)
+		// 	.then(() => this.props.fetchComments(routeId))
+		// 	.then(() => this.initMap());
+		this.props.fetchUser(this.props.routes[routeId].creator_id);
 
-    this.props.history.push(`/routes/${route.id}/edit`)
-  }
+		if (!this.props.routes[routeId]) {
+			this.props.fetchRoute(routeId).then(() => this.initMap());
+		} else {
+			this.initMap();
+		}
+	}
 
-  render() {
+	componentDidUpdate(prevProps) {
+		// checks if url changed, if yes, update
+		if (this.props.match.params.routeId !== prevProps.match.params.routeId) {
+			// this.props.fetchComments(this.props.match.params.routeId);
+			this.props
+				.fetchRoute(this.props.match.params.routeId)
+				.then(() => this.props.fetchUser(this.props.routes[routeId]).creator_id)
+				.then(() => this.initMap());
+		}
+	}
+
+	editPage(e) {
+		e.preventDefault();
+		const route = this.props.routes[this.props.routeId];
+
+		this.props.history.push(`/routes/${route.id}/edit`);
+	}
+
+	initMap() {
+		const route = this.props.routes[this.props.routeId];
+		this.wayPoints = JSON.parse(route.markers);
+		this.center = this.wayPoints[0];
+
+		this.mapProps = {
+			zoom: 15,
+			center: this.center,
+			clickableIcons: false,
+			draggableCursor: "crosshair",
+		};
+
+		this.map = new google.maps.Map(this.mapNode, this.mapProps);
+
+		// renders the whole route on map
+		this.map.fitBounds(JSON.parse(route.bounds));
+
+		this.directionsRenderer.setOptions({
+			map: this.map,
+			preserveViewport: true,
+		});
+
+		this.renderMarkers();
+	}
+
+	renderMarkers() {
+		const origin = this.wayPoints[0];
+		const dest = this.wayPoints[this.wayPoints.length - 1];
+		const wP = this.wayPoints
+			.slice(1, this.wayPoints.length - 1)
+			.map((val) => ({
+				location: val,
+				stopover: false,
+			}));
+
+		this.directionsService.route(
+			{
+				origin: origin,
+				destination: dest,
+				waypoints: wP,
+				travelMode: google.maps.TravelMode.WALKING,
+			},
+			(response, status) => {
+				if (status === "OK") {
+					// updates distance state
+					// const distance = response.routes[0].legs[0].distance.text;
+
+					// renders directions that are inside the response
+					this.directionsRenderer.setDirections(response);
+				} else {
+					console.log("Directions failed, please press undo");
+				}
+			}
+		);
+	}
+
+	render() {
 		// need to return null for cDM, then route info can be fetched
-		if (!this.props.route) return null;
+		const route = this.props.routes[this.props.routeId];
+		if (!route) return null;
 
-		const { route, user, comments, deleteComment } = this.props;
+		const { currentUser, comments, deleteComment, user } = this.props;
 		const createDate = new Date(route.created_at).toDateString();
 		const updateDate = new Date(route.updated_at).toDateString();
 
-		// console.log(route)
-		// console.log(this.props)
+		let deleteButton;
+		if (Object.keys(route).length) {
+			// deleteButton = (
+			// 	<button onClick={() => deleteComment(comment.id)}>Delete</button>
+			// );
+			const markers = JSON.parse(route.markers);
+			this.startCoord = markers[0];
+			this.endCoord = markers[markers.length - 1];
+		} else {
+			// deleteButton = null;
+			this.startCoord = { lat: 0, lng: 0 };
+			this.endCoord = { lat: 0, lng: 0 };
+		}
 
 		const routeComments = comments.map((comment) => {
 			return (
@@ -42,9 +135,7 @@ class RouteShow extends React.Component {
 						</h4>
 						<p>{comment.body}</p>
 					</div>
-					<div className="comment-delete">
-						<button onClick={() => deleteComment(comment.id)}>Delete</button>
-					</div>
+					<div className="comment-delete">{deleteButton}</div>
 				</li>
 			);
 		});
@@ -54,38 +145,98 @@ class RouteShow extends React.Component {
 				{/* section 1 - route title, distance, user name, 
             date created, activity, location, edit button */}
 				<div className="rs-body">
-					<div className="bar">
-						<Link to={`/routes/${route.id}/edit`}>Edit Page</Link>
-					</div>
+					<section className="rs-header">
+						<div className="rs-header-content">
+							{/* <Link to={`/routes/${route.id}/edit`}>Edit Page</Link> */}
 
-					<section className="rs-content1">
-						<div className="rs-left-half">
-							<h2>{route.name}</h2>
-							<h1>{route.distance}</h1>
-							<h5>Distance (MI)</h5>
-						</div>
-						<div className="rs-right-half">
-							<br />
-							<div className="rs-user">
-								User: {`${user.first_name} ${user.last_name}`}
+							{/* HEADER TOP  */}
+							<div className="rs-top">
+								<div className="rs-top-1">
+									<span className="rst1-name">
+										<Link to={`/profile/${route.creator_id}`}>
+											{user.first_name} {user.last_name}
+										</Link>
+									</span>
+									<span className="rst1-filler"></span>
+									<span className="rst1-globe">
+										<i className="fas fa-globe"></i>
+									</span>
+									<span className="rst1-status"> Public </span>
+								</div>
+								<div className="rs-top-2">
+									<span className="rst2 activity">
+										<div>{route.activity}</div>
+									</span>
+									<span className="rst2 location">
+										<div>
+											<i className="fas fa-map-marker-alt"></i>
+											{route.location}
+										</div>
+									</span>
+									<span className="rst2 distance">
+										<div>
+											<i className="fas fa-route"></i>
+											{route.distance}
+										</div>
+									</span>
+								</div>
+								<div className="rs-top-3">
+									<h2>{route.name}</h2>
+								</div>
 							</div>
-							<br />
-							Created Date: {createDate}
-							<br />
-							Updated Date: {updateDate}
-							<br />
-							Activity: {route.activity}
-							<br />
-							Location: {route.location}
+
+							{/* HEADER BOTTOM */}
+							<div className="rs-bottom-cntr">
+								<div className="rs-bottom-content">
+									<div className="coords-cntr">
+										<h4>Start Coordinates:</h4>
+										<div className="coords">
+											<span>Lat: {this.startCoord.lat.toFixed(4)}</span>
+											<span>Lng: {this.startCoord.lng.toFixed(4)}</span>
+										</div>
+									</div>
+								</div>
+								<div className="rs-bottom-content">
+									<div className="coords-cntr">
+										<h4>End Coordinates:</h4>
+										<div className="coords">
+											<span>Lat: {this.endCoord.lat.toFixed(4)}</span>
+											<span>Lng: {this.endCoord.lng.toFixed(4)}</span>
+										</div>
+									</div>
+								</div>
+								<div className="rs-bottom-content">
+									<div className="center-cntr">
+										<div className="center-content">
+											<i className="fas fa-walking fa-2x"></i>
+											<i className="fas fa-running fa-2x"></i>
+											<i className="fas fa-biking fa-2x"></i>
+										</div>
+									</div>
+								</div>
+								<div className="rs-bottom-content">
+									<div className="rsb-create-date">
+										<span>Route Created:</span>
+										<span>{createDate}</span>
+									</div>
+								</div>
+								<div className="rs-bottom-content">
+									{/* <div className="edit-link"> */}
+									<Link to={`/routes/${route.id}/edit`} className="edit-link">
+										Edit
+									</Link>
+									{/* </div> */}
+								</div>
+							</div>
 						</div>
 					</section>
 
-					<section className="rs-comments">
-						<ul>{routeComments}</ul>
+					{/* section 2 - minimap */}
+					<section className="map-cntr">
+						<div id="rs-map" ref={(map) => (this.mapNode = map)}>
+							Map
+						</div>
 					</section>
-
-					{/* section 2 - minimap, comments section */}
-					<section className="rs-map"></section>
 				</div>
 			</div>
 		);

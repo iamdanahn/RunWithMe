@@ -3,31 +3,45 @@ import { Link } from 'react-router-dom';
 import RIIContainer from './route_index_item_container'
 
 class RouteIndex extends React.Component {
+	constructor(props) {
+		super(props);
+	}
 
-  componentDidMount() {
-    this.props.fetchRoutes(this.props.currentUserId);
-  }
+	componentDidMount() {
+		this.props.fetchRoutes(this.props.currentUserId);
+	}
 
-  render() {
-    const { currentUserId } = this.props
-    
-    debugger; 
+	// componentWillUnmount() {
+	// 	this.props.clearRoutes();
+	// }
 
-    const route = this.props.routes.map((route) => {
+	render() {
+		const { currentUserId } = this.props;
+
+		const route = this.props.routes.map((route) => {
 			if (route.creator_id === currentUserId) {
 				return <RIIContainer route={route} key={route.id} />;
 			}
-		})
+		});
 
-    return (
+		let routeSelected;
+		if (this.props.match.path === "/dashboard") {
+			routeSelected = "mrh-tabs selected";
+		}
+
+		return (
 			<div className="my-routes">
 				<div className="mr-header">
 					<div>
-						<h1>MY ROUTES</h1>
+						<h1>DASHBOARD</h1>
 					</div>
 					<div className="mr-header links">
-						<Link to="">ROUTES</Link>
-						<Link to="">BOOKMARKED</Link>
+						<Link to="/dashboard" className={routeSelected}>
+							ROUTES
+						</Link>
+						<Link to={`/profile/${currentUserId}`} className="mrh-tabs">
+							ACTIVITY FEED
+						</Link>
 					</div>
 				</div>
 				<div className="mr-create">
@@ -55,8 +69,10 @@ class RouteIndex extends React.Component {
 					</div>
 					<div className="mrsc-right">
 						<div className="search-filter">
-							<select defaultValue="-date_created">
-								<option value="-date_created"> Most Recent </option>
+							<select defaultValue="-date_created" disabled>
+								<option value="-date_created">
+									(Filter coming soon) {/* Most Recent */}
+								</option>
 								<option value="date_created"> Oldest </option>
 								<option value="-distance"> Longest </option>
 								<option value="distance"> Shortest </option>
@@ -84,7 +100,7 @@ class RouteIndex extends React.Component {
 				</section>
 			</div>
 		);
-  }
+	}
 }
 
 export default RouteIndex;

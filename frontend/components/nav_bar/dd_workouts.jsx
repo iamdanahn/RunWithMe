@@ -17,9 +17,3 @@ class WorkoutLinks extends React.Component {
 }
 
 export default WorkoutLinks;
-
-// <div className="dropdown-content">
-// 	<Link to="/dashboard">Dashboard</Link>
-// 	<Link to="/dashboard/workouts">Stats</Link>
-// 	<Link to="/dashboard/goals">Goals</Link>
-// </div>;

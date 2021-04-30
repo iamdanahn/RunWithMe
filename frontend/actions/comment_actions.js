@@ -3,6 +3,9 @@ import * as CommentAPIUtil from "../util/comment_api_util"
 export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS"
 export const RECEIVE_COMMENT = "RECEIVE_COMMENT"
 export const REMOVE_COMMENT = "REMOVE_COMMENT"
+export const RECEIVE_COMMENT_ERRORS = "RECEIVE_COMMENT_ERRORS";
+export const CLEAR_COMMENTS = "CLEAR_COMMENTS";
+export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
 const receiveComments = (comments) => {
   return {
@@ -24,32 +27,79 @@ const removeComment = (commentId) => {
     commentId,
   }
 }
+const receiveCommentErrors = (errors) => {
+	return {
+		type: RECEIVE_COMMENT_ERRORS,
+		errors,
+	};
+};
+
+export const clearComments = () => {
+	return {
+		type: CLEAR_COMMENTS,
+	};
+};
+
+export const clearErrors = () => {
+	return {
+		type: CLEAR_ERRORS,
+	};
+};
+
+export const RECEIVE_ROUTES = "RECEIVE_ROUTES";
+const receiveRoutes = (routes) => {
+	return {
+		type: RECEIVE_ROUTES,
+		routes,
+	};
+};
+
 
 export const fetchComments = (routeId) => {
-  return (dispatch) => {
-    return CommentAPIUtil.fetchComments(routeId).then((comments) => {
-      return dispatch(receiveComments(comments))
-    })
-  }
+	return (dispatch) => {
+		return CommentAPIUtil.fetchComments(routeId).then(
+			(comments) => {
+				return dispatch(receiveComments(comments));
+			},
+			(err) => {
+				return dispatch(receiveCommentErrors(err.responseJSON));
+			}
+		);
+	};
 }
 export const fetchComment = (commentId) => {
   return (dispatch) => {
-    return CommentAPIUtil.fetchComment(commentId).then((comment) => {
-      return dispatch(receiveComment(comment))
-    })
+    return CommentAPIUtil.fetchComment(commentId).then(
+			(comment) => {
+				return dispatch(receiveComment(comment));
+			},
+			(err) => {
+				return dispatch(receiveCommentErrors(err.responseJSON));
+			}
+		);
   }
 }
 export const createComment = (comment) => {
   return (dispatch) => {
-    return CommentAPIUtil.createComment(comment).then((comment) => {
-      return dispatch(receiveComment(comment))
-    })
+    return CommentAPIUtil.createComment(comment).then(
+			(comment) => {
+				return dispatch(receiveComment(comment));
+			},
+			(err) => {
+				return dispatch(receiveCommentErrors(err.responseJSON));
+			}
+		);
   }
 }
 export const deleteComment = (commentId) => {
   return (dispatch) => {
-    return CommentAPIUtil.deleteComment(commentId).then((comment) => {
-      return dispatch(removeComment(comment.id))
-    })
+    return CommentAPIUtil.deleteComment(commentId).then(
+			(routes) => {
+				return null;
+			},
+			(err) => {
+				return dispatch(receiveCommentErrors(err.responseJSON));
+			}
+		);
   }
 }

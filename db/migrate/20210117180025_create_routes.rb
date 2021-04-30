@@ -9,6 +9,7 @@ class CreateRoutes < ActiveRecord::Migration[5.2]
       t.string :markers, null: false
       t.text :description 
       t.text :thumbnail
+      t.text :bounds
       t.timestamps
     end
 

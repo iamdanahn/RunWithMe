@@ -1,23 +1,32 @@
 import {
-  RECEIVE_ROUTES,
-  RECEIVE_ROUTE,
-  REMOVE_ROUTE
-} from '../actions/route_actions';
+	RECEIVE_ROUTES,
+	RECEIVE_ROUTE,
+	REMOVE_ROUTE,
+	CLEAR_ROUTES,
+} from "../actions/route_actions";
 import merge from 'lodash/merge'
+import { LOGOUT_CURRENT_USER } from "../actions/session_actions";
 
 const RoutesReducer = (state = {}, action) => {
-  Object.freeze(state)
-  const { routes, route, routeId } = action
+	Object.freeze(state);
+	const { routesInfo, route, routeId } = action;
 
-  switch (action.type) {
+	switch (action.type) {
 		case RECEIVE_ROUTES:
-			return routes;
+			if (Object.keys(routesInfo).length) {
+				return routesInfo.routes;
+			} else {
+				return state;
+			}
 		case RECEIVE_ROUTE:
-			return merge({}, state, { [route.id]: route });
+			return { [route.id]: route };
 		case REMOVE_ROUTE:
 			const newState = merge({}, state);
 			delete newState[routeId];
 			return newState;
+		case CLEAR_ROUTES:
+		case LOGOUT_CURRENT_USER:
+			return {};
 		default:
 			return state;
 	}

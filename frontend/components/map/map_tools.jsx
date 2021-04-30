@@ -16,37 +16,43 @@ class MapTools extends React.Component {
     // const miles = (distance * 0.000621371).toFixed(2);
 
     return (
-      <div className="map-toolbar-cntr">
-        <div className="tb-1">
-          <label>
-            {" "}
-            Distance
-            <h2>{distance}</h2>
-          </label>
-        </div>
-        <div className="tb-2">
-          <div>
-            <button className="tb-row 1" onClick={undo}>
-              Undo
-            </button>
-            <button className="tb-row 1" onClick={clear}>
-              Clear
-            </button>
-            <button className="tb-row 1" onClick={center}>
-              Center
-            </button>
-          </div>
-          <div>
-            <button className="tb-row 2" onClick={reverse}>
-              Reverse
-            </button>
-            <button className="tb-row 2" onClick={returnHome}>
-              Return
-            </button>
-          </div>
-        </div>
-      </div>
-    )
+			<div className="map-toolbar-cntr">
+				<div className="tb-1">
+					<label>
+						Distance
+						<h2>{distance}</h2>
+					</label>
+				</div>
+				<div className="tb-2">
+					<div className="tb2-row 1">
+						<button className="tb undo" onClick={undo}>
+							<i className="fas fa-undo fa"></i>
+							<p>Undo</p>
+						</button>
+						<button className="tb clear" onClick={clear}>
+							<i className="fas fa-times"></i>
+							<p>Clear</p>
+						</button>
+						<button className="tb center" onClick={center}>
+							<i className="fas fa-compress-arrows-alt"></i>
+							<p>Center</p>
+						</button>
+					</div>
+					<div className="tb2-row 2">
+						<button className="tb reverse" onClick={reverse}>
+							<i className="fas fa-exchange-alt"></i>
+							<p>Reverse</p>
+						</button>
+						<button className="tb return" onClick={returnHome}>
+							<i className="fas fa-sync"></i>
+							<p>
+                Return
+              </p>
+						</button>
+					</div>
+				</div>
+			</div>
+		);
   }
 
 }

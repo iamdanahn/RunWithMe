@@ -13,14 +13,14 @@ class Map extends React.Component {
 			location: this.props.route.location,
 			distance: this.props.route.distance,
 			address: "",
-      thumbnail: this.props.route.thumbnail,
+			thumbnail: this.props.route.thumbnail,
+			bounds: this.props.route.bounds,
 			markers:
 				this.props.route.markers.length > 0
 					? JSON.parse(this.props.route.markers)
 					: this.props.route.markers,
 			formErr: "form-err-hide",
 		};
-
 		this.wayPoints = this.state.markers;
 
 		this.initMap = this.initMap.bind(this);
@@ -35,7 +35,7 @@ class Map extends React.Component {
 		this.reverseMarks = this.reverseMarks.bind(this);
 		this.returnHome = this.returnHome.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-    this.getThumbnailUrl = this.getThumbnailUrl.bind(this);
+		this.getThumbnailUrl = this.getThumbnailUrl.bind(this);
 
 		// enables D.Service - initiates direction request with route() method
 		// Returns DirectionsResult & DirectionsStatus code
@@ -65,7 +65,6 @@ class Map extends React.Component {
 				? this.state.markers[0]
 				: new google.maps.LatLng(40.7362891, -73.9937557);
 
-		 ;
 		this.mapProps = {
 			zoom: 14,
 			center: this.center,
@@ -103,7 +102,6 @@ class Map extends React.Component {
 					lat: position.coords.latitude,
 					lng: position.coords.longitude,
 				};
-				 ;
 				this.map.setCenter(pos);
 			});
 		}
@@ -121,8 +119,6 @@ class Map extends React.Component {
 			location: val,
 			stopover: false,
 		}));
-		 ;
-
 		this.setState({ ["markers"]: this.wayPoints });
 		this.updateLocation();
 
@@ -138,19 +134,19 @@ class Map extends React.Component {
 				if (status === "OK") {
 					// updates distance state
 					const distance = response.routes[0].legs[0].distance.text;
-          let thumbnail = this.getThumbnailUrl(response)
-					
-          this.setState({ 
-            distance: distance,
-            thumbnail: thumbnail
-          });
+					let thumbnail = this.getThumbnailUrl(response);
+					let bounds = response.routes[0].bounds;
 
-					 ;
+					this.setState({
+						distance: distance,
+						thumbnail: thumbnail,
+						bounds: JSON.stringify(bounds),
+					});
 
 					// renders directions that are inside the response
 					this.directionsRenderer.setDirections(response);
 				} else {
-					console.log("Directions failed");
+					console.log("Directions failed, please press undo");
 				}
 			}
 		);
@@ -185,17 +181,17 @@ class Map extends React.Component {
 	// https://developers.google.com/maps/documentation/maps-static/start
 	// =======================
 	getThumbnailUrl(res) {
-    const start = "https://maps.googleapis.com/maps/api/staticmap?"
-    const size = "size=175x175";
+		const start = "https://maps.googleapis.com/maps/api/staticmap?";
+		const size = "size=175x175";
 		const scale = "scale=2";
-    let location = res.routes[0].overview_polyline
-    location = "path=enc:".concat(location);
-    let key = "key=".concat(window.googleAPIKey);
-    let url = []
-    url.push(start, size, scale, location, key);
-    url = url.join("&")
-    return url
-  }
+		let location = res.routes[0].overview_polyline;
+		location = "path=enc:".concat(location);
+		let key = "key=".concat(window.googleAPIKey);
+		let url = [];
+		url.push(start, size, scale, location, key);
+		url = url.join("&");
+		return url;
+	}
 
 	// =======================
 	// search bar on left side of screen
@@ -230,8 +226,6 @@ class Map extends React.Component {
 		// 3. set Marker Object to [], removes all markers in its array
 		if (this.wayPoints.length > 0) {
 			this.wayPoints = [];
-			 ;
-
 			this.setState({ ["distance"]: "0 MI" });
 			this.setState({ ["markers"]: [] });
 
@@ -250,10 +244,6 @@ class Map extends React.Component {
 
 		let latLngBounds = this.directionsRenderer.getDirections().routes[0].bounds;
 		const padding = { top: 500, right: 500, bottom: 500, left: 500 };
-
-		// console.log(
-		//   JSON.stringify(this.directionsRenderer.getDirections().routes[0].bounds),
-		// )
 
 		if (markers.length > 1) {
 			this.map.panToBounds(latLngBounds, padding);
@@ -278,8 +268,6 @@ class Map extends React.Component {
 	// =======================
 
 	update(field) {
-		// console.log(JSON.stringify(this.state.markers));
-
 		return (e) => {
 			this.setState({ [field]: e.currentTarget.value });
 		};
@@ -290,7 +278,6 @@ class Map extends React.Component {
 	// =======================
 
 	formattedState() {
-		 ;
 		const {
 			id,
 			activity,
@@ -299,7 +286,8 @@ class Map extends React.Component {
 			location,
 			markers,
 			name,
-      thumbnail
+			thumbnail,
+			bounds,
 		} = this.state;
 		const strMarkers = JSON.stringify(markers);
 
@@ -311,14 +299,13 @@ class Map extends React.Component {
 			location,
 			distance,
 			markers: strMarkers,
-      thumbnail
+			thumbnail,
+			bounds,
 		};
 	}
 
 	handleSubmit(e) {
 		e.preventDefault();
-		// console.log(this.formattedState())
-
 		if (this.state.name.length === 0) {
 			this.setState({ formErr: "form-err-show" });
 
@@ -329,9 +316,7 @@ class Map extends React.Component {
 		}
 
 		if (this.wayPoints.length > 1) {
-			 ;
 			this.props.action(this.formattedState()).then((response) => {
-				 ;
 				// res is whole action pkg
 				this.props.history.push(`/dashboard`);
 			});
@@ -352,20 +337,18 @@ class Map extends React.Component {
 			formErr,
 		} = this.state;
 		const { action, route, formType } = this.props;
-		 ;
-
 		return (
 			<div className="user-panel">
 				<div className="left-half">
 					<div className="create-route-cntr">
 						<div className="cr-form">
-							<h4>Choose map location</h4>
 							<form
 								className="cr-search-bar"
 								onSubmit={() => this.searchAddress(address)}
 							>
+								<label>Choose map location</label>
 								<input
-									id="geocoder-addr"
+									className="input geocoder"
 									type="text"
 									placeholder="Enter location"
 									value={this.state.address}
@@ -374,12 +357,11 @@ class Map extends React.Component {
 								<button id="geocoder-submit">Search</button>
 							</form>
 
-							<br />
-
-							<form onSubmit={this.handleSubmit}>
+							<form onSubmit={this.handleSubmit} className="cr-route-details">
+								<label>{formType} Route Details</label>
 								<div>
-									<h3>{formType} Route Details</h3>
 									<input
+										className="input route-title"
 										type="text"
 										value={this.state.name}
 										onChange={this.update("name")}
@@ -390,6 +372,7 @@ class Map extends React.Component {
 
 								<div>
 									<select
+										className="input activity"
 										defaultValue={activity}
 										onChange={this.update("activity")}
 									>
@@ -403,7 +386,7 @@ class Map extends React.Component {
 									<span>*</span>
 								</div>
 								<div>
-									<button>Save Route</button>
+									<button id="route-submit">Save Route</button>
 								</div>
 								<div className={formErr}>
 									<h2>Route Title cannot be blank!</h2>

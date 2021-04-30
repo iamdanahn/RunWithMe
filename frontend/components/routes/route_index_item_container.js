@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import { openModal } from "../../actions/modal_actions";
-import { deleteRoute } from "../../actions/route_actions"
+import { openModal, closeModal } from "../../actions/modal_actions";
+import { clearRoutes, deleteRoute } from "../../actions/route_actions";
 import RouteIndexItem from "./route_index_item";
 
 // const msp = (state, ownProps) => {
@@ -12,7 +12,9 @@ import RouteIndexItem from "./route_index_item";
 const mdp = dispatch => {
 	return {
 		openModal: (modal) => dispatch(openModal(modal)),
+		closeModal: () => dispatch(closeModal()),
 		deleteRoute: (routeId) => dispatch(deleteRoute(routeId)),
+		clearRoutes: () => dispatch(clearRoutes()),
 	};
 };
 

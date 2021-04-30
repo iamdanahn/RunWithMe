@@ -2,13 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SessionLinks from './dd_session'
 import RouteLinks from './dd_route'
-import WorkoutLinks from './dd_workouts';
+import CommunityLinks from "./dd_community";
 
 class NavBar extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.handleClick = this.handleClick.bind(this);
+		this.handleLogout = this.handleLogout.bind(this);
+	}
+
+	handleLogout(e) {
+		e.preventDefault();
+		this.props.logout();
 	}
 
 	handleClick(e) {
@@ -19,10 +25,6 @@ class NavBar extends React.Component {
 
 	render() {
 		const { currentUser, logout } = this.props;
-		 ;
-		debugger;
-		// (this.props.location.pathname === "/friends") ? "navbtn selected" : "navbtn"
-		// (this.props.location.pathname.startsWith("/friends")) ? "navbtn selected" : "navbtn"
 
 		return (
 			<div className="masthead">
@@ -42,16 +44,8 @@ class NavBar extends React.Component {
 						}
 					>
 						<button className="navbtn">Routes</button>
-						<RouteLinks currentUser={currentUser} logout={logout} />
+						<RouteLinks currentUser={currentUser} />
 					</div>
-
-					{/* FUTURE FEATURE
-					<div className="dropdown">
-            <button className="navbtn" to="/">
-              Workouts
-            </button>
-            <WorkoutLinks currentUser={currentUser} logout={logout} />
-          </div> */}
 
 					<div
 						className={
@@ -62,34 +56,40 @@ class NavBar extends React.Component {
 						}
 					>
 						<button className="navbtn">Commmunity</button>
-						<div className="dropdown-content">
-							{/* <Link to="/activity_feed">Activity Feed - Pending</Link> */}
-							<Link to="/friends">Friends</Link>
-						</div>
+						<CommunityLinks currentUser={currentUser} />
 					</div>
 
 					<div className="dropdown">
-						<Link
+						<a
 							className="navbtn"
-							to="https://github.com/iamdanahn/RunWithMe"
+							href="https://angel.co/u/daniel-ahn-1"
+							target="_blank"
+							rel="noopener noreferrer"
 						>
-							Github Repo
-						</Link>
+							AngelList
+						</a>
 					</div>
 
 					<div className="dropdown">
-						<Link className="navbtn" to="https://github.com/friesarecurly">
-							Github
-						</Link>
-					</div>
-
-					<div className="dropdown">
-						<Link
+						<a
 							className="navbtn"
-							to="https://www.linkedin.com/in/daniel-ahn-6b34151bb/"
+							href="https://github.com/iamdanahn"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							Github
+						</a>
+					</div>
+
+					<div className="dropdown">
+						<a
+							className="navbtn"
+							href="https://www.linkedin.com/in/daniel-ahn-6b34151bb/"
+							target="_blank"
+							rel="noopener noreferrer"
 						>
 							LinkedIn
-						</Link>
+						</a>
 					</div>
 				</div>
 
@@ -102,12 +102,9 @@ class NavBar extends React.Component {
 								Welcome {currentUser.first_name}!
 							</button>
 							<div className="dropdown-content">
-								{/* <Link to="">Profile and Settings</Link>
-								<Link to="">Connected Apps</Link>
-								<Link to="">Support</Link> */}
-								<Link onClick={logout} to="/">
+								<button className="button-logout" onClick={this.handleLogout}>
 									Logout
-								</Link>
+								</button>
 							</div>
 						</div>
 					</div>

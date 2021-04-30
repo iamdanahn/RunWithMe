@@ -3,11 +3,12 @@ import * as RouteAPIUtil from '../util/run_route_api_util'
 export const RECEIVE_ROUTES = "RECEIVE_ROUTES";
 export const RECEIVE_ROUTE = 'RECEIVE_ROUTE';
 export const REMOVE_ROUTE = 'REMOVE_ROUTE'
+export const CLEAR_ROUTES = "CLEAR_ROUTES";
 
-const receiveRoutes = (routes) => {
+const receiveRoutes = (routesInfo) => {
   return ({
     type: RECEIVE_ROUTES,
-    routes
+    routesInfo
   })
 }
 
@@ -25,11 +26,17 @@ const removeRoute = (routeId) => {
   })
 }
 
+export const clearRoutes = () => {
+	return {
+		type: CLEAR_ROUTES,
+	};
+};
+
 export const fetchRoutes = (userId) => {
   return dispatch => {
-    return RouteAPIUtil.fetchRoutes(userId).then(routes => {
-      return dispatch(receiveRoutes(routes))
-    })
+    return RouteAPIUtil.fetchRoutes(userId).then((routesInfo) => {
+			return dispatch(receiveRoutes(routesInfo));
+		});
   }
 }
 export const fetchRoute = (routeId) => {
@@ -59,7 +66,7 @@ export const updateRoute = (route) => {
 export const deleteRoute = (routeId) => {
   return dispatch => {
     return RouteAPIUtil.deleteRoute(routeId).then(route => {
-      return dispatch(removeRoute(route.id))
-    })
+			return dispatch(removeRoute(routeId));
+		})
   }
 }

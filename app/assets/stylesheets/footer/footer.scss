@@ -1,0 +1,140 @@
+.footer-main-cntr a {
+  color: #9DA0A2;
+  cursor: pointer;
+
+  &:hover, &:focus {
+    text-decoration: underline;
+    color: white;
+  }
+}
+
+.f1-bg, .f2-bg, .f3-bg, .f4-bg {
+  display: flex;
+  justify-content: center;
+}
+
+.f1-cntr, .f2-cntr, .f3-cntr, .f4-cntr {
+  display: flex;
+  min-width: 64em;
+  position: relative;
+}
+  
+//============================
+// Footer 1 - Track every mile
+//============================
+.f1-bg {
+  height: 40%;
+}
+.f1-cntr {
+  justify-content: flex-end;
+
+  div {
+    text-align: right;
+    width: 300px;
+    line-height: 20px;
+  }
+  p {
+    font-style: italic;
+  }
+}
+
+//============================
+// Footer 2 - Logo, Ride Walk Fitness
+//============================
+
+.f2-bg {
+  background-color: #F0F2F4;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+}
+
+.f2-content{
+  margin: 0 0 0 140px;
+  display: flex;
+  box-sizing: border-box;
+  position: relative;
+  align-items: center;
+}
+
+.f2c-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 30em;
+  margin-left: 10%;
+
+  .f2 {
+    color: #9297A3;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 5px;
+  }
+}
+
+//============================
+// Footer 3 - Phone, social, help, about us
+//============================
+
+.f3-bg {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-image: image-url('footer-bg.png');
+  height: 100%;
+}
+
+.f3-content {
+  display: flex;
+  margin: 0 0 0 140px;
+
+  // iphone image
+  img {
+    position: absolute;
+    display: block;
+    top: -140px;
+    left: 0;
+  }
+}
+.f3c-right {
+  display: flex;
+  flex-direction: row;
+  color: white;
+
+  .f3cr {
+    width: 188px;
+    padding-left: 20px;
+    margin: 20px 0;
+    color: #9DA0A2;
+  
+    li {
+      margin-bottom: 5px;
+    }
+  }
+  .f3cr.social {
+    width: 80px;
+  }
+  
+}
+
+.f3cr-link-headers {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
+  margin-bottom: 5px;
+}
+
+//============================
+// Footer 4 - Copyright/etc
+//============================
+.f4-bg {
+  height: 40%;
+}
+.f4-cntr {
+  justify-content: center;
+  padding: 20px 0;
+}

@@ -1,17 +1,13 @@
 class Api::CommentsController < ApplicationController
 
-  # need comments related to the instance only
   def index
     comment_id = comment_params[:commentable_id].to_i
-    #grabs all comments in database
-    # @comments = Comment.all
     
-      # grabs all ROUTE comments and preloads User table (rids N+1)
+    # need comments related to the instance only
+    # grabs all ROUTE comments and preloads User table (rids N+1)
     @comments = Comment.where("commentable_type ILIKE 'Route'").where(commentable_id: comment_id).includes(:user)
   end
-
-  # try a .includes with association name
-
+  # SQL version
   # SELECT *
   # FROM Comment
   # JOIN User
@@ -39,11 +35,13 @@ class Api::CommentsController < ApplicationController
   
   def destroy
     # limits delete to only current users comments
-    @comment = current_user.comments.find(params[:id])
+    # @comment = current_user.comments.find(params[:id])
+    @comment = Comment.find(params[:id])
+    route_owner = @comment.commentable.creator_id
+    @routes = User.find(route_owner).routes
 
     if @comment 
       @comment.destroy
-      # render 'api/comments/show'
     else
       render json: @comment.errors.full_messages, status: 422
     end

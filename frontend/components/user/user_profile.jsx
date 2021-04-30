@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import ProfileItems from "./user_profile_items";
+import ActivityFeed from "./activity_feed";
 
 // for showing User info and activity feed
 class UserProfile extends React.Component {
@@ -10,26 +10,53 @@ class UserProfile extends React.Component {
 
 	componentDidMount() {
 		const id = parseInt(this.props.match.params.id);
-		this.props.fetchUser(id);
 		this.props.fetchRoutes(id);
+		this.props.fetchUser(id);
+		// const routes = Object.keys(this.props.routes);
+		// this.props.fetchComments(routes);
 	}
 
 	componentDidUpdate(prevProps) {
+		// checks if url changed, if yes, update
 		if (this.props.match.params.id !== prevProps.match.params.id) {
-			this.props.fetchUser(this.props.match.params.id);
 			this.props.fetchRoutes(this.props.match.params.id);
+			this.props.fetchUser(this.props.match.params.id);
 		}
+	}
+	componentWillUnmount() {
+		// this.props.clearRoutes();
+		// this.props.clearComments();
 	}
 
 	render() {
-		const { deleteComment, userProfile, routes, fetchRoutes } = this.props;
+		const {
+			comments, commentErrors, clearErrors, deleteComment,
+			createComment, userProfile, currentUser, routes, fetchRoutes,
+		} = this.props;
 
 		if (userProfile.id !== parseInt(this.props.match.params.id)) return null;
 
+		let activityFeed;
+		if (routes.length > 0) {
+			activityFeed = (
+				<ActivityFeed
+					userProfile={userProfile}
+					currentUser={currentUser}
+					routes={routes}
+					deleteComment={deleteComment}
+					createComment={createComment}
+					comments={comments}
+					commentErrors={commentErrors}
+					clearErrors={clearErrors}
+					fetchRoutes={fetchRoutes}
+				/>
+			);
+		} else {
+			activityFeed = <h3>This user has not logged any routes yet!</h3>;
+		}
+
 		const date = new Date(userProfile.created_at);
 		const joinYear = date.getFullYear();
-
-		debugger;
 
 		// entire profile page
 		return (
@@ -57,16 +84,8 @@ class UserProfile extends React.Component {
 						</div>
 					</header>
 					<section className="up-feed">
-						List of runs
 						<div>
-							<ul>
-								<ProfileItems
-									userProfile={userProfile}
-									routes={routes}
-									deleteComment={deleteComment}
-									fetchRoutes={fetchRoutes}
-								/>
-							</ul>
+							<ul>{activityFeed}</ul>
 						</div>
 					</section>
 				</div>

@@ -73,35 +73,37 @@ class FriendFind extends React.Component {
     })
 
     return (
-      <div className="friends-bg">
-        <div className="friends-cntr">
-          <section className="friends-header">
-            <Link to="/friends" className={selected1}>
-              My Friends
-            </Link>
-            <Link to="/friends/find" className={selected2}>
-              Find Friends
-            </Link>
-          </section>
-          
-          <section className="friends-body">
-            <h3>
-              Find RunWithMe Friends by First Name, Last Name, or Email:
-            </h3>
-            <form onSubmit={this.handleSubmit}>
-              <div className="input-cntr">
-                <input type="text" onChange={this.handleChange}></input>
-              </div>
-              <div className="button-cntr">
-                <button>Search</button>
-              </div>
-            </form>
+			<div className="friends-bg">
+				<div className="friends-cntr">
+					<section className="friends-header">
+						<Link to="/friends" className={selected1}>
+							My Friends
+						</Link>
+						<Link to="/friends/find" className={selected2}>
+							Find Friends
+						</Link>
+					</section>
 
-            <ul>{members}</ul>
-          </section>
-        </div>
-      </div>
-    )
+					<section className="friends-body">
+						<h3>Find RunWithMe Friends by First Name, Last Name, or Email:</h3>
+						<form onSubmit={this.handleSubmit}>
+							<div className="input-cntr">
+								<input
+									type="text"
+									onChange={this.handleChange}
+									placeholder="Enter a search or click 'search' to see all users"
+								></input>
+							</div>
+							<div className="button-cntr">
+								<button>Search</button>
+							</div>
+						</form>
+
+						<ul>{members}</ul>
+					</section>
+				</div>
+			</div>
+		);
   }
 }
 

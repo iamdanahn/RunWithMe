@@ -51,10 +51,8 @@ export const fetchFriends = () => {
 
 // finds people from Back end
 export const findFriends = (criteria) => {
-  return (dispatch) => {
-     
+  return (dispatch) => {     
     return FriendsAPIUtil.findFriends(criteria).then((people) => {
-       
       return dispatch(receivePeople(people))
     })
   }

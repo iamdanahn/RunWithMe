@@ -3,21 +3,196 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .route-show-cntr {
-  max-width: 1320px;
-  padding: 20px 0 85px 0;
-  margin: auto;
-  background: #F9F9F9;
+	background: #f9f9f9;
+	margin: auto;
 
-  .rs-body {
-    display: flex;
-    flex-direction: column;
+	.rs-body {
+		display: block;
+		width: 1320px;
+		height: 785px;
+		padding: 0 0 85px 0;
+		margin: auto;
+		position: relative;
+	}
 
-    .bar {
+	.rs-header {
+		position: absolute;
+		width: 100%;
+		z-index: 1 ;
+		background-color: rgba(255, 255, 255, 0.7);
+		backdrop-filter: blur(4px);
+		box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+		display: flex;
+		justify-content: center;
+	}
+
+	.rs-header-content {
+		width: 75%;
+	}
+
+  //=================
+  // Header - username
+  //==================
+	.rs-top-1 {
+		display: flex;
+		margin-top: 16px;
+    align-items: center;
+    
+		.rst1-name {
+			font-size: 13px;
+
+      &:hover {
+        cursor: pointer;
+      }
+		}
+		.rst1-filler {
+			height: 20px;
+			margin-left: 10px;
+			border-left: 1px solid #9297a3;
+		}
+		.rst1-globe {
+			color: darkslategray;
+			width: 14px;
+			height: 14px;
+			margin: 0 6px 0 8px;
+		}
+		.rst1-status {
+			color: darkslategray;
+			font-size: 13px;
+			font-weight: 500;
+		}
+	}
+
+  //=================
+  // Header - route info
+  //==================  
+	.rs-top-2 {
+		display: flex;
+		margin-bottom: 14px;
+    align-items: center;
+
+    .rst2 {
+      color: white;
+      height: 22px;
+      font-size: 13px;
+      margin: 10px 4px 0 2px;
+      font-weight: 700;
+      text-transform: uppercase;
+      background-color: #15a8e6;
+      border-radius: 14px;
       display: flex;
-      margin-right: 12px;
-      justify-content: flex-end;
+      align-items: center;
+
+      div {
+        margin: 0 10px;
+      }
+      .fas.fa-map-marker-alt, .fas.fa-route {
+        color: white;
+        margin-right: 5px;
+      }
+    }
+	}
+
+
+  //=================
+  // Header - route title
+  //==================
+	.rs-top-3 {
+		font-size: 38px;
+		line-height: 1.1;
+		color: #222628;
+		font-weight: 900;
+		text-transform: uppercase;
+	}
+
+
+  //=================
+  // Header - bottom bar
+  //==================
+  .rs-bottom-cntr {
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+    justify-content: space-between;
+    position: relative;
+    bottom: -25px;
+    height: 48px;
+    color: black;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+    background: white;
+    margin: auto;
+
+    
+    .rs-bottom-content {
+      min-width: 146px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-right: 1px solid black;
+      
+      &:last-child  {
+        border: none;
+      }
+
+      .edit-link {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+        font-weight: bold;
+
+        &:hover, &:focus {
+          color: #0076C0;
+          font-size: 16px;
+        }
+      }
+    }
+
+
+    .coords-cntr, .center-cntr, .rsb-create-date  {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      font-weight: bold;
+      font-size: 15px;
+
+      h4 {
+        font-size: 14px;
+      }
+
+      .coords {
+        display: flex;
+        justify-content: space-between;
+
+        span {
+          padding-right: 7px;
+        }
+      }
+
+      .center-content {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        color: #15A8E6
+      }
     }
   }
 
 
+  //=================
+  // Map container
+  //==================
+	.map-cntr {
+		position: relative;
+		width: 100%;
+		height: 100%;
+
+		#rs-map {
+			height: 100%;
+			width: 100%;
+			overflow: hidden;
+		}
+	}
 }

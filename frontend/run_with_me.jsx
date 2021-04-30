@@ -2,17 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import configureStore from "./store/store";
 import Root from './components/root'
-
-import { fetchRoutes } from './actions/route_actions'
-// import { login, logout, createNewUser } from './util/session_api_util'
-
-// window.login = login
-// window.logout = logout
-// window.createNewUser = createNewUser
+import { fetchRoutes } from "./actions/route_actions";
 
 document.addEventListener("DOMContentLoaded", () => {
 	const root = document.getElementById("root");
-	
+
 	let store;
 	if (window.currentUser) {
 		const preloadedState = {
@@ -26,11 +20,12 @@ document.addEventListener("DOMContentLoaded", () => {
 	} else {
 		store = configureStore();
 	}
-	
-	// TESTING
-	window.getState = store.getState;
-	window.dispatch = store.dispatch;
-	window.fetchRoutes = fetchRoutes;
-	// REMOVE AFTER TEST
-	ReactDOM.render(<Root store={store}/>, root);
+
+	// // TESTING
+	// window.getState = store.getState;
+	// window.dispatch = store.dispatch;
+	// window.fetchRoutes = fetchRoutes;
+	// // REMOVE AFTER TEST
+
+	ReactDOM.render(<Root store={store} />, root);
 });

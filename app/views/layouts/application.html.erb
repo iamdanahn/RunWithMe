@@ -5,6 +5,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/iamdanahn/RunWithMe/main/public/favicon.ico">
+
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAPS_API_KEY']}&libraries=places" %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
@@ -21,10 +23,12 @@
     
     <script src="https://kit.fontawesome.com/b9d2927a3f.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
-      window.logoURL = "<%= image_url('FSP-logo.png') %>";
-      window.splash1a = "<%= image_url('Splash1-v2.jpg') %>";
-      window.splash1b = "<%= image_url('Splash-lblu.png') %>";
-      window.splash1c = "<%= image_url('Splash-dblu.png') %>";
+      window.logoURL = "<%= image_url('logo-f2-64.png') %>";
+      window.splash1c = "<%= image_url('Splash1-dblu.png') %>";
+      window.footerPhone = "<%= image_url('footer-phone.png') %>"
+      window.footerBg = "<%= image_url('footer-bg.png') %>"
+      window.footerLogo = "<%= image_url('logo-f2-48.png') %>"
+      window.splash2r = "<%= image_url('Splash2-right-mod.png') %>"
 
       window.googleAPIKey = "<%= Rails.application.credentials.google[:api_key] %>"
     </script>
@@ -33,17 +37,6 @@
       @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
     </style>
 
-    <% if current_user %>
-      <script>
-        window.currentUser = {
-        "id": <%= current_user.id %>,
-        "first_name": "<%= current_user.first_name %>",
-        "last_name": "<%= current_user.last_name %>",
-        "email": "<%= current_user.email %>",
-        "created_at": "<%= current_user.created_at %>",
-        };
-      </script>
-    <% end %> 
   </head>
 
   <body>

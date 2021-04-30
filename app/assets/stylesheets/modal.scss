@@ -26,12 +26,15 @@
 
   .modal-btns {
     text-align: center;
+    display: flex;
+    flex-direction: row;
 
     .modal-btns-ok {
       box-sizing: border-box;
       padding: 8px 24px;
       margin: 0 15px 0 0 ;
       background: #009CE9;
+      transition: 250ms;
       font-size: 13px;
       border: 0;
       cursor: pointer;
@@ -39,9 +42,11 @@
       border-radius: 4px;
       height: 38px;
       color: white;
+      font-weight: bolder;
 
       &:hover {
         background: rgb(0, 109, 163);
+        transition: 250ms;
       }
 
       &:focus {
@@ -52,6 +57,7 @@
       box-sizing: border-box;
       padding: 8px 24px;
       background: #eeeeee;
+      transition: 250ms;
       font-size: 13px;
       border: 0;
       cursor: pointer;
@@ -59,9 +65,11 @@
       border-radius: 4px;
       height: 38px;
       color: black;
+      font-weight: bolder;
 
       &:hover {
         background: #d5d5d5;
+        transition: 250ms;
       }
       &:focus {
         outline: none

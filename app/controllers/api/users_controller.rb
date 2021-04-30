@@ -1,6 +1,5 @@
 class Api::UsersController < ApplicationController
 
-
   # I used friendship's user search here because we want to search 
   # all existing users in the App's database
   def index
@@ -18,11 +17,15 @@ class Api::UsersController < ApplicationController
     # current user and friends
 
     unless term[:search].empty?
-      #  
       # ILIKE matches case-INSENSITIVELY
-      @users = User.where("first_name ILIKE :term OR last_name ILIKE :term OR email ILIKE :term", {term: "%#{term[:search].downcase}%"}) #.downcase is not necessary here, but added for double-security
+      @users = User.where.not(id: insiders_ids)
+        .where(
+        "first_name ILIKE :term 
+        OR last_name ILIKE :term 
+        OR email ILIKE :term", 
+        {term: "%#{term[:search].downcase}%"}
+      ) #.downcase is not necessary here, but added for double-security
     else
-      #  
       # @users = User.all
       # User.where.not("id IN (1, 2, 3)") works, will return users who are not in the array
       @users = User.where.not(id: insiders_ids)
@@ -32,7 +35,6 @@ class Api::UsersController < ApplicationController
 
   def show
     # @user = User.where(id: params[:id]).includes(:routes)
-    #  
     @user = User.find(params[:id])
     # @routes = @user.routes
   end

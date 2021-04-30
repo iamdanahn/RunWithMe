@@ -16,7 +16,6 @@ class Api::FriendRequestsController < ApplicationController
       # create pending status as true
       # save friend_request object
       # do this for both parties
-
        
     if current_user.id == request_params[:requester_id].to_i #enters as a string
       @request = FriendRequest.new(request_params) #prepopulate on FE
@@ -26,14 +25,11 @@ class Api::FriendRequestsController < ApplicationController
         @request[:pending] = true
          
         if @request.save
-           
           render "/api/friend_requests/show"
         else
-           
           render json: @request.errors.full_messages, status: 422
         end
       else
-         
         render json: ["You're already friends or pending request!"]
       end
     end

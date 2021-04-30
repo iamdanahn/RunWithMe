@@ -3,15 +3,18 @@ import { Link } from "react-router-dom";
 import Modal from "../../modal/modal";
 
 class RouteIndexItem extends React.Component {
-  constructor(props) {
-    super(props)
-  }  
+	constructor(props) {
+		super(props);
+	}
 
-  render(){
-		const { route, deleteRoute, openModal } = this.props;
-		debugger;
-		let month = new Date(route.created_at).getMonth();
-		let day = new Date(route.created_at).getDay();
+	// componentWillUnmount() {
+	// 	this.props.clearRoutes();
+	// }
+
+	render() {
+		const { route, deleteRoute, openModal, closeModal } = this.props;
+		let month = new Date(route.created_at).getMonth() + 1;
+		let day = new Date(route.created_at).getDate();
 		let year = new Date(route.created_at).getFullYear();
 
 		let activity =
@@ -53,7 +56,9 @@ class RouteIndexItem extends React.Component {
 							Delete
 						</a>
 					</div>
-					<Modal deleteRoute={() => deleteRoute(route.id)} />
+					<Modal
+						deleteRoute={() => deleteRoute(route.id).then(() => closeModal())}
+					/>
 				</td>
 			</tr>
 		);
