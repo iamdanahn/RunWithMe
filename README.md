@@ -46,12 +46,19 @@ A MapMyRun clone allowing a user to track and share workouts, goals, and running
   - Autocompletes an address as the user types into the address search bar
 
 ## Search/Add friends
+<<<<<<< HEAD
 - Users are able to search specific or all users (for sake of convenience)
 - Friends or current user will not show up in user searches
 
 ## Comment on runs or routes
 - Anyone can comment on routes posted
 - Only the author can delete their own comments
+=======
+- Search for other users and add them to your friends list
 
-## Track workouts
-Coming soon
+## Comment on runs or routes
+- Write comments on your or your friends running routes
+>>>>>>> 2c04054b4417baa8ab5d195042e635242f334fe6
+
+## Track runs or routes
+- See your saved routes on the dashboard
