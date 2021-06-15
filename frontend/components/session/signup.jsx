@@ -29,19 +29,12 @@ class Signup extends React.Component {
 
 	formattedState() {
 		const {
-			first_name,
-			last_name,
-			email,
-			password,
-			bday,
-			bmonth,
-			byear,
-			gender,
+			first_name, last_name, email, password,
+			bday, bmonth, byear, gender,
 		} = this.state;
+		
 		return {
-			first_name,
-			last_name,
-			email,
+			first_name, last_name, email,
 			password,
 			birthday: `${byear}-${bmonth}-${bday}`,
 			gender,
@@ -55,6 +48,7 @@ class Signup extends React.Component {
 		};
 	}
 
+	// for login link
 	handleClick(e) {
 		e.preventDefault();
 		this.props.clearErrors([]);

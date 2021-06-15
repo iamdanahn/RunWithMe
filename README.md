@@ -21,6 +21,8 @@ A MapMyRun clone allowing a user to track and share workouts, goals, and running
   * React
   * Redux
   * Google Maps APIs
+* Heroku
+* GitHub
 
 ## User Authentication
 - Users can signup or demo login to browse the website
@@ -44,10 +46,12 @@ A MapMyRun clone allowing a user to track and share workouts, goals, and running
   - Autocompletes an address as the user types into the address search bar
 
 ## Search/Add friends
-Coming soon
+- Users are able to search specific or all users (for sake of convenience)
+- Friends or current user will not show up in user searches
 
 ## Comment on runs or routes
-Coming soon
+- Anyone can comment on routes posted
+- Only the author can delete their own comments
 
 ## Track workouts
 Coming soon

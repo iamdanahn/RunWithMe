@@ -57,6 +57,9 @@ class Map extends React.Component {
 		}
 	}
 
+	//====================
+	// Iinitialize map onto the page
+	//====================
 	initMap() {
 		// get default position
 
@@ -90,21 +93,6 @@ class Map extends React.Component {
 
 			this.renderMarkers();
 		});
-	}
-
-	// =======================
-	// obtains user's current position if allowed on browser
-	// =======================
-	usersPosition() {
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition((position) => {
-				const pos = {
-					lat: position.coords.latitude,
-					lng: position.coords.longitude,
-				};
-				this.map.setCenter(pos);
-			});
-		}
 	}
 
 	// =======================
@@ -173,6 +161,21 @@ class Map extends React.Component {
 					}
 				}
 			);
+		}
+	}
+
+	// =======================
+	// obtains user's current position if allowed on browser
+	// =======================
+	usersPosition() {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition((position) => {
+				const pos = {
+					lat: position.coords.latitude,
+					lng: position.coords.longitude,
+				};
+				this.map.setCenter(pos);
+			});
 		}
 	}
 

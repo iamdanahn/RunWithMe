@@ -5,7 +5,6 @@ class Api::UsersController < ApplicationController
   def index
       #search terms
     term = user_params
-    #  
 
     user_id = current_user.id
     user_friends = current_user.friends.ids
@@ -63,13 +62,8 @@ class Api::UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(
-      :first_name, 
-      :last_name, 
-      :password, 
-      :email, 
-      :birthday, 
-      :gender, 
-      :search
+      :first_name, :last_name, :password, 
+      :email, :birthday, :gender, :search
       )
   end
 

@@ -21,9 +21,11 @@ class User < ApplicationRecord
   validates :email, :session_token, uniqueness: true
   validates :password, length: {minimum: 6, allow_nil: true}
   after_initialize :ensure_session_token
-
-  # Add associations
+  
+  ######
+  # ADD ASSOCIATIONS
   # Route / Friends / Comments / Cheers / Goal
+  ######
 
   has_many :routes,
     foreign_key: :creator_id,
@@ -40,18 +42,21 @@ class User < ApplicationRecord
     foreign_key: :requester_id,
     class_name: :FriendRequest
   
-    # shows who received friend_requests, used to show pending requests
+  # shows who received friend_requests, used to show pending requests
   has_many :receivers, through: :friend_requests
 
   # reg assciation to comments
   has_many :comments
 
-
   has_many :cheers, as: :cheerable
   has_many :goals,
     foreign_key: :user_id,
     class_name: :Goal
+
     
+  #####
+  # METHODS
+  #####
 
   def self.find_by_credentials(email, pw)
     user = User.find_by(email: email)

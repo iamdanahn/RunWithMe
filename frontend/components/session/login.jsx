@@ -13,7 +13,6 @@ class Login extends React.Component {
 		this.handleDemoLogin = this.handleDemoLogin.bind(this);
 	}
 
-
 	componentWillUnmount() {
 		const errors = [];
 		this.props.clearErrors(errors)
@@ -40,7 +39,6 @@ class Login extends React.Component {
 		this.props
 			.loginDemo().then(() => this.props.history.push("/dashboard"))
 	}
-
 
 
 	render() {

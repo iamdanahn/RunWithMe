@@ -5,6 +5,12 @@ class BirthDay extends Component {
 	render() {
 		const { errors } = this.props;
 
+		// let dayList
+		// for (let day = 0; day <= 31; day++) {
+		// 	document.querySelector()
+		// 	dayList = <option value={`${day}`}> {day} </option>;
+		// }
+
     return (
 			<div className="input bday">
 				<div className="day">
@@ -15,7 +21,8 @@ class BirthDay extends Component {
 						className= {errors['birthday'] ? "err-border" : ""}
 					>
 						<option value="day"> Day </option>
-						<option value="1"> 1 </option>
+						{dayList}
+						{/* <option value="1"> 1 </option>
 						<option value="2"> 2 </option>
 						<option value="3"> 3 </option>
 						<option value="4"> 4 </option>
@@ -45,7 +52,7 @@ class BirthDay extends Component {
 						<option value="28"> 28 </option>
 						<option value="29"> 29 </option>
 						<option value="30"> 30 </option>
-						<option value="31"> 31 </option>
+						<option value="31"> 31 </option> */}
 					</select>
 				</div>
 				<div className="month">
