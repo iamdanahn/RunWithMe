@@ -29,14 +29,16 @@ A MapMyRun clone allowing a user to track and share workouts, goals, and running
 - BCrypt on the backend to store encrypted passwords, never users actual passwords!
 
 Login:
+
 ![Login](https://raw.githubusercontent.com/iamdanahn/RunWithMe/main/app/assets/images/LogIn.png)
 
 Sign Up:
+
 ![SignUp](https://raw.githubusercontent.com/iamdanahn/RunWithMe/main/app/assets/images/SignUp.png)
 
 
 ## Create/Edit a route
-- Used several Google Maps APIs (Autocomplete (PENDING), Directions, Geocoding, Maps JS) to create a seamless map environment
+- Used several Google Maps APIs (Autocomplete, Directions, Geocoding, Maps JS) to create a seamless map environment
 
 - Google Maps JS API
   - Allows rendering of a Google map to view the world
@@ -50,13 +52,21 @@ Sign Up:
 - Autocomplete API (PENDING)
   - Autocompletes an address as the user types into the address search bar
 
+![Create route map](https://raw.githubusercontent.com/iamdanahn/RunWithMe/main/app/assets/images/RunWithMe.png)
+
 ## Search/Add friends
 - Users are able to search specific or all users (for sake of convenience)
 - Friends or current user will not show up in user searches
+
+![Search bar for friends]()
 
 ## Comment on runs or routes
 - Anyone can comment on routes posted
 - Only the author can delete their own comments
 
+![Route comments]()
+
 ## Track runs or routes
 - See your saved routes on the dashboard
+
+![Dashboard to see saved routes]()
