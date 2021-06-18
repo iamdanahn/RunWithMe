@@ -58,15 +58,15 @@ Sign Up:
 - Users are able to search specific or all users (for sake of convenience)
 - Friends or current user will not show up in user searches
 
-![Search bar for friends]()
+![Search bar for friends](https://raw.githubusercontent.com/iamdanahn/RunWithMe/main/app/assets/images/FindFriends.png)
 
 ## Comment on runs or routes
 - Anyone can comment on routes posted
 - Only the author can delete their own comments
 
-![Route comments]()
+![Route comments](https://raw.githubusercontent.com/iamdanahn/RunWithMe/main/app/assets/images/RouteComments.png)
 
 ## Track runs or routes
 - See your saved routes on the dashboard
 
-![Dashboard to see saved routes]()
+![Dashboard to see saved routes](https://raw.githubusercontent.com/iamdanahn/RunWithMe/main/app/assets/images/Dashboard.png)
