@@ -29,7 +29,7 @@ A MapMyRun clone allowing a user to track and share workouts, goals, and running
 - BCrypt on the backend to store encrypted passwords, never users actual passwords!
 
 Login:
-![Login](https://raw.githubusercontent.com/iamdanahn/RunWithMe/main/app/assets/images/Login.png)
+![Login](https://raw.githubusercontent.com/iamdanahn/RunWithMe/main/app/assets/images/LogIn.png)
 
 Sign Up:
 ![SignUp](https://raw.githubusercontent.com/iamdanahn/RunWithMe/main/app/assets/images/SignUp.png)
