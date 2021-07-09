@@ -69,6 +69,7 @@ class Login extends React.Component {
 							<input
 								className={errPresent ? "input err-border" : "input login"}
 								type="email"
+								name="email"
 								value={this.state.email}
 								onChange={this.update("email")}
 								placeholder="Email"
@@ -81,6 +82,7 @@ class Login extends React.Component {
 							<input
 								className={errPresent ? "input err-border" : "input login"}
 								type="password"
+								name="password"
 								value={this.state.password}
 								onChange={this.update("password")}
 								placeholder="Password"
