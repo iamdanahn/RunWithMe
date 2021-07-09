@@ -13,6 +13,7 @@ class RouteIndexItem extends React.Component {
 
 	render() {
 		const { route, deleteRoute, openModal, closeModal } = this.props;
+
 		let month = new Date(route.created_at).getMonth() + 1;
 		let day = new Date(route.created_at).getDate();
 		let year = new Date(route.created_at).getFullYear();

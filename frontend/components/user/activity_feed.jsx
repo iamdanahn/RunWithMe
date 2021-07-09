@@ -22,8 +22,6 @@ class ActivityFeed extends React.Component {
 		this.setState({ routeIdx: {} });
 	}
 
-
-
 	renderComments(routeId) {
 		let showRoutes = Object.assign({}, this.state.routeIdx);
 
@@ -140,17 +138,6 @@ class ActivityFeed extends React.Component {
 					</li>
 				);
 			});
-			//==========================================
-
-			// comment error div
-			// let commentError = null;
-			// if (this.state.showError) {
-			// 	commentError = (
-			// 		<div className="comment-errors-cntr">
-			// 			<p className="comment-error"> Please enter some text. </p>
-			// 		</div>
-			// 	);
-			// }
 
 			let feedComments = null;
 			if (this.state.routeIdx[route.id]) {

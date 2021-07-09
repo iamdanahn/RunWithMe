@@ -3,6 +3,7 @@ import React from "react";
 class FeedComments extends React.Component {
 	render() {
 		const { handleSubmit, route, routeComments, update } = this.props;
+
 		return (
 			<div className="comment-hide">
 				<div className="comments-lower-cntr">
