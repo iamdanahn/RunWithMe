@@ -23,9 +23,8 @@ export default function Login({ clearErrors, errors, login, loginDemo }) {
 	const update = (field) => {
 		return (e) => {
 			e.target.className = "input";
-
-      const newValues = { ...values, [e.target.name]: e.target.value };
-      setValues(newValues);      
+			const newValues = { ...values, [e.target.name]: e.target.value };
+			setValues(newValues);      
 		};
 	};
 
