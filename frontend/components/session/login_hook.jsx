@@ -7,9 +7,9 @@ export default function Login({ clearErrors, errors, login, loginDemo }) {
 		password: "",
 	});
 
-  const {email, password } = values;
-  const history = useHistory();
-  const errPresent = errors.length > 0;
+	const {email, password } = values;
+	const history = useHistory();
+	const errPresent = errors.length > 0;
 
 	useEffect(() => {
 		//used only for unmounting
