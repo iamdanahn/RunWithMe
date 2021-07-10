@@ -14,7 +14,7 @@ const mdp = (dispatch) => {
 	return {
 		loginDemo: () => dispatch(login(demo)),
 		createNewUser: (formUser) => dispatch(createNewUser(formUser)),
-    clearErrors: (errors) => dispatch(receiveSessionErrors(errors))
+		clearErrors: (errors) => dispatch(receiveSessionErrors(errors))
 	};
 };
 
