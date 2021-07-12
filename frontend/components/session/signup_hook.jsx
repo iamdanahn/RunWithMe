@@ -24,7 +24,7 @@ export default function Signup({ errors, clearErrors, loginDemo, createNewUser})
 			const errors = [];
 			clearErrors(errors);
 		};
-	});   
+	}, []);   
 
     const formattedState = () => {
         return {
@@ -81,8 +81,9 @@ export default function Signup({ errors, clearErrors, loginDemo, createNewUser})
 						<input
 							type="text"
 							value={first_name}
+                            name="first_name"
 							onChange={update("first_name")}
-							placeholder="First name"
+							placeholder="First name HOOK"
 							required
 							className={errors["first"] ? "input err-border" : "input"}
 						/>
@@ -93,6 +94,7 @@ export default function Signup({ errors, clearErrors, loginDemo, createNewUser})
 								className={errors["last"] ? "input err-border" : "input"}
 								type="text"
 								value={last_name}
+                                name="last_name"
 								onChange={update("last_name")}
 								placeholder="Last name"
 								required
@@ -105,6 +107,7 @@ export default function Signup({ errors, clearErrors, loginDemo, createNewUser})
 								className={errors["email"] ? "input err-border" : "input"}
 								type="email"
 								value={email}
+                                name="email"
 								onChange={update("email")}
 								placeholder="Email"
 								required
@@ -118,6 +121,7 @@ export default function Signup({ errors, clearErrors, loginDemo, createNewUser})
 								className={errors["password"] ? "input err-border" : "input"}
 								type="password"
 								value={password}
+                                name="password"
 								onChange={update("password")}
 								placeholder="Password"
 								required
@@ -156,7 +160,7 @@ export default function Signup({ errors, clearErrors, loginDemo, createNewUser})
 					</div>
 					<div className="auth-form errors">{errors.gender}</div>
 					<br />
-					<button className="btn" onClick={this.handleSubmit}>
+					<button className="btn" onClick={handleSubmit}>
 						SIGN UP
 					</button>
 				</form>

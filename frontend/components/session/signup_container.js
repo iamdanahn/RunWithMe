@@ -10,7 +10,7 @@ const msp = (state, ownProps) => {
 
 const mdp = (dispatch) => {
 	const demo = ({email: 'demo@demo.com', password:'123456'})
-
+	debugger
 	return {
 		loginDemo: () => dispatch(login(demo)),
 		createNewUser: (formUser) => dispatch(createNewUser(formUser)),

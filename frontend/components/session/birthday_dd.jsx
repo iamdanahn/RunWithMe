@@ -15,7 +15,7 @@ class BirthDay extends Component {
 			<div className="input bday">
 				<div className="day">
 					<select
-						name="DOBDay"
+						name="bday"
 						onChange={this.props.update("bday")}
 						defaultValue="Day"
 						className= {errors['birthday'] ? "err-border" : ""}
@@ -57,7 +57,7 @@ class BirthDay extends Component {
 				</div>
 				<div className="month">
 					<select
-						name="DOBMonth"
+						name="bmonth"
 						onChange={this.props.update("bmonth")}
 						defaultValue="Month"
 						className= {errors['birthday'] ? "err-border" : ""}
@@ -79,7 +79,7 @@ class BirthDay extends Component {
 				</div>
 				<div className="year">
 					<select
-						name="DOBYear"
+						name="byear"
 						onChange={this.props.update("byear")}
 						defaultValue="Year"
 						className= {errors['birthday'] ? "err-border" : ""}

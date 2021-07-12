@@ -18,7 +18,7 @@ export default function Login({ clearErrors, errors, login, loginDemo }) {
 			const errors = [];
 			clearErrors(errors);
 		};
-	});
+	}, []);
 
 	const update = (field) => {
 		return (e) => {

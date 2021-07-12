@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { login, receiveSessionErrors } from '../../actions/session_actions'
-import Login from "./login";
+import Login from "./login_hook";
 
 const msp = (state, ownProps) => {
 	return {
